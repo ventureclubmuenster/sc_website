@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-grey: #1a1a1a;
+  --venture-purple: #ff5e00;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-grey: var(--card-grey);
+  --color-venture-purple: var(--venture-purple);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+git config --global user.name "Dein Name"
+git config --global user.email "deine.email@beispiel.de"

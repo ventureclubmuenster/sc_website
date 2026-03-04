@@ -21,6 +21,3 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-git config --global user.name "Dein Name"
-git config --global user.email "deine.email@beispiel.de"

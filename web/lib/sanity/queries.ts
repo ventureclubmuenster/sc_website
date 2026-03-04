@@ -99,3 +99,13 @@ export const teamQuery = groq`
     linkedin
   }
 `
+
+export const advisoryBoardQuery = groq`
+  *[_type == "advisoryBoard"] | order(orderRank asc) {
+    _id,
+    name,
+    role,
+    image,
+    linkedin
+  }
+`

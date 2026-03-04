@@ -9,6 +9,7 @@ import landingPage from './landingPage'
 import team from './team'
 import { exhibitor2025 } from './exhibitor2025'
 import exhibitor2026 from './exhibitor2026'
+import advisoryBoard from './advisoryBoard'
 
 export const schemaTypes = [
   speaker2025, speaker2026,
@@ -19,4 +20,5 @@ export const schemaTypes = [
   landingPage,
   team,
   exhibitor2025, exhibitor2026,
+  advisoryBoard,
 ]

@@ -100,6 +100,16 @@ export const teamQuery = groq`
   }
 `
 
+export const partners2025Query = groq`
+  *[_type == "partner2025"] | order(orderRank asc) {
+    _id,
+    name,
+    category,
+    logo,
+    url
+  }
+`
+
 export const advisoryBoardQuery = groq`
   *[_type == "advisoryBoard"] | order(orderRank asc) {
     _id,

@@ -1,6 +1,36 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { client } from '@/lib/sanity/client'
+import { landingPageQuery } from '@/lib/sanity/queries'
+import { urlFor } from '@/lib/sanity/image'
 
-export default function Home() {
+async function getLandingPage() {
+  return client.fetch(landingPageQuery, {}, { next: { revalidate: 3600 } })
+}
+
+export default async function Home() {
+  const data = await getLandingPage()
+
+  const statsCards = [
+    { number: '20+', label: 'Speaker & Themen', image: data?.stellDirVorSpeaker },
+    { number: '1000+', label: 'Besucher', image: data?.stellDirVorBesucher },
+    { number: '20+', label: 'Stände', image: data?.stellDirVorStaende },
+  ]
+
+  const erwartungCards = [
+    { label: 'Stände & Co-Creation Corner', href: '/programm/co-creation', image: data?.erwartungCoCreation },
+    { label: 'Workshops', href: '/programm/workshops', image: data?.erwartungWorkshops },
+    { label: 'Bühnenprogramm', href: '/programm/main-stage', image: data?.erwartungBuehne },
+    { label: 'Side Events', href: '/programm/innovation-village', image: data?.erwartungSideEvents },
+  ]
+
+  const wenCards = [
+    { label: 'Startups', href: '/startups', image: data?.wenStartups },
+    { label: 'Corporates', href: '/unternehmen', image: data?.wenCorporates },
+    { label: 'Talente', href: '/studierende', image: data?.wenTalente },
+    { label: 'Investoren', href: '/investoren', image: data?.wenInvestoren },
+  ]
+
   return (
     <>
       {/* ── Hero Section ── */}
@@ -38,20 +68,23 @@ export default function Home() {
       {/* ── Stell dir vor was ── */}
       <section className="py-20 px-6 bg-black">
         <h2 className="text-3xl md:text-4xl font-bold text-center uppercase tracking-wide">
-          Stell <span className="text-venture-purple">dir</span> vor was
+          Stell <span className="text-venture-purple">dir</span> vor was...
         </h2>
 
-        <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { number: '20+', label: 'Speaker & Themen' },
-            { number: '1000+', label: 'Besucher' },
-            { number: '20+', label: 'Stände' },
-          ].map((stat) => (
+        <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          {statsCards.map((stat) => (
             <div
               key={stat.label}
               className="relative aspect-[4/3] bg-card-grey rounded-lg overflow-hidden flex items-end p-6"
             >
-              {/* Placeholder for image */}
+              {stat.image && (
+                <Image
+                  src={urlFor(stat.image).width(600).height(450).url()}
+                  alt={stat.label}
+                  fill
+                  className="object-cover"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="relative z-10">
                 <p className="text-3xl md:text-4xl font-bold">{stat.number}</p>
@@ -65,13 +98,21 @@ export default function Home() {
       {/* ── Gemeinsam erreichen können ── */}
       <section className="py-20 px-6 bg-black">
         <h2 className="text-3xl md:text-4xl font-bold text-center uppercase tracking-wide">
-          <span className="text-venture-purple">Gemeinsam</span> erreichen können
+          <span className="text-venture-purple">...Gemeinsam</span> erreichen können
         </h2>
       </section>
 
       {/* ── Networking Together ── */}
-      <section className="py-20 px-6 bg-card-grey">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative py-20 px-6 bg-card-grey overflow-hidden">
+        {data?.networkingBg && (
+          <Image
+            src={urlFor(data.networkingBg).width(1920).height(1080).url()}
+            alt="Networking Together"
+            fill
+            className="object-cover opacity-20"
+          />
+        )}
+        <div className="relative z-10 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center">
             <span className="line-through text-white/50">Net</span>
             <span className="text-venture-purple">working</span> together
@@ -103,19 +144,21 @@ export default function Home() {
           Was <span className="text-venture-purple">du</span> erwarten kannst
         </h2>
 
-        <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { label: 'Stände & Co-Creation Corner', href: '/programm/co-creation' },
-            { label: 'Workshops', href: '/programm/workshops' },
-            { label: 'Bühnenprogramm', href: '/programm/main-stage' },
-            { label: 'Side Events', href: '/programm/innovation-village' },
-          ].map((item) => (
+        <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {erwartungCards.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               className="group relative aspect-[16/10] bg-card-grey rounded-lg overflow-hidden flex items-end p-6 hover:ring-2 hover:ring-venture-purple transition-all"
             >
-              {/* Placeholder for image */}
+              {item.image && (
+                <Image
+                  src={urlFor(item.image).width(800).height(500).url()}
+                  alt={item.label}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <span className="relative z-10 text-lg font-semibold uppercase tracking-wide group-hover:text-venture-purple transition-colors">
                 {item.label}
@@ -131,19 +174,21 @@ export default function Home() {
           Wen <span className="text-venture-purple">du</span> erwarten kannst
         </h2>
 
-        <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { label: 'Startups', href: '/startups' },
-            { label: 'Corporates', href: '/unternehmen' },
-            { label: 'Talente', href: '/studierende' },
-            { label: 'Investoren', href: '/investoren' },
-          ].map((item) => (
+        <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {wenCards.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               className="group relative aspect-[16/10] bg-card-grey rounded-lg overflow-hidden flex items-center justify-center hover:ring-2 hover:ring-venture-purple transition-all"
             >
-              {/* Placeholder for image */}
+              {item.image && (
+                <Image
+                  src={urlFor(item.image).width(800).height(500).url()}
+                  alt={item.label}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30" />
               <span className="relative z-10 text-xl font-bold uppercase tracking-wider group-hover:text-venture-purple transition-colors">
                 {item.label}
@@ -159,7 +204,7 @@ export default function Home() {
           Was <span className="text-venture-purple">du</span> erwarten kannst
         </h2>
 
-        <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               title: 'Zusammenarbeit',
@@ -178,7 +223,6 @@ export default function Home() {
               key={card.title}
               className="relative bg-card-grey rounded-lg overflow-hidden p-6 flex flex-col"
             >
-              {/* Placeholder for image at bottom */}
               <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/5 to-transparent" />
               <h3 className="text-lg font-bold uppercase tracking-wide">{card.title}</h3>
               <p className="mt-3 text-sm text-white/70 leading-relaxed relative z-10">{card.text}</p>

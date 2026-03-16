@@ -19,6 +19,18 @@ export const siteSettingsQuery = groq`
 
 export const landingPageQuery = groq`
   *[_type == "landingPage"][0] {
+    stellDirVorSpeaker,
+    stellDirVorBesucher,
+    stellDirVorStaende,
+    networkingBg,
+    erwartungCoCreation,
+    erwartungWorkshops,
+    erwartungBuehne,
+    erwartungSideEvents,
+    wenStartups,
+    wenCorporates,
+    wenTalente,
+    wenInvestoren,
     whyUs[] {
       title,
       bgImage

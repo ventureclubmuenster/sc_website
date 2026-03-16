@@ -18,9 +18,9 @@ export default async function SpeakerPage() {
   const speakers: Speaker[] = await client.fetch(speakers2025Query)
 
   return (
-    <main className="bg-background min-h-screen">
+    <main className="bg-background min-h-screen max-w-7xl mx-auto px-6">
       {/* Header */}
-      <div className="py-16 text-center px-4">
+      <div className="py-16 text-center">
         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">
           UNSERE{' '}
           <span className="text-venture-purple">SPEAKER</span>
@@ -31,7 +31,7 @@ export default async function SpeakerPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-4 md:px-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {speakers.map((speaker) => {
           const card = (
             <div className="relative aspect-[3/4] overflow-hidden rounded-xl group">

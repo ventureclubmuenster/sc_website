@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Exhibitor {
   _id: string
@@ -10,64 +10,77 @@ interface Exhibitor {
 }
 
 export default function ExhibitorCarousel({ exhibitors }: { exhibitors: Exhibitor[] }) {
-  const trackRef = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState(0)
+  const count = exhibitors.length
 
-  // Each card is 25% wide (4 per row), we shift by 2 cards = 50% each tick
-  // But we work in pixels for smooth animation
-  const cardWidth = 280 // approximate card width including gap
-  const shiftAmount = 2 // shift 2 cards at a time
-
+  // Only auto-scroll if we have more than 4 exhibitors
   useEffect(() => {
-    if (exhibitors.length <= 8) return // no scrolling needed if 8 or fewer
+    if (count <= 4) return
 
     const interval = setInterval(() => {
-      setOffset((prev) => prev + shiftAmount)
+      setOffset((prev) => prev + 2)
     }, 2500)
 
     return () => clearInterval(interval)
-  }, [exhibitors.length])
+  }, [count])
 
-  // Duplicate the list to create an infinite loop effect
-  const displayList = [...exhibitors, ...exhibitors, ...exhibitors]
+  // If 4 or fewer, just show them in a static grid
+  if (count <= 4) {
+    return (
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {exhibitors.map((exhibitor) => (
+          <Card key={exhibitor._id} exhibitor={exhibitor} />
+        ))}
+      </div>
+    )
+  }
 
-  // Reset offset when it has scrolled through the full original list
-  const effectiveOffset = exhibitors.length > 0 ? offset % exhibitors.length : 0
+  // Build a long enough list for seamless looping
+  const repeats = Math.ceil(20 / count) + 2
+  const displayList: Exhibitor[] = []
+  for (let i = 0; i < repeats; i++) {
+    displayList.push(...exhibitors)
+  }
+
+  const effectiveOffset = offset % count
 
   return (
     <div className="overflow-hidden">
       <div
-        ref={trackRef}
         className="flex transition-transform duration-700 ease-in-out"
         style={{
           transform: `translateX(-${effectiveOffset * (100 / 4)}%)`,
-          // each item is 25% of container width (4 visible)
         }}
       >
         {displayList.map((exhibitor, i) => (
           <div
             key={`${exhibitor._id}-${i}`}
-            className="flex-shrink-0 w-1/4 px-2"
+            className="flex-shrink-0 w-1/2 md:w-1/4 px-2"
           >
-            <div className="flex items-center justify-center bg-white rounded-xl h-20 md:h-24 px-4">
-              {exhibitor.logoUrl ? (
-                <div className="relative w-full h-full p-3">
-                  <Image
-                    src={exhibitor.logoUrl}
-                    alt={exhibitor.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ) : (
-                <span className="text-black/60 text-sm font-medium text-center">
-                  {exhibitor.name}
-                </span>
-              )}
-            </div>
+            <Card exhibitor={exhibitor} />
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+function Card({ exhibitor }: { exhibitor: Exhibitor }) {
+  return (
+    <div className="flex items-center justify-center bg-gray-100 rounded-xl h-20 md:h-24 px-4">
+      {exhibitor.logoUrl ? (
+        <Image
+          src={exhibitor.logoUrl}
+          alt={exhibitor.name}
+          width={200}
+          height={80}
+          className="object-contain max-h-12 md:max-h-16 w-auto"
+        />
+      ) : (
+        <span className="text-black/60 text-sm font-medium text-center">
+          {exhibitor.name}
+        </span>
+      )}
     </div>
   )
 }

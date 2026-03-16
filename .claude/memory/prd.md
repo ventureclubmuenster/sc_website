@@ -14,10 +14,18 @@ Next.js (App Router), Sanity.io, Tailwind CSS, Vercel
 - Studio local: http://localhost:3333
 
 ## Event Scope
-Keynotes, Panel Discussions, Workshops, Co-creation, Live Podcast, VIP Networking, Fairground Exhibitors
+Keynotes, Panel Discussions, Workshops, Co-creation, Live Podcast, VIP Networking, Fairground Exhibitors, Innovation Village
 
 ## Audiences
-Talents (students), Startups, Investors, Mittelstand
+Talents (students), Startups, Investors, Unternehmen (Mittelstand)
+
+## Fokusfelder (für Startups & Unternehmen)
+- Produktion
+- Logistik & Einkauf
+- Energie & Nachhaltigkeit
+- Bau- & Handwerk
+- Betriebs Infrastruktur
+- Lifestyle
 
 ## Design Identity
 - Black: `#000000`, Card-Grey: `#1A1A1A`, Venture Purple: `#7B61FF`
@@ -40,7 +48,47 @@ Talents (students), Startups, Investors, Mittelstand
 3. **SEO** — every page fetches metadata from Sanity; target Lighthouse >95
 4. **Asset management** — all images via @sanity/image-url
 
-## Page Targets
+## Website Navigation & Page Structure
+
+### Top-Level Nav: Besucher (Dropdown)
+
+**Startups** (`/startups`)
+- Eine einmalige Kombination: Kontakt zu Studis + Kontakt zu innovationssuchenden Unternehmen
+- Fokusfelder (siehe oben)
+
+**Talente** (`/studierende` — URL bleibt!)
+- "Gestalte mit" — Aufruf zur aktiven Teilnahme
+
+**Unternehmen** (`/unternehmen`)
+- "Ihr Unternehmen treibt die Branche voran?"
+- "Kommen Sie vorbei, bringen Sie Ihr Wissen ein"
+- "Fördern Sie die Branche durch Startups und lassen Sie sich inspirieren"
+- Co-Creation als Innovationstreiber
+- Einmalige Kombination (Startups + Talente + Unternehmen)
+- Fokusfelder (siehe oben)
+
+**Investoren** (`/investoren`)
+- Investor Breakfast
+- Startups aus den Bereichen (Fokusfelder)
+- Wer letztes Jahr dabei war (Startups & Investoren)
+- Münster: Top-5 Gründungshochschulen DE
+
+### Top-Level Nav: Programm (Dropdown)
+- Co-Creation Corner
+- Workshops: "Erhalte Skills", Workshops letztes Jahr
+- Main Stage: Keynotes, Fireside Chats, Paneltalks, Speaker
+- Podcast
+- Innovation Village
+
+### Top-Level Nav: Speaker (Eigenständige Seite)
+### Top-Level Nav: Partner (Eigenständige Seite)
+
+### Top-Level Nav: Über uns (Dropdown)
+- VCM (Venture Club Münster)
+- Advisory Board
+- Jobwall
+
+## Legacy Page Targets (reference)
 - Homepage (landingPage singleton)
 - Speakers listing + detail pages
 - Program / Schedule

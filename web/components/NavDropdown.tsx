@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 
 interface NavDropdownProps {
@@ -10,22 +10,24 @@ interface NavDropdownProps {
 
 export default function NavDropdown({ label, items }: NavDropdownProps) {
   const [open, setOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+  function handleEnter() {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setOpen(true)
+  }
+
+  function handleLeave() {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150)
+  }
 
   return (
-    <div ref={ref} className="relative">
+    <div
+      className="relative"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
       <button
-        onClick={() => setOpen(!open)}
         className="flex items-center gap-1 text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
       >
         {label}

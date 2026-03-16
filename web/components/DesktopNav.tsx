@@ -5,29 +5,28 @@ import NavDropdown from './NavDropdown'
 
 const navGroups = [
   {
-    label: 'Für Besucher',
+    label: 'Besucher',
     items: [
-      { label: 'Unternehmen', href: '/unternehmen' },
       { label: 'Startups', href: '/startups' },
-      { label: 'Studierende', href: '/studierende' },
+      { label: 'Talente', href: '/studierende' },
+      { label: 'Unternehmen', href: '/unternehmen' },
       { label: 'Investoren', href: '/investoren' },
-      { label: 'Besucher', href: '/besucher' },
     ],
   },
   {
     label: 'Programm',
     items: [
-      { label: 'Speaker', href: '/speaker' },
-      { label: 'Workshops & Q&As', href: '/workshops-q-as' },
-      { label: 'Formate', href: '/formate' },
-      { label: 'Innovation Village', href: '/innovation-village' },
-      { label: 'Schedule', href: '/schedule' },
+      { label: 'Co-Creation Corner', href: '/programm/co-creation' },
+      { label: 'Workshops', href: '/programm/workshops' },
+      { label: 'Main Stage', href: '/programm/main-stage' },
+      { label: 'Podcast', href: '/programm/podcast' },
+      { label: 'Innovation Village', href: '/programm/innovation-village' },
     ],
   },
   {
-    label: 'Partner',
+    label: 'Über uns',
     items: [
-      { label: 'Unsere Partner', href: '/partner' },
+      { label: 'VCM', href: '/ueber-uns' },
       { label: 'Advisory Board', href: '/advisory-board' },
       { label: 'Jobwall', href: '/jobwall' },
     ],
@@ -41,10 +40,16 @@ export default function DesktopNav() {
         <NavDropdown key={group.label} label={group.label} items={group.items} />
       ))}
       <Link
-        href="/ueber-uns"
+        href="/speaker"
         className="text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
       >
-        Über uns
+        Speaker
+      </Link>
+      <Link
+        href="/partner"
+        className="text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+      >
+        Partner
       </Link>
     </nav>
   )

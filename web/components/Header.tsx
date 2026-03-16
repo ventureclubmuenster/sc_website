@@ -37,12 +37,12 @@ export default async function Header() {
         <DesktopNav />
 
         {/* Desktop CTA */}
-        <a
-          href="#tickets"
+        <Link
+          href="/shop"
           className="hidden lg:inline-flex items-center px-4 py-2 rounded-md bg-venture-purple text-white text-sm font-medium hover:bg-[#6a50ee] transition-colors duration-200 shrink-0"
         >
           Tickets
-        </a>
+        </Link>
 
         {/* Mobile Menu */}
         <MobileMenu />

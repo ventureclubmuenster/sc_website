@@ -36,5 +36,40 @@ NOT yet registered: team, exhibitor (files exist but missing from index.ts)
 - next.config.ts: cdn.sanity.io allowed for next/image
 - .env.local: NEXT_PUBLIC_SANITY_PROJECT_ID, NEXT_PUBLIC_SANITY_DATASET set
 
+## Website Navigation Structure (NEW — March 2026)
+
+Top-level nav items are visible dropdowns. URLs stay as established (e.g. Talente → /studierende).
+
+### Besucher (Dropdown)
+- **Startups** → /startups
+- **Talente** → /studierende (URL bleibt!)
+- **Unternehmen** → /unternehmen
+- **Investoren** → /investoren
+
+### Programm (Dropdown)
+- Co-Creation Corner
+- Workshops
+- Main Stage
+- Podcast
+- Innovation Village
+
+### Speaker (Link)
+### Partner (Link)
+
+### Über uns (Dropdown)
+- VCM
+- Advisory Board
+- Jobwall
+
+---
+
+## Fokusfelder (shared by Startups & Unternehmen pages)
+- Produktion
+- Logistik & Einkauf
+- Energie & Nachhaltigkeit
+- Bau- & Handwerk
+- Betriebs Infrastruktur
+- Lifestyle
+
 ## PRD Reference
 - Full condensed PRD: memory/prd.md – READ THIS at the start of every session

@@ -11,6 +11,7 @@ import { exhibitor2025 } from './exhibitor2025'
 import exhibitor2026 from './exhibitor2026'
 import advisoryBoard from './advisoryBoard'
 import studierendePage from './studierendePage'
+import innovationVillagePage from './innovationVillagePage'
 
 export const schemaTypes = [
   speaker2025, speaker2026,
@@ -23,4 +24,5 @@ export const schemaTypes = [
   exhibitor2025, exhibitor2026,
   advisoryBoard,
   studierendePage,
+  innovationVillagePage,
 ]

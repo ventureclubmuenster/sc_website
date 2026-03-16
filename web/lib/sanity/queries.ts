@@ -145,6 +145,21 @@ export const exhibitors2025Query = groq`
   }
 `
 
+export const innovationVillagePageQuery = groq`
+  *[_type == "innovationVillagePage"][0] {
+    heroImage,
+    heroSubtext,
+    ausstellerImage,
+    ausstellerText1,
+    ausstellerText2,
+    ausstellerCta,
+    besucherImage,
+    besucherText1,
+    besucherText2,
+    besucherCta
+  }
+`
+
 export const advisoryBoardQuery = groq`
   *[_type == "advisoryBoard"] | order(orderRank asc) {
     _id,

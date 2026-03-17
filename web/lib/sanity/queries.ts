@@ -140,6 +140,12 @@ export const studierendePageQuery = groq`
       title,
       hoverText,
       image
+    },
+    programCards[] {
+      title,
+      buttonText,
+      buttonLink,
+      image
     }
   }
 `

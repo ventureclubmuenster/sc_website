@@ -56,6 +56,31 @@ export default defineType({
       ],
       validation: (Rule) => Rule.max(4),
     }),
+    defineField({
+      name: 'programCards',
+      title: 'Unser Programm – Karten',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Titel (z.B. WORKSHOPS)', type: 'string' }),
+            defineField({ name: 'buttonText', title: 'Button Text', type: 'string', initialValue: 'Erfahre mehr' }),
+            defineField({ name: 'buttonLink', title: 'Button Link', type: 'string' }),
+            defineField({
+              name: 'image',
+              title: 'Bild',
+              type: 'image',
+              options: { hotspot: true },
+            }),
+          ],
+          preview: {
+            select: { title: 'title', media: 'image' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.max(3),
+    }),
   ],
   preview: {
     prepare() {

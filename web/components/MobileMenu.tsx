@@ -8,7 +8,7 @@ const navGroups = [
     label: 'Besucher',
     items: [
       { label: 'Startups', href: '/startups' },
-      { label: 'Talente', href: '/studierende' },
+      { label: 'Talente', href: '/talente' },
       { label: 'Unternehmen', href: '/unternehmen' },
       { label: 'Investoren', href: '/investoren' },
     ],

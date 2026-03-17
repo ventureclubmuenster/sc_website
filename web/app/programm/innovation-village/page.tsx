@@ -55,7 +55,7 @@ export default async function InnovationVillagePage() {
     heading: 'FÜR',
     headingHighlight: 'BESUCHER',
     buttonText: 'Jetzt Anmelden!',
-    buttonLink: '#',
+    buttonLink: '/newsletter',
   }
 
   return (

@@ -30,7 +30,7 @@ export default async function Home() {
   const wenCards = [
     { label: 'Startups', href: '/startups', image: data?.wenStartups },
     { label: 'Corporates', href: '/unternehmen', image: data?.wenCorporates },
-    { label: 'Talente', href: '/studierende', image: data?.wenTalente },
+    { label: 'Talente', href: '/talente', image: data?.wenTalente },
     { label: 'Investoren', href: '/investoren', image: data?.wenInvestoren },
   ]
 

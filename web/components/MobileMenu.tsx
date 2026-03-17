@@ -113,7 +113,7 @@ export default function MobileMenu() {
           <Link
             href="/shop"
             onClick={() => setOpen(false)}
-            className="mt-2 inline-flex items-center justify-center px-4 py-2 rounded-md bg-venture-purple text-white text-sm font-medium"
+            className="mt-2 inline-flex items-center justify-center px-4 py-2 rounded-md bg-sc-orange text-white text-sm font-medium"
           >
             Tickets
           </Link>

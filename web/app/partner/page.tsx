@@ -46,7 +46,7 @@ export default async function PartnerPage() {
             <div key={group.category}>
               {/* Category Heading */}
               <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-8">
-                <span className="text-venture-purple">{label.highlight}</span>
+                <span className="text-sc-orange">{label.highlight}</span>
                 {label.rest && <span className="text-white"> {label.rest}</span>}
               </h2>
 

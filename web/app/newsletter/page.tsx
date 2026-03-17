@@ -15,7 +15,7 @@ export default function NewsletterPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
             SICHERE DIR DEINEN{' '}
-            <span className="text-venture-purple">PLATZ</span>
+            <span className="text-sc-orange">PLATZ</span>
           </h1>
           <p className="text-white/60 text-lg max-w-lg mx-auto">
             Erfahre als Erstes vom Vorverkaufsstart und sichere dir dein Ticket für die Startup Contacts 2026.

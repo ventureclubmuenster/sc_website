@@ -43,7 +43,7 @@ export default function InfoTabs({ aussteller, besucher }: InfoTabsProps) {
     <div className="flex flex-col justify-center">
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase mb-10">
         <span className="text-white">{tab.heading} </span>
-        <span className="text-venture-purple">{tab.headingHighlight}</span>
+        <span className="text-sc-orange">{tab.headingHighlight}</span>
       </h2>
 
       {tab.text1 && (
@@ -82,7 +82,7 @@ export default function InfoTabs({ aussteller, besucher }: InfoTabsProps) {
             onClick={() => setActiveTab('besucher')}
             className={`text-lg md:text-xl font-bold transition-colors ${
               activeTab === 'besucher'
-                ? 'text-venture-purple'
+                ? 'text-sc-orange'
                 : 'text-white/50 hover:text-white/80'
             }`}
           >
@@ -92,7 +92,7 @@ export default function InfoTabs({ aussteller, besucher }: InfoTabsProps) {
             onClick={() => setActiveTab('aussteller')}
             className={`text-lg md:text-xl font-bold transition-colors ${
               activeTab === 'aussteller'
-                ? 'text-venture-purple'
+                ? 'text-sc-orange'
                 : 'text-white/50 hover:text-white/80'
             }`}
           >

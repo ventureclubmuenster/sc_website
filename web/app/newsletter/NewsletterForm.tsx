@@ -48,8 +48,8 @@ export default function NewsletterForm() {
   if (status === 'success') {
     return (
       <div className="text-center py-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-venture-purple/20 mb-6">
-          <svg className="w-8 h-8 text-venture-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sc-orange/20 mb-6">
+          <svg className="w-8 h-8 text-sc-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -76,7 +76,7 @@ export default function NewsletterForm() {
             placeholder="Vorname"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-venture-purple focus:ring-1 focus:ring-venture-purple transition-colors"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-sc-orange focus:ring-1 focus:ring-sc-orange transition-colors"
           />
         </div>
         <div>
@@ -90,7 +90,7 @@ export default function NewsletterForm() {
             placeholder="Nachname"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-venture-purple focus:ring-1 focus:ring-venture-purple transition-colors"
+            className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-sc-orange focus:ring-1 focus:ring-sc-orange transition-colors"
           />
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function NewsletterForm() {
           placeholder="deine@email.de"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-venture-purple focus:ring-1 focus:ring-venture-purple transition-colors"
+          className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-sc-orange focus:ring-1 focus:ring-sc-orange transition-colors"
         />
       </div>
 
@@ -121,7 +121,7 @@ export default function NewsletterForm() {
           required
           value={role}
           onChange={(e) => setRole(e.target.value)}
-          className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white appearance-none focus:outline-none focus:border-venture-purple focus:ring-1 focus:ring-venture-purple transition-colors cursor-pointer"
+          className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white appearance-none focus:outline-none focus:border-sc-orange focus:ring-1 focus:ring-sc-orange transition-colors cursor-pointer"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'no-repeat',
@@ -145,11 +145,11 @@ export default function NewsletterForm() {
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-1 w-4 h-4 rounded border-white/30 bg-transparent text-venture-purple focus:ring-venture-purple focus:ring-offset-0 cursor-pointer accent-venture-purple"
+          className="mt-1 w-4 h-4 rounded border-white/30 bg-transparent text-sc-orange focus:ring-sc-orange focus:ring-offset-0 cursor-pointer accent-sc-orange"
         />
         <span className="text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
           Ich möchte alle Infos zur Startup Contacts, sowie weiteren Veranstaltungen erhalten und stimme der zweckmäßigen Verarbeitung meiner Daten zu. Hier findest du unseren{' '}
-          <a href="/datenschutz" className="text-venture-purple hover:underline">
+          <a href="/datenschutz" className="text-sc-orange hover:underline">
             Datenschutz
           </a>
           .
@@ -166,7 +166,7 @@ export default function NewsletterForm() {
         <button
           type="submit"
           disabled={!consent || status === 'loading'}
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-venture-purple text-white font-semibold hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-sc-orange text-white font-semibold hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {status === 'loading' ? (
             <>

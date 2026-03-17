@@ -60,7 +60,7 @@ export default async function Home() {
             <br />
             <span className="text-white/40">durch</span>
             <br />
-            Zusammenarbeit<span className="text-venture-purple">.</span>
+            Zusammenarbeit<span className="text-sc-orange">.</span>
           </h1>
 
           {/* Bottom row — info + CTA inline */}
@@ -71,7 +71,7 @@ export default async function Home() {
 
             <div className="flex items-center gap-4 font-bold text-2xl md:text-3xl uppercase tracking-tight whitespace-nowrap">
               <span>15. Juni 2026</span>
-              <span className="text-venture-purple">&mdash;</span>
+              <span className="text-sc-orange">&mdash;</span>
               <span className="text-white/60">Münster</span>
             </div>
 
@@ -98,7 +98,7 @@ export default async function Home() {
         </div>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Stell <span className="text-venture-purple">dir</span> vor was...
+            Stell <span className="text-sc-orange">dir</span> vor was...
           </h2>
 
           <AnimatedStatsGrid
@@ -110,7 +110,7 @@ export default async function Home() {
           />
 
           <h2 className="mt-12 text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            <span className="text-venture-purple">...Gemeinsam</span> erreichen können
+            <span className="text-sc-orange">...Gemeinsam</span> erreichen können
           </h2>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default async function Home() {
       {/* ── Networking Together ── */}
       <section className="relative py-32 px-6 overflow-hidden">
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-venture-purple/10 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-sc-orange/10 z-[1]" />
         {data?.networkingBg && (
           <Image
             src={urlFor(data.networkingBg).width(1920).height(1080).url()}
@@ -136,7 +136,7 @@ export default async function Home() {
         <div className="relative z-10 max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-bold">
             <span className="line-through text-white/40">Net</span>
-            <span className="text-venture-purple">working</span> together
+            <span className="text-sc-orange">working</span> together
           </h2>
 
           <div className="mt-10 space-y-6 text-white/70 text-lg leading-relaxed">
@@ -166,7 +166,7 @@ export default async function Home() {
         </span>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Was <span className="text-venture-purple">du</span> erwarten kannst
+            Was <span className="text-sc-orange">du</span> erwarten kannst
           </h2>
 
           <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -187,8 +187,8 @@ export default async function Home() {
                 {/* Subtle gradient for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 {/* Orange glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-venture-purple/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="relative z-10 text-xl md:text-2xl font-bold uppercase tracking-wide group-hover:text-venture-purple transition-colors duration-300">
+                <div className="absolute inset-0 bg-gradient-to-tr from-sc-orange/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative z-10 text-xl md:text-2xl font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
                   {item.label}
                 </span>
               </Link>
@@ -204,7 +204,7 @@ export default async function Home() {
         </span>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Wen <span className="text-venture-purple">du</span> erwarten kannst
+            Wen <span className="text-sc-orange">du</span> erwarten kannst
           </h2>
 
           <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -224,8 +224,8 @@ export default async function Home() {
                 )}
                 {/* Subtle gradient for text readability + hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-venture-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="relative z-10 text-lg font-bold uppercase tracking-wide group-hover:text-venture-purple transition-colors duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative z-10 text-lg font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
                   {item.label}
                 </span>
               </Link>
@@ -237,13 +237,13 @@ export default async function Home() {
       {/* ── Value Props ── */}
       <section className="relative py-32 px-6 overflow-hidden">
         {/* Orange gradient background like banner */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-card-grey to-venture-purple/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-card-grey to-sc-orange/10" />
         <span className="absolute left-6 bottom-8 text-[8rem] md:text-[14rem] font-bold uppercase text-white/[0.03] pointer-events-none select-none tracking-tighter leading-none">
           WARUM
         </span>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Was <span className="text-venture-purple">du</span> erwarten kannst
+            Was <span className="text-sc-orange">du</span> erwarten kannst
           </h2>
 
           <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -263,10 +263,10 @@ export default async function Home() {
             ].map((card) => (
               <div
                 key={card.title}
-                className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden p-8 flex flex-col hover:border-venture-purple/30 transition-colors duration-500"
+                className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden p-8 flex flex-col hover:border-sc-orange/30 transition-colors duration-500"
               >
                 {/* Subtle orange glow — intensifies on hover */}
-                <div className="absolute -top-16 -right-16 w-40 h-40 bg-venture-purple/8 rounded-full blur-3xl group-hover:bg-venture-purple/20 transition-all duration-500" />
+                <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/8 rounded-full blur-3xl group-hover:bg-sc-orange/20 transition-all duration-500" />
                 <h3 className="text-xl font-bold uppercase tracking-wide">{card.title}</h3>
                 <p className="mt-4 text-base text-white/60 leading-relaxed relative z-10">{card.text}</p>
               </div>

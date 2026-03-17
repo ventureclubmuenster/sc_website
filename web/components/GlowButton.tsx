@@ -121,7 +121,7 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
       <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
         {children}
       </span>
-      <span className="relative z-10 transition-all duration-500 group-hover:translate-x-1 group-hover:text-venture-purple" aria-hidden="true">
+      <span className="relative z-10 transition-all duration-500 group-hover:translate-x-1 group-hover:text-sc-orange" aria-hidden="true">
         &rarr;
       </span>
     </Tag>

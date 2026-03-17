@@ -28,7 +28,10 @@ Talents (students), Startups, Investors, Unternehmen (Mittelstand)
 - Lifestyle
 
 ## Design Identity
-- Black: `#000000`, Card-Grey: `#1A1A1A`, Venture Purple: `#7B61FF`
+- Black: `#000000`, Card-Grey: `#1A1A1A`, SC-Orange: `#FF5E00`
+- CSS variable: `--sc-orange` / Tailwind class: `sc-orange`
+- Style: Bold white typography, dark-to-orange gradient overlays on photos, high contrast
+- Inspired by Instagram post template (bold headlines, orange accent, photo backgrounds)
 - "Why Startup Contacts" cards: INSPIRATION, COMMUNITY, EXPERIENCE — bg image + dark overlay + white text
 
 ## CMS Singletons
@@ -57,6 +60,10 @@ Talents (students), Startups, Investors, Unternehmen (Mittelstand)
 - Fokusfelder (siehe oben)
 
 **Talente** (`/studierende` — URL bleibt!)
+- Hero: Full-width Messestand-Foto (from Sanity CMS), dark/orange gradient overlay
+- Bold headline: "TALENTE AUFGEPASST"
+- Subtext: "Die Chance den Arbeitgeber von morgen zu finden" / "30+ Startups und Unternehmen"
+- Creative decorative element (e.g. question mark) — details TBD
 - "Gestalte mit" — Aufruf zur aktiven Teilnahme
 
 **Unternehmen** (`/unternehmen`)

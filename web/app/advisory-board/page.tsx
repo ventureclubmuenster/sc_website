@@ -26,7 +26,7 @@ export default async function AdvisoryBoardPage() {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl font-extrabold text-center mb-6">
-          <span className="text-venture-purple">SC26</span>{' '}
+          <span className="text-sc-orange">SC26</span>{' '}
           <span className="text-white">Advisory Board</span>
         </h1>
 
@@ -42,7 +42,7 @@ export default async function AdvisoryBoardPage() {
           const renderCard = (advisor: Advisor) => {
             const card = (
               <div className="group flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
-                <div className="relative w-40 h-40 md:w-48 md:h-48 mb-5 rounded-full border-[3px] border-venture-purple overflow-hidden bg-white/5">
+                <div className="relative w-40 h-40 md:w-48 md:h-48 mb-5 rounded-full border-[3px] border-sc-orange overflow-hidden bg-white/5">
                   {advisor.image ? (
                     <Image
                       src={urlFor(advisor.image).width(400).height(400).url()}

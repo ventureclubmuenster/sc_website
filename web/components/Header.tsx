@@ -33,7 +33,7 @@ export default async function Header() {
         {/* Desktop CTA */}
         <Link
           href="/shop"
-          className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-venture-purple text-white text-base font-bold uppercase tracking-wide hover:brightness-110 transition-all duration-200 shrink-0"
+          className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-sc-orange text-white text-base font-bold uppercase tracking-wide hover:brightness-110 transition-all duration-200 shrink-0"
         >
           Tickets
         </Link>

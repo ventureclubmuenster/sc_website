@@ -4,14 +4,14 @@
   --background: #000000;
   --foreground: #ffffff;
   --card-grey: #1a1a1a;
-  --venture-purple: #ff5e00;
+  --sc-orange: #ff5e00;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card-grey: var(--card-grey);
-  --color-venture-purple: var(--venture-purple);
+  --color-sc-orange: var(--sc-orange);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 

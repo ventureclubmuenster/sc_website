@@ -23,7 +23,7 @@ export default async function SpeakerPage() {
       <div className="py-16 text-center">
         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">
           UNSERE{' '}
-          <span className="text-venture-purple">SPEAKER</span>
+          <span className="text-sc-orange">SPEAKER</span>
         </h1>
         <p className="mt-4 text-white/60 text-base max-w-xl mx-auto">
           Hier findest du eine Übersicht aller unserer Speaker, die zuletzt mit dabei waren!
@@ -62,14 +62,14 @@ export default async function SpeakerPage() {
                   </p>
                 )}
                 {speaker.stage && (
-                  <p className="text-venture-purple text-sm font-medium mt-2">
+                  <p className="text-sc-orange text-sm font-medium mt-2">
                     {speaker.stage}
                   </p>
                 )}
               </div>
 
               {/* Hover tint */}
-              <div className="absolute inset-0 bg-venture-purple/0 group-hover:bg-venture-purple/10 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-sc-orange/0 group-hover:bg-sc-orange/10 transition-colors duration-300" />
             </div>
           )
 

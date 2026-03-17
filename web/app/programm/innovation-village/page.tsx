@@ -81,7 +81,7 @@ export default async function InnovationVillagePage() {
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
           >
-            <span className="text-venture-purple">INNOVATION </span>
+            <span className="text-sc-orange">INNOVATION </span>
             <span className="text-white">VILLAGE</span>
           </h1>
 
@@ -99,7 +99,7 @@ export default async function InnovationVillagePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             <span className="text-white">AUSSTELLER DER </span>
-            <span className="text-venture-purple">STARTUP CONTACTS</span>
+            <span className="text-sc-orange">STARTUP CONTACTS</span>
           </h2>
 
           <p className="text-white/60 text-sm md:text-base text-center mb-12">

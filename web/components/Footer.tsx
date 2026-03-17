@@ -65,7 +65,7 @@ export default function Footer() {
           <h3 className="text-white font-bold text-sm mb-4">Bleibe auf dem Laufenden!</h3>
           <p className="text-white/50 text-sm leading-relaxed mb-5">
             Melde dich jetzt für unseren Newsletter an und bleibe immer auf dem Laufenden für alle Veranstaltungen des{' '}
-            <a href="https://ventureclub-muenster.de" target="_blank" rel="noopener noreferrer" className="text-venture-purple hover:underline">
+            <a href="https://ventureclub-muenster.de" target="_blank" rel="noopener noreferrer" className="text-sc-orange hover:underline">
               Venture Club Münsters e.V.
             </a>
             !

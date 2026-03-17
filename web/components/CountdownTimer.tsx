@@ -45,7 +45,7 @@ export default function CountdownTimer({ targetDate }: { targetDate: string }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-venture-purple text-sm font-semibold">Sale starts soon</span>
+      <span className="text-sc-orange text-sm font-semibold">Sale starts soon</span>
       <div className="flex items-center gap-3 text-white text-2xl font-bold tabular-nums">
         {units.map((u) => (
           <span key={u.label}>

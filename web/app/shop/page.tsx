@@ -12,12 +12,12 @@ export default function ShopPage() {
     <>
       {/* ── Full-width hero ── */}
       <section className="relative px-6 pt-24 pb-16 bg-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-venture-purple/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-sc-orange/10 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-extrabold uppercase leading-tight">
             <span className="text-white">Startup </span>
-            <span className="text-venture-purple">Contacts</span>
+            <span className="text-sc-orange">Contacts</span>
           </h1>
           <p className="text-white/50 text-lg mt-2">Vision becomes Venture.</p>
 
@@ -29,13 +29,13 @@ export default function ShopPage() {
 
           <p className="text-white/50 text-sm mt-4">
             Weitere Informationen findet ihr unter:{' '}
-            <a href="https://www.startup-contacts.de/" target="_blank" rel="noopener noreferrer" className="text-venture-purple hover:underline">
+            <a href="https://www.startup-contacts.de/" target="_blank" rel="noopener noreferrer" className="text-sc-orange hover:underline">
               https://www.startup-contacts.de/
             </a>
           </p>
           <p className="text-white/50 text-sm mt-1">
             Bei Fragen könnt ihr euch gerne unter{' '}
-            <a href="mailto:info@ventureclub-muenster.de" className="text-venture-purple hover:underline">
+            <a href="mailto:info@ventureclub-muenster.de" className="text-sc-orange hover:underline">
               info@ventureclub-muenster.de
             </a>
             {' '}bei uns melden.
@@ -53,7 +53,7 @@ export default function ShopPage() {
             <div>
               <h2 className="text-white font-bold text-base mb-4">Date</h2>
               <div className="inline-flex flex-col items-center border border-white/15 rounded-xl px-6 py-4">
-                <span className="text-venture-purple text-sm font-semibold">Jun</span>
+                <span className="text-sc-orange text-sm font-semibold">Jun</span>
                 <span className="text-white text-3xl font-bold leading-tight">15</span>
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function ShopPage() {
                 href="https://www.openstreetmap.org/?mlat=51.9455&mlon=7.6330#map=17/51.9455/7.6330"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-venture-purple text-sm mt-3 hover:underline"
+                className="inline-flex items-center gap-1 text-sc-orange text-sm mt-3 hover:underline"
               >
                 Größere Karte ansehen &rarr;
               </a>
@@ -110,7 +110,7 @@ export default function ShopPage() {
 
               <a
                 href="#tickets"
-                className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-lg bg-venture-purple text-white font-medium hover:bg-venture-purple/85 transition-colors text-sm"
+                className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-lg bg-sc-orange text-white font-medium hover:bg-sc-orange/85 transition-colors text-sm"
               >
                 Tickets sichern
               </a>
@@ -162,7 +162,7 @@ export default function ShopPage() {
       <section id="tickets" className="bg-black px-6 py-20 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-center mb-4">
-            <span className="text-venture-purple">TICKETS </span>
+            <span className="text-sc-orange">TICKETS </span>
             <span className="text-white">SICHERN</span>
           </h2>
           <p className="text-white/50 text-sm text-center mb-12">

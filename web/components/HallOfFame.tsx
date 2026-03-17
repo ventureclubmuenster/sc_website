@@ -36,14 +36,14 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
 
       <div className="relative z-10">
         <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-          Unsere <span className="text-venture-purple">Hall of Fame</span>
+          Unsere <span className="text-sc-orange">Hall of Fame</span>
         </h2>
 
         <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {speakers.map((speaker) => (
             <div
               key={speaker._id}
-              className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-venture-purple/30 transition-colors duration-500"
+              className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-sc-orange/30 transition-colors duration-500"
             >
               {/* Speaker image */}
               <div className="relative aspect-[3/4] overflow-hidden">
@@ -64,12 +64,12 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                 {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-t from-venture-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Info */}
               <div className="relative p-6 -mt-16 z-10">
-                <h3 className="text-xl font-bold uppercase tracking-wide group-hover:text-venture-purple transition-colors duration-300">
+                <h3 className="text-xl font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
                   {speaker.name}
                 </h3>
                 {speaker.title && (
@@ -80,7 +80,7 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
                     href={speaker.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-3 text-white/40 hover:text-venture-purple transition-colors duration-300"
+                    className="inline-block mt-3 text-white/40 hover:text-sc-orange transition-colors duration-300"
                     aria-label={`${speaker.name} auf LinkedIn`}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

@@ -132,11 +132,10 @@ export const partners2025Query = groq`
 
 export const studierendePageQuery = groq`
   *[_type == "studierendePage"][0] {
-    "heroVideoUrl": heroVideo.asset->url,
-    heroHeadingPrefix,
-    heroHeadingHighlight,
+    heroImage,
+    heroHeadline,
     heroSubtext,
-    heroDateLine,
+    heroHighlight,
     featureCards[] {
       title,
       hoverText,

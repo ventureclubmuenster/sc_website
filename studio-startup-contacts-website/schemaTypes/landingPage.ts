@@ -9,6 +9,7 @@ export default defineType({
     { name: 'networkingTogether', title: 'Networking Together', options: { collapsible: true, collapsed: true } },
     { name: 'wasDuErwarten', title: 'Was du erwarten kannst', options: { collapsible: true, collapsed: true } },
     { name: 'wenDuErwarten', title: 'Wen du erwarten kannst', options: { collapsible: true, collapsed: true } },
+    { name: 'hallOfFameSection', title: 'Unsere Hall of Fame', options: { collapsible: true, collapsed: true } },
     { name: 'whyUsSection', title: 'Warum Startup Contacts', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
@@ -102,6 +103,22 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
       fieldset: 'wenDuErwarten',
+    }),
+
+    // ── Unsere Hall of Fame ──
+    defineField({
+      name: 'hallOfFame',
+      title: 'Hall of Fame Speaker',
+      description: 'Wähle einige ausgewählte Speaker für die Hall of Fame Sektion aus.',
+      type: 'array',
+      fieldset: 'hallOfFameSection',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'speaker2025' }],
+        },
+      ],
+      validation: (Rule) => Rule.max(6).unique(),
     }),
 
     // ── Warum Startup Contacts (bestehend) ──

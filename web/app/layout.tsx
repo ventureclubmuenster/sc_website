@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+
 export const metadata: Metadata = {
   title: 'Startup Contacts',
   description: 'Münsters premier startup career fair',
@@ -28,7 +29,7 @@ export default function RootLayout({
     <html lang="de">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
         <Header />
-        <main className="pt-16">{children}</main>
+        <main className="pt-20">{children}</main>
         <Footer />
       </body>
     </html>

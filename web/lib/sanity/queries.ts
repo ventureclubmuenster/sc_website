@@ -31,6 +31,14 @@ export const landingPageQuery = groq`
     wenCorporates,
     wenTalente,
     wenInvestoren,
+    hallOfFame[]-> {
+      _id,
+      name,
+      title,
+      image,
+      slug,
+      socialLinks
+    },
     whyUs[] {
       title,
       bgImage

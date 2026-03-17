@@ -96,7 +96,7 @@ export default function AnimatedStatsGrid({ cards }: { cards: StatCard[] }) {
         return (
           <div
             key={stat.label}
-            className="relative aspect-[4/3] bg-card-grey rounded-lg overflow-hidden flex items-end p-6 transition-all duration-1000 ease-out"
+            className="relative aspect-[4/3] bg-card-grey rounded-2xl overflow-hidden flex items-end p-8 transition-all duration-1000 ease-out"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(80px)',
@@ -111,9 +111,10 @@ export default function AnimatedStatsGrid({ cards }: { cards: StatCard[] }) {
                 className="object-cover"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+            {/* Subtle gradient for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="relative z-10">
-              <p className="text-3xl md:text-4xl font-bold">
+              <p className="text-4xl md:text-5xl font-bold tracking-tight">
                 <CountUp
                   target={value}
                   prefix={prefix}
@@ -122,7 +123,7 @@ export default function AnimatedStatsGrid({ cards }: { cards: StatCard[] }) {
                   delay={i * 200}
                 />
               </p>
-              <p className="text-sm uppercase tracking-wider text-white/80">{stat.label}</p>
+              <p className="mt-1 text-sm uppercase tracking-widest text-white/70">{stat.label}</p>
             </div>
           </div>
         )

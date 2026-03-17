@@ -35,19 +35,19 @@ const navGroups = [
 
 export default function DesktopNav() {
   return (
-    <nav className="hidden lg:flex items-center gap-8">
+    <nav className="hidden lg:flex items-center gap-10">
       {navGroups.map((group) => (
         <NavDropdown key={group.label} label={group.label} items={group.items} />
       ))}
       <Link
         href="/speaker"
-        className="text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
       >
         Speaker
       </Link>
       <Link
         href="/partner"
-        className="text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
       >
         Partner
       </Link>

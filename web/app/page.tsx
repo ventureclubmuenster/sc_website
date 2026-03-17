@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { landingPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
+import HeroCTA from '@/components/HeroCTA'
+import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { next: { revalidate: 3600 } })
@@ -62,6 +64,10 @@ export default async function Home() {
 
           <p className="mt-6 text-xl md:text-2xl font-semibold">15. Juni 2026</p>
           <p className="text-lg text-white/70">Münster</p>
+
+          <div className="mt-8">
+            <HeroCTA />
+          </div>
         </div>
       </section>
 
@@ -71,32 +77,17 @@ export default async function Home() {
           Stell <span className="text-venture-purple">dir</span> vor was...
         </h2>
 
-        <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {statsCards.map((stat) => (
-            <div
-              key={stat.label}
-              className="relative aspect-[4/3] bg-card-grey rounded-lg overflow-hidden flex items-end p-6"
-            >
-              {stat.image && (
-                <Image
-                  src={urlFor(stat.image).width(600).height(450).url()}
-                  alt={stat.label}
-                  fill
-                  className="object-cover"
-                />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="relative z-10">
-                <p className="text-3xl md:text-4xl font-bold">{stat.number}</p>
-                <p className="text-sm uppercase tracking-wider text-white/80">{stat.label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AnimatedStatsGrid
+          cards={statsCards.map((stat) => ({
+            number: stat.number,
+            label: stat.label,
+            imageUrl: stat.image ? urlFor(stat.image).width(600).height(450).url() : undefined,
+          }))}
+        />
       </section>
 
       {/* ── Gemeinsam erreichen können ── */}
-      <section className="py-20 px-6 bg-black">
+      <section className="pt-8 pb-20 px-6 bg-black">
         <h2 className="text-3xl md:text-4xl font-bold text-center uppercase tracking-wide">
           <span className="text-venture-purple">...Gemeinsam</span> erreichen können
         </h2>

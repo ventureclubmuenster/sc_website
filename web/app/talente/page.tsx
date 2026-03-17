@@ -187,7 +187,7 @@ export default async function TalentePage() {
           </div>
         </section>
 
-        {/* Was dich erwartet */}
+        {/* Was dich erwartet – temporarily hidden
         <section id="was-erwartet" className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
@@ -198,6 +198,7 @@ export default async function TalentePage() {
             <FeatureCards cards={cardsWithUrls} />
           </div>
         </section>
+        */}
 
         {/* Mehr als eine Messe */}
         <section className="relative z-10 px-6 py-20">
@@ -211,7 +212,7 @@ export default async function TalentePage() {
           </div>
         </section>
 
-        {/* Unser Programm für dich */}
+        {/* Unser Programm für dich – temporarily hidden
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
@@ -223,6 +224,7 @@ export default async function TalentePage() {
             <ProgramCards cards={programCardsWithUrls} />
           </div>
         </section>
+        */}
       </div>
     </>
   )

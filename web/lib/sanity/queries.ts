@@ -138,7 +138,12 @@ export const studierendePageQuery = groq`
     heroHighlight,
     featureCards[] {
       title,
+      subheader,
       hoverText,
+      image
+    },
+    bentoItems[] {
+      title,
       image
     },
     programCards[] {

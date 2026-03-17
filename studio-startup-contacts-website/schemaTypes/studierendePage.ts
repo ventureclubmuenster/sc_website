@@ -40,7 +40,8 @@ export default defineType({
         {
           type: 'object',
           fields: [
-            defineField({ name: 'title', title: 'Titel (z.B. COMMUNITY)', type: 'string' }),
+            defineField({ name: 'title', title: 'Titel (z.B. CO-CREATION)', type: 'string' }),
+            defineField({ name: 'subheader', title: 'Subheader', type: 'string', description: 'Kurzer Untertitel unter dem Titel' }),
             defineField({ name: 'hoverText', title: 'Hover-Text', type: 'text', rows: 3 }),
             defineField({
               name: 'image',
@@ -55,6 +56,30 @@ export default defineType({
         },
       ],
       validation: (Rule) => Rule.max(4),
+    }),
+    defineField({
+      name: 'bentoItems',
+      title: 'Mehr als eine Messe – Bento Grid',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Titel (z.B. NETWORKING)', type: 'string' }),
+            defineField({
+              name: 'image',
+              title: 'Bild',
+              type: 'image',
+              options: { hotspot: true },
+            }),
+          ],
+          preview: {
+            select: { title: 'title', media: 'image' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.max(6),
+      description: 'Bis zu 6 Kacheln für das Bento-Grid',
     }),
     defineField({
       name: 'programCards',

@@ -5,9 +5,11 @@ import Image from 'next/image'
 import FeatureCards from './FeatureCards'
 import ExhibitorCarousel from './ExhibitorCarousel'
 import ProgramCards from './ProgramCards'
+import BentoGrid from './BentoGrid'
 
 interface FeatureCard {
   title: string
+  subheader?: string
   hoverText: string
   image?: { asset: { _ref: string } }
 }
@@ -25,12 +27,18 @@ interface Exhibitor {
   logo?: { asset: { _ref: string } }
 }
 
+interface BentoItem {
+  title: string
+  image?: { asset: { _ref: string } }
+}
+
 interface TalentePageData {
   heroImage?: { asset: { _ref: string } }
   heroHeadline?: string
   heroSubtext?: string
   heroHighlight?: string
   featureCards?: FeatureCard[]
+  bentoItems?: BentoItem[]
   programCards?: ProgramCard[]
 }
 
@@ -42,6 +50,15 @@ async function getExhibitors(): Promise<Exhibitor[]> {
   return client.fetch(exhibitors2025Query, {}, { cache: 'no-store' })
 }
 
+const defaultBentoItems: BentoItem[] = [
+  { title: 'NETWORKING' },
+  { title: 'TALKS' },
+  { title: 'STARTUPS' },
+  { title: 'KARRIERE' },
+  { title: 'INNOVATION' },
+  { title: 'AFTERPARTY' },
+]
+
 const defaultProgramCards: ProgramCard[] = [
   { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
   { title: 'AFTERPARTY', buttonText: 'Erfahre mehr', buttonLink: '/afterparty' },
@@ -49,26 +66,33 @@ const defaultProgramCards: ProgramCard[] = [
 ]
 
 const defaultCards: FeatureCard[] = [
-  { title: 'COMMUNITY', hoverText: 'Egal, ob du schon länger dabei bist oder ganz neu einsteigst – auf der Startup Contacts triffst du Gleichgesinnte, mit denen du gemeinsam in die Welt der Startups eintauchen kannst.' },
-  { title: 'EXPERIENCE', hoverText: '' },
-  { title: 'KNOWLEDGE', hoverText: '' },
-  { title: 'INSPIRATION', hoverText: '' },
+  { title: 'CO-CREATION', subheader: 'Echte Probleme. Deine Lösungen.', hoverText: 'Arbeite in der Co-Creation Corner mit regionalen Startups an den Herausforderungen von morgen.' },
+  { title: 'WORKSHOPS', subheader: 'Skill-up statt Frontalbeschallung.', hoverText: 'Hands-on Workshops, die dich wirklich weiterbringen. Von Tech-Trends bis Founder-Skills.' },
+  { title: 'MISSION', subheader: 'Eintauchen in die Szene.', hoverText: 'Finde deinen Job, dein Praktikum oder dein Team. Networking ohne steifen Dresscode.' },
+  { title: 'INSPIRATION', subheader: 'Insights aus erster Hand.', hoverText: 'Mainstage-Talks und Live-Podcasts mit den Machern aus der Region.' },
 ]
 
 export default async function TalentePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
-  const headline = data?.heroHeadline || 'TALENTE AUFGEPASST'
+  const headline = data?.heroHeadline || 'GESTALTE DIE LÖSUNGEN VON MORGEN'
   const subtext = data?.heroSubtext || 'Die Chance den Arbeitgeber von morgen zu finden'
   const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
   const cards = data?.featureCards?.length ? data.featureCards : defaultCards
+  const bentoItems = data?.bentoItems?.length ? data.bentoItems : defaultBentoItems
   const programCards = data?.programCards?.length ? data.programCards : defaultProgramCards
 
   // Pre-build image URLs on the server
   const cardsWithUrls = cards.map((card) => ({
     title: card.title,
+    subheader: card.subheader,
     hoverText: card.hoverText,
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
+  }))
+
+  const bentoWithUrls = bentoItems.map((item) => ({
+    title: item.title,
+    imageUrl: item.image ? urlFor(item.image).width(800).height(600).url() : undefined,
   }))
 
   const programCardsWithUrls = programCards.map((card) => ({
@@ -78,15 +102,15 @@ export default async function TalentePage() {
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
   }))
 
-  // Split headline into two lines at space for stacked layout
-  const headlineParts = headline.split(' ')
-  const topLine = headlineParts.slice(0, Math.ceil(headlineParts.length / 2)).join(' ')
-  const bottomLine = headlineParts.slice(Math.ceil(headlineParts.length / 2)).join(' ')
+  // Split headline: last word in orange, rest in white
+  const headlineWords = headline.split(' ')
+  const mainText = headlineWords.slice(0, -1).join(' ')
+  const orangeWord = headlineWords[headlineWords.length - 1]
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
         {data?.heroImage ? (
           <Image
             src={urlFor(data.heroImage).width(1920).height(1080).url()}
@@ -106,8 +130,8 @@ export default async function TalentePage() {
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
           >
-            <span className="text-white block">{topLine}</span>
-            <span className="text-sc-orange block">{bottomLine}</span>
+            <span className="text-white">{mainText} </span>
+            <span className="text-sc-orange">{orangeWord}</span>
           </h1>
 
           <p className="text-white/80 text-sm md:text-base mt-6 max-w-xl mx-auto">
@@ -120,58 +144,86 @@ export default async function TalentePage() {
         </div>
       </section>
 
-      {/* Was dich erwartet */}
-      <section id="was-erwartet" className="bg-black px-6 py-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-            <span className="text-sc-orange">WAS </span>
-            <span className="text-white">DICH ERWARTET</span>
-          </h2>
-
-          <FeatureCards cards={cardsWithUrls} />
-        </div>
-      </section>
-
-      {/* Wer zuletzt dabei war */}
-      <section className="bg-black px-6 py-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-            <span className="text-white">WER </span>
-            <span className="text-sc-orange">ZULETZT </span>
-            <span className="text-white">DABEI WAR</span>
-          </h2>
-
-          <ExhibitorCarousel
-            exhibitors={exhibitors.map((ex) => ({
-              _id: ex._id,
-              name: ex.name,
-              logoUrl: ex.logo ? urlFor(ex.logo).width(400).height(200).url() : undefined,
-            }))}
-          />
-
-          <div className="flex justify-center mt-10">
-            <a
-              href="/innovation-village#aussteller"
-              className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
+      {/* Content sections with watermark background */}
+      <div className="relative bg-black overflow-hidden">
+        {/* Repeating "Startup Contacts" watermark */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <span
+              key={i}
+              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+              style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
             >
-              Alle Aussteller &rarr;
-            </a>
+              STARTUP CONTACTS &nbsp; STARTUP CONTACTS &nbsp; STARTUP CONTACTS
+            </span>
+          ))}
+        </div>
+
+        {/* Wer zuletzt dabei war */}
+        <section className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-white">WER </span>
+              <span className="text-sc-orange">ZULETZT </span>
+              <span className="text-white">DABEI WAR</span>
+            </h2>
+
+            <ExhibitorCarousel
+              exhibitors={exhibitors.map((ex) => ({
+                _id: ex._id,
+                name: ex.name,
+                logoUrl: ex.logo ? urlFor(ex.logo).width(400).height(200).url() : undefined,
+              }))}
+            />
+
+            <div className="flex justify-center mt-10">
+              <a
+                href="/innovation-village#aussteller"
+                className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
+              >
+                Alle Aussteller &rarr;
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Unser Programm für dich */}
-      <section className="bg-black px-6 py-20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-            <span className="text-white">UNSER </span>
-            <span className="text-sc-orange">PROGRAMM </span>
-            <span className="text-white">FÜR DICH</span>
-          </h2>
+        {/* Was dich erwartet */}
+        <section id="was-erwartet" className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-sc-orange">WAS </span>
+              <span className="text-white">DICH ERWARTET</span>
+            </h2>
 
-          <ProgramCards cards={programCardsWithUrls} />
-        </div>
-      </section>
+            <FeatureCards cards={cardsWithUrls} />
+          </div>
+        </section>
+
+        {/* Mehr als eine Messe */}
+        <section className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-white">MEHR ALS EINE </span>
+              <span className="text-sc-orange">MESSE</span>
+            </h2>
+
+            <BentoGrid items={bentoWithUrls} />
+          </div>
+        </section>
+
+        {/* Unser Programm für dich */}
+        <section className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-white">UNSER </span>
+              <span className="text-sc-orange">PROGRAMM </span>
+              <span className="text-white">FÜR DICH</span>
+            </h2>
+
+            <ProgramCards cards={programCardsWithUrls} />
+          </div>
+        </section>
+      </div>
     </>
   )
 }

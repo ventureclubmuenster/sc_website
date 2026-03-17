@@ -16,11 +16,11 @@ const navGroups = [
   {
     label: 'Programm',
     items: [
-      { label: 'Co-Creation Corner', href: '/programm/co-creation' },
-      { label: 'Workshops', href: '/programm/workshops' },
-      { label: 'Main Stage', href: '/programm/main-stage' },
-      { label: 'Podcast', href: '/programm/podcast' },
-      { label: 'Innovation Village', href: '/programm/innovation-village' },
+      { label: 'Co-Creation Corner', href: '/co-creation' },
+      { label: 'Workshops', href: '/workshops' },
+      { label: 'Main Stage', href: '/main-stage' },
+      { label: 'Podcast', href: '/podcast' },
+      { label: 'Innovation Village', href: '/innovation-village' },
     ],
   },
   {

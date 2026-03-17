@@ -43,7 +43,7 @@ export default function ProgramCards({ cards }: { cards: ProgramCardData[] }) {
             {/* Button - appears on hover */}
             <a
               href={card.buttonLink}
-              className="opacity-0 group-hover:opacity-100 transition-all duration-500 inline-flex items-center justify-center gap-2 border border-white/50 text-white text-sm px-8 py-3 rounded-full hover:border-venture-purple hover:bg-venture-purple hover:scale-105 transition-all"
+              className="opacity-0 group-hover:opacity-100 transition-all duration-500 inline-flex items-center justify-center gap-2 border border-white/50 text-white text-sm px-8 py-3 rounded-full hover:border-sc-orange hover:bg-sc-orange hover:scale-105"
             >
               {card.buttonText} &rarr;
             </a>

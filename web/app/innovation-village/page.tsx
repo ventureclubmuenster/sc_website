@@ -95,7 +95,7 @@ export default async function InnovationVillagePage() {
       <InfoTabs aussteller={ausstellerTab} besucher={besucherTab} />
 
       {/* Aussteller Grid */}
-      <section className="bg-black px-6 py-20">
+      <section id="aussteller" className="bg-black px-6 py-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             <span className="text-white">AUSSTELLER DER </span>

@@ -21,10 +21,10 @@ export default async function Home() {
   ]
 
   const erwartungCards = [
-    { label: 'Stände & Co-Creation Corner', href: '/programm/co-creation', image: data?.erwartungCoCreation },
-    { label: 'Workshops', href: '/programm/workshops', image: data?.erwartungWorkshops },
-    { label: 'Bühnenprogramm', href: '/programm/main-stage', image: data?.erwartungBuehne },
-    { label: 'Side Events', href: '/programm/innovation-village', image: data?.erwartungSideEvents },
+    { label: 'Stände & Co-Creation Corner', href: '/co-creation', image: data?.erwartungCoCreation },
+    { label: 'Workshops', href: '/workshops', image: data?.erwartungWorkshops },
+    { label: 'Bühnenprogramm', href: '/main-stage', image: data?.erwartungBuehne },
+    { label: 'Side Events', href: '/innovation-village', image: data?.erwartungSideEvents },
   ]
 
   const wenCards = [

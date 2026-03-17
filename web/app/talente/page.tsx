@@ -1,6 +1,7 @@
 import { client } from '@/lib/sanity/client'
 import { studierendePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
+import Image from 'next/image'
 import FeatureCards from './FeatureCards'
 import ExhibitorCarousel from './ExhibitorCarousel'
 import ProgramCards from './ProgramCards'
@@ -11,18 +12,24 @@ interface FeatureCard {
   image?: { asset: { _ref: string } }
 }
 
+interface ProgramCard {
+  title: string
+  buttonText: string
+  buttonLink: string
+  image?: { asset: { _ref: string } }
+}
+
 interface Exhibitor {
   _id: string
   name: string
   logo?: { asset: { _ref: string } }
 }
 
-interface StudierendePageData {
-  heroVideoUrl?: string
-  heroHeadingPrefix?: string
-  heroHeadingHighlight?: string
+interface TalentePageData {
+  heroImage?: { asset: { _ref: string } }
+  heroHeadline?: string
   heroSubtext?: string
-  heroDateLine?: string
+  heroHighlight?: string
   featureCards?: FeatureCard[]
   programCards?: ProgramCard[]
 }
@@ -36,9 +43,9 @@ async function getExhibitors(): Promise<Exhibitor[]> {
 }
 
 const defaultProgramCards: ProgramCard[] = [
-  { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/programm/workshops' },
-  { title: 'AFTERPARTY', buttonText: 'Erfahre mehr', buttonLink: '/programm/afterparty' },
-  { title: 'FOUNDER MATCHING', buttonText: 'Erfahre mehr', buttonLink: '/programm/founder-matching' },
+  { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
+  { title: 'AFTERPARTY', buttonText: 'Erfahre mehr', buttonLink: '/afterparty' },
+  { title: 'FOUNDER MATCHING', buttonText: 'Erfahre mehr', buttonLink: '/founder-matching' },
 ]
 
 const defaultCards: FeatureCard[] = [
@@ -51,16 +58,23 @@ const defaultCards: FeatureCard[] = [
 export default async function TalentePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
-  const headingPrefix = data?.heroHeadingPrefix || 'FÜR'
-  const headingHighlight = data?.heroHeadingHighlight || 'STUDIERENDE'
-  const subtext = data?.heroSubtext || 'Werde Teil der größten Startup- und Innovationsmesse in NRW!'
-  const dateLine = data?.heroDateLine || '23. Juni 2025, Halle Münsterland'
+  const headline = data?.heroHeadline || 'TALENTE AUFGEPASST'
+  const subtext = data?.heroSubtext || 'Die Chance den Arbeitgeber von morgen zu finden'
+  const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
   const cards = data?.featureCards?.length ? data.featureCards : defaultCards
+  const programCards = data?.programCards?.length ? data.programCards : defaultProgramCards
 
   // Pre-build image URLs on the server
   const cardsWithUrls = cards.map((card) => ({
     title: card.title,
     hoverText: card.hoverText,
+    imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
+  }))
+
+  const programCardsWithUrls = programCards.map((card) => ({
+    title: card.title,
+    buttonText: card.buttonText,
+    buttonLink: card.buttonLink,
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
   }))
 
@@ -73,16 +87,14 @@ export default async function TalentePage() {
     <>
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        {data?.heroVideoUrl ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src={data.heroVideoUrl} type="video/mp4" />
-          </video>
+        {data?.heroImage ? (
+          <Image
+            src={urlFor(data.heroImage).width(1920).height(1080).url()}
+            alt="Hero"
+            fill
+            className="object-cover"
+            priority
+          />
         ) : (
           <div className="absolute inset-0 bg-black" />
         )}
@@ -94,16 +106,16 @@ export default async function TalentePage() {
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
           >
-            <span className="text-white">{headingPrefix} </span>
-            <span className="text-venture-purple">{headingHighlight}</span>
+            <span className="text-white block">{topLine}</span>
+            <span className="text-sc-orange block">{bottomLine}</span>
           </h1>
 
           <p className="text-white/80 text-sm md:text-base mt-6 max-w-xl mx-auto">
             {subtext}
           </p>
 
-          <p className="text-white text-sm md:text-base font-bold mt-1">
-            {dateLine}
+          <p className="text-sc-orange text-sm md:text-base font-bold mt-1">
+            {highlight}
           </p>
         </div>
       </section>
@@ -139,7 +151,7 @@ export default async function TalentePage() {
 
           <div className="flex justify-center mt-10">
             <a
-              href="/innovation-village"
+              href="/innovation-village#aussteller"
               className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
             >
               Alle Aussteller &rarr;
@@ -153,7 +165,7 @@ export default async function TalentePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
             <span className="text-white">UNSER </span>
-            <span className="text-venture-purple">PROGRAMM </span>
+            <span className="text-sc-orange">PROGRAMM </span>
             <span className="text-white">FÜR DICH</span>
           </h2>
 

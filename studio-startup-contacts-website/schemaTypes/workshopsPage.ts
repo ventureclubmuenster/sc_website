@@ -31,7 +31,13 @@ export default defineType({
             { name: 'description', title: 'Kurzbeschreibung', type: 'text', rows: 2 },
             {
               name: 'logo',
-              title: 'Logo (Speaker/Unternehmen)',
+              title: 'Logo 1 (Speaker/Unternehmen)',
+              type: 'image',
+              options: { hotspot: false },
+            },
+            {
+              name: 'logo2',
+              title: 'Logo 2 (optional)',
               type: 'image',
               options: { hotspot: false },
             },

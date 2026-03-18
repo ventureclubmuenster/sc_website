@@ -28,7 +28,7 @@ const fallbackWorkshops = [
 ]
 
 async function getWorkshopsPage() {
-  return client.fetch(workshopsPageQuery, {}, { next: { revalidate: 3600 } })
+  return client.fetch(workshopsPageQuery, {}, { cache: 'no-store' })
 }
 
 export default async function WorkshopsPage() {

@@ -7,8 +7,8 @@ import MainStageContent from './MainStageContent'
 
 async function getMainStageData() {
   const [page, programs] = await Promise.all([
-    client.fetch(mainStagePageQuery, {}, { next: { revalidate: 3600 } }),
-    client.fetch(programQuery, {}, { next: { revalidate: 3600 } }),
+    client.fetch(mainStagePageQuery, {}, { cache: 'no-store' }),
+    client.fetch(programQuery, {}, { cache: 'no-store' }),
   ])
   return { page, programs }
 }

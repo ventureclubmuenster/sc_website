@@ -260,7 +260,8 @@ export const workshopsPageQuery = groq`
       title,
       speaker,
       description,
-      logo
+      logo,
+      logo2
     }
   }
 `

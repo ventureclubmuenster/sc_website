@@ -9,6 +9,7 @@ interface Workshop {
   speaker: string
   description: string
   logo?: unknown
+  logo2?: unknown
 }
 
 interface WorkshopHighlightsProps {
@@ -45,18 +46,31 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
                 {/* Subtle glow */}
                 <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/5 rounded-full blur-3xl group-hover:bg-sc-orange/15 transition-all duration-500" />
 
-                {/* Logo */}
-                {ws.logo && (
-                  <div className="mb-6 flex items-center">
-                    <div className="bg-white/10 rounded-xl px-4 py-2 inline-flex items-center">
-                      <Image
-                        src={urlFor(ws.logo).height(80).fit('max').url()}
-                        alt={`${ws.title} Logo`}
-                        width={120}
-                        height={40}
-                        className="h-10 w-auto object-contain"
-                      />
-                    </div>
+                {/* Logos */}
+                {(ws.logo || ws.logo2) && (
+                  <div className="mb-6 flex items-center gap-3">
+                    {ws.logo && (
+                      <div className="bg-white/10 rounded-xl px-4 py-2 inline-flex items-center">
+                        <Image
+                          src={urlFor(ws.logo).width(400).auto('format').url()}
+                          alt={`${ws.title} Logo`}
+                          width={120}
+                          height={40}
+                          className="h-10 w-auto object-contain"
+                        />
+                      </div>
+                    )}
+                    {ws.logo2 && (
+                      <div className="bg-white/10 rounded-xl px-4 py-2 inline-flex items-center">
+                        <Image
+                          src={urlFor(ws.logo2).width(400).auto('format').url()}
+                          alt={`${ws.title} Logo 2`}
+                          width={120}
+                          height={40}
+                          className="h-10 w-auto object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
 

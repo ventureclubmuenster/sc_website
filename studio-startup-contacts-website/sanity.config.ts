@@ -58,9 +58,17 @@ export default defineConfig({
               .title('Fokusfelder (Bilder)')
               .id('fokusfelder')
               .child(S.document().schemaType('fokusfelder').documentId('fokusfelder')),
+            S.listItem()
+              .title('Seite: Workshops')
+              .id('workshopsPage')
+              .child(S.document().schemaType('workshopsPage').documentId('workshopsPage')),
+            S.listItem()
+              .title('Seite: Main Stage')
+              .id('mainStagePage')
+              .child(S.document().schemaType('mainStagePage').documentId('mainStagePage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage'].includes(item.getId() ?? '')
             ),
           ]),
     }),

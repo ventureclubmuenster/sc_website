@@ -253,8 +253,20 @@ export const investorenPageQuery = groq`
   }
 `
 
+export const workshopsPageQuery = groq`
+  *[_type == "workshopsPage" && _id == "workshopsPage"][0] {
+    heroImage,
+    workshopHistory[] {
+      title,
+      speaker,
+      description,
+      logo
+    }
+  }
+`
+
 export const mainStagePageQuery = groq`
-  *[_type == "mainStagePage"][0] {
+  *[_type == "mainStagePage" && _id == "mainStagePage"][0] {
     heroImage,
     flashbackTitle,
     flashbackTags,

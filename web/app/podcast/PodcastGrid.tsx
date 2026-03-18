@@ -9,7 +9,19 @@ interface Episode {
   youtubeId: string
 }
 
-function YouTubeEmbed({ youtubeId, title }: { youtubeId: string; title: string }) {
+function extractYouTubeId(input: string): string {
+  if (!input) return ''
+  // If it's already just an ID (no slashes or dots), return as-is
+  if (/^[\w-]{11}$/.test(input)) return input
+  // Try to extract from various YouTube URL formats
+  const match = input.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([\w-]{11})/
+  )
+  return match?.[1] || input
+}
+
+function YouTubeEmbed({ youtubeId: rawId, title }: { youtubeId: string; title: string }) {
+  const youtubeId = extractYouTubeId(rawId)
   const [playing, setPlaying] = useState(false)
 
   if (playing) {
@@ -37,8 +49,8 @@ function YouTubeEmbed({ youtubeId, title }: { youtubeId: string; title: string }
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-16 h-16 bg-sc-orange/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
+          <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9.5 4.5v15l10-7.5z" />
           </svg>
         </div>
       </div>

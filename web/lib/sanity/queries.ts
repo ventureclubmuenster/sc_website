@@ -158,6 +158,21 @@ export const studierendePageQuery = groq`
   }
 `
 
+export const podcastPageQuery = groq`
+  *[_type == "podcastPage"][0] {
+    heroImage,
+    quote,
+    quoteAuthor,
+    podcastEpisodes[] {
+      guestName,
+      title,
+      description,
+      youtubeId
+    },
+    studioImage
+  }
+`
+
 export const exhibitors2025Query = groq`
   *[_type == "exhibitor2025"] | order(orderRank asc) {
     _id,

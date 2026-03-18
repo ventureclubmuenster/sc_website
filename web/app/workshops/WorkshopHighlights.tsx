@@ -44,7 +44,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
             <StaggerItem key={ws.title} direction="up" distance={40}>
               <div className="group relative bg-[#18181b] border border-white/10 rounded-2xl overflow-hidden p-8 hover:border-sc-orange/30 transition-colors duration-500 h-full flex flex-col">
                 {/* Subtle glow */}
-                <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/5 rounded-full blur-3xl group-hover:bg-sc-orange/15 transition-all duration-500" />
+                <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/5 rounded-full blur-3xl group-hover:bg-sc-orange/15 transition-all duration-500"></div>
 
                 {/* Logos */}
                 {(ws.logo || ws.logo2) && (

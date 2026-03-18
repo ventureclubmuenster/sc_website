@@ -32,7 +32,7 @@ export default function ExhibitorGrid({ exhibitors }: { exhibitors: Exhibitor[] 
             direction="up"
             distance={30}
             className={`rounded-xl overflow-hidden aspect-[2/1] flex items-center justify-center ${
-              ex.whiteBackground ? 'bg-white' : 'bg-white/5 border border-white/10'
+              ex.whiteBackground ? 'bg-white' : 'bg-black border border-white/10'
             }`}
           >
             {logoSrc ? (

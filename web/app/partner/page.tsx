@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { partners2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
@@ -6,20 +5,22 @@ import { urlFor } from '@/lib/sanity/image'
 interface Partner {
   _id: string
   name: string
-  category: 'platin' | 'gold' | 'silber' | 'network'
+  category: 'main' | 'supporter' | 'attendance' | 'food-beverage' | 'network'
   logo?: {
     asset: { _ref: string }
   }
+  whiteBackground?: boolean
   url?: string
 }
 
-const categoryOrder = ['platin', 'gold', 'silber', 'network'] as const
+const categoryOrder = ['main', 'supporter', 'attendance', 'food-beverage', 'network'] as const
 
 const categoryLabels: Record<string, { highlight: string; rest: string }> = {
-  platin: { highlight: 'MAIN', rest: 'PARTNER' },
-  gold: { highlight: 'GOLD', rest: 'PARTNER' },
-  silber: { highlight: 'SUPPORTER', rest: '' },
-  network: { highlight: 'NETZWERK', rest: 'PARTNER' },
+  main: { highlight: 'MAIN', rest: 'PARTNER' },
+  supporter: { highlight: 'SUPPORTER', rest: '' },
+  attendance: { highlight: 'ATTENDANCE', rest: 'PARTNER' },
+  'food-beverage': { highlight: 'FOOD & BEVERAGE', rest: 'PARTNER' },
+  network: { highlight: 'NETWORK', rest: 'PARTNER' },
 }
 
 async function getPartners(): Promise<Partner[]> {
@@ -37,9 +38,24 @@ export default async function PartnerPage() {
     .filter((group) => group.partners.length > 0)
 
   return (
-    <section className="min-h-screen bg-black px-6 py-20">
-      <div className="max-w-7xl mx-auto space-y-16">
-        {grouped.map((group) => {
+    <>
+      {/* Header Section */}
+      <section className="bg-black pt-32 pb-12 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
+            <span className="text-white">UNSERE </span>
+            <span className="text-sc-orange">PARTNER</span>
+          </h1>
+          <p className="text-white/60 text-sm md:text-base mt-6 max-w-3xl mx-auto">
+            Wir danken allen unseren Partner, die die Startup Contacts möglich machen. Hier findest du eine Übersicht aller unserer Partner, die zuletzt mit dabei waren. Klicke auf eines der Logos um mehr zu erfahren!
+          </p>
+        </div>
+      </section>
+
+      {/* Partner Grid */}
+      <section className="min-h-screen bg-black px-6 pb-20">
+        <div className="max-w-7xl mx-auto space-y-16">
+          {grouped.map((group) => {
           const label = categoryLabels[group.category]
 
           return (
@@ -56,19 +72,20 @@ export default async function PartnerPage() {
                   const card = (
                     <div
                       key={partner._id}
-                      className="group flex items-center justify-center bg-white/90 rounded-xl p-6 h-24 md:h-28 transition-all duration-300 hover:-translate-y-1 hover:bg-white"
+                      className={`group flex items-center justify-center rounded-xl overflow-hidden aspect-[2/1] p-4 transition-all duration-300 hover:-translate-y-1 ${
+                        partner.whiteBackground === false
+                          ? 'bg-black border border-white/10 hover:bg-black'
+                          : 'bg-white/90 hover:bg-white'
+                      }`}
                     >
                       {partner.logo ? (
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={urlFor(partner.logo).width(400).height(200).url()}
-                            alt={partner.name}
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                        <img
+                          src={urlFor(partner.logo).width(600).fit('max').url()}
+                          alt={partner.name}
+                          className="max-w-[80%] max-h-[70%] object-contain"
+                        />
                       ) : (
-                        <span className="text-black/50 text-sm font-medium">{partner.name}</span>
+                        <span className={`text-sm font-medium ${partner.whiteBackground === false ? 'text-white/60' : 'text-black/50'}`}>{partner.name}</span>
                       )}
                     </div>
                   )
@@ -94,5 +111,6 @@ export default async function PartnerPage() {
         })}
       </div>
     </section>
+    </>
   )
 }

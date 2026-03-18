@@ -1,11 +1,14 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { StaggerContainer, StaggerItem } from './FadeIn'
 
 interface BentoItem {
   title: string
+  buttonText?: string
+  buttonLink?: string
   imageUrl?: string
 }
 
@@ -17,10 +20,11 @@ const layoutPatterns = [
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
   { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-48 md:h-full' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
 ]
 
 // Alternate directions for visual interest
-const directions = ['left', 'up', 'right', 'up', 'left', 'up'] as const
+const directions = ['left', 'up', 'right', 'up', 'left', 'up', 'right'] as const
 
 export default function BentoGrid({ items }: { items: BentoItem[] }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -52,18 +56,11 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             ) : (
-              <div className="absolute inset-0 bg-white/5" />
+              <div className="absolute inset-0 bg-black" />
             )}
 
-            {/* Gradient overlay */}
-            <div
-              className="absolute inset-0 transition-all duration-500"
-              style={{
-                background: isHovered
-                  ? 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)'
-                  : 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
-              }}
-            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/50 transition-all duration-500 group-hover:bg-black/65" />
 
             {/* Orange accent line - slides in from left on hover */}
             <div
@@ -71,17 +68,32 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
               style={{ width: isHovered ? '100%' : '0%' }}
             />
 
-            {/* Title */}
-            <div className="absolute inset-0 flex items-center justify-center p-6">
+            {/* Title + Button */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
               <h3
                 className="text-white text-xl md:text-2xl font-extrabold uppercase tracking-wider text-center transition-all duration-500 ease-out"
                 style={{
-                  textShadow: '0 2px 16px rgba(0, 0, 0, 0.8)',
-                  transform: isHovered ? 'translateY(-8px) scale(1.05)' : 'translateY(0) scale(1)',
+                  textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)',
+                  transform: isHovered && item.buttonLink ? 'translateY(-12px)' : 'translateY(0)',
                 }}
               >
                 {item.title}
               </h3>
+
+              {/* Hover button */}
+              {item.buttonLink && item.buttonText && (
+                <Link
+                  href={item.buttonLink}
+                  className="mt-3 inline-flex items-center gap-2 border border-white/40 text-white text-xs md:text-sm px-6 py-2 rounded-full hover:bg-sc-orange hover:border-sc-orange transition-all duration-300"
+                  style={{
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
+                    transition: 'opacity 0.4s ease, transform 0.4s ease, background-color 0.3s, border-color 0.3s',
+                  }}
+                >
+                  {item.buttonText} &rarr;
+                </Link>
+              )}
             </div>
           </div>
           </StaggerItem>

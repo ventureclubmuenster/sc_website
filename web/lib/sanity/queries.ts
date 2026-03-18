@@ -126,12 +126,13 @@ export const partners2025Query = groq`
     name,
     category,
     logo,
+    whiteBackground,
     url
   }
 `
 
 export const studierendePageQuery = groq`
-  *[_type == "studierendePage"][0] {
+  *[_type == "studierendePage"] | order(_updatedAt desc)[0] {
     heroImage,
     heroHeadline,
     heroSubtext,
@@ -142,12 +143,12 @@ export const studierendePageQuery = groq`
       hoverText,
       image
     },
-    bentoNetworking,
-    bentoTalks,
-    bentoStartups,
-    bentoKarriere,
-    bentoInnovation,
-    bentoAfterparty,
+    bentoItems[] {
+      title,
+      buttonText,
+      buttonLink,
+      image
+    },
     programCards[] {
       title,
       buttonText,

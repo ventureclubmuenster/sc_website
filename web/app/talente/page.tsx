@@ -33,18 +33,20 @@ interface ImageField {
   asset: { _ref: string }
 }
 
+interface BentoItem {
+  title: string
+  buttonText?: string
+  buttonLink?: string
+  image?: ImageField
+}
+
 interface TalentePageData {
   heroImage?: ImageField
   heroHeadline?: string
   heroSubtext?: string
   heroHighlight?: string
   featureCards?: FeatureCard[]
-  bentoNetworking?: ImageField
-  bentoTalks?: ImageField
-  bentoStartups?: ImageField
-  bentoKarriere?: ImageField
-  bentoInnovation?: ImageField
-  bentoAfterparty?: ImageField
+  bentoItems?: BentoItem[]
   programCards?: ProgramCard[]
 }
 
@@ -56,13 +58,14 @@ async function getExhibitors(): Promise<Exhibitor[]> {
   return client.fetch(exhibitors2025Query, {}, { cache: 'no-store' })
 }
 
-const bentoTexte = [
-  { title: 'NETWORKING', key: 'bentoNetworking' as const },
-  { title: 'TALKS', key: 'bentoTalks' as const },
-  { title: 'STARTUPS', key: 'bentoStartups' as const },
-  { title: 'KARRIERE', key: 'bentoKarriere' as const },
-  { title: 'INNOVATION', key: 'bentoInnovation' as const },
-  { title: 'AFTERPARTY', key: 'bentoAfterparty' as const },
+const defaultBentoItems: BentoItem[] = [
+  { title: 'CO-CREATION', buttonText: 'Erfahre mehr', buttonLink: '/co-creation' },
+  { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
+  { title: 'LIVE-PODCASTS', buttonText: 'Erfahre mehr', buttonLink: '/podcasts' },
+  { title: 'INSPIRATION', buttonText: 'Erfahre mehr', buttonLink: '/innovation-village' },
+  { title: 'TALKS', buttonText: 'Erfahre mehr', buttonLink: '/main-stage' },
+  { title: 'PERKS' },
+  { title: 'AFTERPARTY' },
 ]
 
 const defaultProgramCards: ProgramCard[] = [
@@ -95,13 +98,13 @@ export default async function TalentePage() {
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
   }))
 
-  const bentoWithUrls = bentoTexte.map((b) => {
-    const img = data?.[b.key]
-    return {
-      title: b.title,
-      imageUrl: img ? urlFor(img).width(800).height(600).url() : undefined,
-    }
-  })
+  const bentoItems = data?.bentoItems?.length ? data.bentoItems : defaultBentoItems
+  const bentoWithUrls = bentoItems.map((b) => ({
+    title: b.title,
+    buttonText: b.buttonText,
+    buttonLink: b.buttonLink,
+    imageUrl: b.image ? urlFor(b.image).width(800).height(600).url() : undefined,
+  }))
 
   const programCardsWithUrls = programCards.map((card) => ({
     title: card.title,

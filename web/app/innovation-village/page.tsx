@@ -88,7 +88,7 @@ export default async function InnovationVillagePage() {
             <span className="text-white">VILLAGE</span>
           </h1>
 
-          <p className="text-white/80 text-sm md:text-base mt-6 max-w-2xl mx-auto">
+          <p className="text-white/80 text-base md:text-xl mt-6 max-w-2xl mx-auto">
             {subtext}
           </p>
         </div>

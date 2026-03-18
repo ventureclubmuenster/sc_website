@@ -5,24 +5,24 @@ import FadeIn, { StaggerContainer, StaggerItem } from '@/components/FadeIn'
 
 const cards = [
   {
-    title: 'DEAL FLOW',
-    subtitle: 'Kuratierte Startups aus 6 Fokusfeldern',
+    title: 'CO-CREATION',
+    subtitle: 'Innovationstreiber auf der Messe',
     description:
-      'Kein Rauschen, nur Relevanz. Wir bringen Sie mit Startups zusammen, die zu Ihrer Investmentstrategie passen — von Deep Tech bis Lifestyle.',
-    icon: '📊',
+      'Erfahre wie Startups, Unternehmen und Talente auf der Messe zusammenspielen — und gemeinsam neue Ideen vorantreiben.',
+    icon: '🚀',
   },
   {
-    title: 'NETZWERK',
-    subtitle: 'Co-Investoren & Corporate Partners',
+    title: 'MEET & GREET',
+    subtitle: 'Startups & Unternehmen kennenlernen',
     description:
-      'Treffen Sie andere Investoren, Business Angels und Corporates in einem exklusiven Rahmen. Neue Syndikate entstehen hier.',
+      'Lerne Startups und Unternehmen aus der Region kennen — direkt, persönlich und auf Augenhöhe.',
     icon: '🤝',
   },
   {
     title: 'STANDORT',
     subtitle: 'Münster — Top 5 Gründungsstandort',
     description:
-      'Die Region gehört zu den dynamischsten Startup-Ökosystemen Deutschlands. Entdecken Sie Potenziale, bevor sie auf dem Radar der Masse landen.',
+      'Die Region gehört zu den dynamischsten Startup-Ökosystemen Deutschlands.',
     icon: '📍',
   },
 ]
@@ -50,7 +50,7 @@ export default function WhyInvestSection() {
             return (
               <StaggerItem key={i} direction="up" distance={40}>
                 <div
-                  className="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer"
                   onMouseEnter={() => setActiveIndex(i)}
                   onMouseLeave={() => setActiveIndex(null)}
                 >
@@ -80,7 +80,7 @@ export default function WhyInvestSection() {
         <FadeIn direction="up" delay={0.1}>
           <div className="mt-16 md:mt-20 text-center">
             <p className="text-white text-2xl md:text-4xl font-extrabold tracking-tight">
-              Deal Flow <span className="text-sc-orange">×</span> Netzwerk <span className="text-sc-orange">×</span> Exklusivität
+              Co-Creation <span className="text-sc-orange">×</span> People <span className="text-sc-orange">×</span> Standort
             </p>
             <p className="text-white/70 text-lg md:text-2xl font-semibold mt-4">
               = Ihr Vorteil als Investor bei Startup Contacts

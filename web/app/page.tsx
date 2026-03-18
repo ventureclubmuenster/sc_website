@@ -42,7 +42,7 @@ export default async function Home() {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <iframe
             src="https://www.youtube.com/embed/uNZWsofAFEI?autoplay=1&mute=1&loop=1&playlist=uNZWsofAFEI&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
-            className="absolute -top-[60px] left-0 w-full aspect-video"
+            className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2 md:-top-[60px] md:translate-y-0"
             allow="autoplay; encrypted-media"
             tabIndex={-1}
             aria-hidden="true"
@@ -55,7 +55,7 @@ export default async function Home() {
         {/* Content — editorial layout, bottom-aligned, full bleed */}
         <div className="relative z-20 w-full px-4 sm:px-8 pb-16 pt-32">
           {/* Main heading */}
-          <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-7xl sm:text-9xl md:text-[11rem] lg:text-[14rem] -ml-1 sm:-ml-2">
+          <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-1 sm:-ml-2">
             Zukunft
             <br />
             <span className="text-white/40">durch</span>

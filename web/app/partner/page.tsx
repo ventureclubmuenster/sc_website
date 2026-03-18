@@ -75,7 +75,7 @@ export default async function PartnerPage() {
                       className={`group flex items-center justify-center rounded-xl overflow-hidden aspect-[2/1] p-4 transition-all duration-300 hover:-translate-y-1 ${
                         partner.whiteBackground === false
                           ? 'bg-black border border-white/10 hover:bg-black'
-                          : 'bg-white/90 hover:bg-white'
+                          : 'bg-white hover:bg-white'
                       }`}
                     >
                       {partner.logo ? (

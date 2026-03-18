@@ -1,7 +1,48 @@
-export default function Page() {
+import { client } from '@/lib/sanity/client'
+import { mainStagePageQuery, programQuery } from '@/lib/sanity/queries'
+import { urlFor } from '@/lib/sanity/image'
+import HeroSection from '@/components/HeroSection'
+import HallOfFame from '@/components/HallOfFame'
+import MainStageContent from './MainStageContent'
+
+async function getMainStageData() {
+  const [page, programs] = await Promise.all([
+    client.fetch(mainStagePageQuery, {}, { next: { revalidate: 3600 } }),
+    client.fetch(programQuery, {}, { next: { revalidate: 3600 } }),
+  ])
+  return { page, programs }
+}
+
+export default async function MainStagePage() {
+  const { page, programs } = await getMainStageData()
+
+  const heroImageUrl = page?.heroImage
+    ? urlFor(page.heroImage).width(1920).height(1080).url()
+    : undefined
+
+  const keynotes = programs?.filter(
+    (p: { type: string }) => p.type === 'Keynote'
+  ) ?? []
+  const panels = programs?.filter(
+    (p: { type: string }) => p.type === 'Panel Discussion'
+  ) ?? []
+
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] max-w-7xl mx-auto px-6">
-      <h1 className="text-4xl font-bold">Main Stage</h1>
-    </div>
+    <>
+      <HeroSection
+        imageUrl={heroImageUrl}
+        headline="PERSPEKTIVEN DIE BEWEGEN"
+        subtext="Erlebe den direkten Austausch zwischen Theorie und Praxis. Unsere Speaker teilen ihre Erfahrungen und diskutieren gemeinsam über die Lösungen von morgen."
+      />
+
+      <MainStageContent
+        keynotes={keynotes}
+        panels={panels}
+        flashbackTitle={page?.flashbackTitle}
+        flashbackTags={page?.flashbackTags}
+      />
+
+      {page?.hallOfFame && <HallOfFame speakers={page.hallOfFame} />}
+    </>
   )
 }

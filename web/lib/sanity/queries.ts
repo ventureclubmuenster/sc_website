@@ -253,6 +253,22 @@ export const investorenPageQuery = groq`
   }
 `
 
+export const mainStagePageQuery = groq`
+  *[_type == "mainStagePage"][0] {
+    heroImage,
+    flashbackTitle,
+    flashbackTags,
+    hallOfFame[]-> {
+      _id,
+      name,
+      title,
+      image,
+      slug,
+      socialLinks
+    }
+  }
+`
+
 export const advisoryBoardQuery = groq`
   *[_type == "advisoryBoard"] | order(orderRank asc) {
     _id,

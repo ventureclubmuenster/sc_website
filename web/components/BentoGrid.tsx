@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { StaggerContainer, StaggerItem } from './FadeIn'
 
 interface BentoItem {
   title: string
@@ -18,19 +19,27 @@ const layoutPatterns = [
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-48 md:h-full' },
 ]
 
+// Alternate directions for visual interest
+const directions = ['left', 'up', 'right', 'up', 'left', 'up'] as const
+
 export default function BentoGrid({ items }: { items: BentoItem[] }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[14rem] gap-3">
+    <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[14rem] gap-3">
       {items.map((item, i) => {
         const pattern = layoutPatterns[i % layoutPatterns.length]
         const isHovered = hoveredIndex === i
 
         return (
-          <div
+          <StaggerItem
             key={i}
+            direction={directions[i % directions.length]}
+            distance={50}
             className={`group relative overflow-hidden rounded-2xl cursor-pointer ${pattern.colSpan} ${pattern.rowSpan} ${pattern.height}`}
+          >
+          <div
+            className="absolute inset-0"
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -75,8 +84,9 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
               </h3>
             </div>
           </div>
+          </StaggerItem>
         )
       })}
-    </div>
+    </StaggerContainer>
   )
 }

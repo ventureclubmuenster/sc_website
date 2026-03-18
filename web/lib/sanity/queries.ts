@@ -142,10 +142,12 @@ export const studierendePageQuery = groq`
       hoverText,
       image
     },
-    bentoItems[] {
-      title,
-      image
-    },
+    bentoNetworking,
+    bentoTalks,
+    bentoStartups,
+    bentoKarriere,
+    bentoInnovation,
+    bentoAfterparty,
     programCards[] {
       title,
       buttonText,
@@ -159,7 +161,9 @@ export const exhibitors2025Query = groq`
   *[_type == "exhibitor2025"] | order(orderRank asc) {
     _id,
     name,
-    logo
+    logo,
+    whiteLogo,
+    whiteBackground
   }
 `
 
@@ -175,6 +179,61 @@ export const innovationVillagePageQuery = groq`
     besucherText1,
     besucherText2,
     besucherCta
+  }
+`
+
+export const unternehmenPageQuery = groq`
+  *[_type == "unternehmenPage"][0] {
+    heroImage,
+    bentoStartupSzene,
+    bentoVipAccess,
+    bentoFoodDrinks,
+    bentoExperience,
+    bentoAfterwork,
+    bentoInnovationVillage
+  }
+`
+
+export const startupsPageQuery = groq`
+  *[_type == "startupsPage"][0] {
+    heroImage,
+    featuredExhibitors[]-> {
+      _id,
+      name,
+      logo,
+      whiteLogo,
+      whiteBackground
+    }
+  }
+`
+
+export const fokusfelderQuery = groq`
+  *[_type == "fokusfelder"][0] {
+    fokusProduktion,
+    fokusLogistik,
+    fokusEnergie,
+    fokusBau,
+    fokusInfrastruktur,
+    fokusLifestyle
+  }
+`
+
+export const startups2025Query = groq`
+  *[_type == "exhibitor2025" && type == "Startup"] | order(orderRank asc) {
+    _id,
+    name,
+    logo
+  }
+`
+
+export const investorenPageQuery = groq`
+  *[_type == "investorenPage"][0] {
+    heroImage,
+    bentoInvestorBreakfast,
+    bentoLetztesJahr,
+    bentoMuensterTop5,
+    bentoVipArea,
+    bentoMeetGreet
   }
 `
 

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import FadeIn from './FadeIn'
 
 interface Exhibitor {
   _id: string
@@ -27,11 +28,13 @@ export default function ExhibitorCarousel({ exhibitors }: { exhibitors: Exhibito
   // If 4 or fewer, just show them in a static grid
   if (count <= 4) {
     return (
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {exhibitors.map((exhibitor) => (
-          <Card key={exhibitor._id} exhibitor={exhibitor} />
-        ))}
-      </div>
+      <FadeIn direction="up">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {exhibitors.map((exhibitor) => (
+            <Card key={exhibitor._id} exhibitor={exhibitor} />
+          ))}
+        </div>
+      </FadeIn>
     )
   }
 
@@ -45,6 +48,7 @@ export default function ExhibitorCarousel({ exhibitors }: { exhibitors: Exhibito
   const effectiveOffset = offset % count
 
   return (
+    <FadeIn direction="up">
     <div className="overflow-hidden">
       <div
         className="flex transition-transform duration-700 ease-in-out"
@@ -62,6 +66,7 @@ export default function ExhibitorCarousel({ exhibitors }: { exhibitors: Exhibito
         ))}
       </div>
     </div>
+    </FadeIn>
   )
 }
 

@@ -58,28 +58,46 @@ export default defineType({
       validation: (Rule) => Rule.max(4),
     }),
     defineField({
-      name: 'bentoItems',
-      title: 'Mehr als eine Messe – Bento Grid',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({ name: 'title', title: 'Titel (z.B. NETWORKING)', type: 'string' }),
-            defineField({
-              name: 'image',
-              title: 'Bild',
-              type: 'image',
-              options: { hotspot: true },
-            }),
-          ],
-          preview: {
-            select: { title: 'title', media: 'image' },
-          },
-        },
-      ],
-      validation: (Rule) => Rule.max(6),
-      description: 'Bis zu 6 Kacheln für das Bento-Grid',
+      name: 'bentoNetworking',
+      title: 'Bento: Networking',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Networking"',
+    }),
+    defineField({
+      name: 'bentoTalks',
+      title: 'Bento: Talks',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Talks"',
+    }),
+    defineField({
+      name: 'bentoStartups',
+      title: 'Bento: Startups',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Startups"',
+    }),
+    defineField({
+      name: 'bentoKarriere',
+      title: 'Bento: Karriere',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Karriere"',
+    }),
+    defineField({
+      name: 'bentoInnovation',
+      title: 'Bento: Innovation',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Innovation"',
+    }),
+    defineField({
+      name: 'bentoAfterparty',
+      title: 'Bento: Afterparty',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Bild für die Kachel "Afterparty"',
     }),
     defineField({
       name: 'programCards',

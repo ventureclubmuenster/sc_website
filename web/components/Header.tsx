@@ -5,6 +5,7 @@ import { siteSettingsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import DesktopNav from './DesktopNav'
 import MobileMenu from './MobileMenu'
+import WartelisteButton from './WartelisteButton'
 import scLogo from '@/app/images/SC_logo_nav_bar.avif'
 
 async function getSettings() {
@@ -31,12 +32,9 @@ export default async function Header() {
         <DesktopNav />
 
         {/* Desktop CTA */}
-        <Link
-          href="/shop"
-          className="hidden lg:inline-flex items-center px-6 py-2.5 rounded-full bg-sc-orange text-white text-base font-bold uppercase tracking-wide hover:brightness-110 transition-all duration-200 shrink-0"
-        >
-          Tickets
-        </Link>
+        <div className="hidden lg:block shrink-0">
+          <WartelisteButton />
+        </div>
 
         {/* Mobile Menu */}
         <MobileMenu />

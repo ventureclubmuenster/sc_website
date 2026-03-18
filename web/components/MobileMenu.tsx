@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import WartelisteButton from './WartelisteButton'
 
 const navGroups = [
   {
@@ -110,13 +111,9 @@ export default function MobileMenu() {
             Partner
           </Link>
 
-          <Link
-            href="/shop"
-            onClick={() => setOpen(false)}
-            className="mt-2 inline-flex items-center justify-center px-4 py-2 rounded-md bg-sc-orange text-white text-sm font-medium"
-          >
-            Tickets
-          </Link>
+          <div className="mt-2">
+            <WartelisteButton />
+          </div>
         </nav>
       )}
     </div>

@@ -12,6 +12,15 @@ import exhibitor2026 from './exhibitor2026'
 import advisoryBoard from './advisoryBoard'
 import studierendePage from './studierendePage'
 import innovationVillagePage from './innovationVillagePage'
+import unternehmenPage from './unternehmenPage'
+import startupsPage from './startupsPage'
+import fokusfelder from './fokusfelder'
+import investorenPage from './investorenPage'
+import coCreationPage from './coCreationPage'
+import workshopsPage from './workshopsPage'
+import mainStagePage from './mainStagePage'
+import podcastPage from './podcastPage'
+import ueberUnsPage from './ueberUnsPage'
 
 export const schemaTypes = [
   speaker2025, speaker2026,
@@ -25,4 +34,13 @@ export const schemaTypes = [
   advisoryBoard,
   studierendePage,
   innovationVillagePage,
+  unternehmenPage,
+  startupsPage,
+  fokusfelder,
+  investorenPage,
+  coCreationPage,
+  workshopsPage,
+  mainStagePage,
+  podcastPage,
+  ueberUnsPage,
 ]

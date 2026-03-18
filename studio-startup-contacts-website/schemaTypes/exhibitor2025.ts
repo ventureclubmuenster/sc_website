@@ -16,6 +16,26 @@ export const exhibitor2025 = defineType({
     }),
     defineField({ name: 'description', title: 'Kurzbeschreibung', type: 'text' }),
     defineField({ name: 'standNumber', title: 'Standnummer', type: 'string' }),
-    defineField({ name: 'logo', title: 'Logo', type: 'image' }),
+    defineField({ name: 'logo', title: 'Logo', type: 'image', options: { hotspot: true } }),
+    defineField({
+      name: 'whiteLogo',
+      title: 'White Logo',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Alternatives weißes Logo für dunkle Hintergründe',
+    }),
+    defineField({
+      name: 'whiteBackground',
+      title: 'White Background',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Wenn aktiviert, wird das Logo auf weißem Hintergrund angezeigt',
+    }),
+    defineField({
+      name: 'websiteUrl',
+      title: 'Website URL',
+      type: 'url',
+      description: 'Link zur Website des Ausstellers',
+    }),
   ]
 })

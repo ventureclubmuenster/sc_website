@@ -1,7 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from '@/lib/sanity/image'
 import GlowButton from './GlowButton'
+import FadeIn, { StaggerContainer, StaggerItem } from './FadeIn'
 
 interface Speaker {
   _id: string
@@ -35,14 +38,18 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
       </div>
 
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-          Unsere <span className="text-sc-orange">Hall of Fame</span>
-        </h2>
+        <FadeIn direction="up" duration={0.7}>
+          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
+            Unsere <span className="text-sc-orange">Hall of Fame</span>
+          </h2>
+        </FadeIn>
 
-        <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer stagger={0.12} className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {speakers.map((speaker) => (
-            <div
+            <StaggerItem
               key={speaker._id}
+              direction="up"
+              distance={50}
               className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-sc-orange/30 transition-colors duration-500"
             >
               {/* Speaker image */}
@@ -89,14 +96,16 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
                   </a>
                 )}
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* CTA Button */}
-        <div className="mt-14 flex justify-center">
-          <GlowButton href="/speaker">Alle Speaker</GlowButton>
-        </div>
+        <FadeIn direction="up" delay={0.3}>
+          <div className="mt-14 flex justify-center">
+            <GlowButton href="/speaker">Alle Speaker</GlowButton>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

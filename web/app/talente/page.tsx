@@ -1,11 +1,11 @@
 import { client } from '@/lib/sanity/client'
 import { studierendePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
-import Image from 'next/image'
+import HeroSection from '@/components/HeroSection'
 import FeatureCards from './FeatureCards'
-import ExhibitorCarousel from './ExhibitorCarousel'
+import ExhibitorGrid from '../startups/ExhibitorGrid'
 import ProgramCards from './ProgramCards'
-import BentoGrid from './BentoGrid'
+import BentoGrid from '@/components/BentoGrid'
 
 interface FeatureCard {
   title: string
@@ -25,20 +25,26 @@ interface Exhibitor {
   _id: string
   name: string
   logo?: { asset: { _ref: string } }
+  whiteLogo?: { asset: { _ref: string } }
+  whiteBackground?: boolean
 }
 
-interface BentoItem {
-  title: string
-  image?: { asset: { _ref: string } }
+interface ImageField {
+  asset: { _ref: string }
 }
 
 interface TalentePageData {
-  heroImage?: { asset: { _ref: string } }
+  heroImage?: ImageField
   heroHeadline?: string
   heroSubtext?: string
   heroHighlight?: string
   featureCards?: FeatureCard[]
-  bentoItems?: BentoItem[]
+  bentoNetworking?: ImageField
+  bentoTalks?: ImageField
+  bentoStartups?: ImageField
+  bentoKarriere?: ImageField
+  bentoInnovation?: ImageField
+  bentoAfterparty?: ImageField
   programCards?: ProgramCard[]
 }
 
@@ -50,13 +56,13 @@ async function getExhibitors(): Promise<Exhibitor[]> {
   return client.fetch(exhibitors2025Query, {}, { cache: 'no-store' })
 }
 
-const defaultBentoItems: BentoItem[] = [
-  { title: 'NETWORKING' },
-  { title: 'TALKS' },
-  { title: 'STARTUPS' },
-  { title: 'KARRIERE' },
-  { title: 'INNOVATION' },
-  { title: 'AFTERPARTY' },
+const bentoTexte = [
+  { title: 'NETWORKING', key: 'bentoNetworking' as const },
+  { title: 'TALKS', key: 'bentoTalks' as const },
+  { title: 'STARTUPS', key: 'bentoStartups' as const },
+  { title: 'KARRIERE', key: 'bentoKarriere' as const },
+  { title: 'INNOVATION', key: 'bentoInnovation' as const },
+  { title: 'AFTERPARTY', key: 'bentoAfterparty' as const },
 ]
 
 const defaultProgramCards: ProgramCard[] = [
@@ -79,7 +85,6 @@ export default async function TalentePage() {
   const subtext = data?.heroSubtext || 'Die Chance den Arbeitgeber von morgen zu finden'
   const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
   const cards = data?.featureCards?.length ? data.featureCards : defaultCards
-  const bentoItems = data?.bentoItems?.length ? data.bentoItems : defaultBentoItems
   const programCards = data?.programCards?.length ? data.programCards : defaultProgramCards
 
   // Pre-build image URLs on the server
@@ -90,10 +95,13 @@ export default async function TalentePage() {
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
   }))
 
-  const bentoWithUrls = bentoItems.map((item) => ({
-    title: item.title,
-    imageUrl: item.image ? urlFor(item.image).width(800).height(600).url() : undefined,
-  }))
+  const bentoWithUrls = bentoTexte.map((b) => {
+    const img = data?.[b.key]
+    return {
+      title: b.title,
+      imageUrl: img ? urlFor(img).width(800).height(600).url() : undefined,
+    }
+  })
 
   const programCardsWithUrls = programCards.map((card) => ({
     title: card.title,
@@ -102,47 +110,18 @@ export default async function TalentePage() {
     imageUrl: card.image ? urlFor(card.image).width(800).height(600).url() : undefined,
   }))
 
-  // Split headline: last word in orange, rest in white
-  const headlineWords = headline.split(' ')
-  const mainText = headlineWords.slice(0, -1).join(' ')
-  const orangeWord = headlineWords[headlineWords.length - 1]
+  const heroImageUrl = data?.heroImage
+    ? urlFor(data.heroImage).width(1920).height(1080).url()
+    : undefined
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
-        {data?.heroImage ? (
-          <Image
-            src={urlFor(data.heroImage).width(1920).height(1080).url()}
-            alt="Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-        ) : (
-          <div className="absolute inset-0 bg-black" />
-        )}
-
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 text-center px-6">
-          <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
-            style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
-          >
-            <span className="text-white">{mainText} </span>
-            <span className="text-sc-orange">{orangeWord}</span>
-          </h1>
-
-          <p className="text-white/80 text-sm md:text-base mt-6 max-w-xl mx-auto">
-            {subtext}
-          </p>
-
-          <p className="text-sc-orange text-sm md:text-base font-bold mt-1">
-            {highlight}
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        imageUrl={heroImageUrl}
+        headline={headline}
+        subtext={subtext}
+        highlight={highlight}
+      />
 
       {/* Content sections with watermark background */}
       <div className="relative bg-black overflow-hidden">
@@ -168,11 +147,13 @@ export default async function TalentePage() {
               <span className="text-white">DABEI WAR</span>
             </h2>
 
-            <ExhibitorCarousel
+            <ExhibitorGrid
               exhibitors={exhibitors.map((ex) => ({
                 _id: ex._id,
                 name: ex.name,
-                logoUrl: ex.logo ? urlFor(ex.logo).width(400).height(200).url() : undefined,
+                logoUrl: ex.logo ? urlFor(ex.logo).width(600).fit('max').url() : undefined,
+                whiteLogoUrl: ex.whiteLogo ? urlFor(ex.whiteLogo).width(600).fit('max').url() : undefined,
+                whiteBackground: ex.whiteBackground ?? false,
               }))}
             />
 

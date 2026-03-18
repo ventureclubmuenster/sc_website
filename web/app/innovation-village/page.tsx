@@ -3,6 +3,7 @@ import { client } from '@/lib/sanity/client'
 import { innovationVillagePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import InfoTabs from './InfoTabs'
+import ExhibitorGrid from '../startups/ExhibitorGrid'
 
 interface PageData {
   heroImage?: { asset: { _ref: string } }
@@ -21,6 +22,8 @@ interface Exhibitor {
   _id: string
   name: string
   logo?: { asset: { _ref: string } }
+  whiteLogo?: { asset: { _ref: string } }
+  whiteBackground?: boolean
 }
 
 async function getPageData(): Promise<PageData | null> {
@@ -106,28 +109,15 @@ export default async function InnovationVillagePage() {
             Klicke auf eines der Logos, um mehr über unsere Aussteller zu erfahren!
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {exhibitors.map((ex) => (
-              <div
-                key={ex._id}
-                className="flex items-center justify-center bg-gray-100 rounded-xl h-20 md:h-24 px-4 transition-transform duration-300 hover:scale-105 cursor-pointer"
-              >
-                {ex.logo ? (
-                  <Image
-                    src={urlFor(ex.logo).width(400).height(200).url()}
-                    alt={ex.name}
-                    width={200}
-                    height={80}
-                    className="object-contain max-h-12 md:max-h-16 w-auto"
-                  />
-                ) : (
-                  <span className="text-black/60 text-sm font-medium text-center">
-                    {ex.name}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
+          <ExhibitorGrid
+            exhibitors={exhibitors.map((ex) => ({
+              _id: ex._id,
+              name: ex.name,
+              logoUrl: ex.logo ? urlFor(ex.logo).width(600).fit('max').url() : undefined,
+              whiteLogoUrl: ex.whiteLogo ? urlFor(ex.whiteLogo).width(600).fit('max').url() : undefined,
+              whiteBackground: ex.whiteBackground ?? false,
+            }))}
+          />
         </div>
       </section>
     </>

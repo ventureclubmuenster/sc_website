@@ -262,6 +262,11 @@ export const workshopsPageQuery = groq`
       description,
       logo,
       logo2
+    },
+    previewTopics[] {
+      category,
+      title,
+      image
     }
   }
 `

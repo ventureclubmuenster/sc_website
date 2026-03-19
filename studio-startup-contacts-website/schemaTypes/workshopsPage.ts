@@ -7,6 +7,7 @@ export default defineType({
   fieldsets: [
     { name: 'hero', title: 'Hero Sektion', options: { collapsible: true, collapsed: false } },
     { name: 'history', title: 'Highlights aus 2025', options: { collapsible: true, collapsed: true } },
+    { name: 'preview2026', title: 'Was dich dieses Jahr erwartet', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
     defineField({
@@ -44,6 +45,32 @@ export default defineType({
           ],
           preview: {
             select: { title: 'title', subtitle: 'speaker' },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'previewTopics',
+      title: 'Themen-Vorschau 2026',
+      description: '4 Kacheln mit Bild, Kategorie-Badge und Titel für das 2x2-Grid.',
+      type: 'array',
+      fieldset: 'preview2026',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'category', title: 'Kategorie-Badge (z.B. TECHNOLOGY)', type: 'string', validation: (Rule) => Rule.required() },
+            { name: 'title', title: 'Themen-Titel', type: 'string', validation: (Rule) => Rule.required() },
+            {
+              name: 'image',
+              title: 'Hintergrundbild',
+              type: 'image',
+              options: { hotspot: true },
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'category', media: 'image' },
           },
         },
       ],

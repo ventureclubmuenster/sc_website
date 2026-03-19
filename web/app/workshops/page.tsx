@@ -3,7 +3,7 @@ import { workshopsPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import WorkshopHighlights from './WorkshopHighlights'
-import WorkshopPreview2026 from './WorkshopPreview2026'
+import WorkshopsComingSoon from './WorkshopsComingSoon'
 
 const fallbackWorkshops = [
   {
@@ -52,7 +52,7 @@ export default async function WorkshopsPage() {
       />
 
       <WorkshopHighlights workshops={workshops} />
-      <WorkshopPreview2026 />
+      <WorkshopsComingSoon />
     </>
   )
 }

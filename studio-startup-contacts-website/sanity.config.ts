@@ -23,7 +23,7 @@ export default defineConfig({
             orderableDocumentListDeskItem({type: 'partner2026', title: 'Partner & Sponsoren 2026', S, context}),
             orderableDocumentListDeskItem({type: 'exhibitor2025', title: 'Aussteller 2025', S, context}),
             orderableDocumentListDeskItem({type: 'exhibitor2026', title: 'Aussteller 2026', S, context}),
-            orderableDocumentListDeskItem({type: 'team', title: 'Vorstand & Team', S, context}),
+            orderableDocumentListDeskItem({type: 'team', title: 'Vorstand & Team', S, context, createIntent: true}),
             orderableDocumentListDeskItem({type: 'program', title: 'Programm & Events', S, context}),
             // Singleton pages
             S.listItem()
@@ -66,9 +66,13 @@ export default defineConfig({
               .title('Seite: Main Stage')
               .id('mainStagePage')
               .child(S.document().schemaType('mainStagePage').documentId('mainStagePage')),
+            S.listItem()
+              .title('Seite: Über uns')
+              .id('ueberUnsPage')
+              .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage'].includes(item.getId() ?? '')
             ),
           ]),
     }),

@@ -12,17 +12,17 @@ export default function Footer() {
           <h3 className="text-white font-bold text-sm mb-4">Navigation</h3>
           <ul className="flex flex-col gap-2">
             <li>
-              <Link href="/impressum" className="text-white/50 text-sm hover:text-white transition-colors">
+              <a href="https://ventureclub-muenster.de/impressum/" target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-white transition-colors">
                 Impressum
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="/datenschutz" className="text-white/50 text-sm hover:text-white transition-colors">
+              <a href="https://ventureclub-muenster.de/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-white transition-colors">
                 Datenschutz
-              </Link>
+              </a>
             </li>
             <li>
-              <a href="mailto:info@ventureclub-muenster.de" className="text-white/50 text-sm hover:text-white transition-colors">
+              <a href="mailto:info@startup-contacts.de" className="text-white/50 text-sm hover:text-white transition-colors">
                 Contact us
               </a>
             </li>

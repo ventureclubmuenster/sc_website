@@ -116,7 +116,8 @@ export const teamQuery = groq`
     name,
     role,
     image,
-    linkedin
+    linkedin,
+    year
   }
 `
 
@@ -283,6 +284,23 @@ export const mainStagePageQuery = groq`
       image,
       slug,
       socialLinks
+    }
+  }
+`
+
+export const ueberUnsPageQuery = groq`
+  *[_type == "ueberUnsPage"] | order(_updatedAt desc)[0] {
+    heroImage,
+    missionCards[] {
+      title,
+      hoverText,
+      image
+    },
+    timelineEntries[] {
+      year,
+      image,
+      imagePosition,
+      textBlocks
     }
   }
 `

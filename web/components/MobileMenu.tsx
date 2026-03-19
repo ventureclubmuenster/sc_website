@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import WartelisteButton from './WartelisteButton'
+import scLogo from '@/app/images/SC_logo_nav_bar.avif'
 
 const navGroups = [
   {
@@ -43,23 +45,46 @@ export default function MobileMenu() {
   }
 
   return (
-    <div className="lg:hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        className="text-white p-2"
-        aria-label="Menü öffnen"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          {open ? (
-            <path d="M6 6l12 12M6 18L18 6" />
-          ) : (
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
-      </button>
+    <div
+      className="lg:hidden bg-black/85 backdrop-blur-md border border-white/10"
+      style={{ borderRadius: open ? '1.5rem' : '2.5rem', transition: 'border-radius 100ms ease' }}
+    >
+      {/* Top bar with logo + burger */}
+      <div className="px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Image
+            src={scLogo}
+            alt="Startup Contacts"
+            height={100}
+            className="object-contain"
+          />
+        </Link>
 
-      {open && (
-        <nav className="absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-sm border-b border-white/10 px-6 py-4 flex flex-col gap-2">
+        <button
+          onClick={() => { setOpen(!open); if (open) setExpandedGroup(null) }}
+          className="text-white p-2"
+          aria-label="Menü öffnen"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {open ? (
+              <path d="M6 6l12 12M6 18L18 6" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Expanded menu content */}
+      <div
+        className="grid"
+        style={{
+          gridTemplateRows: open ? '1fr' : '0fr',
+          transition: 'grid-template-rows 100ms ease',
+        }}
+      >
+        <nav className="overflow-hidden px-6 flex flex-col gap-2">
+          <div className={`border-t border-white/10 pt-2 pb-6 flex flex-col gap-2`}>
           {navGroups.map((group) => (
             <div key={group.label}>
               <button
@@ -114,8 +139,9 @@ export default function MobileMenu() {
           <div className="mt-2">
             <WartelisteButton />
           </div>
+          </div>
         </nav>
-      )}
+      </div>
     </div>
   )
 }

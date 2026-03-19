@@ -64,7 +64,7 @@ export default async function PartnerPage() {
           return (
             <div key={group.category}>
               {/* Category Heading */}
-              <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-8 text-center">
                 <span className="gradient-text">{label.highlight}</span>
                 {label.rest && <span className="text-white"> {label.rest}</span>}
               </h2>

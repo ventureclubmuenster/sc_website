@@ -16,9 +16,9 @@ export default async function Header() {
   const settings = await getSettings()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
+    <header className="fixed top-4 left-4 right-4 z-50">
+      {/* Desktop */}
+      <div className="hidden lg:flex max-w-7xl mx-auto px-8 h-20 items-center justify-between bg-black/85 backdrop-blur-md border border-white/10 rounded-full">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src={scLogo}
@@ -27,18 +27,14 @@ export default async function Header() {
             className="object-contain"
           />
         </Link>
-
-        {/* Desktop Nav — 3 Dropdowns + Über uns */}
         <DesktopNav />
-
-        {/* Desktop CTA */}
-        <div className="hidden lg:block shrink-0">
+        <div className="shrink-0">
           <WartelisteButton />
         </div>
-
-        {/* Mobile Menu */}
-        <MobileMenu />
       </div>
+
+      {/* Mobile */}
+      <MobileMenu />
     </header>
   )
 }

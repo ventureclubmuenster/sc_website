@@ -18,20 +18,25 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
   const orangeWord = words[words.length - 1]
 
   return (
-    <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-20 pt-20">
+    <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-24 pt-24">
       {imageUrl ? (
         <Image
           src={imageUrl}
           alt="Hero"
           fill
-          className="object-cover brightness-[0.6]"
+          className="object-cover object-top"
           priority
         />
       ) : (
         <div className="absolute inset-0 bg-black" />
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, transparent 100%)',
+        }}
+      />
 
       <div className="relative z-10 text-center px-6">
         <FadeIn direction="up" duration={0.8} distance={30}>

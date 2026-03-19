@@ -64,7 +64,7 @@ export default async function InnovationVillagePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-20 pt-20">
+      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-24 pt-24">
         {data?.heroImage ? (
           <Image
             src={urlFor(data.heroImage).width(1920).height(1080).url()}

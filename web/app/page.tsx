@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <>
       {/* ── Hero Section ── */}
-      <section className="relative min-h-screen bg-black overflow-hidden flex items-end -mt-20">
+      <section className="relative min-h-screen bg-black overflow-hidden flex items-end -mt-24">
         {/* YouTube Aftermovie Background */}
         <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
           <iframe

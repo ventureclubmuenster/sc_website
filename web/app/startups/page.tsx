@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection'
 import ExhibitorGrid from './ExhibitorGrid'
 import FokusfeldGrid from '../unternehmen/FokusfeldGrid'
 import KombinationSection from './KombinationSection'
+import FormatSection from '@/components/FormatSection'
 
 interface ImageField {
   asset: { _ref: string }
@@ -141,6 +142,8 @@ export default async function StartupsPage() {
             </div>
           </div>
         </section>
+
+        <FormatSection heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>} />
       </div>
     </>
   )

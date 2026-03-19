@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import NewsletterForm from '@/app/newsletter/NewsletterForm'
 
 interface NewsletterModalProps {
@@ -33,7 +34,7 @@ export default function NewsletterModal({ open, onClose }: NewsletterModalProps)
 
   if (!open) return null
 
-  return (
+  return createPortal(
     <div
       ref={backdropRef}
       className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-8 animate-in fade-in duration-300"
@@ -70,6 +71,7 @@ export default function NewsletterModal({ open, onClose }: NewsletterModalProps)
           <NewsletterForm />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

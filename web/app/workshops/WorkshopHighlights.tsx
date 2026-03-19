@@ -8,8 +8,8 @@ interface Workshop {
   title: string
   speaker: string
   description: string
-  logo?: unknown
-  logo2?: unknown
+  logo?: object
+  logo2?: object
 }
 
 interface WorkshopHighlightsProps {

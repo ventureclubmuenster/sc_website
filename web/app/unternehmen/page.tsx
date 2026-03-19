@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
 import BentoGrid from '@/components/BentoGrid'
 import FokusfeldGrid from './FokusfeldGrid'
+import FormatSection from '@/components/FormatSection'
 
 interface ImageField {
   asset: { _ref: string }
@@ -176,6 +177,8 @@ export default async function UnternehmenPage() {
             <BentoGrid items={bentoWithUrls} />
           </div>
         </section>
+
+        <FormatSection heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>} />
       </div>
     </>
   )

@@ -9,7 +9,7 @@ export default function WartelisteButton() {
 
   return (
     <>
-      <GlowButton onClick={() => setOpen(true)}>zur Warteliste</GlowButton>
+      <GlowButton onClick={() => setOpen(true)}>erhalte alle News</GlowButton>
       <NewsletterModal open={open} onClose={() => setOpen(false)} />
     </>
   )

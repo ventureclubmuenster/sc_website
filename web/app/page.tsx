@@ -39,10 +39,10 @@ export default async function Home() {
       {/* ── Hero Section ── */}
       <section className="relative min-h-screen bg-black overflow-hidden flex items-end -mt-20">
         {/* YouTube Aftermovie Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
           <iframe
             src="https://www.youtube.com/embed/uNZWsofAFEI?autoplay=1&mute=1&loop=1&playlist=uNZWsofAFEI&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
-            className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2 md:-top-[60px] md:translate-y-0"
+            className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2"
             allow="autoplay; encrypted-media"
             tabIndex={-1}
             aria-hidden="true"
@@ -63,16 +63,16 @@ export default async function Home() {
             Zusammenarbeit<span className="text-sc-orange">.</span>
           </h1>
 
-          {/* Bottom row — info + CTA inline */}
-          <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-lg">
-              Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
-            </p>
+          {/* Subtext */}
+          <p className="mt-10 text-white/60 text-2xl md:text-3xl lg:text-4xl leading-snug max-w-3xl">
+            Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
+          </p>
 
-            <div className="flex items-center gap-4 font-bold text-2xl md:text-3xl uppercase tracking-tight whitespace-nowrap">
-              <span>15. Juni 2026</span>
-              <span className="text-sc-orange">&mdash;</span>
-              <span className="text-white/60">Münster</span>
+          {/* Date, Location & CTA */}
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
+            <div className="flex flex-col font-bold uppercase tracking-tight">
+              <span className="text-3xl md:text-4xl">15. Juni 2026</span>
+              <span className="text-xl md:text-2xl text-white/60">Münster</span>
             </div>
 
             <div className="shrink-0">
@@ -115,22 +115,19 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── Hall of Fame ── */}
-      {data?.hallOfFame && <HallOfFame speakers={data.hallOfFame} />}
-
-      {/* Spacer between Hall of Fame and Networking */}
-      <div className="h-8 bg-black" />
-
       {/* ── Networking Together ── */}
       <section className="relative py-32 px-6 overflow-hidden">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-sc-orange/10 z-[1]" />
+        {/* Top and bottom black fade */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
+        </div>
         {data?.networkingBg && (
           <Image
             src={urlFor(data.networkingBg).width(1920).height(1080).url()}
             alt="Networking Together"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-50"
           />
         )}
         <div className="relative z-10 max-w-4xl mx-auto">
@@ -234,46 +231,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── Value Props ── */}
-      <section className="relative py-32 px-6 overflow-hidden">
-        {/* Orange gradient background like banner */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-card-grey to-sc-orange/10" />
-        <span className="absolute left-6 bottom-8 text-[8rem] md:text-[14rem] font-bold uppercase text-white/[0.03] pointer-events-none select-none tracking-tighter leading-none">
-          WARUM
-        </span>
-        <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Was <span className="text-sc-orange">du</span> erwarten kannst
-          </h2>
-
-          <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                title: 'Zusammenarbeit',
-                text: 'Auf der Startup Contacts arbeiten Gründer, Investoren, Talente & Mittelstand zusammen an praxisnahen Herausforderungen. So entstehen Lösungen, die über die Messe hinaus Einfluss haben und Transformation in der Wirtschaft tragen.',
-              },
-              {
-                title: 'Inspiration',
-                text: 'Lass dich davon inspirieren, wie andere Gründerinnen und Gründer die Transformation vorantreiben. Sie erzählen darüber wie sie es geschafft haben ihre Idee zur Realität zu machen und welche Herausforderungen sie dabei überwunden haben.',
-              },
-              {
-                title: 'Tiefe Einblicke',
-                text: 'Erhalte Einblicke in die Herausforderungen der Zukunft und die Fähigkeiten, die es braucht um die Transformation aktiv mitzugestalten.',
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden p-8 flex flex-col hover:border-sc-orange/30 transition-colors duration-500"
-              >
-                {/* Subtle orange glow — intensifies on hover */}
-                <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/8 rounded-full blur-3xl group-hover:bg-sc-orange/20 transition-all duration-500" />
-                <h3 className="text-xl font-bold uppercase tracking-wide">{card.title}</h3>
-                <p className="mt-4 text-base text-white/60 leading-relaxed relative z-10">{card.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── Hall of Fame ── */}
+      {data?.hallOfFame && <HallOfFame speakers={data.hallOfFame} />}
     </>
   )
 }

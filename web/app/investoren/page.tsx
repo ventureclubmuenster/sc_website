@@ -4,6 +4,7 @@ import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import BentoGrid from '@/components/BentoGrid'
 import WhyInvestSection from './WhyInvestSection'
+import FormatSection from '@/components/FormatSection'
 
 interface ImageField {
   asset: { _ref: string }
@@ -85,6 +86,8 @@ export default async function InvestorenPage() {
             <BentoGrid items={bentoWithUrls} />
           </div>
         </section>
+
+        <FormatSection heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="text-sc-orange">FORMATEN</span><span className="text-white"> KENNEN</span></>} />
       </div>
     </>
   )

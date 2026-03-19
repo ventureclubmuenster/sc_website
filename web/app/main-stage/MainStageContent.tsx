@@ -138,7 +138,7 @@ export default function MainStageContent({
         <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn direction="up" duration={0.7}>
             <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-              Programm-<span className="text-sc-orange">Highlights</span>
+              Programm-<span className="gradient-text">Highlights</span>
             </h2>
           </FadeIn>
 

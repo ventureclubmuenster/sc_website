@@ -16,13 +16,13 @@ interface BentoItem {
 
 // Bento layout patterns: each item gets a col-span and row-span
 const layoutPatterns = [
-  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2', height: 'h-48 md:h-full' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-48 md:h-full' },
-  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-48 md:h-56' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2', height: 'h-28 md:h-full' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-28 md:h-full' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
 ]
 
 // Alternate directions for visual interest
@@ -65,9 +65,9 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/50 transition-all duration-500 group-hover:bg-black/65" />
 
-            {/* Orange accent line - slides in from left on hover */}
+            {/* Gradient accent line - slides in from left on hover */}
             <div
-              className="absolute bottom-0 left-0 h-[3px] bg-sc-orange transition-all duration-500 ease-out"
+              className="absolute bottom-0 left-0 h-[3px] gradient-line transition-all duration-500 ease-out"
               style={{ width: isHovered ? '100%' : '0%' }}
             />
 

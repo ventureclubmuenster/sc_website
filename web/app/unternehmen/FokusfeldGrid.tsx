@@ -50,9 +50,9 @@ export default function FokusfeldGrid({ fokusfelder }: { fokusfelder: Fokusfeld[
                 }}
               />
 
-              {/* Orange accent line */}
+              {/* Gradient accent line */}
               <div
-                className="absolute bottom-0 left-0 h-[3px] bg-sc-orange transition-all duration-500 ease-out"
+                className="absolute bottom-0 left-0 h-[3px] gradient-line transition-all duration-500 ease-out"
                 style={{ width: isHovered ? '100%' : '0%' }}
               />
 

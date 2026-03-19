@@ -72,7 +72,7 @@ export default function Footer() {
           </p>
           <Link
             href="/newsletter"
-            className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-6 py-2.5 rounded-full hover:bg-white/10 transition-colors"
+            className="inline-flex items-center gap-2 text-white text-sm px-6 py-2.5 rounded-full transition-opacity hover:opacity-90 gradient-bg"
           >
             Jetzt Anmelden! &rarr;
           </Link>

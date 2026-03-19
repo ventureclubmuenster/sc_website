@@ -9,7 +9,9 @@ interface Workshop {
   speaker: string
   description: string
   logo?: object
+  logoWhiteBg?: boolean
   logo2?: object
+  logo2WhiteBg?: boolean
 }
 
 interface WorkshopHighlightsProps {
@@ -35,7 +37,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
       <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Highlights aus <span className="text-sc-orange">2025</span>
+            Highlights aus <span className="gradient-text">2025</span>
           </h2>
         </FadeIn>
 
@@ -50,7 +52,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
                 {(ws.logo || ws.logo2) && (
                   <div className="mb-6 flex items-center gap-3">
                     {ws.logo && (
-                      <div className="bg-white/10 rounded-xl px-4 py-2 inline-flex items-center">
+                      <div className={`${ws.logoWhiteBg ? 'bg-white' : 'bg-white/10'} rounded-xl px-4 py-2 inline-flex items-center`}>
                         <Image
                           src={urlFor(ws.logo).width(400).auto('format').url()}
                           alt={`${ws.title} Logo`}
@@ -61,7 +63,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
                       </div>
                     )}
                     {ws.logo2 && (
-                      <div className="bg-white/10 rounded-xl px-4 py-2 inline-flex items-center">
+                      <div className={`${ws.logo2WhiteBg ? 'bg-white' : 'bg-white/10'} rounded-xl px-4 py-2 inline-flex items-center`}>
                         <Image
                           src={urlFor(ws.logo2).width(400).auto('format').url()}
                           alt={`${ws.title} Logo 2`}

@@ -162,7 +162,7 @@ export default function ShopPage() {
       <section id="tickets" className="bg-black px-6 py-20 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-center mb-4">
-            <span className="text-sc-orange">TICKETS </span>
+            <span className="gradient-text">TICKETS </span>
             <span className="text-white">SICHERN</span>
           </h2>
           <p className="text-white/50 text-sm text-center mb-12">

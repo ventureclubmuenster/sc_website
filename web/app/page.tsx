@@ -6,6 +6,7 @@ import { urlFor } from '@/lib/sanity/image'
 import HeroCTA from '@/components/HeroCTA'
 import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
 import HallOfFame from '@/components/HallOfFame'
+import FormatSection from '@/components/FormatSection'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { next: { revalidate: 3600 } })
@@ -18,13 +19,6 @@ export default async function Home() {
     { number: '20+', label: 'Speaker & Themen', image: data?.stellDirVorSpeaker },
     { number: '1000+', label: 'Besucher', image: data?.stellDirVorBesucher },
     { number: '20+', label: 'Stände', image: data?.stellDirVorStaende },
-  ]
-
-  const erwartungCards = [
-    { label: 'Stände & Co-Creation', href: '/co-creation', image: data?.erwartungCoCreation },
-    { label: 'Workshops', href: '/workshops', image: data?.erwartungWorkshops },
-    { label: 'Bühnenprogramm', href: '/main-stage', image: data?.erwartungBuehne },
-    { label: 'Side Events', href: '/innovation-village', image: data?.erwartungSideEvents },
   ]
 
   const wenCards = [
@@ -41,7 +35,7 @@ export default async function Home() {
         {/* YouTube Aftermovie Background */}
         <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
           <iframe
-            src="https://www.youtube.com/embed/uNZWsofAFEI?autoplay=1&mute=1&loop=1&playlist=uNZWsofAFEI&controls=0&showinfo=0&modestbranding=1&rel=0&start=4&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
+            src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
             className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2"
             allow="autoplay; encrypted-media"
             tabIndex={-1}
@@ -60,7 +54,7 @@ export default async function Home() {
             <br />
             <span className="text-white/40">durch</span>
             <br />
-            Zusammenarbeit<span className="text-sc-orange">.</span>
+            Zusammenarbeit<span className="gradient-text">.</span>
           </h1>
 
           {/* Subtext */}
@@ -71,7 +65,7 @@ export default async function Home() {
           {/* Date, Location & CTA */}
           <div className="mt-10 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
             <div className="flex flex-col font-bold uppercase tracking-tight">
-              <span className="text-3xl md:text-4xl">15. Juni 2026</span>
+              <span className="text-3xl md:text-4xl gradient-text">15. Juni 2026</span>
               <span className="text-xl md:text-2xl text-white/60">Münster</span>
             </div>
 
@@ -98,7 +92,7 @@ export default async function Home() {
         </div>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Stell <span className="text-sc-orange">dir</span> vor was...
+            Stell <span className="gradient-text">dir</span> vor was...
           </h2>
 
           <AnimatedStatsGrid
@@ -110,7 +104,7 @@ export default async function Home() {
           />
 
           <h2 className="mt-12 text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            <span className="text-sc-orange">...Gemeinsam</span> erreichen können
+            <span className="gradient-text">...Gemeinsam</span> erreichen können
           </h2>
         </div>
       </section>
@@ -149,7 +143,7 @@ export default async function Home() {
                 />
               </svg>
             </span>
-            <span className="text-sc-orange">working</span>
+            <span className="gradient-text">working</span>
             <span className="text-white"> together</span>
           </h2>
 
@@ -173,43 +167,32 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── Was du erwarten kannst ── */}
-      <section className="relative py-32 px-6 bg-black overflow-hidden">
-        <span className="absolute left-6 top-1/2 -translate-y-1/2 text-[8rem] md:text-[14rem] font-bold uppercase text-white/[0.03] pointer-events-none select-none tracking-tighter leading-none">
-          FOR<br />MATE
-        </span>
-        <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Was <span className="text-sc-orange">du</span> erwarten kannst
-          </h2>
-
-          <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
-            {erwartungCards.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="group relative aspect-[16/10] rounded-2xl overflow-hidden flex items-end p-8"
-              >
-                {item.image && (
-                  <Image
-                    src={urlFor(item.image).width(800).height(500).url()}
-                    alt={item.label}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                )}
-                {/* Subtle gradient for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                {/* Orange glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-sc-orange/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="relative z-10 text-xl md:text-2xl font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
-                  {item.label}
-                </span>
-              </Link>
-            ))}
-          </div>
+      {/* ── Unsere Formate (Bento Grid) ── */}
+      <div className="bg-black overflow-hidden">
+        {/* Repeating watermark */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          {[...Array(6)].map((_, i) => (
+            <span
+              key={`fmt-${i}`}
+              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+              style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
+            >
+              STARTUP CONTACTS &nbsp; STARTUP CONTACTS &nbsp; STARTUP CONTACTS
+            </span>
+          ))}
         </div>
-      </section>
+        <FormatSection
+          heading={<><span className="text-white">WAS </span><span className="gradient-text">DU</span><span className="text-white"> ERWARTEN KANNST</span></>}
+          items={data?.formatItems?.map((f: { title: string; description?: string; buttonText?: string; buttonLink?: string; image?: { asset: { _ref: string } }; wide?: boolean }) => ({
+            title: f.title,
+            description: f.description,
+            buttonText: f.buttonText,
+            buttonLink: f.buttonLink,
+            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
+            wide: f.wide,
+          }))}
+        />
+      </div>
 
       {/* ── Wen du erwarten kannst ── */}
       <section className="relative py-32 px-6 bg-black overflow-hidden">
@@ -218,7 +201,7 @@ export default async function Home() {
         </span>
         <div className="relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Wen <span className="text-sc-orange">du</span> erwarten kannst
+            Wen <span className="gradient-text">du</span> erwarten kannst
           </h2>
 
           <div className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -226,7 +209,7 @@ export default async function Home() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden flex items-end p-6"
+                className="group relative aspect-square sm:aspect-[3/4] rounded-2xl overflow-hidden flex items-end p-6"
               >
                 {item.image && (
                   <Image

@@ -37,7 +37,7 @@ async function getExhibitors(): Promise<Exhibitor[]> {
 export default async function InnovationVillagePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
-  const subtext = data?.heroSubtext || 'Wer war zuletzt dabei? Schau dir unsere Aussteller an, oder werde selbst Teil des Innovation Village!'
+  const subtext = data?.heroSubtext || 'Über 30 Startups und Unternehmen zeigen an ihren Ständen, woran sie arbeiten. Komm vorbei, lass dich inspirieren und knüpfe neue Kontakte.'
 
   const ausstellerTab = {
     image: data?.ausstellerImage ? urlFor(data.ausstellerImage).width(800).height(1000).url() : undefined,
@@ -64,7 +64,7 @@ export default async function InnovationVillagePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
+      <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-20 pt-20">
         {data?.heroImage ? (
           <Image
             src={urlFor(data.heroImage).width(1920).height(1080).url()}
@@ -84,7 +84,7 @@ export default async function InnovationVillagePage() {
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
           >
-            <span className="text-sc-orange">INNOVATION </span>
+            <span className="gradient-text">INNOVATION </span>
             <span className="text-white">VILLAGE</span>
           </h1>
 
@@ -102,7 +102,7 @@ export default async function InnovationVillagePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             <span className="text-white">AUSSTELLER DER </span>
-            <span className="text-sc-orange">STARTUP CONTACTS</span>
+            <span className="gradient-text">STARTUP CONTACTS</span>
           </h2>
 
           <p className="text-white/60 text-sm md:text-base text-center mb-12">

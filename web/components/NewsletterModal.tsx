@@ -61,7 +61,7 @@ export default function NewsletterModal({ open, onClose }: NewsletterModalProps)
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
               SICHERE DIR DEINEN{' '}
-              <span className="text-sc-orange">PLATZ</span>
+              <span className="gradient-text">PLATZ</span>
             </h2>
             <p className="text-white/60 text-base max-w-md mx-auto">
               Erfahre als Erstes vom Vorverkaufsstart und sichere dir dein Ticket für die Startup Contacts 2026.

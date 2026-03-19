@@ -40,7 +40,7 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
       <div className="relative z-10">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Unsere <span className="text-sc-orange">Hall of Fame</span>
+            Unsere <span className="gradient-text">Hall of Fame</span>
           </h2>
         </FadeIn>
 
@@ -50,32 +50,30 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
               key={speaker._id}
               direction="up"
               distance={50}
-              className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-sc-orange/30 transition-colors duration-500"
+              className="group relative aspect-square sm:aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 hover:border-sc-orange/30 transition-colors duration-500"
             >
-              {/* Speaker image */}
-              <div className="relative aspect-[3/4] overflow-hidden">
-                {speaker.image ? (
-                  <Image
-                    src={urlFor(speaker.image).width(500).height(667).url()}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-card-grey flex items-center justify-center">
-                    <span className="text-white/20 text-6xl font-bold">
-                      {speaker.name.charAt(0)}
-                    </span>
-                  </div>
-                )}
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+              {/* Image fills entire card */}
+              {speaker.image ? (
+                <Image
+                  src={urlFor(speaker.image).width(500).height(667).url()}
+                  alt={speaker.name}
+                  fill
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-card-grey flex items-center justify-center">
+                  <span className="text-white/20 text-6xl font-bold">
+                    {speaker.name.charAt(0)}
+                  </span>
+                </div>
+              )}
+              {/* Gradient overlay — covers full card */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Hover glow */}
+              <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              {/* Info */}
-              <div className="relative p-6 -mt-16 z-10">
+              {/* Info — overlaid at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                 <h3 className="text-xl font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
                   {speaker.name}
                 </h3>

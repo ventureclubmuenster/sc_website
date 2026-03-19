@@ -113,19 +113,31 @@ export default async function UnternehmenPage() {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
               <span className="text-white">UNSERE </span>
-              <span className="text-sc-orange">FOKUSFELDER</span>
+              <span className="gradient-text">FOKUSFELDER</span>
             </h2>
 
             <FokusfeldGrid fokusfelder={fokusfelderWithUrls} />
           </div>
         </section>
 
+        <FormatSection
+          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="gradient-text">FORMATE</span><span className="text-white"> EIN</span></>}
+          items={data?.formatItems?.map((f) => ({
+            title: f.title,
+            description: f.description,
+            buttonText: f.buttonText,
+            buttonLink: f.buttonLink,
+            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
+            wide: f.wide,
+          }))}
+        />
+
         {/* Wer zuletzt dabei war */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
               <span className="text-white">WER </span>
-              <span className="text-sc-orange">ZULETZT </span>
+              <span className="gradient-text">ZULETZT </span>
               <span className="text-white">DABEI WAR</span>
             </h2>
 
@@ -149,18 +161,6 @@ export default async function UnternehmenPage() {
             </div>
           </div>
         </section>
-
-        <FormatSection
-          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>}
-          items={data?.formatItems?.map((f) => ({
-            title: f.title,
-            description: f.description,
-            buttonText: f.buttonText,
-            buttonLink: f.buttonLink,
-            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
-            wide: f.wide,
-          }))}
-        />
       </div>
     </>
   )

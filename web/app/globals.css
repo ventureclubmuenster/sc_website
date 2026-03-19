@@ -5,6 +5,10 @@
   --foreground: #ffffff;
   --card-grey: #1a1a1a;
   --sc-orange: #ff5e00;
+
+  /* Corporate Gradient — change these two values to update everywhere */
+  --gradient-from: #fe281f;
+  --gradient-to: #f66b01;
 }
 
 @theme inline {
@@ -12,9 +16,28 @@
   --color-foreground: var(--foreground);
   --color-card-grey: var(--card-grey);
   --color-sc-orange: var(--sc-orange);
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-to: var(--gradient-to);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
 
+/* Reusable gradient text utility */
+.gradient-text {
+  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Reusable gradient background utility */
+.gradient-bg {
+  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+}
+
+/* Reusable gradient line utility */
+.gradient-line {
+  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
 }
 
 html {

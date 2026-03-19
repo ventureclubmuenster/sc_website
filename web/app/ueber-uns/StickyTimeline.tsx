@@ -235,7 +235,7 @@ export default function StickyTimeline({ entries }: StickyTimelineProps) {
           transition={{ duration: 0.7 }}
           className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight mb-8"
         >
-          Die <span className="text-sc-orange">Startup Contacts</span>
+          Die <span className="gradient-text">Startup Contacts</span>
         </motion.h2>
 
         {/* Timeline content wrapper — spine is positioned relative to this */}

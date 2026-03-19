@@ -148,12 +148,51 @@ export default async function TalentePage() {
         {/* Einmalige Kombination */}
         <KombinationSection />
 
+        {/* Was dich erwartet – temporarily hidden
+        <section id="was-erwartet" className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="gradient-text">WAS </span>
+              <span className="text-white">DICH ERWARTET</span>
+            </h2>
+
+            <FeatureCards cards={cardsWithUrls} />
+          </div>
+        </section>
+        */}
+
+        {/* Mehr als eine Messe */}
+        <section className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-white">MEHR ALS EINE </span>
+              <span className="gradient-text">MESSE</span>
+            </h2>
+
+            <BentoGrid items={bentoWithUrls} />
+          </div>
+        </section>
+
+        {/* Unser Programm für dich – temporarily hidden
+        <section className="relative z-10 px-6 py-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+              <span className="text-white">UNSER </span>
+              <span className="gradient-text">PROGRAMM </span>
+              <span className="text-white">FÜR DICH</span>
+            </h2>
+
+            <ProgramCards cards={programCardsWithUrls} />
+          </div>
+        </section>
+        */}
+
         {/* Wer zuletzt dabei war */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
               <span className="text-white">WER </span>
-              <span className="text-sc-orange">ZULETZT </span>
+              <span className="gradient-text">ZULETZT </span>
               <span className="text-white">DABEI WAR</span>
             </h2>
 
@@ -177,45 +216,6 @@ export default async function TalentePage() {
             </div>
           </div>
         </section>
-
-        {/* Was dich erwartet – temporarily hidden
-        <section id="was-erwartet" className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-              <span className="text-sc-orange">WAS </span>
-              <span className="text-white">DICH ERWARTET</span>
-            </h2>
-
-            <FeatureCards cards={cardsWithUrls} />
-          </div>
-        </section>
-        */}
-
-        {/* Mehr als eine Messe */}
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-              <span className="text-white">MEHR ALS EINE </span>
-              <span className="text-sc-orange">MESSE</span>
-            </h2>
-
-            <BentoGrid items={bentoWithUrls} />
-          </div>
-        </section>
-
-        {/* Unser Programm für dich – temporarily hidden
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-              <span className="text-white">UNSER </span>
-              <span className="text-sc-orange">PROGRAMM </span>
-              <span className="text-white">FÜR DICH</span>
-            </h2>
-
-            <ProgramCards cards={programCardsWithUrls} />
-          </div>
-        </section>
-        */}
       </div>
     </>
   )

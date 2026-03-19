@@ -29,7 +29,7 @@ export default function MissionGrid({ cards }: MissionGridProps) {
       <div className="max-w-7xl mx-auto">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Der <span className="text-sc-orange">Venture Club Münster</span>
+            Der <span className="gradient-text">Venture Club Münster</span>
           </h2>
         </FadeIn>
 

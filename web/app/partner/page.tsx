@@ -47,7 +47,7 @@ export default async function PartnerPage() {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
             <span className="text-white">UNSERE </span>
-            <span className="text-sc-orange">PARTNER</span>
+            <span className="gradient-text">PARTNER</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base mt-6 max-w-3xl mx-auto">
             Wir danken allen unseren Partnern, die die Startup Contacts möglich machen. Hier findest du eine Übersicht aller unserer Partner, die zuletzt mit dabei waren. Klicke auf eines der Logos um mehr zu erfahren!
@@ -65,7 +65,7 @@ export default async function PartnerPage() {
             <div key={group.category}>
               {/* Category Heading */}
               <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide mb-8">
-                <span className="text-sc-orange">{label.highlight}</span>
+                <span className="gradient-text">{label.highlight}</span>
                 {label.rest && <span className="text-white"> {label.rest}</span>}
               </h2>
 

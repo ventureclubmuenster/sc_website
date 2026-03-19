@@ -36,7 +36,7 @@ export default function WhyInvestSection() {
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             <span className="text-white">WARUM </span>
-            <span className="text-sc-orange">STARTUP CONTACTS?</span>
+            <span className="gradient-text">STARTUP CONTACTS?</span>
           </h2>
           <p className="text-white/60 text-center text-base md:text-lg max-w-2xl mx-auto mb-14">
             Ein Tag. Ein Ort. Maximaler Zugang zu den innovativsten Gründern der Region.

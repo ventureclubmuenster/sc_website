@@ -7,7 +7,7 @@ export default defineType({
   fieldsets: [
     { name: 'stellDirVor', title: 'Stell dir vor was', options: { collapsible: true, collapsed: false } },
     { name: 'networkingTogether', title: 'Networking Together', options: { collapsible: true, collapsed: true } },
-    { name: 'wasDuErwarten', title: 'Was du erwarten kannst', options: { collapsible: true, collapsed: true } },
+    { name: 'formateBento', title: 'Unsere Formate (Bento Grid)', options: { collapsible: true, collapsed: true } },
     { name: 'wenDuErwarten', title: 'Wen du erwarten kannst', options: { collapsible: true, collapsed: true } },
     { name: 'hallOfFameSection', title: 'Unsere Hall of Fame', options: { collapsible: true, collapsed: true } },
     { name: 'whyUsSection', title: 'Warum Startup Contacts', options: { collapsible: true, collapsed: true } },
@@ -45,34 +45,28 @@ export default defineType({
       fieldset: 'networkingTogether',
     }),
 
-    // ── Was du erwarten kannst ──
+    // ── Unsere Formate (Bento Grid) ──
     defineField({
-      name: 'erwartungCoCreation',
-      title: 'Stände & Co-Creation — Bild',
-      type: 'image',
-      options: { hotspot: true },
-      fieldset: 'wasDuErwarten',
-    }),
-    defineField({
-      name: 'erwartungWorkshops',
-      title: 'Workshops — Bild',
-      type: 'image',
-      options: { hotspot: true },
-      fieldset: 'wasDuErwarten',
-    }),
-    defineField({
-      name: 'erwartungBuehne',
-      title: 'Bühnenprogramm — Bild',
-      type: 'image',
-      options: { hotspot: true },
-      fieldset: 'wasDuErwarten',
-    }),
-    defineField({
-      name: 'erwartungSideEvents',
-      title: 'Side Events — Bild',
-      type: 'image',
-      options: { hotspot: true },
-      fieldset: 'wasDuErwarten',
+      name: 'formatItems',
+      title: 'Formate Bento Grid',
+      type: 'array',
+      fieldset: 'formateBento',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Titel', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'description', title: 'Beschreibung (optional)', type: 'text', rows: 2 }),
+            defineField({ name: 'buttonText', title: 'Button Text', type: 'string' }),
+            defineField({ name: 'buttonLink', title: 'Button Link', type: 'string' }),
+            defineField({ name: 'image', title: 'Hintergrundbild', type: 'image', options: { hotspot: true } }),
+            defineField({ name: 'wide', title: 'Breites Element (2 Spalten)', type: 'boolean', initialValue: false }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'buttonLink', media: 'image' },
+          },
+        },
+      ],
     }),
 
     // ── Wen du erwarten kannst ──

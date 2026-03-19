@@ -18,20 +18,20 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
   const orangeWord = words[words.length - 1]
 
   return (
-    <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-20 pt-20">
       {imageUrl ? (
         <Image
           src={imageUrl}
           alt="Hero"
           fill
-          className="object-cover"
+          className="object-cover brightness-[0.6]"
           priority
         />
       ) : (
         <div className="absolute inset-0 bg-black" />
       )}
 
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
       <div className="relative z-10 text-center px-6">
         <FadeIn direction="up" duration={0.8} distance={30}>
@@ -40,7 +40,7 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
             style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
           >
             <span className="text-white">{mainText} </span>
-            <span className="text-sc-orange">{orangeWord}</span>
+            <span className="gradient-text">{orangeWord}</span>
           </h1>
         </FadeIn>
 
@@ -54,7 +54,7 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
 
         {highlight && (
           <FadeIn direction="up" delay={0.35} duration={0.7} distance={20}>
-            <p className="text-sc-orange text-base md:text-xl font-bold mt-1">
+            <p className="gradient-text text-base md:text-xl font-bold mt-1">
               {highlight}
             </p>
           </FadeIn>

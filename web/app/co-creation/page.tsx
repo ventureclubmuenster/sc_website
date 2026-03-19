@@ -35,12 +35,12 @@ export default function CoCreationComingSoon() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-none">
             COMING
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sc-orange to-orange-400">
+            <span className="gradient-text">
               SOON
             </span>
           </h1>
 
-          <div className="w-16 h-px bg-sc-orange" />
+          <div className="w-16 h-px gradient-line" />
 
           <p className="text-white/40 text-sm sm:text-base max-w-sm leading-relaxed font-light">
             Hier entsteht etwas Neues. Wir arbeiten an einem kreativen Raum

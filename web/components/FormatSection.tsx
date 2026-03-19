@@ -32,7 +32,7 @@ export default function FormatSection({ heading, items }: FormatSectionProps) {
           {heading ?? (
             <>
               <span className="text-white">UNSERE </span>
-              <span className="text-sc-orange">FORMATE</span>
+              <span className="gradient-text">FORMATE</span>
             </>
           )}
         </h2>

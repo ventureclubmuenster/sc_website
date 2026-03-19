@@ -23,10 +23,14 @@ export const landingPageQuery = groq`
     stellDirVorBesucher,
     stellDirVorStaende,
     networkingBg,
-    erwartungCoCreation,
-    erwartungWorkshops,
-    erwartungBuehne,
-    erwartungSideEvents,
+    formatItems[] {
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image,
+      wide
+    },
     wenStartups,
     wenCorporates,
     wenTalente,
@@ -286,7 +290,9 @@ export const workshopsPageQuery = groq`
       speaker,
       description,
       logo,
-      logo2
+      logoWhiteBg,
+      logo2,
+      logo2WhiteBg
     },
     previewTopics[] {
       category,

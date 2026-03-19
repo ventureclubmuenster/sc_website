@@ -18,15 +18,15 @@ export default async function SpeakerPage() {
   const speakers: Speaker[] = await client.fetch(speakers2025Query)
 
   return (
-    <main className="bg-background min-h-screen max-w-7xl mx-auto px-6">
+    <main className="bg-background min-h-screen max-w-7xl mx-auto px-6 pb-16">
       {/* Header */}
       <div className="py-16 text-center">
         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">
-          UNSERE{' '}
-          <span className="text-sc-orange">SPEAKER</span>
+          <span className="gradient-text">SPEAKER </span>
+          HALL OF FAME
         </h1>
         <p className="mt-4 text-white/60 text-base max-w-xl mx-auto">
-          Hier findest du eine Übersicht aller unserer Speaker, die zuletzt mit dabei waren!
+          Hier findest du eine Übersicht aller unserer Speaker, die 2025 dabei waren!
         </p>
       </div>
 
@@ -34,7 +34,7 @@ export default async function SpeakerPage() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {speakers.map((speaker) => {
           const card = (
-            <div className="relative aspect-[3/4] overflow-hidden rounded-xl group">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl group">
               {/* Image */}
               {speaker.image ? (
                 <Image

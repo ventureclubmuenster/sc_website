@@ -3,6 +3,22 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
+/** Read a CSS custom property and return its hex value */
+function getCSSColor(prop: string, fallback: string): string {
+  if (typeof window === 'undefined') return fallback
+  return getComputedStyle(document.documentElement).getPropertyValue(prop).trim() || fallback
+}
+
+/** Convert hex (#rrggbb) to {r,g,b} */
+function hexToRgb(hex: string) {
+  const h = hex.replace('#', '')
+  return {
+    r: parseInt(h.substring(0, 2), 16),
+    g: parseInt(h.substring(2, 4), 16),
+    b: parseInt(h.substring(4, 6), 16),
+  }
+}
+
 interface GlowButtonProps {
   href?: string
   onClick?: () => void
@@ -17,6 +33,18 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
   const animRef = useRef<number>(0)
   const targetRef = useRef(0)
   const currentRef = useRef(0)
+
+  // Read gradient colors from CSS custom properties (modular)
+  const [colors, setColors] = useState({ from: { r: 254, g: 40, b: 31 }, to: { r: 246, g: 107, b: 1 } })
+  useEffect(() => {
+    setColors({
+      from: hexToRgb(getCSSColor('--gradient-from', '#fe281f')),
+      to: hexToRgb(getCSSColor('--gradient-to', '#f66b01')),
+    })
+  }, [])
+
+  const gFrom = colors.from
+  const gTo = colors.to
 
   // Smooth lerp animation for intensity
   useEffect(() => {
@@ -65,10 +93,10 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
       className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
       style={{
         background: t > 0.01
-          ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(255,94,0,${0.3 * t}) 0%, rgba(255,94,0,${0.1 * t}) 40%, rgba(255,94,0,${0.02 * t}) 70%)`
+          ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * t}) 70%)`
           : 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
-        border: `1px solid rgba(255,${Math.round(94 * t + 255 * (1 - t))},${Math.round(0 * t + 255 * (1 - t))},${0.12 + 0.48 * t})`,
-        boxShadow: `0 0 ${40 * t}px rgba(255,94,0,${0.4 * t}), 0 0 ${80 * t}px rgba(255,94,0,${0.2 * t}), 0 0 ${120 * t}px rgba(255,94,0,${0.1 * t}), inset 0 0 ${40 * t}px rgba(255,94,0,${0.1 * t})`,
+        border: `1px solid rgba(${Math.round(gTo.r * t + 255 * (1 - t))},${Math.round(gTo.g * t + 255 * (1 - t))},${Math.round(gTo.b * t + 255 * (1 - t))},${0.12 + 0.38 * t})`,
+        boxShadow: `0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.25 * t}), 0 0 ${80 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.15 * t}), 0 0 ${120 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.07 * t}), inset 0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t})`,
         transition: 'background 0.6s ease-out',
       }}
     >
@@ -79,7 +107,7 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
           left: `${pos.x}%`,
           top: `${pos.y}%`,
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(255,94,0,${0.12 + 0.68 * t}) 0%, rgba(255,94,0,${0.04 + 0.26 * t}) 40%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 + 0.35 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.03 + 0.15 * t}) 40%, transparent 70%)`,
         }}
       />
 
@@ -90,7 +118,7 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
           left: `${pos.x}%`,
           top: `${pos.y}%`,
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(255,94,0,${0.03 + 0.32 * t}) 0%, rgba(255,94,0,${0.1 * t}) 50%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 + 0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t}) 50%, transparent 70%)`,
         }}
       />
 
@@ -99,7 +127,7 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
         className="pointer-events-none absolute inset-0 rounded-full"
         style={{
           opacity: t,
-          background: `conic-gradient(from 0deg at ${pos.x}% ${pos.y}%, rgba(255,94,0,0.7), rgba(255,60,0,0.3) 25%, transparent 40%, transparent 60%, rgba(255,94,0,0.3) 75%, rgba(255,94,0,0.7))`,
+          background: `conic-gradient(from 0deg at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},0.45), rgba(${gTo.r},${gTo.g},${gTo.b},0.2) 25%, transparent 40%, transparent 60%, rgba(${gTo.r},${gTo.g},${gTo.b},0.2) 75%, rgba(${gTo.r},${gTo.g},${gTo.b},0.45))`,
           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           maskComposite: 'exclude',
           WebkitMaskComposite: 'xor',
@@ -112,7 +140,7 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
         <span
           className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(255,94,0,0.25), rgba(255,255,255,0.1), rgba(255,94,0,0.25), transparent)',
+            background: `linear-gradient(90deg, transparent, rgba(${gTo.r},${gTo.g},${gTo.b},0.15), rgba(255,255,255,0.08), rgba(${gTo.r},${gTo.g},${gTo.b},0.15), transparent)`,
           }}
         />
       </span>

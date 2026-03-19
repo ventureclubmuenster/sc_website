@@ -29,7 +29,7 @@ export default function KombinationSection() {
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             <span className="text-white">EINE EINMALIGE </span>
-            <span className="text-sc-orange">KOMBINATION</span>
+            <span className="gradient-text">KOMBINATION</span>
           </h2>
           <p className="text-white/60 text-center text-base md:text-lg max-w-2xl mx-auto mb-14">
             Startup Contacts bringt zusammen, was zusammen gehört, an einem einzigen Tag, unter einem Dach.

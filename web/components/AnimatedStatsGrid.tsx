@@ -111,7 +111,7 @@ export default function AnimatedStatsGrid({ cards }: { cards: StatCard[] }) {
                 className="object-cover"
               />
             )}
-            {/* Subtle gradient for text readability */}
+            {/* Subtle gradient for text readability + corporate gradient accent at bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="relative z-10">
               <p className="text-4xl md:text-5xl font-bold tracking-tight">

@@ -52,7 +52,7 @@ export default async function WorkshopsPage() {
       />
 
       <WorkshopHighlights workshops={workshops} />
-      <WorkshopPreview2026 topics={data?.previewTopics ?? []} />
+      <WorkshopPreview2026 />
     </>
   )
 }

@@ -37,10 +37,24 @@ export default defineType({
               options: { hotspot: false },
             },
             {
+              name: 'logoWhiteBg',
+              title: 'Logo 1: Weißer Hintergrund',
+              description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht (z.B. bei dunklen Logos).',
+              type: 'boolean',
+              initialValue: false,
+            },
+            {
               name: 'logo2',
               title: 'Logo 2 (optional)',
               type: 'image',
               options: { hotspot: false },
+            },
+            {
+              name: 'logo2WhiteBg',
+              title: 'Logo 2: Weißer Hintergrund',
+              description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht.',
+              type: 'boolean',
+              initialValue: false,
             },
           ],
           preview: {

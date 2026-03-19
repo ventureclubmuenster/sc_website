@@ -26,7 +26,7 @@ export default async function AdvisoryBoardPage() {
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl font-extrabold text-center mb-6">
-          <span className="text-sc-orange">SC26</span>{' '}
+          <span className="gradient-text">SC26</span>{' '}
           <span className="text-white">Advisory Board</span>
         </h1>
 

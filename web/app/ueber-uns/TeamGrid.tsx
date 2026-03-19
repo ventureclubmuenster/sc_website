@@ -31,7 +31,7 @@ export default function TeamGrid({ members }: TeamGridProps) {
       <div className="max-w-6xl mx-auto">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Das <span className="text-sc-orange">Team</span>
+            Das <span className="gradient-text">Team</span>
           </h2>
         </FadeIn>
 

@@ -64,7 +64,7 @@ export default async function InvestorenPage() {
         <WhyInvestSection />
 
         <FormatSection
-          heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="text-sc-orange">FORMATEN</span><span className="text-white"> KENNEN</span></>}
+          heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="gradient-text">FORMATEN</span><span className="text-white"> KENNEN</span></>}
           items={data?.formatItems?.map((f) => ({
             title: f.title,
             description: f.description,

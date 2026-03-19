@@ -105,7 +105,7 @@ export default async function PodcastPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center tracking-tight mb-4">
             <span className="text-white">UNSERE </span>
-            <span className="text-sc-orange">EPISODEN</span>
+            <span className="gradient-text">EPISODEN</span>
           </h2>
           <p className="text-white/50 text-sm md:text-base text-center mb-14 max-w-2xl mx-auto">
             Schau dir die neuesten Folgen an und lerne die Köpfe hinter den Startups kennen.
@@ -134,7 +134,7 @@ export default async function PodcastPage() {
           <div className="w-full md:w-1/2">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">
               <span className="text-white">SEI DAS NÄCHSTE MAL </span>
-              <span className="text-sc-orange">DABEI</span>
+              <span className="gradient-text">DABEI</span>
             </h2>
             <p className="text-white/60 text-base md:text-lg mt-6 leading-relaxed">
               Verfolge unsere Podcasts live auf der Messe und zieh dir die besten Insights direkt von der Podcast Lounge. Tauch ein in die Stories und Visionen unserer Gäste.

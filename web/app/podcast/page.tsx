@@ -34,7 +34,7 @@ const defaultEpisodes: PodcastEpisode[] = [
   {
     guestName: 'Lisa Beispiel',
     title: 'Scheitern als Sprungbrett',
-    description: 'Warum ihr erstes Startup scheiterte – und warum das das Beste war, was passieren konnte.',
+    description: 'Warum ihr erstes Startup scheiterte und warum das das Beste war, was passieren konnte.',
     youtubeId: 'dQw4w9WgXcQ',
   },
 ]
@@ -42,7 +42,7 @@ const defaultEpisodes: PodcastEpisode[] = [
 export default async function PodcastPage() {
   const data = await getPageData()
 
-  const quote = data?.quote || 'Gründen ist kein Sprint, es ist ein Marathon mit Hindernissen – aber die Aussicht ist es wert.'
+  const quote = data?.quote || 'Gründen ist kein Sprint, es ist ein Marathon mit Hindernissen, aber die Aussicht ist es wert.'
   const quoteAuthor = data?.quoteAuthor || ''
   const episodes = data?.podcastEpisodes?.length ? data.podcastEpisodes : defaultEpisodes
 
@@ -61,7 +61,14 @@ export default async function PodcastPage() {
         headline="STARTUP VOICES"
         subtext="Spannende Gründungsgeschichten und Persönlichkeiten hautnah erleben."
         highlight="Live aus unserem Podcast-Studio auf der Messe."
-      />
+      >
+        <a
+          href="#episoden"
+          className="inline-block text-white/50 text-sm md:text-base font-medium border border-white/20 rounded-full px-6 py-2 hover:text-white hover:border-white/40 transition-all duration-300"
+        >
+          Zu den Episoden ↓
+        </a>
+      </HeroSection>
 
       {/* Featured Quote */}
       <section className="relative bg-black px-6 py-24 overflow-hidden">
@@ -94,7 +101,7 @@ export default async function PodcastPage() {
       </section>
 
       {/* Podcast Episodes */}
-      <section className="bg-black px-6 py-20">
+      <section id="episoden" className="bg-black px-6 py-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center tracking-tight mb-4">
             <span className="text-white">UNSERE </span>

@@ -207,7 +207,15 @@ export const unternehmenPageQuery = groq`
     bentoFoodDrinks,
     bentoExperience,
     bentoAfterwork,
-    bentoInnovationVillage
+    bentoInnovationVillage,
+    formatItems[] {
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image,
+      wide
+    }
   }
 `
 
@@ -220,6 +228,14 @@ export const startupsPageQuery = groq`
       logo,
       whiteLogo,
       whiteBackground
+    },
+    formatItems[] {
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image,
+      wide
     }
   }
 `
@@ -250,7 +266,15 @@ export const investorenPageQuery = groq`
     bentoLetztesJahr,
     bentoMuensterTop5,
     bentoVipArea,
-    bentoMeetGreet
+    bentoMeetGreet,
+    formatItems[] {
+      title,
+      description,
+      buttonText,
+      buttonLink,
+      image,
+      wide
+    }
   }
 `
 

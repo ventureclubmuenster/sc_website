@@ -7,6 +7,7 @@ import { StaggerContainer, StaggerItem } from './FadeIn'
 
 interface BentoItem {
   title: string
+  description?: string
   buttonText?: string
   buttonLink?: string
   imageUrl?: string
@@ -70,17 +71,30 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
               style={{ width: isHovered ? '100%' : '0%' }}
             />
 
-            {/* Title + Button */}
+            {/* Title + Description + Button */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
               <h3
                 className="text-white text-xl md:text-2xl font-extrabold uppercase tracking-wider text-center transition-all duration-500 ease-out"
                 style={{
                   textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)',
-                  transform: isHovered && item.buttonLink ? 'translateY(-12px)' : 'translateY(0)',
+                  transform: isHovered && (item.buttonLink || item.description) ? 'translateY(-12px)' : 'translateY(0)',
                 }}
               >
                 {item.title}
               </h3>
+
+              {item.description && (
+                <p
+                  className="text-white/70 text-xs md:text-sm text-center max-w-xs mt-2 transition-all duration-500 ease-out"
+                  style={{
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? 'translateY(0)' : 'translateY(8px)',
+                    transition: 'opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s',
+                  }}
+                >
+                  {item.description}
+                </p>
+              )}
 
               {/* Hover button */}
               {item.buttonLink && item.buttonText && (
@@ -90,7 +104,7 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
                   style={{
                     opacity: isHovered ? 1 : 0,
                     transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'opacity 0.4s ease, transform 0.4s ease, background-color 0.3s, border-color 0.3s',
+                    transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s, background-color 0.3s, border-color 0.3s',
                   }}
                 >
                   {item.buttonText} &rarr;

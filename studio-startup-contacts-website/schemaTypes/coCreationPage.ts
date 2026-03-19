@@ -2,7 +2,7 @@ import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'coCreationPage',
-  title: 'Seite: Co-Creation Corner',
+  title: 'Seite: Co-Creation',
   type: 'document',
   fields: [
     defineField({
@@ -14,7 +14,7 @@ export default defineType({
   ],
   preview: {
     prepare() {
-      return { title: 'Co-Creation Corner' }
+      return { title: 'Co-Creation' }
     },
   },
 })

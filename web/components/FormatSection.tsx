@@ -1,6 +1,15 @@
 import BentoGrid from './BentoGrid'
 
-const formatItems = [
+interface FormatItem {
+  title: string
+  description?: string
+  buttonText?: string
+  buttonLink?: string
+  imageUrl?: string
+  wide?: boolean
+}
+
+const defaultItems: FormatItem[] = [
   { title: 'CO-CREATION', buttonText: 'Erfahre mehr', buttonLink: '/co-creation' },
   { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
   { title: 'LIVE PODCAST', buttonText: 'Erfahre mehr', buttonLink: '/podcast' },
@@ -8,7 +17,14 @@ const formatItems = [
   { title: 'INNOVATION VILLAGE', buttonText: 'Erfahre mehr', buttonLink: '/innovation-village', wide: true },
 ]
 
-export default function FormatSection({ heading }: { heading?: React.ReactNode }) {
+interface FormatSectionProps {
+  heading?: React.ReactNode
+  items?: FormatItem[]
+}
+
+export default function FormatSection({ heading, items }: FormatSectionProps) {
+  const displayItems = items?.length ? items : defaultItems
+
   return (
     <section className="relative z-10 px-6 py-20">
       <div className="max-w-7xl mx-auto">
@@ -21,7 +37,7 @@ export default function FormatSection({ heading }: { heading?: React.ReactNode }
           )}
         </h2>
 
-        <BentoGrid items={formatItems} />
+        <BentoGrid items={displayItems} />
       </div>
     </section>
   )

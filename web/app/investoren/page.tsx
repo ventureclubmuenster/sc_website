@@ -2,7 +2,6 @@ import { client } from '@/lib/sanity/client'
 import { investorenPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
-import BentoGrid from '@/components/BentoGrid'
 import WhyInvestSection from './WhyInvestSection'
 import FormatSection from '@/components/FormatSection'
 
@@ -10,22 +9,19 @@ interface ImageField {
   asset: { _ref: string }
 }
 
-interface InvestorenPageData {
-  heroImage?: ImageField
-  bentoInvestorBreakfast?: ImageField
-  bentoLetztesJahr?: ImageField
-  bentoMuensterTop5?: ImageField
-  bentoVipArea?: ImageField
-  bentoMeetGreet?: ImageField
+interface SanityFormatItem {
+  title: string
+  description?: string
+  buttonText?: string
+  buttonLink?: string
+  image?: ImageField
+  wide?: boolean
 }
 
-const bentoTexte = [
-  { title: 'INVESTOR BREAKFAST', key: 'bentoInvestorBreakfast' as const },
-  { title: 'WER LETZTES JAHR DABEI WAR', key: 'bentoLetztesJahr' as const },
-  { title: 'MÜNSTER TOP 5 GRÜNDUNGSHOCHSCHULEN DE', key: 'bentoMuensterTop5' as const },
-  { title: 'VIP AREA', key: 'bentoVipArea' as const },
-  { title: 'MEET & GREET', key: 'bentoMeetGreet' as const },
-]
+interface InvestorenPageData {
+  heroImage?: ImageField
+  formatItems?: SanityFormatItem[]
+}
 
 async function getPageData(): Promise<InvestorenPageData | null> {
   return client.fetch(investorenPageQuery, {}, { cache: 'no-store' })
@@ -38,20 +34,12 @@ export default async function InvestorenPage() {
     ? urlFor(data.heroImage).width(1920).height(1080).url()
     : undefined
 
-  const bentoWithUrls = bentoTexte.map((b) => {
-    const img = data?.[b.key]
-    return {
-      title: b.title,
-      imageUrl: img ? urlFor(img).width(800).height(600).url() : undefined,
-    }
-  })
-
   return (
     <>
       <HeroSection
         imageUrl={heroImageUrl}
         headline="SMART MONEY TRIFFT INNOVATION"
-        subtext="Entdecken Sie die vielversprechendsten Startups der Region — bevor es alle anderen tun"
+        subtext="Entdecken Sie die vielversprechendsten Startups der Region, bevor es alle anderen tun"
         highlight="Exklusiver Zugang. Direkter Kontakt. Echte Deals."
       />
 
@@ -75,19 +63,17 @@ export default async function InvestorenPage() {
         {/* Why Invest Section */}
         <WhyInvestSection />
 
-        {/* Bento Grid */}
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-              <span className="text-white">MEHR ALS EINE </span>
-              <span className="text-sc-orange">MESSE</span>
-            </h2>
-
-            <BentoGrid items={bentoWithUrls} />
-          </div>
-        </section>
-
-        <FormatSection heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="text-sc-orange">FORMATEN</span><span className="text-white"> KENNEN</span></>} />
+        <FormatSection
+          heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="text-sc-orange">FORMATEN</span><span className="text-white"> KENNEN</span></>}
+          items={data?.formatItems?.map((f) => ({
+            title: f.title,
+            description: f.description,
+            buttonText: f.buttonText,
+            buttonLink: f.buttonLink,
+            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
+            wide: f.wide,
+          }))}
+        />
       </div>
     </>
   )

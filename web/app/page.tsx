@@ -21,7 +21,7 @@ export default async function Home() {
   ]
 
   const erwartungCards = [
-    { label: 'Stände & Co-Creation Corner', href: '/co-creation', image: data?.erwartungCoCreation },
+    { label: 'Stände & Co-Creation', href: '/co-creation', image: data?.erwartungCoCreation },
     { label: 'Workshops', href: '/workshops', image: data?.erwartungWorkshops },
     { label: 'Bühnenprogramm', href: '/main-stage', image: data?.erwartungBuehne },
     { label: 'Side Events', href: '/innovation-village', image: data?.erwartungSideEvents },
@@ -132,23 +132,40 @@ export default async function Home() {
         )}
         <div className="relative z-10 max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-bold">
-            <span className="line-through text-white/40">Net</span>
-            <span className="text-sc-orange">working</span> together
+            <span className="relative inline-block text-white/40">
+              Net
+              <svg
+                className="absolute left-[-6%] top-[33%] w-[112%] h-[45%] pointer-events-none"
+                viewBox="0 0 200 40"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 24 C8 22, 14 20, 30 17 C60 12, 120 10, 160 12 C180 13, 192 14, 197 16
+                     C194 18, 186 19, 170 19 C130 20, 60 22, 25 26 C14 28, 8 28, 4 24Z"
+                  fill="#FF5E00"
+                  fillOpacity="0.75"
+                />
+              </svg>
+            </span>
+            <span className="text-sc-orange">working</span>
+            <span className="text-white"> together</span>
           </h2>
 
           <div className="mt-10 space-y-6 text-white/70 text-lg leading-relaxed">
             <p>
-              Die Zukunft braucht es neue Lösungen. Doch für welche Probleme? Und mit welchen Tools?
+              Für die Zukunft braucht es neue Lösungen. Doch für welche Probleme? Und mit welchen Tools?
             </p>
             <p>
               Auf der Startup Contacts fördern wir den Austausch und die Zusammenarbeit zur Entwicklung
-              gemeinsamer Lösungen und Visionen. Es geht darum eine nachhaltige Wertschöpfung für die
+              gemeinsamer Lösungen und Visionen. Es geht darum, eine nachhaltige Wertschöpfung für die
               Transformation Deutschlands zu schaffen. Durch eine Verbindung aus Erfahrung und neuen Ideen.
               Dafür bringen wir die wichtigen Faktoren der Transformation an einen Ort und fördern die aktive
               Beteiligung in unseren Formaten.
             </p>
             <p>
-              Unser Ziel ist es einen Beitrag dafür zu leisten, dass auf der Startup Contacts neue Lösungen
+              Unser Ziel ist es, einen Beitrag dafür zu leisten, dass auf der Startup Contacts neue Lösungen
               entstehen, welche dem Mittelstand mit Hilfe von Startups und Talenten bei der Transformation
               helfen.
             </p>

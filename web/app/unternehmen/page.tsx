@@ -2,8 +2,8 @@ import { client } from '@/lib/sanity/client'
 import { unternehmenPageQuery, exhibitors2025Query, fokusfelderQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
+import KombinationSection from './KombinationSection'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
-import BentoGrid from '@/components/BentoGrid'
 import FokusfeldGrid from './FokusfeldGrid'
 import FormatSection from '@/components/FormatSection'
 
@@ -28,32 +28,27 @@ interface FokusfelderData {
   fokusLifestyle?: ImageField
 }
 
+interface SanityFormatItem {
+  title: string
+  description?: string
+  buttonText?: string
+  buttonLink?: string
+  image?: ImageField
+  wide?: boolean
+}
+
 interface UnternehmenPageData {
   heroImage?: ImageField
-  bentoStartupSzene?: ImageField
-  bentoVipAccess?: ImageField
-  bentoFoodDrinks?: ImageField
-  bentoExperience?: ImageField
-  bentoAfterwork?: ImageField
-  bentoInnovationVillage?: ImageField
+  formatItems?: SanityFormatItem[]
 }
 
 const fokusfelderTexte = [
-  { title: 'PRODUKTION', description: 'Treffen Sie Startups mit frischen Lösungen für Fertigung, Automatisierung und Industrie 4.0 – und Talente, die Ihre Produktion voranbringen.', key: 'fokusProduktion' as const },
+  { title: 'PRODUKTION', description: 'Treffen Sie Startups mit frischen Lösungen für Fertigung, Automatisierung und Industrie 4.0 und Talente, die Ihre Produktion voranbringen.', key: 'fokusProduktion' as const },
   { title: 'LOGISTIK & EINKAUF', description: 'Vernetzen Sie sich mit innovativen Anbietern für Supply Chain, Beschaffung und smarte Logistikprozesse.', key: 'fokusLogistik' as const },
-  { title: 'ENERGIE & NACHHALTIGKEIT', description: 'Entdecken Sie Startups, die an der Energiewende arbeiten – und gewinnen Sie Talente für Ihre Nachhaltigkeitsstrategie.', key: 'fokusEnergie' as const },
+  { title: 'ENERGIE & NACHHALTIGKEIT', description: 'Entdecken Sie Startups, die an der Energiewende arbeiten und gewinnen Sie Talente für Ihre Nachhaltigkeitsstrategie.', key: 'fokusEnergie' as const },
   { title: 'BAU- & HANDWERK', description: 'Von ConTech bis digitales Handwerk: Finden Sie Partner und Nachwuchs für die Zukunft der Bauwirtschaft.', key: 'fokusBau' as const },
-  { title: 'BETRIEBS INFRASTRUKTUR', description: 'IT, Facility Management, interne Prozesse – lernen Sie Startups kennen, die Ihren Betrieb effizienter machen.', key: 'fokusInfrastruktur' as const },
+  { title: 'BETRIEBS INFRASTRUKTUR', description: 'IT, Facility Management, interne Prozesse: Lernen Sie Startups kennen, die Ihren Betrieb effizienter machen.', key: 'fokusInfrastruktur' as const },
   { title: 'LIFESTYLE', description: 'Food, Fashion, Sport, Wellness: Tauschen Sie sich mit kreativen Gründern und jungen Talenten der Lifestyle-Branche aus.', key: 'fokusLifestyle' as const },
-]
-
-const bentoTexte = [
-  { title: 'ZUGANG ZUR STARTUP SZENE', key: 'bentoStartupSzene' as const },
-  { title: 'VIP-ACCESS', key: 'bentoVipAccess' as const },
-  { title: 'FOOD & DRINKS', key: 'bentoFoodDrinks' as const },
-  { title: 'EXPERIENCE', key: 'bentoExperience' as const },
-  { title: 'AFTERWORK', key: 'bentoAfterwork' as const },
-  { title: 'INNOVATION VILLAGE', key: 'bentoInnovationVillage' as const },
 ]
 
 async function getPageData(): Promise<UnternehmenPageData | null> {
@@ -84,19 +79,11 @@ export default async function UnternehmenPage() {
     }
   })
 
-  const bentoWithUrls = bentoTexte.map((b) => {
-    const img = data?.[b.key]
-    return {
-      title: b.title,
-      imageUrl: img ? urlFor(img).width(800).height(600).url() : undefined,
-    }
-  })
-
   return (
     <>
       <HeroSection
         imageUrl={heroImageUrl}
-        headline="IHR UNTERNEHMEN TREIBT DIE BRANCHE VORAN?"
+        headline="IHR UNTERNEHMEN TREIBT DIE BRANCHE VORAN"
         subtext="Kommen Sie vorbei und bringen Sie Ihr Wissen ein"
         highlight="Co-Creation als Innovationstreiber"
       />
@@ -115,14 +102,11 @@ export default async function UnternehmenPage() {
           ))}
         </div>
 
-        {/* Intro Section */}
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed">
-              Fördern Sie die Branche durch Startups und lassen Sie sich inspirieren. Eine einmalige Kombination aus Innovation, Networking und Co-Creation erwartet Sie.
-            </p>
-          </div>
-        </section>
+        {/* Spacer between hero and Kombination */}
+        <div className="h-20 md:h-32" />
+
+        {/* Einmalige Kombination */}
+        <KombinationSection />
 
         {/* Fokusfelder */}
         <section className="relative z-10 px-6 py-20">
@@ -166,19 +150,17 @@ export default async function UnternehmenPage() {
           </div>
         </section>
 
-        {/* Benefits auf einen Blick */}
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
-              <span className="text-white">BENEFITS AUF EINEN </span>
-              <span className="text-sc-orange">BLICK</span>
-            </h2>
-
-            <BentoGrid items={bentoWithUrls} />
-          </div>
-        </section>
-
-        <FormatSection heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>} />
+        <FormatSection
+          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>}
+          items={data?.formatItems?.map((f) => ({
+            title: f.title,
+            description: f.description,
+            buttonText: f.buttonText,
+            buttonLink: f.buttonLink,
+            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
+            wide: f.wide,
+          }))}
+        />
       </div>
     </>
   )

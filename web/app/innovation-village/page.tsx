@@ -37,12 +37,12 @@ async function getExhibitors(): Promise<Exhibitor[]> {
 export default async function InnovationVillagePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
-  const subtext = data?.heroSubtext || 'Wer war zuletzt dabei? Schau dir unsere Aussteller an – oder werde selbst Teil des Innovation Village!'
+  const subtext = data?.heroSubtext || 'Wer war zuletzt dabei? Schau dir unsere Aussteller an, oder werde selbst Teil des Innovation Village!'
 
   const ausstellerTab = {
     image: data?.ausstellerImage ? urlFor(data.ausstellerImage).width(800).height(1000).url() : undefined,
-    text1: data?.ausstellerText1 || 'Im Innovation Village triffst du auf genau die Menschen, die deine Projekte voranbringen können.\nVon neugierigen Studierenden bis hin zu Young Professionals mit ersten Erfahrungen – auf unsere Messe stehen besonders junge Talente im Vordergrund. Zeige woran du arbeitest und komme direkt mit potenziellen Kunden, Bewerbern oder Partnern ins Gespräch.',
-    text2: data?.ausstellerText2 || 'Neben Sichtbarkeit für dein Produkt oder deine Marke bietet das Village vor allem eins: Echten Austausch auf Augenhöhe. Wer dabei sein möchte, sichert sich nicht nur einen Platz mitten im Geschehen sondern auch Zugang zu den Talenten von morgen.',
+    text1: data?.ausstellerText1 || 'Im Innovation Village triffst du auf genau die Menschen, die deine Projekte voranbringen können.\nVon neugierigen Studierenden bis hin zu Young Professionals mit ersten Erfahrungen. Auf unserer Messe stehen besonders junge Talente im Vordergrund. Zeige woran du arbeitest und komme direkt mit potenziellen Kunden, Bewerbern oder Partnern ins Gespräch.',
+    text2: data?.ausstellerText2 || 'Neben Sichtbarkeit für dein Produkt oder deine Marke bietet das Village vor allem eins: Echten Austausch auf Augenhöhe. Wer dabei sein möchte, sichert sich nicht nur einen Platz mitten im Geschehen, sondern auch Zugang zu den Talenten von morgen.',
     cta: data?.ausstellerCta || 'Du möchtest als Aussteller dabei sein? Wir freuen uns über deine Nachricht!',
     heading: 'FÜR',
     headingHighlight: 'AUSSTELLER',
@@ -52,8 +52,8 @@ export default async function InnovationVillagePage() {
 
   const besucherTab = {
     image: data?.besucherImage ? urlFor(data.besucherImage).width(800).height(1000).url() : undefined,
-    text1: data?.besucherText1 || 'Im Innovation Village warten über 30 Aussteller darauf, dich an ihren Ständen zu begrüßen. Ob du einfach neugierig bist, spannende Gespräche suchst oder auf Jobsuche bist. Hier bist du genau richtig.\nIn persönlicher Atmosphäre lernst du innovative Lösungen, neue Ansätze und Menschen kennen, die mit Leidenschaft dabei sin. Lass dich inspirieren – direkt, nahbar und auf Augenhöhe.',
-    text2: data?.besucherText2 || 'Neben kleinen Goodies erwarten dich inspirierenden Gespräche und viele spannende Leute. Ob Startup oder etabliertes, innovatives Unternehmen: Das Innovation Village ist der perfekte Ort, um dich auszutauschen und Kontakte zu knüpfen. Vielleicht sogar für dein nächstes Projekt.',
+    text1: data?.besucherText1 || 'Im Innovation Village warten über 30 Aussteller darauf, dich an ihren Ständen zu begrüßen. Ob du einfach neugierig bist, spannende Gespräche suchst oder auf Jobsuche bist. Hier bist du genau richtig.\nIn persönlicher Atmosphäre lernst du innovative Lösungen, neue Ansätze und Menschen kennen, die mit Leidenschaft dabei sind. Lass dich inspirieren. Direkt, nahbar und auf Augenhöhe.',
+    text2: data?.besucherText2 || 'Neben kleinen Goodies erwarten dich inspirierende Gespräche und viele spannende Leute. Ob Startup oder etabliertes, innovatives Unternehmen: Das Innovation Village ist der perfekte Ort, um dich auszutauschen und Kontakte zu knüpfen. Vielleicht sogar für dein nächstes Projekt.',
     cta: data?.besucherCta || 'Klingt spannend? Melde dich jetzt für unseren Newsletter an, um nichts mehr zu verpassen!',
     heading: 'FÜR',
     headingHighlight: 'BESUCHER',

@@ -92,6 +92,17 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        {/* "Und viele mehr" indicator */}
+        <FadeIn direction="up" duration={0.7} delay={0.6}>
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <span className="h-px w-16 bg-white/10" />
+            <p className="text-white/40 text-sm uppercase tracking-widest font-medium">
+              +&nbsp;viele weitere Workshops
+            </p>
+            <span className="h-px w-16 bg-white/10" />
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

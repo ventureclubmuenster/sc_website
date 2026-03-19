@@ -29,7 +29,7 @@ export default function CoCreationComingSoon() {
         {/* Glass card */}
         <div className="relative rounded-2xl border border-white/[0.08] px-8 py-16 sm:px-12 sm:py-20 flex flex-col items-center text-center gap-5 bg-[#111111]">
           <p className="text-xs tracking-[0.35em] uppercase text-white/30 font-light">
-            Co-Creation Corner
+            Co-Creation
           </p>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-none">

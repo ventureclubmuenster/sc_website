@@ -13,12 +13,11 @@ interface Partner {
   url?: string
 }
 
-const categoryOrder = ['main', 'supporter', 'attendance', 'food-beverage', 'network'] as const
+const categoryOrder = ['main', 'supporter', 'food-beverage', 'network'] as const
 
 const categoryLabels: Record<string, { highlight: string; rest: string }> = {
   main: { highlight: 'MAIN', rest: 'PARTNER' },
   supporter: { highlight: 'SUPPORTER', rest: '' },
-  attendance: { highlight: 'ATTENDANCE', rest: 'PARTNER' },
   'food-beverage': { highlight: 'FOOD & BEVERAGE', rest: 'PARTNER' },
   network: { highlight: 'NETWORK', rest: 'PARTNER' },
 }
@@ -33,7 +32,11 @@ export default async function PartnerPage() {
   const grouped = categoryOrder
     .map((cat) => ({
       category: cat,
-      partners: partners.filter((p) => p.category === cat),
+      partners: partners.filter((p) =>
+        cat === 'supporter'
+          ? p.category === 'supporter' || p.category === 'attendance'
+          : p.category === cat
+      ),
     }))
     .filter((group) => group.partners.length > 0)
 
@@ -47,7 +50,7 @@ export default async function PartnerPage() {
             <span className="text-sc-orange">PARTNER</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base mt-6 max-w-3xl mx-auto">
-            Wir danken allen unseren Partner, die die Startup Contacts möglich machen. Hier findest du eine Übersicht aller unserer Partner, die zuletzt mit dabei waren. Klicke auf eines der Logos um mehr zu erfahren!
+            Wir danken allen unseren Partnern, die die Startup Contacts möglich machen. Hier findest du eine Übersicht aller unserer Partner, die zuletzt mit dabei waren. Klicke auf eines der Logos um mehr zu erfahren!
           </p>
         </div>
       </section>

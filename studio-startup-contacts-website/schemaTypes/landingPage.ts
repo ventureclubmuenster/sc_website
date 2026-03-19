@@ -48,7 +48,7 @@ export default defineType({
     // ── Was du erwarten kannst ──
     defineField({
       name: 'erwartungCoCreation',
-      title: 'Stände & Co-Creation Corner — Bild',
+      title: 'Stände & Co-Creation — Bild',
       type: 'image',
       options: { hotspot: true },
       fieldset: 'wasDuErwarten',

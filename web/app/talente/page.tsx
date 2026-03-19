@@ -2,6 +2,7 @@ import { client } from '@/lib/sanity/client'
 import { studierendePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
+import KombinationSection from './KombinationSection'
 import FeatureCards from './FeatureCards'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
 import ProgramCards from './ProgramCards'
@@ -75,7 +76,7 @@ const defaultProgramCards: ProgramCard[] = [
 ]
 
 const defaultCards: FeatureCard[] = [
-  { title: 'CO-CREATION', subheader: 'Echte Probleme. Deine Lösungen.', hoverText: 'Arbeite in der Co-Creation Corner mit regionalen Startups an den Herausforderungen von morgen.' },
+  { title: 'CO-CREATION', subheader: 'Echte Probleme. Deine Lösungen.', hoverText: 'Arbeite in der Co-Creation mit regionalen Startups an den Herausforderungen von morgen.' },
   { title: 'WORKSHOPS', subheader: 'Skill-up statt Frontalbeschallung.', hoverText: 'Hands-on Workshops, die dich wirklich weiterbringen. Von Tech-Trends bis Founder-Skills.' },
   { title: 'MISSION', subheader: 'Eintauchen in die Szene.', hoverText: 'Finde deinen Job, dein Praktikum oder dein Team. Networking ohne steifen Dresscode.' },
   { title: 'INSPIRATION', subheader: 'Insights aus erster Hand.', hoverText: 'Mainstage-Talks und Live-Podcasts mit den Machern aus der Region.' },
@@ -140,6 +141,12 @@ export default async function TalentePage() {
             </span>
           ))}
         </div>
+
+        {/* Spacer between hero and Kombination */}
+        <div className="h-20 md:h-32" />
+
+        {/* Einmalige Kombination */}
+        <KombinationSection />
 
         {/* Wer zuletzt dabei war */}
         <section className="relative z-10 px-6 py-20">

@@ -11,13 +11,15 @@ interface Episode {
 
 function extractYouTubeId(input: string): string {
   if (!input) return ''
+  // Strip query parameters (e.g. &t=260s) that may be appended to an ID
+  const cleaned = input.split(/[?&]/)[0]
   // If it's already just an ID (no slashes or dots), return as-is
-  if (/^[\w-]{11}$/.test(input)) return input
+  if (/^[\w-]{11}$/.test(cleaned)) return cleaned
   // Try to extract from various YouTube URL formats
   const match = input.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([\w-]{11})/
   )
-  return match?.[1] || input
+  return match?.[1] || cleaned
 }
 
 function YouTubeEmbed({ youtubeId: rawId, title }: { youtubeId: string; title: string }) {

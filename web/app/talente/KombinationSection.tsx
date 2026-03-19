@@ -3,54 +3,51 @@
 import { useState } from 'react'
 import FadeIn, { StaggerContainer, StaggerItem } from '@/components/FadeIn'
 
-const cards = [
+const kombiCards = [
   {
-    title: 'TALENTE',
-    subtitle: 'Der Nachwuchs von morgen',
+    title: 'STARTUPS',
+    subtitle: 'Die Arbeitgeber der Zukunft',
     description:
-      'Münster als einer der stärksten Studierendenstandorte Deutschlands liefert ambitionierte Köpfe, die frische Perspektiven in junge Unternehmen einbringen.',
-    icon: '🎓',
+      'Lerne Gründerteams kennen, die mit den Lösungen von morgen ganze Branchen verändern. Egal ob du ein Praktikum, eine Werkstudentenstelle oder eine Festanstellung suchst, hier wirst du fündig.',
+    icon: '🚀',
   },
   {
     title: 'UNTERNEHMEN',
-    subtitle: 'Etablierte Player teilen ihre Probleme',
+    subtitle: 'Innovationstreiber der Branche',
     description:
-      'Corporates kommen mit konkreten Herausforderungen. Erkennen Sie frühzeitig, welche Branchen Innovationsbedarf haben und wo Investitionen Wirkung zeigen.',
+      'Triff etablierte Unternehmen, die ihre Branchen aktiv vorantreiben und auf Innovation setzen. Entdecke spannende Karrierewege in den verschiedensten Branchen und Unternehmensgrößen.',
     icon: '🏢',
-  },
-  {
-    title: 'STARTUPS',
-    subtitle: 'Moderne Lösungen für reale Probleme',
-    description:
-      'Treffen Sie Gründerteams, die mit innovativen Ansätzen genau die Lücken schließen, die der Markt braucht. Erleben Sie, warum Münster eine von Deutschlands Top-5-Gründungshochschulen ist.',
-    icon: '🚀',
   },
 ]
 
-export default function WhyInvestSection() {
+export default function KombinationSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
     <section className="relative z-10 px-6 py-20">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
-            <span className="text-white">WARUM </span>
-            <span className="text-sc-orange">STARTUP CONTACTS?</span>
+            <span className="text-white">EINE EINMALIGE </span>
+            <span className="text-sc-orange">KOMBINATION</span>
           </h2>
           <p className="text-white/60 text-center text-base md:text-lg max-w-2xl mx-auto mb-14">
-            Ein Tag. Ein Ort. Maximaler Zugang zu den innovativsten Gründern der Region.
+            Startup Contacts bringt zusammen, was zusammen gehört, an einem einzigen Tag, unter einem Dach.
           </p>
         </FadeIn>
 
-        <StaggerContainer stagger={0.12} className="grid md:grid-cols-3 gap-6">
-          {cards.map((card, i) => {
+        <StaggerContainer stagger={0.15} className="grid md:grid-cols-2 gap-6">
+          {kombiCards.map((card, i) => {
             const isActive = activeIndex === i
 
             return (
-              <StaggerItem key={i} direction="up" distance={40}>
+              <StaggerItem
+                key={i}
+                direction={i === 0 ? 'left' : 'right'}
+                distance={50}
+              >
                 <div
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer"
                   onMouseEnter={() => setActiveIndex(i)}
                   onMouseLeave={() => setActiveIndex(null)}
                 >
@@ -80,10 +77,10 @@ export default function WhyInvestSection() {
         <FadeIn direction="up" delay={0.1}>
           <div className="mt-16 md:mt-20 text-center">
             <p className="text-white text-2xl md:text-4xl font-extrabold tracking-tight">
-              Talente <span className="text-sc-orange">×</span> Unternehmen <span className="text-sc-orange">×</span> Startups
+              Startups <span className="text-sc-orange">×</span> Unternehmen <span className="text-sc-orange">×</span> Dein Talent
             </p>
             <p className="text-white/70 text-lg md:text-2xl font-semibold mt-4">
-              = wo Probleme auf Lösungen treffen
+              = dein Sprungbrett in die Karriere von morgen
             </p>
           </div>
         </FadeIn>

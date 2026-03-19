@@ -21,8 +21,8 @@ const fallbackEntries: TimelineEntry[] = [
     year: '2023',
     imagePosition: 'left',
     textBlocks: [
-      '21. Juni 2023 – das Gründungsdatum der Startup Contacts. Schon von Beginn war klar: Die Startup Contacts ist weitaus mehr als nur eine Messe. Sie ist ein Ort, an dem Gleichgesinnte zusammenkommen – vereint durch die Leidenschaft für Startups und Innovation.',
-      'Die Startup Contacts ist der richtige Ort für alle, die eine Vision haben – für diejenigen, die mutig genug sind, den Status quo herauszufordern und neu zu denken.',
+      '21. Juni 2023: das Gründungsdatum der Startup Contacts. Von Beginn an war klar: Die Startup Contacts ist weitaus mehr als nur eine Messe. Sie ist ein Ort, an dem Gleichgesinnte zusammenkommen, vereint durch die Leidenschaft für Startups und Innovation.',
+      'Die Startup Contacts ist der richtige Ort für alle, die eine Vision haben. Für diejenigen, die mutig genug sind, den Status quo herauszufordern und neu zu denken.',
       'Was als studentische Initiative begann, entwickelte sich rasant zur größten von Studierenden organisierten Startup- und Innovationsmesse in NRW.',
     ],
   },
@@ -30,9 +30,9 @@ const fallbackEntries: TimelineEntry[] = [
     year: '2024',
     imagePosition: 'right',
     textBlocks: [
-      'Nach dem erfolgreichen Debüt im vorigen Jahr ging die Startup Contacts 2024 in die zweite Runde – und übertraf alle unsere Erwartungen.',
+      'Nach dem erfolgreichen Debüt im vorigen Jahr ging die Startup Contacts 2024 in die zweite Runde und übertraf alle unsere Erwartungen.',
       'Am 16. Juni 2024 verwandelte sich das Gelände vor dem Schloss in Münster erneut zum Treffpunkt der Gründerszene.',
-      'Über 600 Besucher und 50 Startups durften wir 2024 auf unserer Messe begrüßen. Egal ob Studierende, Gründer:in oder einfach nur interessiert an der Startup-Welt – für jeden war etwas dabei.',
+      'Über 600 Besucher und 50 Startups durften wir 2024 auf unserer Messe begrüßen. Egal ob Studierende, Gründer:in oder einfach nur interessiert an der Startup-Welt, für jeden war etwas dabei.',
       'Neben den zahlreichen Startup-Ständen boten unsere Speaker inspirierende Talks, Workshops und Panel-Diskussionen an, um unseren Besucher:innen spannende Einblicke in die aktuellen Trends der Startup-Szene zu geben.',
       'Nach einem erfolgreichen und inspirierenden Tag ist die Startup Contacts schließlich die größte von Studierenden organisierte Startup- und Innovationsmesse in NRW geworden.',
     ],
@@ -41,9 +41,9 @@ const fallbackEntries: TimelineEntry[] = [
     year: '2025',
     imagePosition: 'left',
     textBlocks: [
-      'In diesem Jahr findet die Startup Contacts am 23.06.2025 in der Halle Münsterland statt. Auch diesmal öffnen wir wieder die Türen für alle, die sich für die Innovation, Startups uns Entrepreneurship begeistern.',
+      'In diesem Jahr findet die Startup Contacts am 23.06.2025 in der Halle Münsterland statt. Auch diesmal öffnen wir wieder die Türen für alle, die sich für die Innovation, Startups und Entrepreneurship begeistern.',
       'Als studentische Initiative setzen wir dieses Jahr erneut besonders Studierende in den Mittelpunkt der Messe. Wir sind davon überzeugt, dass Innovation genau dort entsteht, wo die Kreativität junger Köpfe auf die Erfahrung von Leuten aus der Praxis trifft.',
-      'Dabei ist es ganz egal, ob man schon erste Erfahrungen gesammelt hat oder einfach neugierig ist – wir wollen die Startup-Welt für alle zugänglich machen.',
+      'Dabei ist es ganz egal, ob man schon erste Erfahrungen gesammelt hat oder einfach neugierig ist. Wir wollen die Startup-Welt für alle zugänglich machen.',
     ],
   },
 ]

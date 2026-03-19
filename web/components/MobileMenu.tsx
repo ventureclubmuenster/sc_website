@@ -17,7 +17,7 @@ const navGroups = [
   {
     label: 'Programm',
     items: [
-      { label: 'Co-Creation Corner', href: '/co-creation' },
+      { label: 'Co-Creation', href: '/co-creation' },
       { label: 'Workshops', href: '/workshops' },
       { label: 'Main Stage', href: '/main-stage' },
       { label: 'Podcast', href: '/podcast' },
@@ -29,7 +29,7 @@ const navGroups = [
     items: [
       { label: 'VCM', href: '/ueber-uns' },
       { label: 'Advisory Board', href: '/advisory-board' },
-      { label: 'Jobwall', href: '/jobwall' },
+      { label: 'Jobwall', href: 'https://ventureclub-muenster.de/jobwall/' },
     ],
   },
 ]

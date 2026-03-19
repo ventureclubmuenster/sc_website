@@ -8,9 +8,10 @@ interface HeroSectionProps {
   headline: string
   subtext?: string
   highlight?: string
+  children?: React.ReactNode
 }
 
-export default function HeroSection({ imageUrl, headline, subtext, highlight }: HeroSectionProps) {
+export default function HeroSection({ imageUrl, headline, subtext, highlight, children }: HeroSectionProps) {
   // Split headline: last word in orange, rest in white
   const words = headline.split(' ')
   const mainText = words.slice(0, -1).join(' ')
@@ -56,6 +57,14 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight }: 
             <p className="text-sc-orange text-base md:text-xl font-bold mt-1">
               {highlight}
             </p>
+          </FadeIn>
+        )}
+
+        {children && (
+          <FadeIn direction="up" delay={0.5} duration={0.7} distance={20}>
+            <div className="mt-8">
+              {children}
+            </div>
           </FadeIn>
         )}
       </div>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import NewsletterForm from './NewsletterForm'
 
 export const metadata: Metadata = {
-  title: 'Newsletter – Startup Contacts 2026',
+  title: 'Newsletter | Startup Contacts 2026',
   description:
     'Erfahre als Erstes vom Vorverkaufsstart und sichere dir dein Ticket für die Startup Contacts 2026.',
 }

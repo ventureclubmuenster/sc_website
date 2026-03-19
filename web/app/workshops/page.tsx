@@ -7,7 +7,7 @@ import WorkshopPreview2026 from './WorkshopPreview2026'
 
 const fallbackWorkshops = [
   {
-    title: 'Prompt & LLM – Startup-Superpower leicht gemacht',
+    title: 'Prompt & LLM: Startup-Superpower leicht gemacht',
     speaker: 'Michael Ramich (Google AI Trainer)',
     description: 'Praktische Anwendung von Sprachmodellen im unternehmerischen Alltag.',
   },
@@ -22,7 +22,7 @@ const fallbackWorkshops = [
     description: 'Systematischer Aufbau eines belastbaren beruflichen Netzwerks.',
   },
   {
-    title: 'Fail Forward – Resilienz als Erfolgsfaktor',
+    title: 'Fail Forward: Resilienz als Erfolgsfaktor',
     speaker: 'Hannah Dombrowa & Anna Dahlhoff',
     description: 'Methoden zum produktiven Umgang mit Rückschlägen im Studium und Beruf.',
   },
@@ -47,8 +47,8 @@ export default async function WorkshopsPage() {
     <>
       <HeroSection
         imageUrl={heroImageUrl}
-        headline="VOM ZUSCHAUER ZUM GESTALTER"
-        subtext="Lerne direkt von Experten aus Münster und ganz Deutschland. In unseren Sessions arbeitest du an fundierten Lösungen für die Herausforderungen von morgen – von AI-Workflows bis zum strategischen Networking."
+        headline="HIER LERNST DU SKILLS FÜR MORGEN."
+        subtext="Lerne direkt von Experten aus ganz Deutschland, in Themen wie KI, Karriere, Management und vieles mehr."
       />
 
       <WorkshopHighlights workshops={workshops} />

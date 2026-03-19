@@ -19,9 +19,19 @@ interface Exhibitor {
   whiteBackground?: boolean
 }
 
+interface SanityFormatItem {
+  title: string
+  description?: string
+  buttonText?: string
+  buttonLink?: string
+  image?: ImageField
+  wide?: boolean
+}
+
 interface StartupsPageData {
   heroImage?: ImageField
   featuredExhibitors?: Exhibitor[]
+  formatItems?: SanityFormatItem[]
 }
 
 interface FokusfelderData {
@@ -143,7 +153,17 @@ export default async function StartupsPage() {
           </div>
         </section>
 
-        <FormatSection heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>} />
+        <FormatSection
+          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="text-sc-orange">FORMATE</span><span className="text-white"> EIN</span></>}
+          items={data?.formatItems?.map((f) => ({
+            title: f.title,
+            description: f.description,
+            buttonText: f.buttonText,
+            buttonLink: f.buttonLink,
+            imageUrl: f.image ? urlFor(f.image).width(800).height(600).url() : undefined,
+            wide: f.wide,
+          }))}
+        />
       </div>
     </>
   )

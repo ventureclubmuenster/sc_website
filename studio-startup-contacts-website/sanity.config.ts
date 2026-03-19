@@ -23,7 +23,7 @@ export default defineConfig({
             orderableDocumentListDeskItem({type: 'partner2026', title: 'Partner & Sponsoren 2026', S, context}),
             orderableDocumentListDeskItem({type: 'exhibitor2025', title: 'Aussteller 2025', S, context}),
             orderableDocumentListDeskItem({type: 'exhibitor2026', title: 'Aussteller 2026', S, context}),
-            orderableDocumentListDeskItem({type: 'team', title: 'Vorstand & Team', S, context, createIntent: true}),
+            orderableDocumentListDeskItem({type: 'team', title: 'Vorstand & Team', S, context}),
             orderableDocumentListDeskItem({type: 'program', title: 'Programm & Events', S, context}),
             // Singleton pages
             S.listItem()

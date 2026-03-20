@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Speaker',
+  description:
+    'Unsere Speaker auf der Startup Contacts Münster: Gründer, Investoren und Innovatoren die Zukunft gestalten. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/speaker' },
+  openGraph: {
+    title: 'Speaker | Startup Contacts',
+    description: 'Gründer, Investoren und Innovatoren als Speaker auf der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/speaker',
+  },
+}
+
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/image'

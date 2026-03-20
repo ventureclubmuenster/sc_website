@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Workshops',
+  description:
+    'Interaktive Workshops auf der Startup Contacts Münster: Lerne von Experten und arbeite an echten Lösungen. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/workshops' },
+  openGraph: {
+    title: 'Workshops | Startup Contacts',
+    description: 'Interaktive Workshops mit Experten aus Startups, Mittelstand und Wissenschaft.',
+    url: 'https://www.startup-contacts.de/workshops',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { workshopsPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

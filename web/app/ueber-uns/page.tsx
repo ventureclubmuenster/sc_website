@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Über uns',
+  description:
+    'Über Startup Contacts & Venture Club Münster e.V.: Unser Team, unsere Mission und unsere Vision für die Zukunft der Zusammenarbeit.',
+  alternates: { canonical: 'https://www.startup-contacts.de/ueber-uns' },
+  openGraph: {
+    title: 'Über uns | Startup Contacts',
+    description: 'Das Team hinter der Startup Contacts und dem Venture Club Münster e.V.',
+    url: 'https://www.startup-contacts.de/ueber-uns',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { ueberUnsPageQuery, teamQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

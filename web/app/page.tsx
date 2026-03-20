@@ -1,4 +1,36 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://www.startup-contacts.de' },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'Startup Contacts 2026',
+  description:
+    'Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand. Networking, Workshops, Main Stage und Innovation Village.',
+  startDate: '2026-06-15',
+  endDate: '2026-06-15',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Münster',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Münster',
+      addressCountry: 'DE',
+    },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Venture Club Münster e.V.',
+    url: 'https://www.startup-contacts.de',
+  },
+  url: 'https://www.startup-contacts.de',
+}
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { landingPageQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
@@ -33,6 +65,10 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── Hero Section ── */}
       <section className="relative min-h-screen bg-black overflow-hidden flex items-end -mt-24">
         {/* YouTube Aftermovie Background */}
@@ -124,6 +160,7 @@ export default async function Home() {
             src={urlFor(data.networkingBg).width(1920).height(1080).url()}
             alt="Networking Together"
             fill
+            sizes="100vw"
             className="object-cover opacity-50"
           />
         )}
@@ -219,6 +256,7 @@ export default async function Home() {
                     src={urlFor(item.image).width(500).height(667).url()}
                     alt={item.label}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 )}

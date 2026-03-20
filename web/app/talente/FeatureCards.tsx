@@ -22,6 +22,7 @@ export default function FeatureCards({ cards }: { cards: CardData[] }) {
               src={card.imageUrl}
               alt={card.title}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-all duration-500 group-hover:grayscale"
             />
           ) : (

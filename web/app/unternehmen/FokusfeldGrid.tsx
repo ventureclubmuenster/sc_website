@@ -34,6 +34,7 @@ export default function FokusfeldGrid({ fokusfelder }: { fokusfelder: Fokusfeld[
                   src={feld.imageUrl}
                   alt={feld.title}
                   fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                 />
               ) : (

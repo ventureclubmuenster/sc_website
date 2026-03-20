@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Main Stage',
+  description:
+    'Die Main Stage der Startup Contacts Münster: Inspirierende Keynotes und Talks von führenden Köpfen der Startup- und Innovationsszene.',
+  alternates: { canonical: 'https://www.startup-contacts.de/main-stage' },
+  openGraph: {
+    title: 'Main Stage | Startup Contacts',
+    description: 'Inspirierende Keynotes und Talks auf der Main Stage der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/main-stage',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { mainStagePageQuery, programQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

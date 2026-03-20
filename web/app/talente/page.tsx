@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Talente',
+  description:
+    'Talente & Studierende aufgepasst: Entdecke Startups und Unternehmen als potenzielle Arbeitgeber auf der Startup Contacts Münster. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/talente' },
+  openGraph: {
+    title: 'Talente | Startup Contacts',
+    description: 'Entdecke Startups und Unternehmen als potenzielle Arbeitgeber auf der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/talente',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { studierendePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

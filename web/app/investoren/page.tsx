@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Investoren',
+  description:
+    'Als Investor auf der Startup Contacts Münster: Entdecke die innovativsten Startups aus dem DACH-Raum. 15. Juni 2026 in Münster.',
+  alternates: { canonical: 'https://www.startup-contacts.de/investoren' },
+  openGraph: {
+    title: 'Investoren | Startup Contacts',
+    description: 'Entdecke die innovativsten Startups aus dem DACH-Raum auf der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/investoren',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { investorenPageQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

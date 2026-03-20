@@ -20,7 +20,7 @@ const layoutPatterns = [
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
-  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
   { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-28 md:h-full' },
   { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
 ]

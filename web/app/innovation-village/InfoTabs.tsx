@@ -31,6 +31,7 @@ export default function InfoTabs({ aussteller, besucher }: InfoTabsProps) {
           src={tab.image}
           alt={tab.heading + ' ' + tab.headingHighlight}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
       ) : (

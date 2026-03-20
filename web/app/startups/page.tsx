@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Startups',
+  description:
+    'Als Startup auf der Startup Contacts Münster ausstellen: Treffe Mittelstand, Talente und Investoren. 15. Juni 2026 in Münster.',
+  alternates: { canonical: 'https://www.startup-contacts.de/startups' },
+  openGraph: {
+    title: 'Startups | Startup Contacts',
+    description: 'Als Startup auf der Startup Contacts Münster ausstellen: Treffe Mittelstand, Talente und Investoren.',
+    url: 'https://www.startup-contacts.de/startups',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { startupsPageQuery, startups2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

@@ -77,6 +77,7 @@ export default function TeamGrid({ members }: TeamGridProps) {
                         src={urlFor(member.image).width(500).height(660).auto('format').url()}
                         alt={member.name}
                         fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
                         className="object-cover"
                       />
                     ) : (

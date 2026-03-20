@@ -22,6 +22,7 @@ export default function ProgramCards({ cards }: { cards: ProgramCardData[] }) {
               src={card.imageUrl}
               alt={card.title}
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover transition-all duration-500 group-hover:grayscale"
             />
           ) : (

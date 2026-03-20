@@ -6,7 +6,7 @@ import { urlFor } from '@/lib/sanity/image'
 import DesktopNav from './DesktopNav'
 import MobileMenu from './MobileMenu'
 import WartelisteButton from './WartelisteButton'
-import scLogo from '@/app/images/SC_logo_nav_bar.avif'
+import scLogo from '@/app/images/SC_logo_nav_bar.png'
 
 async function getSettings() {
   return client.fetch(siteSettingsQuery, {}, { next: { revalidate: 3600 } })
@@ -23,7 +23,7 @@ export default async function Header() {
           <Image
             src={scLogo}
             alt="Startup Contacts"
-            height={100}
+            style={{ height: '48px', width: 'auto' }}
             className="object-contain"
           />
         </Link>

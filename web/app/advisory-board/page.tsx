@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Advisory Board',
+  description:
+    'Das Advisory Board der Startup Contacts Münster: Erfahrene Unternehmer und Experten, die unsere Vision begleiten.',
+  alternates: { canonical: 'https://www.startup-contacts.de/advisory-board' },
+  openGraph: {
+    title: 'Advisory Board | Startup Contacts',
+    description: 'Erfahrene Unternehmer und Experten im Advisory Board der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/advisory-board',
+  },
+}
+
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { advisoryBoardQuery } from '@/lib/sanity/queries'
@@ -48,6 +62,7 @@ export default async function AdvisoryBoardPage() {
                       src={urlFor(advisor.image).width(400).height(400).url()}
                       alt={advisor.name}
                       fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 200px"
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   ) : (

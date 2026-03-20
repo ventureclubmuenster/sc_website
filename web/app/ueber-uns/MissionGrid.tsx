@@ -43,6 +43,7 @@ export default function MissionGrid({ cards }: MissionGridProps) {
                     src={urlFor(card.image).width(900).height(500).auto('format').url()}
                     alt={card.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-[0.4] group-hover:brightness-[0.3] group-hover:grayscale group-hover:scale-110 transition-all duration-700"
                   />
                 ) : (

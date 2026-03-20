@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Innovation Village',
+  description:
+    'Das Innovation Village der Startup Contacts Münster: Alle Aussteller, Startups und Unternehmen auf einen Blick. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/innovation-village' },
+  openGraph: {
+    title: 'Innovation Village | Startup Contacts',
+    description: 'Alle Aussteller, Startups und Unternehmen des Innovation Village auf der Startup Contacts Münster.',
+    url: 'https://www.startup-contacts.de/innovation-village',
+  },
+}
+
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { innovationVillagePageQuery, exhibitors2025Query } from '@/lib/sanity/queries'
@@ -70,6 +84,7 @@ export default async function InnovationVillagePage() {
             src={urlFor(data.heroImage).width(1920).height(1080).url()}
             alt="Innovation Village"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />

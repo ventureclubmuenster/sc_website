@@ -156,6 +156,7 @@ function TimelineBlock({ entry }: { entry: TimelineEntry }) {
             src={urlFor(entry.image).width(700).height(930).auto('format').url()}
             alt={`Startup Contacts ${entry.year}`}
             fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover"
           />
         ) : (

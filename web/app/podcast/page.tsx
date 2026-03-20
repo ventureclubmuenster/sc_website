@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Podcast',
+  description:
+    'Der Startup Contacts Podcast: Interviews mit Gründern, Investoren und Mittelständlern über Innovation, Co-Creation und die Zukunft Deutschlands.',
+  alternates: { canonical: 'https://www.startup-contacts.de/podcast' },
+  openGraph: {
+    title: 'Podcast | Startup Contacts',
+    description: 'Interviews mit Gründern, Investoren und Mittelständlern über Innovation und Co-Creation.',
+    url: 'https://www.startup-contacts.de/podcast',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { podcastPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

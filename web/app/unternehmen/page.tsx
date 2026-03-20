@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Unternehmen',
+  description:
+    'Als Unternehmen auf der Startup Contacts Münster: Finde Startups, Talente und Innovationen für deinen Mittelstandsbetrieb. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/unternehmen' },
+  openGraph: {
+    title: 'Unternehmen | Startup Contacts',
+    description: 'Als Unternehmen auf der Startup Contacts Münster: Finde Startups, Talente und Innovationen.',
+    url: 'https://www.startup-contacts.de/unternehmen',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { unternehmenPageQuery, exhibitors2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

@@ -1,3 +1,17 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Partner',
+  description:
+    'Unsere Partner der Startup Contacts Münster: Gemeinsam gestalten wir Deutschlands größtes Co-Creation Event. 15. Juni 2026.',
+  alternates: { canonical: 'https://www.startup-contacts.de/partner' },
+  openGraph: {
+    title: 'Partner | Startup Contacts',
+    description: 'Unsere Partner der Startup Contacts Münster — gemeinsam Zukunft gestalten.',
+    url: 'https://www.startup-contacts.de/partner',
+  },
+}
+
 import { client } from '@/lib/sanity/client'
 import { partners2025Query } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'

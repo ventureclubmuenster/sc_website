@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity/client'
-import { unternehmenPageQuery, exhibitors2025Query, fokusfelderQuery } from '@/lib/sanity/queries'
+import { unternehmenPageQuery, exhibitors2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import KombinationSection from './KombinationSection'
@@ -39,7 +39,6 @@ interface SanityFormatItem {
 
 interface UnternehmenPageData {
   heroImage?: ImageField
-  formatItems?: SanityFormatItem[]
 }
 
 const fokusfelderTexte = [
@@ -64,7 +63,12 @@ async function getExhibitors(): Promise<Exhibitor[]> {
 }
 
 export default async function UnternehmenPage() {
-  const [data, fokusfelder, exhibitors] = await Promise.all([getPageData(), getFokusfelder(), getExhibitors()])
+  const [data, fokusfelder, exhibitors, formatItems] = await Promise.all([
+    getPageData(),
+    getFokusfelder(),
+    getExhibitors(),
+    client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }) as Promise<SanityFormatItem[] | null>,
+  ])
 
   const heroImageUrl = data?.heroImage
     ? urlFor(data.heroImage).width(1920).height(1080).url()
@@ -121,8 +125,8 @@ export default async function UnternehmenPage() {
         </section>
 
         <FormatSection
-          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="gradient-text">FORMATE</span><span className="text-white"> EIN</span></>}
-          items={data?.formatItems?.map((f) => ({
+          heading={<><span className="text-white">BRINGEN SIE IHR WISSEN IN UNSEREN </span><span className="gradient-text">FORMATEN</span><span className="text-white"> EIN</span></>}
+          items={formatItems?.map((f) => ({
             title: f.title,
             description: f.description,
             buttonText: f.buttonText,

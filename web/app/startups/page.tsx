@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity/client'
-import { startupsPageQuery, startups2025Query, fokusfelderQuery } from '@/lib/sanity/queries'
+import { startupsPageQuery, startups2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import ExhibitorGrid from './ExhibitorGrid'
@@ -31,7 +31,6 @@ interface SanityFormatItem {
 interface StartupsPageData {
   heroImage?: ImageField
   featuredExhibitors?: Exhibitor[]
-  formatItems?: SanityFormatItem[]
 }
 
 interface FokusfelderData {
@@ -65,7 +64,12 @@ async function getStartups(): Promise<Exhibitor[]> {
 }
 
 export default async function StartupsPage() {
-  const [data, fokusfelder, allStartups] = await Promise.all([getPageData(), getFokusfelder(), getStartups()])
+  const [data, fokusfelder, allStartups, formatItems] = await Promise.all([
+    getPageData(),
+    getFokusfelder(),
+    getStartups(),
+    client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }) as Promise<SanityFormatItem[] | null>,
+  ])
 
   // Use hand-picked exhibitors from Sanity, fall back to all startups
   const startups = data?.featuredExhibitors?.length ? data.featuredExhibitors : allStartups
@@ -125,7 +129,7 @@ export default async function StartupsPage() {
 
         <FormatSection
           heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="gradient-text">FORMATE</span><span className="text-white"> EIN</span></>}
-          items={data?.formatItems?.map((f) => ({
+          items={formatItems?.map((f) => ({
             title: f.title,
             description: f.description,
             buttonText: f.buttonText,

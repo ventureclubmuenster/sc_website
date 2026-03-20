@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity/client'
-import { investorenPageQuery } from '@/lib/sanity/queries'
+import { investorenPageQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import WhyInvestSection from './WhyInvestSection'
@@ -20,7 +20,6 @@ interface SanityFormatItem {
 
 interface InvestorenPageData {
   heroImage?: ImageField
-  formatItems?: SanityFormatItem[]
 }
 
 async function getPageData(): Promise<InvestorenPageData | null> {
@@ -28,7 +27,10 @@ async function getPageData(): Promise<InvestorenPageData | null> {
 }
 
 export default async function InvestorenPage() {
-  const data = await getPageData()
+  const [data, formatItems] = await Promise.all([
+    getPageData(),
+    client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }) as Promise<SanityFormatItem[] | null>,
+  ])
 
   const heroImageUrl = data?.heroImage
     ? urlFor(data.heroImage).width(1920).height(1080).url()
@@ -65,7 +67,7 @@ export default async function InvestorenPage() {
 
         <FormatSection
           heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="gradient-text">FORMATEN</span><span className="text-white"> KENNEN</span></>}
-          items={data?.formatItems?.map((f) => ({
+          items={formatItems?.map((f) => ({
             title: f.title,
             description: f.description,
             buttonText: f.buttonText,

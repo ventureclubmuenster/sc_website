@@ -7,8 +7,8 @@
   --sc-orange: #ff5e00;
 
   /* Corporate Gradient — change these two values to update everywhere */
-  --gradient-from: #fe281f;
-  --gradient-to: #f66b01;
+  --gradient-from: #ff4d42;
+  --gradient-to: #ff8a2a;
 }
 
 @theme inline {
@@ -22,22 +22,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Reusable gradient text utility */
-.gradient-text {
-  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+@layer utilities {
+  /* Reusable gradient text utility */
+  .gradient-text {
+    background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-/* Reusable gradient background utility */
-.gradient-bg {
-  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
-}
+  /* Reusable gradient background utility */
+  .gradient-bg {
+    background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  }
 
-/* Reusable gradient line utility */
-.gradient-line {
-  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  /* Reusable gradient line utility */
+  .gradient-line {
+    background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  }
 }
 
 html {

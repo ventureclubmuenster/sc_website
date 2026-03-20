@@ -211,15 +211,7 @@ export const unternehmenPageQuery = groq`
     bentoFoodDrinks,
     bentoExperience,
     bentoAfterwork,
-    bentoInnovationVillage,
-    formatItems[] {
-      title,
-      description,
-      buttonText,
-      buttonLink,
-      image,
-      wide
-    }
+    bentoInnovationVillage
   }
 `
 
@@ -232,14 +224,6 @@ export const startupsPageQuery = groq`
       logo,
       whiteLogo,
       whiteBackground
-    },
-    formatItems[] {
-      title,
-      description,
-      buttonText,
-      buttonLink,
-      image,
-      wide
     }
   }
 `
@@ -270,15 +254,7 @@ export const investorenPageQuery = groq`
     bentoLetztesJahr,
     bentoMuensterTop5,
     bentoVipArea,
-    bentoMeetGreet,
-    formatItems[] {
-      title,
-      description,
-      buttonText,
-      buttonLink,
-      image,
-      wide
-    }
+    bentoMeetGreet
   }
 `
 
@@ -332,6 +308,17 @@ export const ueberUnsPageQuery = groq`
       imagePosition,
       textBlocks
     }
+  }
+`
+
+export const sharedFormatItemsQuery = groq`
+  *[_type == "landingPage"][0].formatItems[] {
+    title,
+    description,
+    buttonText,
+    buttonLink,
+    image,
+    wide
   }
 `
 

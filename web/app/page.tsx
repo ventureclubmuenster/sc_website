@@ -9,7 +9,7 @@ import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
 
 async function getLandingPage() {
-  return client.fetch(landingPageQuery, {}, { next: { revalidate: 3600 } })
+  return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
 }
 
 export default async function Home() {

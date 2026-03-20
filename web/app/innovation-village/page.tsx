@@ -80,12 +80,9 @@ export default async function InnovationVillagePage() {
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 text-center px-6">
-          <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase"
-            style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
-          >
-            <span className="gradient-text">INNOVATION </span>
-            <span className="text-white">VILLAGE</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase">
+            <span className="gradient-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">INNOVATION </span>
+            <span className="text-white" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>VILLAGE</span>
           </h1>
 
           <p className="text-white/80 text-base md:text-xl mt-6 max-w-2xl mx-auto">

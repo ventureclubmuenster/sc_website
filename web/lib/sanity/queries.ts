@@ -189,7 +189,7 @@ export const exhibitors2025Query = groq`
 `
 
 export const innovationVillagePageQuery = groq`
-  *[_type == "innovationVillagePage"][0] {
+  *[_type == "innovationVillagePage" && _id == "innovationVillagePage"][0] {
     heroImage,
     heroSubtext,
     ausstellerImage,

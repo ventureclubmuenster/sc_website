@@ -59,6 +59,10 @@ export default defineConfig({
               .id('fokusfelder')
               .child(S.document().schemaType('fokusfelder').documentId('fokusfelder')),
             S.listItem()
+              .title('Formate Bento Grid')
+              .id('formateGrid')
+              .child(S.document().schemaType('formateGrid').documentId('formateGrid')),
+            S.listItem()
               .title('Seite: Workshops')
               .id('workshopsPage')
               .child(S.document().schemaType('workshopsPage').documentId('workshopsPage')),
@@ -72,7 +76,7 @@ export default defineConfig({
               .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid'].includes(item.getId() ?? '')
             ),
           ]),
     }),

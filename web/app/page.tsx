@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
-import { landingPageQuery } from '@/lib/sanity/queries'
+import { landingPageQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroCTA from '@/components/HeroCTA'
 import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
@@ -13,7 +13,10 @@ async function getLandingPage() {
 }
 
 export default async function Home() {
-  const data = await getLandingPage()
+  const [data, formatItems] = await Promise.all([
+    getLandingPage(),
+    client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }),
+  ])
 
   const statsCards = [
     { number: '20+', label: 'Speaker & Themen', image: data?.stellDirVorSpeaker },
@@ -183,7 +186,7 @@ export default async function Home() {
         </div>
         <FormatSection
           heading={<><span className="text-white">WAS </span><span className="gradient-text">DU</span><span className="text-white"> ERWARTEN KANNST</span></>}
-          items={data?.formatItems?.map((f: { title: string; description?: string; buttonText?: string; buttonLink?: string; image?: { asset: { _ref: string } }; wide?: boolean }) => ({
+          items={formatItems?.map((f: { title: string; description?: string; buttonText?: string; buttonLink?: string; image?: { asset: { _ref: string } }; wide?: boolean }) => ({
             title: f.title,
             description: f.description,
             buttonText: f.buttonText,

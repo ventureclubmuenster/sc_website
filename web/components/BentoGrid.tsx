@@ -85,11 +85,13 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
 
               {item.description && (
                 <p
-                  className="text-white/70 text-xs md:text-sm text-center max-w-xs mt-2 transition-all duration-500 ease-out"
+                  className="text-white/70 text-xs md:text-sm text-center max-w-xs overflow-hidden transition-all duration-500 ease-out"
                   style={{
                     opacity: isHovered ? 1 : 0,
+                    maxHeight: isHovered ? '100px' : '0px',
+                    marginTop: isHovered ? '8px' : '0px',
                     transform: isHovered ? 'translateY(0)' : 'translateY(8px)',
-                    transition: 'opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s',
+                    transition: 'opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s, max-height 0.4s ease 0.05s, margin-top 0.4s ease 0.05s',
                   }}
                 >
                   {item.description}
@@ -100,11 +102,14 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
               {item.buttonLink && item.buttonText && (
                 <Link
                   href={item.buttonLink}
-                  className="mt-3 inline-flex items-center gap-2 border border-white/40 text-white text-xs md:text-sm px-6 py-2 rounded-full hover:bg-sc-orange hover:border-sc-orange transition-all duration-300"
+                  className="inline-flex items-center gap-2 border border-white/40 text-white text-xs md:text-sm px-6 py-2 rounded-full hover:bg-sc-orange hover:border-sc-orange transition-all duration-300 overflow-hidden"
                   style={{
                     opacity: isHovered ? 1 : 0,
+                    maxHeight: isHovered ? '50px' : '0px',
+                    marginTop: isHovered ? '12px' : '0px',
+                    padding: isHovered ? undefined : '0 24px',
                     transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s, background-color 0.3s, border-color 0.3s',
+                    transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s, max-height 0.4s ease 0.1s, margin-top 0.4s ease 0.1s, padding 0.4s ease 0.1s, background-color 0.3s, border-color 0.3s',
                   }}
                 >
                   {item.buttonText} &rarr;

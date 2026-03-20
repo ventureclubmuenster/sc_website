@@ -21,6 +21,7 @@ import workshopsPage from './workshopsPage'
 import mainStagePage from './mainStagePage'
 import podcastPage from './podcastPage'
 import ueberUnsPage from './ueberUnsPage'
+import formateGrid from './formateGrid'
 
 export const schemaTypes = [
   speaker2025, speaker2026,
@@ -43,4 +44,5 @@ export const schemaTypes = [
   mainStagePage,
   podcastPage,
   ueberUnsPage,
+  formateGrid,
 ]

@@ -312,7 +312,7 @@ export const ueberUnsPageQuery = groq`
 `
 
 export const sharedFormatItemsQuery = groq`
-  *[_type == "landingPage"][0].formatItems[] {
+  *[_type == "formateGrid" && _id == "formateGrid"][0].items[] {
     title,
     description,
     buttonText,

@@ -50,7 +50,7 @@ export default function MobileMenu() {
       style={{ borderRadius: open ? '1.5rem' : '2.5rem', transition: 'border-radius 100ms ease' }}
     >
       {/* Top bar with logo + burger */}
-      <div className="px-6 h-20 flex items-center justify-between">
+      <div className="px-6 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src={scLogo}
@@ -65,7 +65,7 @@ export default function MobileMenu() {
           className="text-white p-2"
           aria-label="Menü öffnen"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {open ? (
               <path d="M6 6l12 12M6 18L18 6" />
             ) : (
@@ -137,7 +137,7 @@ export default function MobileMenu() {
           </Link>
 
           <div className="mt-2">
-            <WartelisteButton />
+            <WartelisteButton small />
           </div>
           </div>
         </nav>

@@ -70,49 +70,92 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* ── Hero Section ── */}
-      <section className="relative min-h-screen bg-black overflow-hidden flex items-end -mt-24">
-        {/* YouTube Aftermovie Background */}
-        <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
-          <iframe
-            src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
-            className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2"
-            allow="autoplay; encrypted-media"
-            tabIndex={-1}
-            aria-hidden="true"
-          />
-        </div>
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-black/55 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+      <section className="bg-black overflow-hidden -mt-24">
 
-        {/* Content — editorial layout, bottom-aligned, full bleed */}
-        <div className="relative z-20 w-full px-4 sm:px-8 pb-16 pt-32">
-          {/* Main heading */}
-          <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-1 sm:-ml-2">
-            Zukunft
-            <br />
-            <span className="text-white/40">durch</span>
-            <br />
-            Zusammenarbeit<span className="gradient-text">.</span>
-          </h1>
+        {/* ── Mobile layout: video stacked above content ── */}
+        <div className="lg:hidden flex flex-col">
+          {/* Spacer for fixed navbar + breathing room below it */}
+          <div className="h-[136px]" />
 
-          {/* Subtext */}
-          <p className="mt-10 text-white/60 text-2xl md:text-3xl lg:text-4xl leading-snug max-w-3xl">
-            Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
-          </p>
+          {/* YouTube video */}
+          <div className="w-full aspect-video pointer-events-none">
+            <iframe
+              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd720&iv_load_policy=3&fs=0&cc_load_policy=0"
+              className="w-full h-full"
+              allow="autoplay; encrypted-media"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+          </div>
 
-          {/* Date, Location & CTA */}
-          <div className="mt-10 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
-            <div className="flex flex-col font-bold uppercase tracking-tight">
-              <span className="text-3xl md:text-4xl gradient-text">15. Juni 2026</span>
-              <span className="text-xl md:text-2xl text-white/60">Münster</span>
-            </div>
+          {/* Content below video */}
+          <div className="px-4 pt-8 pb-16">
+            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(2rem,9vw,5rem)] -ml-0.5">
+              Zukunft
+              <br />
+              <span className="text-white/40">durch</span>
+              <br />
+              Zusammenarbeit<span className="gradient-text">.</span>
+            </h1>
 
-            <div className="shrink-0">
-              <HeroCTA />
+            <p className="mt-6 text-white/60 text-xl leading-snug max-w-sm">
+              Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-4">
+              <div className="flex flex-col font-bold uppercase tracking-tight">
+                <span className="text-2xl gradient-text">15. Juni 2026</span>
+                <span className="text-base text-white/60">Münster</span>
+              </div>
+              <div className="shrink-0">
+                <HeroCTA />
+              </div>
             </div>
           </div>
         </div>
+
+        {/* ── Desktop layout: full-screen video background ── */}
+        <div className="relative hidden lg:flex min-h-screen items-end">
+          {/* YouTube Aftermovie Background */}
+          <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
+            <iframe
+              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
+              className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2"
+              allow="autoplay; encrypted-media"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+          </div>
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-black/55 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+
+          {/* Content — editorial layout, bottom-aligned, full bleed */}
+          <div className="relative z-20 w-full px-8 pb-16 pt-32">
+            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-2">
+              Zukunft
+              <br />
+              <span className="text-white/40">durch</span>
+              <br />
+              Zusammenarbeit<span className="gradient-text">.</span>
+            </h1>
+
+            <p className="mt-10 text-white/60 text-2xl md:text-3xl lg:text-4xl leading-snug max-w-3xl">
+              Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
+            </p>
+
+            <div className="mt-10 flex flex-row items-end gap-10">
+              <div className="flex flex-col font-bold uppercase tracking-tight">
+                <span className="text-3xl md:text-4xl gradient-text">15. Juni 2026</span>
+                <span className="text-xl md:text-2xl text-white/60">Münster</span>
+              </div>
+              <div className="shrink-0">
+                <HeroCTA />
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* ── Stell dir vor was ── */}
@@ -208,7 +251,7 @@ export default async function Home() {
       </section>
 
       {/* ── Unsere Formate (Bento Grid) ── */}
-      <div className="bg-black overflow-hidden">
+      <div className="relative bg-black overflow-hidden">
         {/* Repeating watermark */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {[...Array(6)].map((_, i) => (

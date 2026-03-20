@@ -34,7 +34,7 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, transparent 100%)',
+          background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.5) 100%)',
         }}
       />
 

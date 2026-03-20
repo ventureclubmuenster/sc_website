@@ -23,9 +23,10 @@ interface GlowButtonProps {
   href?: string
   onClick?: () => void
   children: React.ReactNode
+  small?: boolean
 }
 
-export default function GlowButton({ href, onClick, children }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [pos, setPos] = useState({ x: 50, y: 50 })
   const [isHovered, setIsHovered] = useState(false)
@@ -137,7 +138,9 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
     </>
   )
 
-  const sharedClassName = "group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
+  const sharedClassName = small
+    ? "group relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white overflow-hidden cursor-pointer"
+    : "group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
   const sharedStyle = {
     background: t > 0.01
       ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * t}) 70%)`

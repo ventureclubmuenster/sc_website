@@ -80,26 +80,8 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
 
   const t = intensity // 0–1 smooth value
 
-  const Tag = href ? Link : 'button'
-  const tagProps = href ? { href } : { type: 'button' as const, onClick }
-
-  return (
-    <Tag
-      {...tagProps as Record<string, unknown>}
-      ref={btnRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
-      style={{
-        background: t > 0.01
-          ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * t}) 70%)`
-          : 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
-        border: `1px solid rgba(${Math.round(gTo.r * t + 255 * (1 - t))},${Math.round(gTo.g * t + 255 * (1 - t))},${Math.round(gTo.b * t + 255 * (1 - t))},${0.12 + 0.38 * t})`,
-        boxShadow: `0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.25 * t}), 0 0 ${80 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.15 * t}), 0 0 ${120 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.07 * t}), inset 0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t})`,
-        transition: 'background 0.6s ease-out',
-      }}
-    >
+  const innerContent = (
+    <>
       {/* Primary cursor glow */}
       <span
         className="pointer-events-none absolute w-40 h-40 rounded-full"
@@ -152,6 +134,47 @@ export default function GlowButton({ href, onClick, children }: GlowButtonProps)
       <span className="relative z-10 transition-all duration-500 group-hover:translate-x-1 group-hover:text-sc-orange" aria-hidden="true">
         &rarr;
       </span>
-    </Tag>
+    </>
+  )
+
+  const sharedClassName = "group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer"
+  const sharedStyle = {
+    background: t > 0.01
+      ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * t}) 70%)`
+      : 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+    border: `1px solid rgba(${Math.round(gTo.r * t + 255 * (1 - t))},${Math.round(gTo.g * t + 255 * (1 - t))},${Math.round(gTo.b * t + 255 * (1 - t))},${0.12 + 0.38 * t})`,
+    boxShadow: `0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.25 * t}), 0 0 ${80 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.15 * t}), 0 0 ${120 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.07 * t}), inset 0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t})`,
+    transition: 'background 0.6s ease-out',
+  }
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        ref={btnRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={sharedClassName}
+        style={sharedStyle}
+      >
+        {innerContent}
+      </Link>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      ref={btnRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={sharedClassName}
+      style={sharedStyle}
+    >
+      {innerContent}
+    </button>
   )
 }

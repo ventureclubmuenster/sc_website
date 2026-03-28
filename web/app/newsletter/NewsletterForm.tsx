@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 
 const roles = [
   'Studierende/r',
@@ -11,6 +12,7 @@ const roles = [
 ]
 
 export default function NewsletterForm() {
+  const router = useRouter()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -38,27 +40,11 @@ export default function NewsletterForm() {
         throw new Error(data.error || 'Etwas ist schiefgelaufen.')
       }
 
-      setStatus('success')
+      router.push('/danke')
     } catch (err) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Etwas ist schiefgelaufen.')
     }
-  }
-
-  if (status === 'success') {
-    return (
-      <div className="text-center py-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sc-orange/20 mb-6">
-          <svg className="w-8 h-8 text-sc-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-3">Du bist dabei!</h3>
-        <p className="text-white/60 max-w-md mx-auto">
-          Wir haben deine Anmeldung erhalten. Du wirst als Erstes informiert, sobald der Vorverkauf startet.
-        </p>
-      </div>
-    )
   }
 
   return (

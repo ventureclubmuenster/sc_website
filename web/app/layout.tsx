@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -86,6 +87,7 @@ export default function RootLayout({
         <main className="pt-24">{children}</main>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-W5HR3M7CMJ" />
     </html>
   )
 }

@@ -42,6 +42,16 @@
   }
 }
 
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes glow-spin {
+  to { --glow-angle: 360deg; }
+}
+
 html {
   scroll-behavior: smooth;
 }

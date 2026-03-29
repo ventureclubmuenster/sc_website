@@ -5,6 +5,70 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { StaggerContainer, StaggerItem } from './FadeIn'
 
+function CardInner({ item, isHovered }: { item: BentoItem; isHovered: boolean }) {
+  return (
+    <>
+      {/* Image */}
+      {item.imageUrl ? (
+        <Image
+          src={item.imageUrl}
+          alt={item.title}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-black" />
+      )}
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50 transition-all duration-500 group-hover:bg-black/65" />
+
+      {/* Gradient accent line - slides in from left on hover */}
+      <div
+        className="absolute bottom-0 left-0 h-[3px] gradient-line transition-all duration-500 ease-out"
+        style={{ width: isHovered ? '100%' : '0%' }}
+      />
+
+      {/* Title + Description + Click hint */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+        <h3
+          className="text-white text-xl md:text-2xl font-extrabold uppercase tracking-wider text-center"
+          style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}
+        >
+          {item.title}
+        </h3>
+
+        {(item.description || (item.buttonLink && item.buttonText)) && (
+          <div
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? 'translateY(0)' : 'translateY(6px)',
+              transition: 'opacity 0.3s ease, transform 0.3s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '6px',
+              marginTop: '10px',
+              pointerEvents: isHovered ? 'auto' : 'none',
+            }}
+          >
+            {item.description && (
+              <p className="text-white/70 text-xs md:text-sm text-center max-w-xs">
+                {item.description}
+              </p>
+            )}
+            {item.buttonLink && item.buttonText && (
+              <span className="text-white/80 text-xs md:text-sm tracking-wide">
+                {item.buttonText} &rarr;
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    </>
+  )
+}
+
 interface BentoItem {
   title: string
   description?: string
@@ -45,78 +109,24 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
             distance={50}
             className={`group relative overflow-hidden rounded-2xl cursor-pointer ${colSpan} ${pattern.rowSpan} ${pattern.height}`}
           >
-          <div
-            className="absolute inset-0"
-            onMouseEnter={() => setHoveredIndex(i)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            {/* Image */}
-            {item.imageUrl ? (
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-black" />
-            )}
-
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/50 transition-all duration-500 group-hover:bg-black/65" />
-
-            {/* Gradient accent line - slides in from left on hover */}
+          {item.buttonLink ? (
+            <Link
+              href={item.buttonLink}
+              className="absolute inset-0"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <CardInner item={item} isHovered={isHovered} />
+            </Link>
+          ) : (
             <div
-              className="absolute bottom-0 left-0 h-[3px] gradient-line transition-all duration-500 ease-out"
-              style={{ width: isHovered ? '100%' : '0%' }}
-            />
-
-            {/* Title + Description + Button */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-              <h3
-                className="text-white text-xl md:text-2xl font-extrabold uppercase tracking-wider text-center transition-all duration-500 ease-out"
-                style={{
-                  textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)',
-                  transform: isHovered && (item.buttonLink || item.description) ? 'translateY(-12px)' : 'translateY(0)',
-                }}
-              >
-                {item.title}
-              </h3>
-
-              {item.description && (
-                <p
-                  className="text-white/70 text-xs md:text-sm text-center max-w-xs overflow-hidden transition-all duration-500 ease-out"
-                  style={{
-                    opacity: isHovered ? 1 : 0,
-                    maxHeight: isHovered ? '100px' : '0px',
-                    marginTop: isHovered ? '8px' : '0px',
-                    transform: isHovered ? 'translateY(0)' : 'translateY(8px)',
-                    transition: 'opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s, max-height 0.4s ease 0.05s, margin-top 0.4s ease 0.05s',
-                  }}
-                >
-                  {item.description}
-                </p>
-              )}
-
-              {/* Hover button */}
-              {item.buttonLink && item.buttonText && (
-                <Link
-                  href={item.buttonLink}
-                  className="inline-flex items-center gap-2 border border-white/40 text-white text-xs md:text-sm px-6 py-2 rounded-full hover:bg-sc-orange hover:border-sc-orange transition-all duration-300 overflow-hidden"
-                  style={{
-                    opacity: isHovered ? 1 : 0,
-                    maxHeight: isHovered ? '50px' : '0px',
-                    marginTop: isHovered ? '12px' : '0px',
-                    padding: isHovered ? undefined : '0 24px',
-                    transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s, max-height 0.4s ease 0.1s, margin-top 0.4s ease 0.1s, padding 0.4s ease 0.1s, background-color 0.3s, border-color 0.3s',
-                  }}
-                >
-                  {item.buttonText} &rarr;
-                </Link>
-              )}
+              className="absolute inset-0"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <CardInner item={item} isHovered={isHovered} />
             </div>
-          </div>
+          )}
           </StaggerItem>
         )
       })}

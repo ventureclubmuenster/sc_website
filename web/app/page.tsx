@@ -77,13 +77,15 @@ export default async function Home() {
           {/* Spacer for fixed navbar + breathing room below it */}
           <div className="h-[136px]" />
 
-          {/* YouTube video */}
+          {/* Hero video */}
           <div className="w-full aspect-video pointer-events-none">
-            <iframe
-              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd720&iv_load_policy=3&fs=0&cc_load_policy=0"
-              className="w-full h-full"
-              allow="autoplay; encrypted-media"
-              tabIndex={-1}
+            <video
+              src="/StartupContacts_Hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
               aria-hidden="true"
             />
           </div>
@@ -93,7 +95,7 @@ export default async function Home() {
             <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(2rem,9vw,5rem)] -ml-0.5">
               Zukunft
               <br />
-              <span className="text-white/40">durch</span>
+              <span className="text-white/55">durch</span>
               <br />
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
@@ -116,18 +118,20 @@ export default async function Home() {
 
         {/* ── Desktop layout: full-screen video background ── */}
         <div className="relative hidden lg:flex min-h-screen items-end">
-          {/* YouTube Aftermovie Background */}
-          <div className="absolute inset-0 pt-20 z-0 pointer-events-none">
-            <iframe
-              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&playlist=pW-V636liEk&controls=0&showinfo=0&modestbranding=1&rel=0&start=0&playsinline=1&disablekb=1&vq=hd1080&iv_load_policy=3&fs=0&cc_load_policy=0"
-              className="absolute left-0 w-full aspect-video top-1/2 -translate-y-1/2"
-              allow="autoplay; encrypted-media"
-              tabIndex={-1}
+          {/* Hero video background */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <video
+              src="/StartupContacts_Hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute w-full h-full object-cover"
               aria-hidden="true"
             />
           </div>
           {/* Overlays */}
-          <div className="absolute inset-0 bg-black/55 z-10" />
+          <div className="absolute inset-0 bg-black/35 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
@@ -135,7 +139,7 @@ export default async function Home() {
             <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-2">
               Zukunft
               <br />
-              <span className="text-white/40">durch</span>
+              <span className="text-white/55">durch</span>
               <br />
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>

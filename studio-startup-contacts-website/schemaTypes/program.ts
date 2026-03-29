@@ -11,7 +11,7 @@ export default defineType({
     defineField({ 
       name: 'type', 
       type: 'string', 
-      options: { list: ['Keynote', 'Panel Discussion', 'Workshop', 'Live Podcast'] } 
+      options: { list: ['Keynote', 'Panel Discussion', 'Fireside Chat', 'Workshop', 'Live Podcast'] }
     }),
     defineField({ name: 'startTime', title: 'Startzeit', type: 'datetime' }),
     defineField({ name: 'endTime', title: 'Endzeit', type: 'datetime' }),

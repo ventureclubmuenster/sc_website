@@ -40,6 +40,9 @@ export default async function MainStagePage() {
   const panels = programs?.filter(
     (p: { type: string }) => p.type === 'Panel Discussion'
   ) ?? []
+  const firesideChats = programs?.filter(
+    (p: { type: string }) => p.type === 'Fireside Chat'
+  ) ?? []
 
   return (
     <>
@@ -52,6 +55,7 @@ export default async function MainStagePage() {
       <MainStageContent
         keynotes={keynotes}
         panels={panels}
+        firesideChats={firesideChats}
         flashbackTitle={page?.flashbackTitle}
         flashbackTags={page?.flashbackTags}
       />

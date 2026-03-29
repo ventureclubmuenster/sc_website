@@ -25,6 +25,7 @@ interface ProgramItem {
 interface MainStageContentProps {
   keynotes: ProgramItem[]
   panels: ProgramItem[]
+  firesideChats: ProgramItem[]
   flashbackTitle?: string
   flashbackTags?: string[]
 }
@@ -47,6 +48,14 @@ function UsersIcon({ className }: { className?: string }) {
       <circle cx="9" cy="7" r="4" />
       <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
+function FireIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
     </svg>
   )
 }
@@ -115,6 +124,7 @@ function ProgramCard({ item }: { item: ProgramItem }) {
 export default function MainStageContent({
   keynotes,
   panels,
+  firesideChats,
   flashbackTitle,
   flashbackTags,
 }: MainStageContentProps) {
@@ -142,7 +152,7 @@ export default function MainStageContent({
             </h2>
           </FadeIn>
 
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Keynotes Column */}
             <div>
               <FadeIn direction="up" delay={0.1}>
@@ -205,6 +215,40 @@ export default function MainStageContent({
                     <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-8 text-center">
                       <UsersIcon className="w-10 h-10 text-white/20 mx-auto mb-3" />
                       <p className="text-white/40">Panels werden bald bekannt gegeben.</p>
+                    </div>
+                  </FadeIn>
+                )}
+              </StaggerContainer>
+            </div>
+
+            {/* Fireside Chats Column */}
+            <div>
+              <FadeIn direction="up" delay={0.3}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-sc-orange/10 flex items-center justify-center">
+                    <FireIcon className="w-6 h-6 text-sc-orange" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight">
+                    Fireside Chats
+                  </h3>
+                </div>
+                <p className="text-white/60 leading-relaxed mb-8">
+                  Intime Gespräche am imaginären Lagerfeuer. Unsere Speaker öffnen sich in lockerer Atmosphäre und geben ehrliche Einblicke hinter die Kulissen ihrer Reise.
+                </p>
+              </FadeIn>
+
+              <StaggerContainer stagger={0.1} className="space-y-4">
+                {firesideChats.length > 0 ? (
+                  firesideChats.map((item) => (
+                    <StaggerItem key={item._id} direction="up" distance={30}>
+                      <ProgramCard item={item} />
+                    </StaggerItem>
+                  ))
+                ) : (
+                  <FadeIn direction="up">
+                    <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-8 text-center">
+                      <FireIcon className="w-10 h-10 text-white/20 mx-auto mb-3" />
+                      <p className="text-white/40">Fireside Chats werden bald bekannt gegeben.</p>
                     </div>
                   </FadeIn>
                 )}

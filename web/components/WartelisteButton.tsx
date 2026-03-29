@@ -9,7 +9,7 @@ export default function WartelisteButton({ small }: { small?: boolean }) {
 
   return (
     <>
-      <GlowButton onClick={() => setOpen(true)} small={small}>erhalte alle News</GlowButton>
+      <GlowButton onClick={() => setOpen(true)} small={small} gradient>erhalte alle News</GlowButton>
       <NewsletterModal open={open} onClose={() => setOpen(false)} />
     </>
   )

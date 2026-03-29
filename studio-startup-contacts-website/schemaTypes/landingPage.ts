@@ -5,6 +5,7 @@ export default defineType({
   title: 'Startseite',
   type: 'document',
   fieldsets: [
+    { name: 'hero', title: 'Hero Video', options: { collapsible: true, collapsed: false } },
     { name: 'stellDirVor', title: 'Stell dir vor was', options: { collapsible: true, collapsed: false } },
     { name: 'networkingTogether', title: 'Networking Together', options: { collapsible: true, collapsed: true } },
     { name: 'formateBento', title: 'Unsere Formate (Bento Grid)', options: { collapsible: true, collapsed: true } },
@@ -13,6 +14,16 @@ export default defineType({
     { name: 'whyUsSection', title: 'Warum Startup Contacts', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
+    // ── Hero Video ──
+    defineField({
+      name: 'heroVideo',
+      title: 'Hero Video',
+      description: 'MP4-Video für den Hero-Bereich der Startseite (empfohlen: max. 50 MB, komprimiert)',
+      type: 'file',
+      options: { accept: 'video/mp4,video/*' },
+      fieldset: 'hero',
+    }),
+
     // ── Stell dir vor was ──
     defineField({
       name: 'stellDirVorSpeaker',

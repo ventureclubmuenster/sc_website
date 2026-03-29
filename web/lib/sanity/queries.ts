@@ -19,6 +19,7 @@ export const siteSettingsQuery = groq`
 
 export const landingPageQuery = groq`
   *[_type == "landingPage"][0] {
+    "heroVideoUrl": heroVideo.asset->url,
     stellDirVorSpeaker,
     stellDirVorBesucher,
     stellDirVorStaende,

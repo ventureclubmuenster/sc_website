@@ -74,13 +74,13 @@ export default async function Home() {
 
         {/* ── Mobile layout: video stacked above content ── */}
         <div className="lg:hidden flex flex-col">
-          {/* Spacer for fixed navbar + breathing room below it */}
-          <div className="h-[136px]" />
+          {/* Spacer for fixed navbar */}
+          <div className="h-[80px]" />
 
           {/* Hero video */}
           <div className="w-full aspect-video pointer-events-none">
             <video
-              src="/StartupContacts_Hero.mp4"
+              src={data?.heroVideoUrl ?? '/StartupContacts_Hero.mp4'}
               autoPlay
               muted
               loop
@@ -121,7 +121,7 @@ export default async function Home() {
           {/* Hero video background */}
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
             <video
-              src="/StartupContacts_Hero.mp4"
+              src={data?.heroVideoUrl ?? '/StartupContacts_Hero.mp4'}
               autoPlay
               muted
               loop

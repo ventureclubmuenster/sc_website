@@ -78,14 +78,12 @@ export default async function Home() {
           <div className="h-[80px]" />
 
           {/* Hero video */}
-          <div className="w-full aspect-video pointer-events-none">
-            <video
-              src={data?.heroVideoUrl ?? '/StartupContacts_Hero.mp4'}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
+          <div className="w-full aspect-video pointer-events-none overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/1NUZVnJK3XE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=1NUZVnJK3XE&playsinline=1"
+              className="w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowFullScreen={false}
               aria-hidden="true"
             />
           </div>
@@ -120,15 +118,24 @@ export default async function Home() {
         <div className="relative hidden lg:flex min-h-screen items-end">
           {/* Hero video background */}
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <video
-              src={data?.heroVideoUrl ?? '/StartupContacts_Hero.mp4'}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute w-full h-full object-cover"
-              aria-hidden="true"
-            />
+            <div
+              className="absolute"
+              style={{
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'max(100%, 177.78vh)',
+                height: 'max(100%, 56.25vw)',
+              }}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/1NUZVnJK3XE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=1NUZVnJK3XE&playsinline=1"
+                className="w-full h-full"
+                allow="autoplay; encrypted-media"
+                allowFullScreen={false}
+                aria-hidden="true"
+              />
+            </div>
           </div>
           {/* Overlays */}
           <div className="absolute inset-0 bg-black/35 z-10" />

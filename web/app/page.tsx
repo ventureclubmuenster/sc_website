@@ -80,7 +80,7 @@ export default async function Home() {
           {/* Hero video */}
           <div className="w-full aspect-video pointer-events-none overflow-hidden">
             <iframe
-              src="https://www.youtube.com/embed/1NUZVnJK3XE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=1NUZVnJK3XE&playsinline=1"
+              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=pW-V636liEk&playsinline=1"
               className="w-full h-full"
               allow="autoplay; encrypted-media"
               allowFullScreen={false}
@@ -129,7 +129,7 @@ export default async function Home() {
               }}
             >
               <iframe
-                src="https://www.youtube.com/embed/1NUZVnJK3XE?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=1NUZVnJK3XE&playsinline=1"
+                src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=pW-V636liEk&playsinline=1"
                 className="w-full h-full"
                 allow="autoplay; encrypted-media"
                 allowFullScreen={false}

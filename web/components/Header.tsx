@@ -29,7 +29,7 @@ export default async function Header() {
         </Link>
         <DesktopNav />
         <div className="shrink-0">
-          <WartelisteButton />
+          <WartelisteButton small />
         </div>
       </div>
 

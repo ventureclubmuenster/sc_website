@@ -29,6 +29,7 @@ interface GlowButtonProps {
 
 export default function GlowButton({ href, onClick, children, small, gradient }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
+  const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
   const [isHovered, setIsHovered] = useState(false)
   const [intensity, setIntensity] = useState(0)
@@ -38,6 +39,7 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
 
   const [colors, setColors] = useState({ from: { r: 254, g: 40, b: 31 }, to: { r: 246, g: 107, b: 1 } })
   useEffect(() => {
+    setMounted(true)
     setColors({
       from: hexToRgb(getCSSColor('--gradient-from', '#fe281f')),
       to: hexToRgb(getCSSColor('--gradient-to', '#f66b01')),
@@ -76,7 +78,7 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
     setPos({ x, y })
   }, [])
 
-  const t = intensity
+  const t = mounted ? intensity : 0
 
   // ── Gradient variant: wrapper holds glow, button sits inside ──
   if (gradient) {
@@ -138,8 +140,8 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
 
   // ── Glass variant (default) ──
   const sharedClassName = small
-    ? 'group relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white overflow-hidden cursor-pointer'
-    : 'group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white overflow-hidden cursor-pointer'
+    ? 'group relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white cursor-pointer'
+    : 'group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white cursor-pointer'
 
   const sharedStyle = {
     background: t > 0.01
@@ -150,26 +152,28 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
     transition: 'background 0.6s ease-out',
   }
 
-  const glassInner = (
+  // Outer glow halo — lives outside the button so overflow:hidden can't clip it
+  const glowHalo = (
     <>
       <span
-        className="pointer-events-none absolute w-40 h-40 rounded-full"
+        className="pointer-events-none absolute rounded-full"
         style={{
-          left: `${pos.x}%`,
-          top: `${pos.y}%`,
-          transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 + 0.35 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.03 + 0.15 * t}) 40%, transparent 70%)`,
+          inset: '-40px',
+          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, transparent 70%)`,
         }}
       />
       <span
-        className="pointer-events-none absolute w-72 h-72 rounded-full"
+        className="pointer-events-none absolute rounded-full"
         style={{
-          left: `${pos.x}%`,
-          top: `${pos.y}%`,
-          transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 + 0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t}) 50%, transparent 70%)`,
+          inset: '-80px',
+          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.10 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.04 * t}) 50%, transparent 70%)`,
         }}
       />
+    </>
+  )
+
+  const glassInner = (
+    <>
       <span
         className="pointer-events-none absolute inset-0 rounded-full"
         style={{
@@ -196,32 +200,42 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
 
   if (href) {
     return (
-      <Link
-        href={href}
-        ref={btnRef}
+      <div
+        className="relative inline-block"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={sharedClassName}
-        style={sharedStyle}
       >
-        {glassInner}
-      </Link>
+        {glowHalo}
+        <Link
+          href={href}
+          ref={btnRef}
+          className={sharedClassName}
+          style={sharedStyle}
+        >
+          {glassInner}
+        </Link>
+      </div>
     )
   }
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      ref={btnRef}
+    <div
+      className="relative inline-block"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={sharedClassName}
-      style={sharedStyle}
     >
-      {glassInner}
-    </button>
+      {glowHalo}
+      <button
+        type="button"
+        onClick={onClick}
+        ref={btnRef}
+        className={sharedClassName}
+        style={sharedStyle}
+      >
+        {glassInner}
+      </button>
+    </div>
   )
 }

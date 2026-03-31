@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import NewsletterForm from '@/app/newsletter/NewsletterForm'
 
@@ -11,6 +11,8 @@ interface NewsletterModalProps {
 
 export default function NewsletterModal({ open, onClose }: NewsletterModalProps) {
   const backdropRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
 
   // Lock body scroll when open
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function NewsletterModal({ open, onClose }: NewsletterModalProps)
     return () => window.removeEventListener('keydown', handleKey)
   }, [open, onClose])
 
-  if (!open) return null
+  if (!mounted || !open) return null
 
   return createPortal(
     <div
@@ -68,7 +70,7 @@ export default function NewsletterModal({ open, onClose }: NewsletterModalProps)
             </p>
           </div>
 
-          <NewsletterForm />
+          <NewsletterForm onSuccess={onClose} />
         </div>
       </div>
     </div>,

@@ -11,7 +11,7 @@ const roles = [
   'Sonstige',
 ]
 
-export default function NewsletterForm() {
+export default function NewsletterForm({ onSuccess }: { onSuccess?: () => void }) {
   const router = useRouter()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -40,6 +40,7 @@ export default function NewsletterForm() {
         throw new Error(data.error || 'Etwas ist schiefgelaufen.')
       }
 
+      onSuccess?.()
       router.push('/danke')
     } catch (err) {
       setStatus('error')

@@ -108,7 +108,7 @@ export default async function Home() {
                 <span className="text-base text-white/60">Münster</span>
               </div>
               <div className="shrink-0">
-                <HeroCTA />
+                <HeroCTA small />
               </div>
             </div>
           </div>

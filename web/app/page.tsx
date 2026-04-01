@@ -391,6 +391,25 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Aftermovie ── */}
+      <section className="relative py-32 px-6 bg-black overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+            Der Startup Contacts <span className="gradient-text">2025</span> Aftermovie
+          </h2>
+
+          <div className="mt-12 relative w-full overflow-hidden rounded-2xl" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube-nocookie.com/embed/uNZWsofAFEI?rel=0&modestbranding=1"
+              title="Startup Contacts 2025 – Aftermovie"
+              allow="encrypted-media"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── Hall of Fame ── */}
       {data?.hallOfFame && <HallOfFame speakers={data.hallOfFame} />}
     </>

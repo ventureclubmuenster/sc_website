@@ -96,6 +96,23 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
               </div>
             </StaggerItem>
           ))}
+
+          {/* "Und viele mehr" card — only visible in 2-col grid (sm), hidden on lg (3-col) */}
+          <StaggerItem
+            direction="up"
+            distance={50}
+            className="group relative aspect-square sm:aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 hover:border-sc-orange/30 transition-colors duration-500 lg:hidden"
+          >
+            <Link href="/speaker" className="absolute inset-0 flex flex-col items-center justify-center bg-card-grey z-10">
+              <span className="text-5xl md:text-6xl font-bold text-sc-orange group-hover:scale-110 transition-transform duration-300">+</span>
+              <span className="mt-4 text-lg md:text-xl font-bold uppercase tracking-wide text-white group-hover:text-sc-orange transition-colors duration-300">
+                Und viele mehr
+              </span>
+              <span className="mt-2 text-sm text-white/40">Alle Speaker entdecken</span>
+            </Link>
+            {/* Hover glow */}
+            <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </StaggerItem>
         </StaggerContainer>
 
         {/* CTA Button */}

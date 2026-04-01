@@ -41,13 +41,13 @@ export default function DesktopNav() {
       ))}
       <Link
         href="/speaker"
-        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap py-2"
       >
         Speaker
       </Link>
       <Link
         href="/partner"
-        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+        className="text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap py-2"
       >
         Partner
       </Link>

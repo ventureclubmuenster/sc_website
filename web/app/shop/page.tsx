@@ -4,7 +4,10 @@ import CountdownTimer from '@/components/CountdownTimer'
 
 export const metadata: Metadata = {
   title: 'Tickets | Startup Contacts',
-  description: 'Sichere dir dein Ticket für die Startup Contacts Karrieremesse.',
+  description: 'Sichere dir dein Ticket für die Startup Contacts Karrieremesse am 15. Juni 2026 in der Halle Münsterland in Münster.',
+  alternates: {
+    canonical: 'https://www.startup-contacts.de/shop',
+  },
 }
 
 export default function ShopPage() {

@@ -10,11 +10,11 @@ interface FormatItem {
 }
 
 const defaultItems: FormatItem[] = [
-  { title: 'CO-CREATION', buttonText: 'Erfahre mehr', buttonLink: '/co-creation' },
-  { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
-  { title: 'LIVE PODCAST', buttonText: 'Erfahre mehr', buttonLink: '/podcast' },
-  { title: 'TALKS', buttonText: 'Erfahre mehr', buttonLink: '/main-stage' },
-  { title: 'INNOVATION VILLAGE', buttonText: 'Erfahre mehr', buttonLink: '/innovation-village', wide: true },
+  { title: 'CO-CREATION', description: 'Arbeite gemeinsam mit Startups und Unternehmen an echten Herausforderungen', buttonText: 'Erfahre mehr', buttonLink: '/co-creation' },
+  { title: 'WORKSHOPS', description: 'Hands-on Sessions zu KI, Karriere, Gründung und mehr', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
+  { title: 'LIVE PODCAST', description: 'Gründungsgeschichten und Persönlichkeiten hautnah im Studio', buttonText: 'Erfahre mehr', buttonLink: '/podcast' },
+  { title: 'TALKS', description: 'Keynotes, Panels und Fireside Chats auf der Main Stage', buttonText: 'Erfahre mehr', buttonLink: '/main-stage' },
+  { title: 'INNOVATION VILLAGE', description: 'Über 30 Aussteller zeigen ihre Innovationen an einem Ort', buttonText: 'Erfahre mehr', buttonLink: '/innovation-village', wide: true },
 ]
 
 interface FormatSectionProps {

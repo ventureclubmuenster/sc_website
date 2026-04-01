@@ -28,7 +28,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
       onMouseLeave={handleLeave}
     >
       <button
-        className="flex items-center gap-1 text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
+        className="flex items-center gap-1 text-base text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap py-2"
       >
         {label}
         <svg
@@ -51,7 +51,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block px-4 py-2.5 text-base text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+              className="block px-5 py-3 text-base text-white/70 hover:text-white hover:bg-white/5 transition-colors"
             >
               {item.label}
             </Link>

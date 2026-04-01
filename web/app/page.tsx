@@ -10,14 +10,14 @@ const jsonLd = {
   '@type': 'Event',
   name: 'Startup Contacts 2026',
   description:
-    'Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand. Networking, Workshops, Main Stage und Innovation Village.',
+    'Deutschlands größte studentisch organisierte Startup Messe und Co-Creation Event in der Halle Münsterland in Münster, NRW. Networking, Workshops, Main Stage und Innovation Village für Startups, Talente und Mittelstand.',
   startDate: '2026-06-15',
   endDate: '2026-06-15',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'Münster',
+    name: 'Halle Münsterland',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Münster',
@@ -98,17 +98,19 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-6 text-white/60 text-xl leading-snug max-w-sm">
-              Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
+            <p className="mt-6 text-white/60 text-2xl leading-snug">
+              Die größte studentisch organisierte Startup Messe in NRW.
+              <br />
+              Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
             </p>
 
             <div className="mt-6 flex flex-col gap-4">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-2xl gradient-text">15. Juni 2026</span>
-                <span className="text-base text-white/60">Münster</span>
+                <span className="text-3xl gradient-text">15. Juni 2026</span>
+                <span className="text-lg text-white/60">Halle Münsterland</span>
               </div>
               <div className="shrink-0">
-                <HeroCTA small />
+                <HeroCTA />
               </div>
             </div>
           </div>
@@ -151,14 +153,16 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-10 text-white/60 text-2xl md:text-3xl lg:text-4xl leading-snug max-w-3xl">
-              Das größte Co-Creation Event Deutschlands zwischen Startups, Talenten & Mittelstand.
+            <p className="mt-10 text-white/60 text-3xl md:text-4xl lg:text-5xl leading-snug">
+              Die größte studentisch organisierte Startup Messe in NRW.
+              <br />
+              Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
             </p>
 
             <div className="mt-10 flex flex-row items-end gap-10">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-3xl md:text-4xl gradient-text">15. Juni 2026</span>
-                <span className="text-xl md:text-2xl text-white/60">Münster</span>
+                <span className="text-4xl md:text-5xl gradient-text">15. Juni 2026</span>
+                <span className="text-2xl md:text-3xl text-white/60">Halle Münsterland</span>
               </div>
               <div className="shrink-0">
                 <HeroCTA />
@@ -258,6 +262,17 @@ export default async function Home() {
               helfen.
             </p>
           </div>
+
+          <div className="mt-10">
+            <p className="text-white/50 text-sm font-semibold uppercase tracking-widest text-center mb-4">Unsere Fokusfelder</p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {['Produktion', 'Logistik & Einkauf', 'Energie & Nachhaltigkeit', 'Bau & Handwerk', 'Betriebsinfrastruktur', 'Lifestyle'].map((field) => (
+                <span key={field} className="px-4 py-2 border border-white/20 rounded-full text-white/70 text-sm font-medium uppercase tracking-wide">
+                  {field}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -322,6 +337,56 @@ export default async function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Startup Messe in NRW — Info Section ── */}
+      <section className="relative py-32 px-6 bg-black overflow-hidden">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+            Die <span className="gradient-text">Startup Messe</span> in NRW
+          </h2>
+
+          <div className="mt-12 space-y-6 text-white/70 text-lg leading-relaxed">
+            <p>
+              Die Startup Contacts ist Deutschlands größte studentisch organisierte Startup Messe.
+              Am 15. Juni 2026 bringen wir in der Halle Münsterland in Münster Startups,
+              mittelständische Unternehmen, Studierende und Investoren zusammen.
+            </p>
+            <p>
+              Organisiert wird die Messe vom Venture Club Münster e.V., einer studentischen
+              Initiative an der Universität Münster. Münster zählt mit über 60.000 Studierenden
+              zu den Top-5 Gründungshochschulen in Deutschland. Dieses Potenzial nutzen wir:
+              Über 30 Aussteller, 20 Speaker, fünf Veranstaltungsformate und mehr als 1.000
+              Besucher machen die Startup Contacts zur zentralen Innovationsmesse in NRW.
+            </p>
+            <p>
+              Was uns von anderen Events unterscheidet, ist unser Fokus auf Co-Creation.
+              Bei uns stehen nicht Vorträge und Messestände im Mittelpunkt, sondern die aktive
+              Zusammenarbeit. In unseren Formaten arbeiten Startups, Unternehmen und Talente
+              gemeinsam an echten Herausforderungen und entwickeln Lösungen, die den Mittelstand
+              bei der Transformation unterstützen.
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <span className="block text-3xl md:text-4xl font-bold gradient-text">30+</span>
+              <span className="text-white/50 text-sm uppercase tracking-wide">Aussteller</span>
+            </div>
+            <div>
+              <span className="block text-3xl md:text-4xl font-bold gradient-text">1.000+</span>
+              <span className="text-white/50 text-sm uppercase tracking-wide">Besucher</span>
+            </div>
+            <div>
+              <span className="block text-3xl md:text-4xl font-bold gradient-text">60.000+</span>
+              <span className="text-white/50 text-sm uppercase tracking-wide">Studierende in Münster</span>
+            </div>
+            <div>
+              <span className="block text-3xl md:text-4xl font-bold gradient-text">Top 5</span>
+              <span className="text-white/50 text-sm uppercase tracking-wide">Gründungshochschule</span>
+            </div>
           </div>
         </div>
       </section>

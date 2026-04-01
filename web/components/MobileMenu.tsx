@@ -62,7 +62,7 @@ export default function MobileMenu() {
 
         <button
           onClick={() => { setOpen(!open); if (open) setExpandedGroup(null) }}
-          className="text-white p-2"
+          className="text-white p-3"
           aria-label="Menü öffnen"
         >
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +89,7 @@ export default function MobileMenu() {
             <div key={group.label}>
               <button
                 onClick={() => toggleGroup(group.label)}
-                className="w-full flex items-center justify-between text-xs font-semibold text-white/40 uppercase tracking-wider py-2"
+                className="w-full flex items-center justify-between text-sm font-semibold text-white/40 uppercase tracking-wider py-3"
               >
                 {group.label}
                 <svg
@@ -111,7 +111,7 @@ export default function MobileMenu() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="text-white/70 hover:text-white text-base py-1 transition-colors pl-2"
+                      className="text-white/70 hover:text-white text-lg py-2.5 transition-colors pl-2"
                     >
                       {item.label}
                     </Link>
@@ -124,14 +124,14 @@ export default function MobileMenu() {
           <Link
             href="/speaker"
             onClick={() => setOpen(false)}
-            className="text-white/70 hover:text-white text-base py-2 transition-colors"
+            className="text-white/70 hover:text-white text-lg py-3 transition-colors"
           >
             Speaker
           </Link>
           <Link
             href="/partner"
             onClick={() => setOpen(false)}
-            className="text-white/70 hover:text-white text-base py-2 transition-colors"
+            className="text-white/70 hover:text-white text-lg py-3 transition-colors"
           >
             Partner
           </Link>

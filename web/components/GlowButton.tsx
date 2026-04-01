@@ -84,7 +84,7 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
   if (gradient) {
     const btnClassName = small
       ? 'relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white cursor-pointer gradient-bg'
-      : 'relative inline-flex items-center gap-3 px-12 py-5 rounded-full font-semibold text-lg text-white cursor-pointer gradient-bg'
+      : 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg text-white cursor-pointer gradient-bg'
 
     const glowConic = 'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 25%, #ff5e00 45%, #ff8a2a 50%, #ff5e00 55%, transparent 75%, transparent 100%)'
 

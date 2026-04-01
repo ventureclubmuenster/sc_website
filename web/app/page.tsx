@@ -370,22 +370,22 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">30+</span>
-              <span className="text-white/50 text-sm uppercase tracking-wide">Aussteller</span>
+              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Aussteller</span>
             </div>
-            <div>
+            <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">1.000+</span>
-              <span className="text-white/50 text-sm uppercase tracking-wide">Besucher</span>
+              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Besucher</span>
             </div>
-            <div>
+            <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">60.000+</span>
-              <span className="text-white/50 text-sm uppercase tracking-wide">Studierende in Münster</span>
+              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Studierende in Münster</span>
             </div>
-            <div>
+            <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">Top 5</span>
-              <span className="text-white/50 text-sm uppercase tracking-wide">Gründungshochschule</span>
+              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Gründungshochschule</span>
             </div>
           </div>
         </div>

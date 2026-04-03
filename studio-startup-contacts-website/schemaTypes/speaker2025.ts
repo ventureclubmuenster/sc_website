@@ -27,9 +27,9 @@ export const speaker2025 = defineType({
       options: {
         list: [
           { title: 'Main Stage', value: 'Main Stage' },
-          { title: 'Workshop Stage', value: 'Workshop Stage' },
-          { title: 'Panel Stage', value: 'Panel Stage' },
-          { title: 'Podcast Stage', value: 'Podcast Stage' },
+          { title: 'Workshop', value: 'Workshop Stage' },
+          { title: 'Ask me anything', value: 'Panel Stage' },
+          { title: 'Live Podcast', value: 'Podcast Stage' },
         ],
       },
     }),

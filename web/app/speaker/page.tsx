@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   },
 }
 
+const stageLabels: Record<string, string> = {
+  'Main Stage': 'Main Stage',
+  'Workshop Stage': 'Workshop',
+  'Panel Stage': 'Ask me anything',
+  'Podcast Stage': 'Live Podcast',
+}
+
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/image'
@@ -77,7 +84,7 @@ export default async function SpeakerPage() {
                 )}
                 {speaker.stage && (
                   <p className="text-sc-orange text-sm font-medium mt-2">
-                    {speaker.stage}
+                    {stageLabels[speaker.stage] ?? speaker.stage}
                   </p>
                 )}
               </div>

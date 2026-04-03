@@ -211,7 +211,7 @@ export default async function TalentePage() {
             </h2>
 
             <ExhibitorGrid
-              exhibitors={exhibitors.map((ex) => ({
+              exhibitors={exhibitors.slice(0, 8).map((ex) => ({
                 _id: ex._id,
                 name: ex.name,
                 logoUrl: ex.logo ? urlFor(ex.logo).width(600).fit('max').url() : undefined,

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import vcmLogo from '@/app/images/VCM_logo.png'
+import GoogleAdsClickConversion from '@/components/GoogleAdsClickConversion'
 
 export default function Footer() {
   return (
@@ -22,9 +23,13 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:info@startup-contacts.de" className="text-white/50 text-sm hover:text-white transition-colors">
+              <GoogleAdsClickConversion
+                sendTo="AW-857927386/duYuCPP_5ZMcENrdi5kD"
+                href="mailto:info@startup-contacts.de"
+                className="text-white/50 text-sm hover:text-white transition-colors"
+              >
                 Contact us
-              </a>
+              </GoogleAdsClickConversion>
             </li>
           </ul>
         </div>

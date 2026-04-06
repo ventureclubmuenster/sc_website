@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GoogleAdsConversion from '@/components/GoogleAdsConversion'
 
 export const metadata: Metadata = {
   title: 'Anmeldung erfolgreich | Startup Contacts',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function DankePage() {
   return (
     <main className="min-h-screen flex items-center justify-center px-6 py-32">
+      <GoogleAdsConversion sendTo="AW-857927386/EOOCCOi18JMcENrdi5kD" />
       <div className="w-full max-w-xl text-center">
         {/* Icon */}
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sc-orange/20 mb-8">

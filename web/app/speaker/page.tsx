@@ -16,6 +16,7 @@ import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
 import { urlFor } from '@/lib/sanity/image'
 import { speakers2025Query } from '@/lib/sanity/queries'
+import GoogleAdsConversion from '@/components/GoogleAdsConversion'
 
 interface Speaker {
   _id: string
@@ -33,6 +34,7 @@ export default async function SpeakerPage() {
 
   return (
     <main className="bg-background min-h-screen max-w-7xl mx-auto px-6 pb-16">
+      <GoogleAdsConversion sendTo="AW-857927386/SPcmCOW--JMcENrdi5kD" />
       {/* Header */}
       <div className="py-16 text-center">
         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">

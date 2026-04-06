@@ -3,6 +3,10 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
+declare global {
+  function gtag(...args: unknown[]): void
+}
+
 interface TabData {
   image?: string
   text1: string
@@ -68,6 +72,23 @@ export default function InfoTabs({ aussteller, besucher }: InfoTabsProps) {
       <a
         href={tab.buttonLink}
         className="inline-flex items-center justify-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors w-fit"
+        onClick={
+          tab.buttonLink.startsWith('mailto:')
+            ? (e) => {
+                e.preventDefault()
+                if (typeof gtag === 'function') {
+                  gtag('event', 'conversion', {
+                    send_to: 'AW-857927386/duYuCPP_5ZMcENrdi5kD',
+                    event_callback: () => {
+                      window.location.href = tab.buttonLink
+                    },
+                  })
+                } else {
+                  window.location.href = tab.buttonLink
+                }
+              }
+            : undefined
+        }
       >
         {tab.buttonText} &rarr;
       </a>

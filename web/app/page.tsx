@@ -39,6 +39,7 @@ import HeroCTA from '@/components/HeroCTA'
 import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
 import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
+import RotatingWords from '@/components/RotatingWords'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
@@ -98,7 +99,7 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-6 text-white/60 text-2xl leading-snug">
+            <p className="mt-6 text-white/60 text-base leading-snug">
               Die größte studentisch organisierte Startup Messe in NRW.
               <br />
               Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
@@ -106,11 +107,11 @@ export default async function Home() {
 
             <div className="mt-6 flex flex-col gap-4">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-3xl gradient-text">15. Juni 2026</span>
-                <span className="text-lg text-white/60">Halle Münsterland</span>
+                <span className="text-xl gradient-text">15. Juni 2026</span>
+                <span className="text-sm text-white/60">Halle Münsterland</span>
               </div>
               <div className="shrink-0">
-                <HeroCTA />
+                <HeroCTA small />
               </div>
             </div>
           </div>
@@ -153,7 +154,7 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-10 text-white/60 text-3xl md:text-4xl lg:text-5xl leading-snug">
+            <p className="mt-10 text-white/60 text-xl md:text-2xl lg:text-3xl leading-snug">
               Die größte studentisch organisierte Startup Messe in NRW.
               <br />
               Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
@@ -161,11 +162,11 @@ export default async function Home() {
 
             <div className="mt-10 flex flex-row items-end gap-10">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-4xl md:text-5xl gradient-text">15. Juni 2026</span>
-                <span className="text-2xl md:text-3xl text-white/60">Halle Münsterland</span>
+                <span className="text-2xl md:text-3xl gradient-text">15. Juni 2026</span>
+                <span className="text-lg md:text-xl text-white/60">Halle Münsterland</span>
               </div>
               <div className="shrink-0">
-                <HeroCTA />
+                <HeroCTA small />
               </div>
             </div>
           </div>
@@ -205,6 +206,9 @@ export default async function Home() {
           </h2>
         </div>
       </section>
+
+      {/* ── Wir haben ... (rotating words) ── */}
+      <RotatingWords />
 
       {/* ── Networking Together ── */}
       <section className="relative py-32 px-6 overflow-hidden">

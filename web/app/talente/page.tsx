@@ -53,6 +53,8 @@ interface BentoItem {
   buttonText?: string
   buttonLink?: string
   image?: ImageField
+  wide?: boolean
+  tall?: boolean
 }
 
 interface TalentePageData {
@@ -78,9 +80,9 @@ const defaultBentoItems: BentoItem[] = [
   { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
   { title: 'LIVE-PODCASTS', buttonText: 'Erfahre mehr', buttonLink: '/podcasts' },
   { title: 'INSPIRATION', buttonText: 'Erfahre mehr', buttonLink: '/innovation-village' },
-  { title: 'TALKS', buttonText: 'Erfahre mehr', buttonLink: '/main-stage' },
-  { title: 'PERKS' },
-  { title: 'AFTERPARTY' },
+  { title: 'TALKS', buttonText: 'Erfahre mehr', buttonLink: '/main-stage', wide: false, tall: true },
+  { title: 'PERKS', tall: false },
+  { title: 'AFTERPARTY', wide: false, tall: false },
 ]
 
 const defaultProgramCards: ProgramCard[] = [
@@ -114,11 +116,16 @@ export default async function TalentePage() {
   }))
 
   const bentoItems = data?.bentoItems?.length ? data.bentoItems : defaultBentoItems
+  const tallItems = ['TALKS']
+  const smallItems = ['PERKS', 'PERKS ', 'AFTERPARTY']
+
   const bentoWithUrls = bentoItems.map((b) => ({
     title: b.title,
     buttonText: b.buttonText,
     buttonLink: b.buttonLink,
     imageUrl: b.image ? urlFor(b.image).width(800).height(600).url() : undefined,
+    wide: b.wide ?? (smallItems.includes(b.title) ? false : undefined),
+    tall: b.tall ?? (tallItems.includes(b.title) ? true : smallItems.includes(b.title) ? false : undefined),
   }))
 
   const programCardsWithUrls = programCards.map((card) => ({
@@ -211,7 +218,7 @@ export default async function TalentePage() {
             </h2>
 
             <ExhibitorGrid
-              exhibitors={exhibitors.map((ex) => ({
+              exhibitors={exhibitors.slice(0, 8).map((ex) => ({
                 _id: ex._id,
                 name: ex.name,
                 logoUrl: ex.logo ? urlFor(ex.logo).width(600).fit('max').url() : undefined,

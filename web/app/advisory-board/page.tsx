@@ -92,19 +92,9 @@ export default async function AdvisoryBoardPage() {
             return <div key={advisor._id}>{card}</div>
           }
 
-          const firstRow = advisors.slice(0, 4)
-          const secondRow = advisors.slice(4)
-
           return (
-            <div className="space-y-14">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-14 justify-items-center">
-                {firstRow.map(renderCard)}
-              </div>
-              {secondRow.length > 0 && (
-                <div className="flex flex-wrap justify-center gap-x-10 gap-y-14 [&>*]:w-[calc((100%-120px)/4)]">
-                  {secondRow.map(renderCard)}
-                </div>
-              )}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-14 justify-items-center">
+              {advisors.map(renderCard)}
             </div>
           )
         })()}

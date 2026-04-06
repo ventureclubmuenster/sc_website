@@ -76,6 +76,7 @@ interface BentoItem {
   buttonLink?: string
   imageUrl?: string
   wide?: boolean
+  tall?: boolean
 }
 
 // Bento layout patterns: each item gets a col-span and row-span
@@ -99,7 +100,9 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
     <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[14rem] gap-3">
       {items.map((item, i) => {
         const pattern = layoutPatterns[i % layoutPatterns.length]
-        const colSpan = item.wide ? 'md:col-span-2' : pattern.colSpan
+        const colSpan = item.wide ? 'md:col-span-2' : item.wide === false ? 'md:col-span-1' : pattern.colSpan
+        const rowSpan = item.tall ? 'md:row-span-2' : item.tall === false ? 'md:row-span-1' : pattern.rowSpan
+        const height = item.tall ? 'h-28 md:h-full' : item.tall === false ? 'h-28 md:h-56' : pattern.height
         const isHovered = hoveredIndex === i
 
         return (
@@ -107,7 +110,7 @@ export default function BentoGrid({ items }: { items: BentoItem[] }) {
             key={i}
             direction={directions[i % directions.length]}
             distance={50}
-            className={`group relative overflow-hidden rounded-2xl cursor-pointer ${colSpan} ${pattern.rowSpan} ${pattern.height}`}
+            className={`group relative overflow-hidden rounded-2xl cursor-pointer ${colSpan} ${rowSpan} ${height}`}
           >
           {item.buttonLink ? (
             <Link

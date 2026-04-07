@@ -57,13 +57,14 @@ export const landingPageQuery = groq`
 `
 
 export const speakersQuery = groq`
-  *[_type == "speaker2026"] | order(name asc) {
+  *[_type == "speaker2026"] | order(orderRank asc) {
     _id,
     name,
     slug,
     title,
     bio,
     image,
+    stage,
     socialLinks
   }
 `

@@ -20,6 +20,19 @@ export default defineType({
         { name: 'twitter', type: 'url' }
       ]
     }),
+    defineField({
+      name: 'stage',
+      title: 'Stage',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Main Stage', value: 'Main Stage' },
+          { title: 'Workshop', value: 'Workshop Stage' },
+          { title: 'Ask me anything', value: 'Panel Stage' },
+          { title: 'Live Podcast', value: 'Podcast Stage' },
+        ],
+      },
+    }),
     defineField({ name: 'seo', type: 'seo' }),
   ],
   preview: {

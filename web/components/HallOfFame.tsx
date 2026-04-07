@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { urlFor } from '@/lib/sanity/image'
 import GlowButton from './GlowButton'
 import FadeIn, { StaggerContainer, StaggerItem } from './FadeIn'
@@ -44,7 +43,7 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
           </h2>
         </FadeIn>
 
-        <StaggerContainer stagger={0.12} className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer stagger={0.12} className="mt-14 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {speakers.map((speaker) => (
             <StaggerItem
               key={speaker._id}
@@ -97,22 +96,6 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
             </StaggerItem>
           ))}
 
-          {/* "Und viele mehr" card — only visible in 2-col grid (sm), hidden on lg (3-col) */}
-          <StaggerItem
-            direction="up"
-            distance={50}
-            className="group relative aspect-square sm:aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 hover:border-sc-orange/30 transition-colors duration-500 lg:hidden"
-          >
-            <Link href="/speaker" className="absolute inset-0 flex flex-col items-center justify-center bg-card-grey z-10">
-              <span className="text-5xl md:text-6xl font-bold text-sc-orange group-hover:scale-110 transition-transform duration-300">+</span>
-              <span className="mt-4 text-lg md:text-xl font-bold uppercase tracking-wide text-white group-hover:text-sc-orange transition-colors duration-300">
-                Und viele mehr
-              </span>
-              <span className="mt-2 text-sm text-white/40">Alle Speaker entdecken</span>
-            </Link>
-            {/* Hover glow */}
-            <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </StaggerItem>
         </StaggerContainer>
 
         {/* CTA Button */}

@@ -68,7 +68,7 @@ function formatTime(iso?: string) {
 /* ── Program Card ── */
 function ProgramCard({ item }: { item: ProgramItem }) {
   return (
-    <div className="group relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden p-6 hover:border-sc-orange/30 transition-colors duration-500">
+    <div className="group relative bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden p-6 hover:border-sc-orange/30 transition-colors duration-500">
       <div className="absolute -top-16 -right-16 w-40 h-40 bg-sc-orange/5 rounded-full blur-3xl group-hover:bg-sc-orange/15 transition-all duration-500" />
 
       {item.startTime && (
@@ -178,7 +178,7 @@ export default function MainStageContent({
                   ))
                 ) : (
                   <FadeIn direction="up">
-                    <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-8 text-center">
+                    <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
                       <MicIcon className="w-10 h-10 text-white/20 mx-auto mb-3" />
                       <p className="text-white/40">Keynotes werden bald bekannt gegeben.</p>
                     </div>
@@ -212,7 +212,7 @@ export default function MainStageContent({
                   ))
                 ) : (
                   <FadeIn direction="up">
-                    <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-8 text-center">
+                    <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
                       <UsersIcon className="w-10 h-10 text-white/20 mx-auto mb-3" />
                       <p className="text-white/40">Panels werden bald bekannt gegeben.</p>
                     </div>
@@ -246,7 +246,7 @@ export default function MainStageContent({
                   ))
                 ) : (
                   <FadeIn direction="up">
-                    <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-8 text-center">
+                    <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
                       <FireIcon className="w-10 h-10 text-white/20 mx-auto mb-3" />
                       <p className="text-white/40">Fireside Chats werden bald bekannt gegeben.</p>
                     </div>

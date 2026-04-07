@@ -46,7 +46,7 @@ export default function MobileMenu() {
 
   return (
     <div
-      className="lg:hidden bg-black/85 backdrop-blur-md border border-white/10"
+      className="lg:hidden liquid-glass"
       style={{ borderRadius: open ? '1.5rem' : '2.5rem', transition: 'border-radius 100ms ease' }}
     >
       {/* Top bar with logo + burger */}

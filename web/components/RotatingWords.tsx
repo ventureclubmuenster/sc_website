@@ -61,7 +61,7 @@ export default function RotatingWords() {
   return (
     <section className="py-40 md:py-56 px-6 bg-black">
       <div className="max-w-6xl mx-auto flex items-center justify-center">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-center">
+        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-center">
           <span className="text-white block">Freu dich auf</span>
           <span className="relative inline-flex overflow-hidden h-[1.15em] items-center justify-center w-full">
             <span className={`gradient-text inline-block ${wordStyle()}`}>

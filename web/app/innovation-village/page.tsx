@@ -51,7 +51,7 @@ async function getExhibitors(): Promise<Exhibitor[]> {
 export default async function InnovationVillagePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
-  const subtext = data?.heroSubtext || 'Über 30 Startups und Unternehmen zeigen an ihren Ständen, woran sie arbeiten. Komm vorbei, lass dich inspirieren und knüpfe neue Kontakte.'
+  const subtext = data?.heroSubtext || 'Hier treffen sich Corporates, Startups und Talente.'
 
   const ausstellerTab = {
     image: data?.ausstellerImage ? urlFor(data.ausstellerImage).width(800).height(1000).url() : undefined,

@@ -40,6 +40,7 @@ import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
 import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
 import RotatingWords from '@/components/RotatingWords'
+import YouTubeBackground from '@/components/YouTubeBackground'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
@@ -79,14 +80,8 @@ export default async function Home() {
           <div className="h-[80px]" />
 
           {/* Hero video */}
-          <div className="w-full aspect-video pointer-events-none overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=pW-V636liEk&playsinline=1"
-              className="w-full h-full"
-              allow="autoplay; encrypted-media"
-              allowFullScreen={false}
-              aria-hidden="true"
-            />
+          <div className="relative w-full aspect-video overflow-hidden">
+            <YouTubeBackground videoId="1NUZVnJK3XE" />
           </div>
 
           {/* Content below video */}
@@ -119,33 +114,10 @@ export default async function Home() {
 
         {/* ── Desktop layout: full-screen video background ── */}
         <div className="relative hidden lg:flex min-h-screen items-end">
-          {/* Hero video background */}
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute"
-              style={{
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 'max(100%, 177.78vh)',
-                height: 'max(100%, 56.25vw)',
-              }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/pW-V636liEk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playlist=pW-V636liEk&playsinline=1"
-                className="w-full h-full"
-                allow="autoplay; encrypted-media"
-                allowFullScreen={false}
-                aria-hidden="true"
-              />
-            </div>
-          </div>
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-black/35 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+          <YouTubeBackground videoId="1NUZVnJK3XE" cover />
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
-          <div className="relative z-20 w-full px-8 pb-16 pt-32">
+          <div className="relative z-10 w-full px-8 pb-16 pt-32">
             <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-2">
               Zukunft
               <br />
@@ -416,6 +388,42 @@ export default async function Home() {
 
       {/* ── Hall of Fame ── */}
       {data?.hallOfFame && <HallOfFame speakers={data.hallOfFame} />}
+
+      {/* ── Unsere vergangenen Partner ── */}
+      {data?.vergangenePartner && data.vergangenePartner.length > 0 && (
+        <section className="relative py-32 px-6 bg-black overflow-hidden">
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight mb-14">
+              Unsere vergangenen <span className="gradient-text">Partner</span>
+            </h2>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {data.vergangenePartner.map((p: { name?: string; logo?: { asset: { _ref: string } }; whiteBackground?: boolean; _key?: string }, i: number) => (
+                <div
+                  key={p._key || i}
+                  className={`rounded-xl overflow-hidden aspect-[2/1] flex items-center justify-center ${
+                    p.whiteBackground ? 'bg-white' : 'bg-black border border-white/10'
+                  }`}
+                >
+                  {p.logo ? (
+                    <img
+                      src={urlFor(p.logo).width(600).fit('max').url()}
+                      alt={p.name || `Partner ${i + 1}`}
+                      className="w-3/4 h-3/4 object-contain"
+                    />
+                  ) : (
+                    <span className={`text-sm font-semibold text-center ${
+                      p.whiteBackground ? 'text-black/60' : 'text-white/60'
+                    }`}>
+                      {p.name}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   )
 }

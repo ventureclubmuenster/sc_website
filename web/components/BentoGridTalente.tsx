@@ -79,61 +79,56 @@ interface BentoItem {
   tall?: boolean
 }
 
-const directions = ['left', 'up', 'right', 'up', 'left'] as const
+// 7-item bento layout patterns (for Talente page with extra tiles)
+const layoutPatterns = [
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-2', height: 'h-28 md:h-full' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+  { colSpan: 'md:col-span-1', rowSpan: 'md:row-span-2', height: 'h-28 md:h-full' },
+  { colSpan: 'md:col-span-2', rowSpan: 'md:row-span-1', height: 'h-28 md:h-56' },
+]
 
-export default function BentoGrid({ items }: { items: BentoItem[] }) {
+const directions = ['left', 'up', 'right', 'up', 'left', 'up', 'right'] as const
+
+export default function BentoGridTalente({ items }: { items: BentoItem[] }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <StaggerContainer
-      stagger={0.12}
-      className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[14rem] gap-3"
-    >
+    <StaggerContainer stagger={0.12} className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[14rem] gap-3">
       {items.map((item, i) => {
+        const pattern = layoutPatterns[i % layoutPatterns.length]
+        const colSpan = item.wide ? 'md:col-span-2' : item.wide === false ? 'md:col-span-1' : pattern.colSpan
+        const rowSpan = item.tall ? 'md:row-span-2' : item.tall === false ? 'md:row-span-1' : pattern.rowSpan
+        const height = item.tall ? 'h-28 md:h-full' : item.tall === false ? 'h-28 md:h-56' : pattern.height
         const isHovered = hoveredIndex === i
-
-        // Explicit grid classes per position — no dynamic construction
-        let gridClass: string
-        switch (i) {
-          case 0:
-            gridClass = 'md:col-span-2 md:row-span-2 h-28 md:h-auto'
-            break
-          case 1:
-          case 2:
-          case 3:
-            gridClass = 'h-28 md:h-auto'
-            break
-          default:
-            // Last item (and any extra): span 2 columns to fill the row
-            gridClass = 'md:col-span-2 h-28 md:h-auto'
-            break
-        }
 
         return (
           <StaggerItem
             key={i}
             direction={directions[i % directions.length]}
             distance={50}
-            className={`group relative overflow-hidden rounded-2xl cursor-pointer ${gridClass}`}
+            className={`group relative overflow-hidden rounded-2xl cursor-pointer ${colSpan} ${rowSpan} ${height}`}
           >
-            {item.buttonLink ? (
-              <Link
-                href={item.buttonLink}
-                className="absolute inset-0"
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <CardInner item={item} isHovered={isHovered} />
-              </Link>
-            ) : (
-              <div
-                className="absolute inset-0"
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <CardInner item={item} isHovered={isHovered} />
-              </div>
-            )}
+          {item.buttonLink ? (
+            <Link
+              href={item.buttonLink}
+              className="absolute inset-0"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <CardInner item={item} isHovered={isHovered} />
+            </Link>
+          ) : (
+            <div
+              className="absolute inset-0"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <CardInner item={item} isHovered={isHovered} />
+            </div>
+          )}
           </StaggerItem>
         )
       })}

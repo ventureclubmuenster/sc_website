@@ -20,7 +20,7 @@ import KombinationSection from './KombinationSection'
 import FeatureCards from './FeatureCards'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
 import ProgramCards from './ProgramCards'
-import BentoGrid from '@/components/BentoGrid'
+import BentoGridTalente from '@/components/BentoGridTalente'
 
 interface FeatureCard {
   title: string
@@ -102,7 +102,6 @@ export default async function TalentePage() {
   const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
 
   const headline = data?.heroHeadline || 'GESTALTE DIE LÖSUNGEN VON MORGEN'
-  const subtext = data?.heroSubtext || 'Die Chance den Arbeitgeber von morgen zu finden'
   const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
   const cards = data?.featureCards?.length ? data.featureCards : defaultCards
   const programCards = data?.programCards?.length ? data.programCards : defaultProgramCards
@@ -144,7 +143,6 @@ export default async function TalentePage() {
       <HeroSection
         imageUrl={heroImageUrl}
         headline={headline}
-        subtext={subtext}
         highlight={highlight}
       />
 
@@ -190,7 +188,7 @@ export default async function TalentePage() {
               <span className="gradient-text">MESSE</span>
             </h2>
 
-            <BentoGrid items={bentoWithUrls} />
+            <BentoGridTalente items={bentoWithUrls} />
           </div>
         </section>
 

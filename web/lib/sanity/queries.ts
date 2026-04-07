@@ -18,7 +18,7 @@ export const siteSettingsQuery = groq`
 `
 
 export const landingPageQuery = groq`
-  *[_type == "landingPage"][0] {
+  *[_type == "landingPage" && _id in ["landingPage", "drafts.landingPage"]][0] {
     "heroVideoUrl": heroVideo.asset->url,
     stellDirVorSpeaker,
     stellDirVorBesucher,
@@ -43,6 +43,11 @@ export const landingPageQuery = groq`
       image,
       slug,
       socialLinks
+    },
+    vergangenePartner[] {
+      name,
+      logo,
+      whiteBackground
     },
     whyUs[] {
       title,

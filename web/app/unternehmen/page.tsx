@@ -102,7 +102,6 @@ export default async function UnternehmenPage() {
       <HeroSection
         imageUrl={heroImageUrl}
         headline="IHR UNTERNEHMEN TREIBT DIE BRANCHE VORAN"
-        subtext="Kommen Sie vorbei und bringen Sie Ihr Wissen ein"
         highlight="Co-Creation als Innovationstreiber"
       />
 

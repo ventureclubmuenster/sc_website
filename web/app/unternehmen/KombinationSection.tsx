@@ -47,7 +47,7 @@ export default function KombinationSection() {
                 distance={50}
               >
                 <div
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer h-full"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-8 transition-all duration-300 hover:border-sc-orange/40 hover:bg-black/40 cursor-pointer h-full"
                   onMouseEnter={() => setActiveIndex(i)}
                   onMouseLeave={() => setActiveIndex(null)}
                 >

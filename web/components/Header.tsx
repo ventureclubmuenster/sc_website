@@ -18,7 +18,7 @@ export default async function Header() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50">
       {/* Desktop */}
-      <div className="hidden lg:flex max-w-7xl mx-auto px-8 h-20 items-center justify-between bg-black/85 backdrop-blur-md border border-white/10 rounded-full">
+      <div className="hidden lg:flex max-w-7xl mx-auto px-8 h-20 items-center justify-between liquid-glass rounded-full">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src={scLogo}

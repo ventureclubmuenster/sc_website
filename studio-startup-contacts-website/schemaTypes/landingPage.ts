@@ -11,6 +11,7 @@ export default defineType({
     { name: 'formateBento', title: 'Unsere Formate (Bento Grid)', options: { collapsible: true, collapsed: true } },
     { name: 'wenDuErwarten', title: 'Wen du erwarten kannst', options: { collapsible: true, collapsed: true } },
     { name: 'hallOfFameSection', title: 'Unsere Hall of Fame', options: { collapsible: true, collapsed: true } },
+    { name: 'vergangenePartnerSection', title: 'Unsere vergangenen Partner', options: { collapsible: true, collapsed: true } },
     { name: 'whyUsSection', title: 'Warum Startup Contacts', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
@@ -124,6 +125,29 @@ export default defineType({
         },
       ],
       validation: (Rule) => Rule.max(6).unique(),
+    }),
+
+    // ── Unsere vergangenen Partner ──
+    defineField({
+      name: 'vergangenePartner',
+      title: 'Vergangene Partner (max. 4)',
+      description: 'Lade hier bis zu 4 Logos von vergangenen Partnern hoch.',
+      type: 'array',
+      fieldset: 'vergangenePartnerSection',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'name', title: 'Name', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'logo', title: 'Logo', type: 'image', options: { hotspot: true }, validation: (r) => r.required() }),
+            defineField({ name: 'whiteBackground', title: 'Weißer Hintergrund', description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht.', type: 'boolean', initialValue: false }),
+          ],
+          preview: {
+            select: { title: 'name', media: 'logo' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.max(4),
     }),
 
     // ── Warum Startup Contacts (bestehend) ──

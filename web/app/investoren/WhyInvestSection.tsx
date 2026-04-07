@@ -50,7 +50,7 @@ export default function WhyInvestSection() {
             return (
               <StaggerItem key={i} direction="up" distance={40}>
                 <div
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-white/[0.06] cursor-pointer"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-8 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-black/40 cursor-pointer"
                   onMouseEnter={() => setActiveIndex(i)}
                   onMouseLeave={() => setActiveIndex(null)}
                 >

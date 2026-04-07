@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   },
 }
 
+const isSafeUrl = (url: string) => /^https?:\/\//i.test(url)
+
 const stageLabels: Record<string, string> = {
   'Main Stage': 'Main Stage',
   'Workshop Stage': 'Workshop',
@@ -105,10 +107,11 @@ export default async function SpeakerPage() {
             </div>
           )
 
-          return speaker.socialLinks?.linkedin ? (
+          const linkedin = speaker.socialLinks?.linkedin
+          return linkedin && isSafeUrl(linkedin) ? (
             <a
               key={speaker._id}
-              href={speaker.socialLinks.linkedin}
+              href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="block cursor-pointer"
@@ -216,10 +219,11 @@ export default async function SpeakerPage() {
             </div>
           )
 
-          return speaker.socialLinks?.linkedin ? (
+          const linkedin = speaker.socialLinks?.linkedin
+          return linkedin && isSafeUrl(linkedin) ? (
             <a
               key={speaker._id}
-              href={speaker.socialLinks.linkedin}
+              href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="block cursor-pointer"

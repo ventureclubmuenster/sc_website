@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GlowButton from '@/components/GlowButton'
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://www.startup-contacts.de' },
@@ -420,6 +421,11 @@ export default async function Home() {
                   )}
                 </div>
               ))}
+            </div>
+
+            {/* CTA Button */}
+            <div className="mt-14 flex justify-center">
+              <GlowButton href="/partner">Alle Partner</GlowButton>
             </div>
           </div>
         </section>

@@ -98,6 +98,11 @@ export default function RootLayout({
       <Script id="google-ads-config" strategy="afterInteractive">
         {`gtag('config', 'AW-857927386');`}
       </Script>
+      <Script
+        src="https://analytics.ahrefs.com/analytics.js"
+        data-key="+ub1xv0Nvh59MEr1oiC+oA"
+        strategy="afterInteractive"
+      />
     </html>
   )
 }

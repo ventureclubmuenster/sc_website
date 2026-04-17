@@ -42,6 +42,7 @@ import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
 import RotatingWords from '@/components/RotatingWords'
 import YouTubeBackground from '@/components/YouTubeBackground'
+import TicketButton from '@/components/TicketButton'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
@@ -106,8 +107,9 @@ export default async function Home() {
                 <span className="text-xl gradient-text">15. Juni 2026</span>
                 <span className="text-sm text-white/60">Halle Münsterland</span>
               </div>
-              <div className="shrink-0">
+              <div className="flex flex-wrap items-center gap-3">
                 <HeroCTA small />
+                <TicketButton />
               </div>
             </div>
           </div>
@@ -138,8 +140,11 @@ export default async function Home() {
                 <span className="text-2xl md:text-3xl gradient-text">15. Juni 2026</span>
                 <span className="text-lg md:text-xl text-white/60">Halle Münsterland</span>
               </div>
-              <div className="shrink-0">
+              <div className="flex flex-1 items-center gap-4">
                 <HeroCTA small />
+                <div className="ml-auto mr-[15%]">
+                  <TicketButton />
+                </div>
               </div>
             </div>
           </div>

@@ -67,7 +67,7 @@ const tickets: Ticket[] = [
     perks: [
       ...STANDARD_PERKS,
       { text: 'Zugang zur separaten Working Area für Meetings' },
-      { text: 'Zugang zum Pre Event am Vorabend bei Fiege X Dock', highlight: true },
+      { text: 'Zugang zum Pre Event am Vorabend', highlight: true },
       { text: 'VIP Lounge inkl. Premium Catering', highlight: true },
       { text: 'Zugang zum VIP Working Space' },
       { text: 'Präferierter Workshop Zugang' },

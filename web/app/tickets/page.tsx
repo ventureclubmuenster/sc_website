@@ -32,7 +32,6 @@ interface Ticket {
   tagline: string
   price: TicketPrice
   perks: Perk[]
-  highlighted?: boolean
 }
 
 const STANDARD_PERKS: Perk[] = [
@@ -55,7 +54,6 @@ const tickets: Ticket[] = [
   {
     name: 'Regular Access',
     tagline: 'Für Unternehmen und Professionals',
-    highlighted: true,
     price: { amount: '70 €' },
     perks: [
       ...STANDARD_PERKS,
@@ -113,7 +111,7 @@ export default function TicketsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">
-              <span className="text-white">Deine </span>
+              <span className="text-white">Startup Contacts </span>
               <span className="gradient-text">Tickets</span>
             </h2>
           </div>
@@ -137,19 +135,19 @@ export default function TicketsPage() {
 
 function TicketCard({ ticket }: { ticket: Ticket }) {
   return (
-    <div className="relative group">
-      {ticket.highlighted && (
-        <div
-          className="absolute -inset-[1px] rounded-2xl opacity-70"
-          style={{
-            background:
-              'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 35%, #ff5e00 50%, transparent 65%, transparent 100%)',
-            animation: 'glow-spin 6s linear infinite',
-          }}
-        />
-      )}
+    <div className="relative group rounded-2xl p-[1.5px] h-full">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-2xl"
+        style={{
+          background:
+            'conic-gradient(from var(--glow-angle, 0deg), rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.05) 32%, rgba(255,94,0,0.75) 50%, rgba(255,255,255,0.05) 68%, rgba(255,255,255,0.05) 100%)',
+          animation: 'glow-spin 9s linear infinite',
+          opacity: 0.55,
+        }}
+      />
 
-      <div className="relative h-full flex flex-col rounded-2xl border border-white/[0.08] bg-[#111111] p-8 lg:p-10">
+      <div className="relative h-full flex flex-col rounded-[14.5px] bg-[#111111] p-8 lg:p-10">
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
             {ticket.name}

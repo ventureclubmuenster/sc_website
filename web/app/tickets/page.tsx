@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import BigCountdown from '@/components/BigCountdown'
 import TicketCardCTA from './TicketCardCTA'
 
 export const metadata: Metadata = {
@@ -14,8 +13,6 @@ export const metadata: Metadata = {
     url: 'https://www.startup-contacts.de/tickets',
   },
 }
-
-const LAUNCH_DATE = '2026-04-22T18:00:00+02:00'
 
 interface TicketPrice {
   amount: string
@@ -80,9 +77,8 @@ const tickets: Ticket[] = [
 export default function TicketsPage() {
   return (
     <>
-      {/* Header + Countdown */}
-      <section className="relative bg-black pt-32 pb-20 px-6 overflow-hidden">
-        {/* Ambient glow */}
+      {/* Tickets */}
+      <section className="relative bg-black pt-32 pb-32 px-6 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           style={{
@@ -90,26 +86,7 @@ export default function TicketsPage() {
               'radial-gradient(circle at 50% 0%, rgba(255,94,0,0.25) 0%, transparent 55%)',
           }}
         />
-
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight">
-            <span className="text-white">DER COUNTDOWN </span>
-            <span className="gradient-text">LÄUFT</span>
-          </h1>
-          <p className="text-white/60 text-base md:text-lg mt-6 max-w-2xl">
-            Am 22.04.2026 um 18:00 Uhr gehen die Tickets live. Sichere dir dein Ticket auf der
-            größten studentisch organisierten Startup Messe in NRW.
-          </p>
-
-          <div className="mt-14 md:mt-16">
-            <BigCountdown targetDate={LAUNCH_DATE} />
-          </div>
-        </div>
-      </section>
-
-      {/* Tickets */}
-      <section className="bg-black pb-32 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">
               <span className="text-white">Startup Contacts </span>

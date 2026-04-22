@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import BigCountdown from '@/components/BigCountdown'
+import TicketCardCTA from './TicketCardCTA'
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -66,12 +67,12 @@ const tickets: Ticket[] = [
     price: { amount: '250 €' },
     perks: [
       ...STANDARD_PERKS,
-      { text: 'Zugang zur separaten Working Area für Meetings' },
       { text: 'Zugang zum Pre Event am Vorabend', highlight: true },
-      { text: 'VIP Lounge inkl. Premium Catering', highlight: true },
-      { text: 'Zugang zum VIP Working Space' },
-      { text: 'Präferierter Workshop Zugang' },
-      { text: 'Separater VIP Eingang — keine Warteschlangen' },
+      { text: 'Zugang zur VIP Lounge', highlight: true },
+      { text: 'Premium Catering', highlight: true },
+      { text: 'Zugang zum VIP Working Space', highlight: true },
+      { text: 'Präferierter Workshop Zugang', highlight: true },
+      { text: 'Separater VIP Eingang ohne lange Warteschlange', highlight: true },
     ],
   },
 ]
@@ -201,13 +202,7 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
         </div>
 
         <div className="mt-10">
-          <button
-            type="button"
-            disabled
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold text-sm text-white/40 bg-white/[0.04] border border-white/10 cursor-not-allowed"
-          >
-            Tickets soon
-          </button>
+          <TicketCardCTA />
         </div>
       </div>
     </div>

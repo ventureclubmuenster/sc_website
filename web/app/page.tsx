@@ -3,7 +3,18 @@ import Link from 'next/link'
 import GlowButton from '@/components/GlowButton'
 
 export const metadata: Metadata = {
+  title: {
+    absolute: 'Startup Contacts 2026 | Startup Messe Münster in der Halle Münsterland',
+  },
+  description:
+    'Startup Contacts 2026: größte studentisch organisierte Startup Messe in NRW. 15. Juni 2026, Halle Münsterland Münster. Jetzt Tickets sichern.',
   alternates: { canonical: 'https://www.startup-contacts.de' },
+  openGraph: {
+    title: 'Startup Contacts 2026 | Startup Messe Münster',
+    description:
+      'Größte studentisch organisierte Startup Messe in NRW. 15. Juni 2026, Halle Münsterland Münster. Co-Creation zwischen Startups, Mittelstand und Talenten.',
+    url: 'https://www.startup-contacts.de',
+  },
 }
 
 const jsonLd = {
@@ -12,8 +23,8 @@ const jsonLd = {
   name: 'Startup Contacts 2026',
   description:
     'Deutschlands größte studentisch organisierte Startup Messe und Co-Creation Event in der Halle Münsterland in Münster, NRW. Networking, Workshops, Main Stage und Innovation Village für Startups, Talente und Mittelstand.',
-  startDate: '2026-06-15',
-  endDate: '2026-06-15',
+  startDate: '2026-06-15T09:00:00+02:00',
+  endDate: '2026-06-15T22:00:00+02:00',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
@@ -21,6 +32,8 @@ const jsonLd = {
     name: 'Halle Münsterland',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Albersloher Weg 32',
+      postalCode: '48155',
       addressLocality: 'Münster',
       addressCountry: 'DE',
     },
@@ -28,9 +41,70 @@ const jsonLd = {
   organizer: {
     '@type': 'Organization',
     name: 'Venture Club Münster e.V.',
-    url: 'https://www.startup-contacts.de',
+    url: 'https://ventureclub-muenster.de',
   },
+  offers: {
+    '@type': 'Offer',
+    url: 'https://www.startup-contacts.de/tickets',
+    availability: 'https://schema.org/InStock',
+  },
+  image: 'https://www.startup-contacts.de/og-image.jpg',
   url: 'https://www.startup-contacts.de',
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wann findet die Startup Contacts 2026 statt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Startup Contacts findet am 15. Juni 2026 in der Halle Münsterland in Münster statt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Was kostet ein Ticket?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Alle Ticketoptionen findest du auf unserer Ticketseite. Studierende erhalten vergünstigten Eintritt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Für wen ist die Startup Messe gedacht?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Für Studierende und Talente, Gründerinnen und Gründer, mittelständische Unternehmen aus NRW und Investoren, die am deutschen Startup Ökosystem teilhaben wollen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wer organisiert die Startup Contacts?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Messe wird vom Venture Club Münster e.V. organisiert, einer studentischen Initiative der Universität Münster.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wo genau ist die Halle Münsterland?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Albersloher Weg 32, 48155 Münster. Gut erreichbar mit Auto, Bus und Bahn.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Welche Formate bietet die Startup Contacts?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Co-Creation Sessions, Workshops, Live Podcasts, Main Stage Talks und das Innovation Village mit Startups aus sechs Fokusfeldern.',
+      },
+    },
+  ],
 }
 import Image from 'next/image'
 import { client } from '@/lib/sanity/client'
@@ -72,8 +146,12 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* ── Hero Section ── */}
-      <section className="bg-black overflow-hidden -mt-24">
+      <section className="bg-black overflow-x-hidden -mt-24">
 
         {/* ── Mobile layout: video stacked above content ── */}
         <div className="lg:hidden flex flex-col">
@@ -345,6 +423,29 @@ export default async function Home() {
               gemeinsam an echten Herausforderungen und entwickeln Lösungen, die den Mittelstand
               bei der Transformation unterstützen.
             </p>
+            <p>
+              Auf unserer Main Stage sprechen Speaker von Unternehmen wie SAP LeanIX, Fiege
+              und Flaschenpost. Dazu kommen Live Podcasts mit Gründerinnen und Gründern,
+              praxisnahe Workshops und das Innovation Village, in dem junge Startups aus
+              sechs Fokusfeldern ausstellen: Produktion, Logistik, Energie, Bau und Handwerk,
+              Betriebsinfrastruktur sowie Lifestyle. So vereint die Startup Contacts 2026
+              Elemente einer klassischen Startup Messe, eines Startup Kongresses und einer
+              Innovation Convention an einem Tag.
+            </p>
+            <p>
+              Münster ist dafür der ideale Standort. Mit einem aktiven Startup Ökosystem
+              und starken Mittelstandsunternehmen in der Region bringt die Stadt Talente,
+              Gründerinnen, Gründer und Corporates zusammen. Die Halle Münsterland liegt
+              zentral und ist sowohl mit dem Auto als auch per Bahn gut erreichbar. Mehr
+              über die{' '}
+              <Link
+                href="/startups-muenster"
+                className="text-sc-orange hover:underline underline-offset-4"
+              >
+                Startup Szene in Münster
+              </Link>{' '}
+              erfährst du auf unserer eigenen Seite dazu.
+            </p>
           </div>
 
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
@@ -389,6 +490,64 @@ export default async function Home() {
 
       {/* ── Hall of Fame ── */}
       {data?.hallOfFame && <HallOfFame speakers={data.hallOfFame} />}
+
+      {/* ── FAQ ── */}
+      <section className="relative py-32 px-6 bg-black overflow-hidden">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+            Häufige Fragen zur <span className="gradient-text">Startup Contacts</span>
+          </h2>
+
+          <div className="mt-14 divide-y divide-white/10 border-t border-b border-white/10">
+            {[
+              {
+                q: 'Wann findet die Startup Contacts 2026 statt?',
+                a: 'Die Startup Contacts findet am 15. Juni 2026 in der Halle Münsterland in Münster statt.',
+              },
+              {
+                q: 'Was kostet ein Ticket?',
+                a: (
+                  <>
+                    Alle Ticketoptionen findest du auf unserer{' '}
+                    <Link href="/tickets" className="text-sc-orange hover:underline underline-offset-4">
+                      Ticketseite
+                    </Link>
+                    . Studierende erhalten vergünstigten Eintritt.
+                  </>
+                ),
+              },
+              {
+                q: 'Für wen ist die Startup Messe gedacht?',
+                a: 'Für Studierende und Talente, Gründerinnen und Gründer, mittelständische Unternehmen aus NRW und Investoren, die am deutschen Startup Ökosystem teilhaben wollen.',
+              },
+              {
+                q: 'Wer organisiert die Startup Contacts?',
+                a: 'Die Messe wird vom Venture Club Münster e.V. organisiert, einer studentischen Initiative der Universität Münster.',
+              },
+              {
+                q: 'Wo genau ist die Halle Münsterland?',
+                a: 'Albersloher Weg 32, 48155 Münster. Gut erreichbar mit Auto, Bus und Bahn.',
+              },
+              {
+                q: 'Welche Formate bietet die Startup Contacts?',
+                a: 'Co-Creation Sessions, Workshops, Live Podcasts, Main Stage Talks und das Innovation Village mit Startups aus sechs Fokusfeldern.',
+              },
+            ].map((item, i) => (
+              <details key={i} className="group py-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg md:text-xl font-semibold text-white">
+                  <span>{item.q}</span>
+                  <span className="text-sc-orange transition-transform duration-300 group-open:rotate-45 text-2xl leading-none">
+                    +
+                  </span>
+                </summary>
+                <div className="mt-4 text-white/70 text-base md:text-lg leading-relaxed">
+                  {item.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Unsere vergangenen Partner ── */}
       {data?.vergangenePartner && data.vergangenePartner.length > 0 && (

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Über uns',
+  title: { absolute: 'Über Startup Contacts | Studentische Startup Messe in NRW' },
   description:
-    'Über Startup Contacts & Venture Club Münster e.V.: Unser Team, unsere Mission und unsere Vision für die Zukunft der Zusammenarbeit.',
+    'Die Startup Contacts wird vom Venture Club Münster e.V. organisiert. Erfahre, wer hinter der größten studentisch organisierten Startup Messe in NRW steht.',
   alternates: { canonical: 'https://www.startup-contacts.de/ueber-uns' },
   openGraph: {
-    title: 'Über uns | Startup Contacts',
-    description: 'Das Team hinter der Startup Contacts und dem Venture Club Münster e.V.',
+    title: 'Über Startup Contacts | Studentische Startup Messe in NRW',
+    description:
+      'Die Startup Contacts wird vom Venture Club Münster e.V. organisiert. Erfahre, wer hinter der größten studentisch organisierten Startup Messe in NRW steht.',
     url: 'https://www.startup-contacts.de/ueber-uns',
   },
 }

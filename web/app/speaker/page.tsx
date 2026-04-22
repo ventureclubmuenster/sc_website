@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Speaker',
+  title: { absolute: 'Speaker 2026 | Startup Contacts Münster' },
   description:
-    'Unsere Speaker auf der Startup Contacts Münster: Gründer, Investoren und Innovatoren die Zukunft gestalten. 15. Juni 2026.',
+    'Triff Gründerinnen, Gründer und CEOs auf der Startup Contacts 2026. Von SAP LeanIX über Fiege bis Flaschenpost. Alle Speaker im Überblick.',
   alternates: { canonical: 'https://www.startup-contacts.de/speaker' },
   openGraph: {
-    title: 'Speaker | Startup Contacts',
-    description: 'Gründer, Investoren und Innovatoren als Speaker auf der Startup Contacts Münster.',
+    title: 'Speaker 2026 | Startup Contacts Münster',
+    description:
+      'Triff Gründerinnen, Gründer und CEOs auf der Startup Contacts 2026. Von SAP LeanIX über Fiege bis Flaschenpost. Alle Speaker im Überblick.',
     url: 'https://www.startup-contacts.de/speaker',
   },
 }

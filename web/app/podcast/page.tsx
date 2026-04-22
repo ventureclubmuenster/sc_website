@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Podcast',
+  title: { absolute: 'Live Podcasts | Startup Contacts 2026 Münster' },
   description:
-    'Der Startup Contacts Podcast: Interviews mit Gründern, Investoren und Mittelständlern über Innovation, Co-Creation und die Zukunft Deutschlands.',
+    'Live Podcast Aufzeichnungen mit Gründerinnen und Gründern am 15. Juni 2026 in Münster. Teil des Programms der Startup Contacts.',
   alternates: { canonical: 'https://www.startup-contacts.de/podcast' },
   openGraph: {
-    title: 'Podcast | Startup Contacts',
-    description: 'Interviews mit Gründern, Investoren und Mittelständlern über Innovation und Co-Creation.',
+    title: 'Live Podcasts | Startup Contacts 2026 Münster',
+    description:
+      'Live Podcast Aufzeichnungen mit Gründerinnen und Gründern am 15. Juni 2026 in Münster. Teil des Programms der Startup Contacts.',
     url: 'https://www.startup-contacts.de/podcast',
   },
 }

@@ -92,6 +92,9 @@ export default function TicketsPage() {
               <span className="text-white">Startup Contacts </span>
               <span className="gradient-text">Tickets</span>
             </h2>
+            <p className="mt-5 text-xl md:text-3xl font-bold uppercase tracking-wide text-white/90">
+              15. Juni 2026
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">

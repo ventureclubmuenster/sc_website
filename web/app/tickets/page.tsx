@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import TicketCardCTA from './TicketCardCTA'
+import PartnerBanner from '@/components/PartnerBanner'
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -34,8 +35,8 @@ interface Ticket {
 
 const STANDARD_PERKS: Perk[] = [
   { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+  { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert' },
   { text: 'Zugang zur Afterparty*' },
-  { text: 'Getränke und Verpflegung inkludiert' },
 ]
 
 const tickets: Ticket[] = [
@@ -47,15 +48,23 @@ const tickets: Ticket[] = [
       strikethrough: '30 €',
       badge: '50 % Early Bird',
     },
-    perks: STANDARD_PERKS,
+    perks: [
+      { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+      { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert', highlight: true },
+      { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
+      { text: 'Zugang zur Afterparty*' },
+    ],
   },
   {
     name: 'Regular Access',
     tagline: 'Für Unternehmen und Professionals',
     price: { amount: '70 €' },
     perks: [
-      ...STANDARD_PERKS,
-      { text: 'Zugang zur separaten Working Area für Meetings' },
+      { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+      { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert' },
+      { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
+      { text: 'Zugang zur Afterparty*' },
+      { text: 'Zugang zur separaten Working Area für Meetings', highlight: true },
     ],
   },
   {
@@ -79,15 +88,8 @@ export default function TicketsPage() {
     <>
       {/* Tickets */}
       <section className="relative bg-black pt-32 pb-32 px-6 overflow-hidden">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            background:
-              'radial-gradient(circle at 50% 0%, rgba(255,94,0,0.25) 0%, transparent 55%)',
-          }}
-        />
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">
               <span className="text-white">Startup Contacts </span>
               <span className="gradient-text">Tickets</span>
@@ -97,7 +99,9 @@ export default function TicketsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <PartnerBanner />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-4">
             {tickets.map((ticket) => (
               <TicketCard key={ticket.name} ticket={ticket} />
             ))}

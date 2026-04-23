@@ -116,6 +116,7 @@ import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
 import RotatingWords from '@/components/RotatingWords'
 import YouTubeBackground from '@/components/YouTubeBackground'
+import PartnerBanner from '@/components/PartnerBanner'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
@@ -164,8 +165,8 @@ export default async function Home() {
           </div>
 
           {/* Content below video */}
-          <div className="px-4 pt-8 pb-16">
-            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(2rem,9vw,5rem)] -ml-0.5">
+          <div className="px-4 pt-8">
+            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,7.5vw,4rem)] -ml-0.5">
               Zukunft
               <br />
               <span className="text-white/55">durch</span>
@@ -189,15 +190,16 @@ export default async function Home() {
               </div>
             </div>
           </div>
+          <PartnerBanner />
         </div>
 
         {/* ── Desktop layout: full-screen video background ── */}
-        <div className="relative hidden lg:flex min-h-screen items-end">
+        <div className="relative hidden lg:flex min-h-screen flex-col justify-end">
           <YouTubeBackground videoId="1NUZVnJK3XE" cover />
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
-          <div className="relative z-10 w-full px-8 pb-16 pt-32">
-            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,8.5vw,13rem)] -ml-2">
+          <div className="relative z-10 w-full px-8 pt-32">
+            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.5rem,6.5vw,10rem)] -ml-2">
               Zukunft
               <br />
               <span className="text-white/55">durch</span>
@@ -205,21 +207,24 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-10 text-white/60 text-xl md:text-2xl lg:text-3xl leading-snug">
+            <p className="mt-8 text-white/60 text-xl md:text-2xl lg:text-3xl leading-snug">
               Die größte studentisch organisierte Startup Messe in NRW.
               <br />
               Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
             </p>
 
-            <div className="mt-10 flex flex-row items-end gap-10">
+            <div className="mt-8 flex flex-row items-end gap-10">
               <div className="flex flex-col font-bold uppercase tracking-tight">
                 <span className="text-2xl md:text-3xl gradient-text">15. Juni 2026</span>
                 <span className="text-lg md:text-xl text-white/60">Halle Münsterland</span>
               </div>
               <div className="flex flex-1 items-center gap-4">
-                <HeroCTA small />
+                <HeroCTA />
               </div>
             </div>
+          </div>
+          <div className="relative z-10 mt-10">
+            <PartnerBanner />
           </div>
         </div>
 

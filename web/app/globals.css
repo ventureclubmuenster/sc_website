@@ -91,6 +91,16 @@
   to { transform: translateX(-50%); }
 }
 
+.marquee-scroll {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .marquee-scroll {
+    animation-duration: 50s;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -24,10 +24,11 @@ interface GlowButtonProps {
   onClick?: () => void
   children: React.ReactNode
   small?: boolean
+  large?: boolean
   gradient?: boolean
 }
 
-export default function GlowButton({ href, onClick, children, small, gradient }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small, large, gradient }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
@@ -84,7 +85,9 @@ export default function GlowButton({ href, onClick, children, small, gradient }:
   if (gradient) {
     const btnClassName = small
       ? 'relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white cursor-pointer gradient-bg'
-      : 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg text-white cursor-pointer gradient-bg'
+      : large
+        ? 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg lg:px-16 lg:py-7 lg:text-2xl text-white cursor-pointer gradient-bg'
+        : 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg text-white cursor-pointer gradient-bg'
 
     const glowConic = 'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 25%, #ff5e00 45%, #ff8a2a 50%, #ff5e00 55%, transparent 75%, transparent 100%)'
 

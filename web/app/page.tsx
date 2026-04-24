@@ -190,7 +190,9 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <PartnerBanner />
+          <div className="-mt-4">
+            <PartnerBanner />
+          </div>
         </div>
 
         {/* ── Desktop layout: full-screen video background ── */}
@@ -219,7 +221,7 @@ export default async function Home() {
                 <span className="text-lg md:text-xl text-white/60">Halle Münsterland</span>
               </div>
               <div className="flex flex-1 items-center gap-4">
-                <HeroCTA />
+                <HeroCTA large />
               </div>
             </div>
           </div>

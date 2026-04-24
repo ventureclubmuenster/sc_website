@@ -74,6 +74,14 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
+      name: 'Können Auszubildende und Schüler auch ein Student-Ticket kaufen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, Auszubildende und Schüler können ebenfalls ein Student-Ticket kaufen. Ladet dazu einfach einen Ausweis eurer Schule oder Berufsschule hoch.',
+      },
+    },
+    {
+      '@type': 'Question',
       name: 'Für wen ist die Startup Messe gedacht?',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -165,7 +173,7 @@ export default async function Home() {
           </div>
 
           {/* Content below video */}
-          <div className="px-4 pt-8">
+          <div className="px-4 pt-6 pb-2">
             <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,7.5vw,4rem)] -ml-0.5">
               Zukunft
               <br />
@@ -174,13 +182,13 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-6 text-white/60 text-base leading-snug">
+            <p className="mt-4 text-white/60 text-sm leading-snug">
               Die größte studentisch organisierte Startup Messe in NRW.
               <br />
               Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
             </p>
 
-            <div className="mt-6 flex flex-col gap-4">
+            <div className="mt-4 flex flex-col gap-3">
               <div className="flex flex-col font-bold uppercase tracking-tight">
                 <span className="text-xl gradient-text">15. Juni 2026</span>
                 <span className="text-sm text-white/60">Halle Münsterland</span>
@@ -190,7 +198,7 @@ export default async function Home() {
               </div>
             </div>
           </div>
-          <div className="-mt-4">
+          <div>
             <PartnerBanner />
           </div>
         </div>
@@ -524,6 +532,10 @@ export default async function Home() {
                 ),
               },
               {
+                q: 'Können Auszubildende und Schüler auch ein Student-Ticket kaufen?',
+                a: 'Ja, Auszubildende und Schüler können ebenfalls ein Student-Ticket kaufen. Ladet dazu einfach einen Ausweis eurer Schule oder Berufsschule hoch.',
+              },
+              {
                 q: 'Für wen ist die Startup Messe gedacht?',
                 a: 'Für Studierende und Talente, Gründerinnen und Gründer, mittelständische Unternehmen aus NRW und Investoren, die am deutschen Startup Ökosystem teilhaben wollen.',
               },
@@ -553,6 +565,16 @@ export default async function Home() {
               </details>
             ))}
           </div>
+
+          <p className="mt-10 text-center text-white/70 text-base md:text-lg">
+            Bei weiteren Fragen meldet euch bitte bei{' '}
+            <a
+              href="mailto:info@startup-contacts.de"
+              className="text-sc-orange hover:underline underline-offset-4"
+            >
+              info@startup-contacts.de
+            </a>
+          </p>
         </div>
       </section>
 

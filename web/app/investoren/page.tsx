@@ -18,6 +18,7 @@ import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import WhyInvestSection from './WhyInvestSection'
 import FormatSection from '@/components/FormatSection'
+import SubtleTicketCTA from '@/components/SubtleTicketCTA'
 
 interface ImageField {
   asset: { _ref: string }
@@ -90,6 +91,8 @@ export default async function InvestorenPage() {
             wide: f.wide,
           }))}
         />
+
+        <SubtleTicketCTA text="Als Investor Ticket sichern" />
       </div>
     </>
   )

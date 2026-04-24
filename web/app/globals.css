@@ -86,6 +86,15 @@
   to { --glow-angle: 360deg; }
 }
 
+@keyframes countdown-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.countdown-blink {
+  animation: countdown-blink 1s ease-in-out infinite;
+}
+
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

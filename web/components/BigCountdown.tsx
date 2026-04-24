@@ -7,20 +7,28 @@ interface TimeLeft {
   hours: number
   minutes: number
   seconds: number
+  totalSeconds: number
 }
 
 function getTimeLeft(target: Date): TimeLeft | null {
   const diff = target.getTime() - Date.now()
   if (diff <= 0) return null
+  const totalSeconds = Math.floor(diff / 1000)
   return {
     days: Math.floor(diff / (1000 * 60 * 60 * 24)),
     hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
     minutes: Math.floor((diff / (1000 * 60)) % 60),
     seconds: Math.floor((diff / 1000) % 60),
+    totalSeconds,
   }
 }
 
-export default function BigCountdown({ targetDate }: { targetDate: string }) {
+interface BigCountdownProps {
+  targetDate: string
+  label?: string
+}
+
+export default function BigCountdown({ targetDate, label = 'Early Bird Sale Ende' }: BigCountdownProps) {
   const target = new Date(targetDate)
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -37,16 +45,16 @@ export default function BigCountdown({ targetDate }: { targetDate: string }) {
   }, [targetDate])
 
   if (!mounted) {
-    return <div className="h-[220px] sm:h-[260px] md:h-[300px]" />
+    return <div className="h-[160px] sm:h-[190px] md:h-[210px]" />
   }
 
   if (!timeLeft) {
     return (
-      <div className="flex flex-col items-center gap-4">
-        <span className="text-sc-orange text-sm sm:text-base font-semibold tracking-[0.3em] uppercase">
-          Sale is live
+      <div className="flex flex-col items-center gap-3">
+        <span className="text-sc-orange text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase">
+          {label}
         </span>
-        <p className="text-white text-2xl sm:text-3xl font-bold">Tickets sind jetzt verfügbar</p>
+        <p className="text-white text-xl sm:text-2xl font-bold">Early Bird ist vorbei</p>
       </div>
     )
   }
@@ -60,21 +68,29 @@ export default function BigCountdown({ targetDate }: { targetDate: string }) {
 
   const pad = (n: number) => n.toString().padStart(2, '0')
 
+  const isUrgent = timeLeft.totalSeconds <= 30 * 60
+  const isCritical = timeLeft.totalSeconds <= 5 * 60
+
+  const labelColor = isUrgent ? 'text-red-500' : 'text-sc-orange'
+  const borderColor = isUrgent ? 'border-red-500/40' : 'border-white/10'
+  const numberColor = isUrgent ? 'text-red-500' : 'text-white'
+  const blinkClass = isCritical ? 'countdown-blink' : ''
+
   return (
-    <div className="flex flex-col items-center gap-6 sm:gap-8">
-      <span className="text-sc-orange text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase">
-        Ticket Launch · 22.04.2026 · 18:00 Uhr
+    <div className={`flex flex-col items-center gap-4 sm:gap-6 ${blinkClass}`}>
+      <span className={`${labelColor} text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase`}>
+        {label}
       </span>
-      <div className="grid grid-cols-4 gap-3 sm:gap-6 md:gap-8">
+      <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-5">
         {units.map((u) => (
           <div
             key={u.label}
-            className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-[#111111] px-3 py-5 sm:px-6 sm:py-8 md:px-10 md:py-10 min-w-[70px] sm:min-w-[110px] md:min-w-[150px]"
+            className={`flex flex-col items-center justify-center rounded-xl border ${borderColor} bg-[#111111] px-2 py-3 sm:px-4 sm:py-5 md:px-6 md:py-6 min-w-[60px] sm:min-w-[85px] md:min-w-[105px]`}
           >
-            <span className="text-white text-4xl sm:text-6xl md:text-7xl font-black tabular-nums leading-none">
+            <span className={`${numberColor} text-3xl sm:text-4xl md:text-5xl font-black tabular-nums leading-none`}>
               {pad(u.value)}
             </span>
-            <span className="text-white/40 text-[10px] sm:text-xs md:text-sm mt-2 sm:mt-3 uppercase tracking-[0.2em]">
+            <span className="text-white/40 text-[9px] sm:text-[10px] md:text-xs mt-2 uppercase tracking-[0.2em]">
               {u.label}
             </span>
           </div>

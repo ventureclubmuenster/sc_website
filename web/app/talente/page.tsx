@@ -21,6 +21,7 @@ import FeatureCards from './FeatureCards'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
 import ProgramCards from './ProgramCards'
 import BentoGridTalente from '@/components/BentoGridTalente'
+import SubtleTicketCTA from '@/components/SubtleTicketCTA'
 
 interface FeatureCard {
   title: string
@@ -235,6 +236,8 @@ export default async function TalentePage() {
             </div>
           </div>
         </section>
+
+        <SubtleTicketCTA text="Als Talent Ticket sichern" />
       </div>
     </>
   )

@@ -1,22 +1,22 @@
 const partners = [
-  { name: 'capacura', src: '/partners-banner/capacura.svg', className: 'h-6 md:h-8' },
-  { name: 'Flaschenpost', src: '/partners-banner/flaschenpost.svg', className: 'h-6 md:h-8' },
-  { name: 'OACE', src: '/partners-banner/oace.png', className: 'h-6 md:h-8' },
-  { name: 'Meta', src: '/partners-banner/meta.svg', className: 'h-4 md:h-6' },
-  { name: 'NRW.Bank', src: '/partners-banner/nrw-bank.svg', className: 'h-10 md:h-12' },
-  { name: 'Google Cloud', src: '/partners-banner/google-cloud.svg', className: 'h-4 md:h-6' },
-  { name: 'eCAPITAL', src: '/partners-banner/ecapital.png', className: 'h-[67px] md:h-[77px]' },
-  { name: 'IKEA', src: '/partners-banner/ikea.svg', className: 'h-8 md:h-10' },
-  { name: 'EY', src: '/partners-banner/ey.svg', className: 'h-6 md:h-8' },
+  { name: 'capacura', src: '/partners-banner/capacura.svg', className: 'h-5 md:h-8' },
+  { name: 'Flaschenpost', src: '/partners-banner/flaschenpost.svg', className: 'h-5 md:h-8' },
+  { name: 'OACE', src: '/partners-banner/oace.png', className: 'h-5 md:h-8' },
+  { name: 'Meta', src: '/partners-banner/meta.svg', className: 'h-3 md:h-6' },
+  { name: 'NRW.Bank', src: '/partners-banner/nrw-bank.svg', className: 'h-8 md:h-12' },
+  { name: 'Google Cloud', src: '/partners-banner/google-cloud.svg', className: 'h-3 md:h-6' },
+  { name: 'eCAPITAL', src: '/partners-banner/ecapital.png', className: 'h-[44px] md:h-[77px]' },
+  { name: 'IKEA', src: '/partners-banner/ikea.svg', className: 'h-6 md:h-10' },
+  { name: 'EY', src: '/partners-banner/ey.svg', className: 'h-5 md:h-8' },
 ]
 
 export default function PartnerBanner() {
   const loop = [...partners, ...partners]
 
   return (
-    <section className="relative bg-black py-8 overflow-hidden">
+    <section className="relative bg-black py-4 md:py-8 overflow-hidden">
       <div
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden opacity-70 md:opacity-100"
         style={{
           maskImage:
             'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
@@ -24,7 +24,7 @@ export default function PartnerBanner() {
             'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
         }}
       >
-        <div className="marquee-scroll flex items-center gap-8 md:gap-24 w-max">
+        <div className="marquee-scroll flex items-center gap-6 md:gap-24 w-max">
           {loop.map((partner, i) => (
             <img
               key={`${partner.name}-${i}`}

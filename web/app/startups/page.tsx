@@ -20,6 +20,7 @@ import ExhibitorGrid from './ExhibitorGrid'
 import FokusfeldGrid from '../unternehmen/FokusfeldGrid'
 import KombinationSection from './KombinationSection'
 import FormatSection from '@/components/FormatSection'
+import SubtleTicketCTA from '@/components/SubtleTicketCTA'
 
 interface ImageField {
   asset: { _ref: string }
@@ -182,6 +183,8 @@ export default async function StartupsPage() {
             </div>
           </div>
         </section>
+
+        <SubtleTicketCTA text="Als Startup Ticket sichern" />
       </div>
     </>
   )

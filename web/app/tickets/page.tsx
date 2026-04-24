@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
 import TicketCardCTA from './TicketCardCTA'
 import PartnerBanner from '@/components/PartnerBanner'
+import BigCountdown from '@/components/BigCountdown'
+
+const EARLY_BIRD_END = '2026-04-24T18:00:00+02:00'
 
 export const metadata: Metadata = {
   title: 'Tickets',
   description:
-    'Tickets für die Startup Contacts Münster am 15. Juni 2026. Student, Regular und Premium Access. Launch am 22.04.2026 um 18:00 Uhr.',
+    'Tickets für die Startup Contacts Münster am 15. Juni 2026. Student, Regular und Premium Access. Early Bird bis 24.04.2026 um 18:00 Uhr.',
   alternates: { canonical: 'https://www.startup-contacts.de/tickets' },
   openGraph: {
     title: 'Tickets | Startup Contacts',
     description:
-      'Student, Regular und Premium Access für die Startup Contacts Münster. Ticket Launch am 22.04.2026 um 18:00 Uhr.',
+      'Student, Regular und Premium Access für die Startup Contacts Münster. Early Bird endet am 24.04.2026 um 18:00 Uhr.',
     url: 'https://www.startup-contacts.de/tickets',
   },
 }
@@ -97,6 +100,10 @@ export default function TicketsPage() {
             <p className="mt-5 text-xl md:text-3xl font-bold uppercase tracking-wide text-white/90">
               15. Juni 2026
             </p>
+          </div>
+
+          <div className="mt-10 mb-12 flex justify-center">
+            <BigCountdown targetDate={EARLY_BIRD_END} />
           </div>
 
           <PartnerBanner />

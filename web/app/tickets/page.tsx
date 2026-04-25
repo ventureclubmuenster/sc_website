@@ -1,27 +1,22 @@
 import type { Metadata } from 'next'
 import TicketCardCTA from './TicketCardCTA'
 import PartnerBanner from '@/components/PartnerBanner'
-import BigCountdown from '@/components/BigCountdown'
-
-const EARLY_BIRD_END = '2026-04-25T00:00:00+02:00'
 
 export const metadata: Metadata = {
   title: 'Tickets',
   description:
-    'Tickets für die Startup Contacts Münster am 15. Juni 2026. Student, Regular und Premium Access. Early Bird bis 24.04.2026 um 24:00 Uhr.',
+    'Tickets für die Startup Contacts Münster am 15. Juni 2026. Student, Regular und Premium Access.',
   alternates: { canonical: 'https://www.startup-contacts.de/tickets' },
   openGraph: {
     title: 'Tickets | Startup Contacts',
     description:
-      'Student, Regular und Premium Access für die Startup Contacts Münster. Early Bird endet am 24.04.2026 um 24:00 Uhr.',
+      'Student, Regular und Premium Access für die Startup Contacts Münster.',
     url: 'https://www.startup-contacts.de/tickets',
   },
 }
 
 interface TicketPrice {
   amount: string
-  strikethrough?: string
-  badge?: string
 }
 
 interface Perk {
@@ -47,9 +42,7 @@ const tickets: Ticket[] = [
     name: 'Student Access',
     tagline: 'Für Studierende und Talente',
     price: {
-      amount: '15 €',
-      strikethrough: '30 €',
-      badge: '50 % Early Bird',
+      amount: '30 €',
     },
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
@@ -102,9 +95,7 @@ export default function TicketsPage() {
             </p>
           </div>
 
-          <div className="mt-10 mb-12 flex justify-center">
-            <BigCountdown targetDate={EARLY_BIRD_END} />
-          </div>
+          <div className="mt-10" />
 
           <PartnerBanner />
 
@@ -148,26 +139,10 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
         </div>
 
         <div className="mt-8 pb-6 border-b border-white/5">
-          <div className="h-7 mb-3">
-            {ticket.price.badge && (
-              <span className="inline-block text-[10px] font-bold tracking-[0.25em] uppercase text-white px-3 py-1 rounded-full gradient-bg">
-                {ticket.price.badge}
-              </span>
-            )}
-          </div>
           <div className="flex items-baseline gap-4">
-            <span
-              className={`text-5xl lg:text-6xl font-black tabular-nums leading-none ${
-                ticket.price.strikethrough ? 'gradient-text' : 'text-white'
-              }`}
-            >
+            <span className="text-5xl lg:text-6xl font-black tabular-nums leading-none text-white">
               {ticket.price.amount}
             </span>
-            {ticket.price.strikethrough && (
-              <span className="text-white/30 text-3xl lg:text-4xl font-bold line-through tabular-nums leading-none">
-                {ticket.price.strikethrough}
-              </span>
-            )}
           </div>
         </div>
 

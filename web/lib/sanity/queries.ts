@@ -338,3 +338,46 @@ export const advisoryBoardQuery = groq`
     linkedin
   }
 `
+
+export const coCreationPageQuery = groq`
+  *[_type == "coCreationPage"] | order(_updatedAt desc)[0] {
+    heroImage,
+    heroHeadline,
+    heroSubtext,
+    heroHighlight,
+    visionHeadline,
+    visionGradientWord,
+    visionText,
+    visionImage,
+    paradigmaNicht,
+    paradigmaSondern,
+    prinzipienBackgroundImage,
+    prinzipien[] {
+      icon,
+      title,
+      description
+    },
+    ablaufStations[] {
+      time,
+      title,
+      description
+    },
+    rFactoryLogo,
+    vcmDescription,
+    rFactoryDescription,
+    companies[] {
+      name,
+      logo,
+      whiteBackground,
+      challenge
+    },
+    ctaHeadline,
+    ctaText,
+    bewerbungsUrl,
+    ctaBackgroundImage,
+    ctaSideImages[] {
+      image,
+      caption
+    }
+  }
+`

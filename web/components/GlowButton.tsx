@@ -26,9 +26,10 @@ interface GlowButtonProps {
   small?: boolean
   large?: boolean
   gradient?: boolean
+  silver?: boolean
 }
 
-export default function GlowButton({ href, onClick, children, small, large, gradient }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small, large, gradient, silver }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
@@ -83,24 +84,43 @@ export default function GlowButton({ href, onClick, children, small, large, grad
 
   // ── Gradient variant: wrapper holds glow, button sits inside ──
   if (gradient) {
+    const bgClass = silver ? '' : 'gradient-bg'
+    const textColor = silver ? 'text-slate-900' : 'text-white'
+    const smallPad = silver ? 'px-[18px] py-[6px]' : 'px-5 py-2'
     const btnClassName = small
-      ? 'relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white cursor-pointer gradient-bg'
+      ? `relative inline-flex items-center gap-2 ${smallPad} rounded-full font-semibold text-sm ${textColor} cursor-pointer ${bgClass}`
       : large
-        ? 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg 2xl:px-14 2xl:py-6 2xl:text-xl text-white cursor-pointer gradient-bg'
-        : 'relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg text-white cursor-pointer gradient-bg'
+        ? `relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg 2xl:px-14 2xl:py-6 2xl:text-xl ${textColor} cursor-pointer ${bgClass}`
+        : `relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg ${textColor} cursor-pointer ${bgClass}`
 
-    const glowConic = 'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 25%, #ff5e00 45%, #ff8a2a 50%, #ff5e00 55%, transparent 75%, transparent 100%)'
+    const silverBgStyle = silver
+      ? {
+          background: 'linear-gradient(180deg, #f1f5f9 0%, #d8dee8 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.85)',
+          boxShadow: isHovered
+            ? 'inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(160, 170, 190, 0.35), 0 6px 14px rgba(0, 0, 0, 0.22)'
+            : 'inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(160, 170, 190, 0.35), 0 2px 6px rgba(0, 0, 0, 0.12)',
+          transform: isHovered ? 'translateY(-2px)' : 'translateY(0)',
+          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+        }
+      : undefined
+
+    const glowConic = silver
+      ? 'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 25%, #cbd5e1 45%, #ffffff 50%, #cbd5e1 55%, transparent 75%, transparent 100%)'
+      : 'conic-gradient(from var(--glow-angle, 0deg), transparent 0%, transparent 25%, #ff5e00 45%, #ff8a2a 50%, #ff5e00 55%, transparent 75%, transparent 100%)'
 
     const inner = (
       <>
         <span className="relative z-10">{children}</span>
-        <span
-          className="relative z-10 transition-transform duration-300"
-          style={{ transform: isHovered ? 'translateX(4px)' : 'translateX(0)' }}
-          aria-hidden="true"
-        >
-          &rarr;
-        </span>
+        {!silver && (
+          <span
+            className="relative z-10 transition-transform duration-300"
+            style={{ transform: isHovered ? 'translateX(4px)' : 'translateX(0)' }}
+            aria-hidden="true"
+          >
+            &rarr;
+          </span>
+        )}
       </>
     )
 
@@ -118,7 +138,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
             background: glowConic,
             animation: 'glow-spin 3s linear infinite',
             filter: 'blur(4px)',
-            opacity: t,
+            opacity: silver ? t * 0.85 : t,
           }}
         />
         {/* Wide soft halo */}
@@ -128,14 +148,14 @@ export default function GlowButton({ href, onClick, children, small, large, grad
             background: glowConic,
             animation: 'glow-spin 3s linear infinite',
             filter: 'blur(14px)',
-            opacity: t * 0.6,
+            opacity: silver ? t * 0.5 : t * 0.6,
           }}
         />
 
         {href ? (
-          <Link href={href} ref={btnRef} className={btnClassName}>{inner}</Link>
+          <Link href={href} ref={btnRef} className={btnClassName} style={silverBgStyle}>{inner}</Link>
         ) : (
-          <button type="button" onClick={onClick} ref={btnRef} className={btnClassName}>{inner}</button>
+          <button type="button" onClick={onClick} ref={btnRef} className={btnClassName} style={silverBgStyle}>{inner}</button>
         )}
       </div>
     )

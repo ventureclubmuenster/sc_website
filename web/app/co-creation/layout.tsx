@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Co-Creation',
+  title: 'Co-Creation Challenge',
   description:
-    'Co-Creation auf der Startup Contacts Münster: Arbeite gemeinsam mit Startups, Unternehmen und Talenten an Lösungen für die Zukunft.',
+    'Hackathon auf der Startup Contacts Münster. 30 Plätze, 3 Lead-Unternehmen, 1 Tag echte Lösungen. VCM und R-Factory. Jetzt bewerben.',
   alternates: { canonical: 'https://www.startup-contacts.de/co-creation' },
   openGraph: {
-    title: 'Co-Creation | Startup Contacts',
-    description: 'Gemeinsam neue Lösungen entwickeln — Co-Creation auf der Startup Contacts Münster.',
+    title: 'Co-Creation Challenge | Startup Contacts',
+    description:
+      'Hackathon auf der Startup Contacts. Konkrete Probleme, kleine Teams, klarer Output. Gemeinsam mit VCM und R-Factory.',
     url: 'https://www.startup-contacts.de/co-creation',
   },
 }

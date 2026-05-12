@@ -209,7 +209,7 @@ export default async function Home() {
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
           <div className="relative z-10 w-full px-8 pt-32">
-            <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.5rem,6.5vw,10rem)] -ml-2">
+            <h1 className="h-display text-white -ml-2">
               Zukunft
               <br />
               <span className="text-white/55">durch</span>
@@ -255,7 +255,7 @@ export default async function Home() {
           ))}
         </div>
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
+          <h2 className="h-section text-center">
             Stell <span className="gradient-text">dir</span> vor was...
           </h2>
 
@@ -267,7 +267,7 @@ export default async function Home() {
             }))}
           />
 
-          <h2 className="mt-12 text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
+          <h2 className="h-section text-center mt-12">
             <span className="gradient-text">...Gemeinsam</span> erreichen können
           </h2>
         </div>
@@ -315,18 +315,18 @@ export default async function Home() {
             <span className="text-white"> together</span>
           </h2>
 
-          <div className="mt-10 space-y-6 text-white/70 text-lg leading-relaxed">
-            <p>
+          <div className="mt-10 space-y-6">
+            <p className="body">
               Für die Zukunft braucht es neue Lösungen. Doch für welche Probleme? Und mit welchen Tools?
             </p>
-            <p>
+            <p className="body">
               Auf der Startup Contacts fördern wir den Austausch und die Zusammenarbeit zur Entwicklung
               gemeinsamer Lösungen und Visionen. Es geht darum, eine nachhaltige Wertschöpfung für die
               Transformation Deutschlands zu schaffen. Durch eine Verbindung aus Erfahrung und neuen Ideen.
               Dafür bringen wir die wichtigen Faktoren der Transformation an einen Ort und fördern die aktive
               Beteiligung in unseren Formaten.
             </p>
-            <p>
+            <p className="body">
               Unser Ziel ist es, einen Beitrag dafür zu leisten, dass auf der Startup Contacts neue Lösungen
               entstehen, welche dem Mittelstand mit Hilfe von Startups und Talenten bei der Transformation
               helfen.
@@ -334,7 +334,7 @@ export default async function Home() {
           </div>
 
           <div className="mt-10">
-            <p className="text-white/50 text-sm font-semibold uppercase tracking-widest text-center mb-4">Unsere Fokusfelder</p>
+            <p className="eyebrow text-center mb-4">Unsere Fokusfelder</p>
             <div className="flex flex-wrap gap-3 justify-center">
               {['Produktion', 'Logistik & Einkauf', 'Energie & Nachhaltigkeit', 'Bau & Handwerk', 'Betriebsinfrastruktur', 'Lifestyle'].map((field) => (
                 <span key={field} className="px-4 py-2 border border-white/20 rounded-full text-white/70 text-sm font-medium uppercase tracking-wide">
@@ -379,7 +379,7 @@ export default async function Home() {
           BESU<br />CHER
         </span>
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
+          <h2 className="h-section text-center">
             Wen <span className="gradient-text">du</span> erwarten kannst
           </h2>
 
@@ -414,31 +414,31 @@ export default async function Home() {
       {/* ── Startup Messe in NRW — Info Section ── */}
       <section className="relative py-32 px-6 bg-black overflow-hidden">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+          <h2 className="h-section text-center">
             Die <span className="gradient-text">Startup Messe</span> in NRW
           </h2>
 
-          <div className="mt-12 space-y-6 text-white/70 text-lg leading-relaxed">
-            <p>
+          <div className="mt-12 space-y-6">
+            <p className="body">
               Die Startup Contacts ist Deutschlands größte studentisch organisierte Startup Messe.
               Am 15. Juni 2026 bringen wir in der Halle Münsterland in Münster Startups,
               mittelständische Unternehmen, Studierende und Investoren zusammen.
             </p>
-            <p>
+            <p className="body">
               Organisiert wird die Messe vom Venture Club Münster e.V., einer studentischen
               Initiative an der Universität Münster. Münster zählt mit über 60.000 Studierenden
               zu den Top-5 Gründungshochschulen in Deutschland. Dieses Potenzial nutzen wir:
               Über 30 Aussteller, 20 Speaker, fünf Veranstaltungsformate und mehr als 1.000
               Besucher machen die Startup Contacts zur zentralen Innovationsmesse in NRW.
             </p>
-            <p>
+            <p className="body">
               Was uns von anderen Events unterscheidet, ist unser Fokus auf Co-Creation.
               Bei uns stehen nicht Vorträge und Messestände im Mittelpunkt, sondern die aktive
               Zusammenarbeit. In unseren Formaten arbeiten Startups, Unternehmen und Talente
               gemeinsam an echten Herausforderungen und entwickeln Lösungen, die den Mittelstand
               bei der Transformation unterstützen.
             </p>
-            <p>
+            <p className="body">
               Auf unserer Main Stage sprechen Speaker von Unternehmen wie SAP LeanIX, Fiege
               und Flaschenpost. Dazu kommen Live Podcasts mit Gründerinnen und Gründern,
               praxisnahe Workshops und das Innovation Village, in dem junge Startups aus
@@ -447,7 +447,7 @@ export default async function Home() {
               Elemente einer klassischen Startup Messe, eines Startup Kongresses und einer
               Innovation Convention an einem Tag.
             </p>
-            <p>
+            <p className="body">
               Münster ist dafür der ideale Standort. Mit einem aktiven Startup Ökosystem
               und starken Mittelstandsunternehmen in der Region bringt die Stadt Talente,
               Gründerinnen, Gründer und Corporates zusammen. Die Halle Münsterland liegt
@@ -466,19 +466,19 @@ export default async function Home() {
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
             <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">30+</span>
-              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Aussteller</span>
+              <span className="eyebrow">Aussteller</span>
             </div>
             <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">1.000+</span>
-              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Besucher</span>
+              <span className="eyebrow">Besucher</span>
             </div>
             <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">60.000+</span>
-              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Studierende in Münster</span>
+              <span className="eyebrow">Studierende in Münster</span>
             </div>
             <div className="min-w-0">
               <span className="block text-3xl md:text-4xl font-bold gradient-text">Top 5</span>
-              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wide">Gründungshochschule</span>
+              <span className="eyebrow">Gründungshochschule</span>
             </div>
           </div>
         </div>
@@ -487,7 +487,7 @@ export default async function Home() {
       {/* ── Aftermovie ── */}
       <section className="relative py-32 px-6 bg-black overflow-hidden">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+          <h2 className="h-section text-center">
             Der Startup Contacts <span className="gradient-text">2025</span> Aftermovie
           </h2>
 
@@ -509,7 +509,7 @@ export default async function Home() {
       {/* ── FAQ ── */}
       <section className="relative py-32 px-6 bg-black overflow-hidden">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-center">
+          <h2 className="h-section text-center">
             Häufige Fragen zur <span className="gradient-text">Startup Contacts</span>
           </h2>
 
@@ -559,14 +559,14 @@ export default async function Home() {
                     +
                   </span>
                 </summary>
-                <div className="mt-4 text-white/70 text-base md:text-lg leading-relaxed">
+                <div className="mt-4 body">
                   {item.a}
                 </div>
               </details>
             ))}
           </div>
 
-          <p className="mt-10 text-center text-white/70 text-base md:text-lg">
+          <p className="mt-10 body text-center">
             Bei weiteren Fragen meldet euch bitte bei{' '}
             <a
               href="mailto:info@startup-contacts.de"
@@ -582,7 +582,7 @@ export default async function Home() {
       {data?.vergangenePartner && data.vergangenePartner.length > 0 && (
         <section className="relative py-32 px-6 bg-black overflow-hidden">
           <div className="relative z-10 max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight mb-14">
+            <h2 className="h-section text-center mb-14">
               Unsere vergangenen <span className="gradient-text">Partner</span>
             </h2>
 

@@ -55,7 +55,7 @@ export default async function AdvisoryBoardPage() {
         {(() => {
           const renderCard = (advisor: Advisor) => {
             const card = (
-              <div className="group flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+              <div className="group flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 cursor-pointer w-40 md:w-48">
                 <div className="relative w-40 h-40 md:w-48 md:h-48 mb-5 rounded-full border-[3px] border-sc-orange overflow-hidden bg-white/5">
                   {advisor.image ? (
                     <Image
@@ -92,9 +92,21 @@ export default async function AdvisoryBoardPage() {
             return <div key={advisor._id}>{card}</div>
           }
 
+          const rows: Advisor[][] = []
+          for (let i = 0; i < advisors.length; i += 4) {
+            rows.push(advisors.slice(i, i + 4))
+          }
+
           return (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-14 justify-items-center">
-              {advisors.map(renderCard)}
+            <div className="flex flex-col gap-y-14">
+              {rows.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-wrap justify-center gap-x-10 gap-y-14"
+                >
+                  {row.map(renderCard)}
+                </div>
+              ))}
             </div>
           )
         })()}

@@ -129,7 +129,7 @@ export default async function UnternehmenPage() {
         {/* Fokusfelder */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="text-white">UNSERE </span>
               <span className="gradient-text">FOKUSFELDER</span>
             </h2>
@@ -153,7 +153,7 @@ export default async function UnternehmenPage() {
         {/* Wer zuletzt dabei war */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="text-white">WER </span>
               <span className="gradient-text">ZULETZT </span>
               <span className="text-white">DABEI WAR</span>

@@ -171,7 +171,7 @@ export default async function TalentePage() {
         {/* Was dich erwartet – temporarily hidden
         <section id="was-erwartet" className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="gradient-text">WAS </span>
               <span className="text-white">DICH ERWARTET</span>
             </h2>
@@ -184,7 +184,7 @@ export default async function TalentePage() {
         {/* Mehr als eine Messe */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="text-white">MEHR ALS EINE </span>
               <span className="gradient-text">MESSE</span>
             </h2>
@@ -196,7 +196,7 @@ export default async function TalentePage() {
         {/* Unser Programm für dich – temporarily hidden
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="text-white">UNSER </span>
               <span className="gradient-text">PROGRAMM </span>
               <span className="text-white">FÜR DICH</span>
@@ -210,7 +210,7 @@ export default async function TalentePage() {
         {/* Wer zuletzt dabei war */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <h2 className="h-section text-center mb-12">
               <span className="text-white">WER </span>
               <span className="gradient-text">ZULETZT </span>
               <span className="text-white">DABEI WAR</span>

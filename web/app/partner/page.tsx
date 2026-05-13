@@ -99,8 +99,12 @@ function renderPartnerGroups(partners: Partner[]) {
 
             return <div key={partner._id}>{card}</div>
           })}
+
+          {/* "und viele mehr" tile */}
+          <div className="flex items-center justify-center rounded-xl aspect-[2/1] border border-white/10 border-dashed">
+            <span className="text-white/30 text-sm font-medium tracking-wide">und viele mehr</span>
+          </div>
         </div>
-        <p className="text-center text-white/30 text-sm mt-4">und viele mehr</p>
       </div>
     )
   })

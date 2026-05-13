@@ -100,6 +100,7 @@ function renderPartnerGroups(partners: Partner[]) {
             return <div key={partner._id}>{card}</div>
           })}
         </div>
+        <p className="text-center text-white/30 text-sm mt-4">und viele mehr</p>
       </div>
     )
   })

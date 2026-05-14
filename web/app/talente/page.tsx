@@ -22,6 +22,7 @@ import ExhibitorGrid from '../startups/ExhibitorGrid'
 import ProgramCards from './ProgramCards'
 import BentoGridTalente from '@/components/BentoGridTalente'
 import SubtleTicketCTA from '@/components/SubtleTicketCTA'
+import BenefitsSection from './BenefitsSection'
 
 interface FeatureCard {
   title: string
@@ -76,6 +77,14 @@ async function getExhibitors(): Promise<Exhibitor[]> {
   return client.fetch(exhibitors2025Query, {}, { cache: 'no-store' })
 }
 
+async function getSalitosLogo(): Promise<{ logo: ImageField } | null> {
+  return client.fetch(
+    `*[_type == "partner2026" && name == "Salitos"][0]{ logo }`,
+    {},
+    { cache: 'no-store' }
+  )
+}
+
 const defaultBentoItems: BentoItem[] = [
   { title: 'CO-CREATION', buttonText: 'Erfahre mehr', buttonLink: '/co-creation' },
   { title: 'WORKSHOPS', buttonText: 'Erfahre mehr', buttonLink: '/workshops' },
@@ -100,9 +109,25 @@ const defaultCards: FeatureCard[] = [
 ]
 
 export default async function TalentePage() {
-  const [data, exhibitors] = await Promise.all([getPageData(), getExhibitors()])
+  const [data, exhibitors, salitosData] = await Promise.all([getPageData(), getExhibitors(), getSalitosLogo()])
 
-  const headline = data?.heroHeadline || 'GESTALTE DIE LÖSUNGEN VON MORGEN'
+  const salitosLogoUrl = salitosData?.logo
+    ? urlFor(salitosData.logo).width(200).url()
+    : undefined
+
+  const speakerImageUrls = [
+    'image-6e21e26f209b4bab021c7cb20d62d86a529fcef0-800x800-jpg',
+    'image-040375e8a16eb0389862379ea0d2dc36e8de6b1c-800x800-jpg',
+    'image-b3f61a9fb40ee4e79105bb343836fad13480e21e-2359x2359-png',
+  ].map((ref) => urlFor({ asset: { _ref: ref } }).width(120).height(120).fit('crop').url())
+
+  const workshopsImageUrl = urlFor({ asset: { _ref: 'image-b99e9ab13690682109dc693a129c2a2d53e5c54f-2000x1334-jpg' } })
+    .width(600).height(400).fit('crop').url()
+
+  const startupSceneImageUrl = urlFor({ asset: { _ref: 'image-7098046c7d10705f7ae3f8d5e27c796439799f89-2000x1334-jpg' } })
+    .width(600).height(400).fit('crop').url()
+
+  const headline = data?.heroHeadline || 'ERLEBE DIE STARTUP SZENE'
   const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
   const cards = data?.featureCards?.length ? data.featureCards : defaultCards
   const programCards = data?.programCards?.length ? data.programCards : defaultProgramCards
@@ -162,8 +187,16 @@ export default async function TalentePage() {
           ))}
         </div>
 
-        {/* Spacer between hero and Kombination */}
-        <div className="h-20 md:h-32" />
+        {/* Benefits */}
+        <BenefitsSection
+          salitosLogoUrl={salitosLogoUrl}
+          workshopsImageUrl={workshopsImageUrl}
+          startupSceneImageUrl={startupSceneImageUrl}
+          speakerImageUrls={speakerImageUrls}
+        />
+
+        {/* Spacer before Kombination */}
+        <div className="h-12 md:h-20" />
 
         {/* Einmalige Kombination */}
         <KombinationSection />

@@ -20,7 +20,7 @@ import PartnerInquiryCTA from '@/components/PartnerInquiryCTA'
 interface Partner {
   _id: string
   name: string
-  category: 'main' | 'supporter' | 'attendance' | 'food-beverage' | 'network'
+  category: 'main' | 'premium' | 'partner'
   logo?: {
     asset: { _ref: string }
   }
@@ -28,14 +28,12 @@ interface Partner {
   url?: string
 }
 
-const categoryOrder = ['main', 'supporter', 'attendance', 'food-beverage', 'network'] as const
+const categoryOrder = ['main', 'premium', 'partner'] as const
 
 const categoryLabels: Record<string, { highlight: string; rest: string }> = {
   main: { highlight: 'MAIN', rest: 'PARTNER' },
-  supporter: { highlight: 'SUPPORTER', rest: '' },
-  attendance: { highlight: 'ATTENDANCE', rest: 'PARTNER' },
-  'food-beverage': { highlight: 'FOOD & BEVERAGE', rest: 'PARTNER' },
-  network: { highlight: 'NETWORK', rest: 'PARTNER' },
+  premium: { highlight: 'PREMIUM', rest: 'PARTNER' },
+  partner: { highlight: 'PARTNER', rest: '' },
 }
 
 function renderPartnerGroups(partners: Partner[]) {
@@ -142,28 +140,6 @@ export default async function PartnerPage() {
           {partners2026.length > 0 && (
             <div className="space-y-16 mb-12">{renderPartnerGroups(partners2026)}</div>
           )}
-
-          {/* "Bald weitere Partner" Card */}
-          <div className="liquid-glass rounded-xl p-8 md:p-10 text-center max-w-2xl mx-auto">
-            <svg
-              className="w-8 h-8 text-sc-orange mx-auto mb-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <p className="text-white font-bold text-lg leading-tight">
-              Weitere Partner werden bald bekannt gegeben
-            </p>
-            <p className="text-white/50 text-sm mt-2">Stay tuned!</p>
-          </div>
 
           {/* ── Partner werden CTA ── */}
           <section className="mt-20 text-center">

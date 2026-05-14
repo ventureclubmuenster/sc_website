@@ -15,10 +15,8 @@ export default defineType({
       options: {
         list: [
           { title: 'Main Partner', value: 'main' },
-          { title: 'Supporter', value: 'supporter' },
-          { title: 'Attendance Partner', value: 'attendance' },
-          { title: 'Food & Beverage Partner', value: 'food-beverage' },
-          { title: 'Network Partner', value: 'network' }
+          { title: 'Premium Partner', value: 'premium' },
+          { title: 'Partner', value: 'partner' },
         ]
       }
     }),

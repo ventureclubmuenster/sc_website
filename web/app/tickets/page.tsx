@@ -33,8 +33,10 @@ interface Ticket {
 
 const STANDARD_PERKS: Perk[] = [
   { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+  { text: 'Workshops' },
   { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
-  { text: 'Zugang zur Afterparty*' },
+  { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+  { text: 'Zugang zur Zeitgeist Afterparty*' },
 ]
 
 const tickets: Ticket[] = [
@@ -46,9 +48,11 @@ const tickets: Ticket[] = [
     },
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+      { text: 'Workshops' },
       { text: 'Getränke inklusive und ARO Bowl als Mittagessen', highlight: true },
+      { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
-      { text: 'Zugang zur Afterparty*' },
+      { text: 'Zugang zur Zeitgeist Afterparty*' },
     ],
   },
   {
@@ -57,9 +61,11 @@ const tickets: Ticket[] = [
     price: { amount: '70 €' },
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
+      { text: 'Workshops' },
       { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
+      { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
-      { text: 'Zugang zur Afterparty*' },
+      { text: 'Zugang zur Zeitgeist Afterparty*' },
       { text: 'Zugang zur separaten Working Area für Meetings', highlight: true },
     ],
   },

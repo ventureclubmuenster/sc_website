@@ -1,7 +1,10 @@
+'use client'
+
+import { useState } from 'react'
 import GlowButton from '@/components/GlowButton'
+import CoCreationModal from '@/components/CoCreationModal'
 
 export default function BewerbungButton({
-  href,
   small,
   large,
 }: {
@@ -9,10 +12,14 @@ export default function BewerbungButton({
   small?: boolean
   large?: boolean
 }) {
-  const url = href ?? 'https://tally.so/r/PLACEHOLDER'
+  const [open, setOpen] = useState(false)
+
   return (
-    <GlowButton href={url} small={small} large={large} gradient>
-      Jetzt bewerben
-    </GlowButton>
+    <>
+      <GlowButton onClick={() => setOpen(true)} small={small} large={large} gradient>
+        Jetzt bewerben
+      </GlowButton>
+      <CoCreationModal open={open} onClose={() => setOpen(false)} />
+    </>
   )
 }

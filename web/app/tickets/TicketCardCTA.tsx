@@ -16,7 +16,7 @@ export default function TicketCardCTA() {
 
   return (
     <a
-      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-5 rounded-full font-bold text-sm md:text-lg text-white cursor-pointer gradient-bg no-underline shadow-lg shadow-sc-orange/30"
+      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 md:px-7 md:py-3.5 rounded-full font-bold text-sm md:text-base text-white cursor-pointer gradient-bg no-underline shadow-lg shadow-sc-orange/30"
       href={TICKET_URL}
       target="_blank"
       rel="noopener noreferrer"

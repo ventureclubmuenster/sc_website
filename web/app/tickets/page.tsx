@@ -36,6 +36,7 @@ const STANDARD_PERKS: Perk[] = [
   { text: 'Workshops' },
   { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
   { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+  { text: 'Goodies' },
   { text: 'Zugang zur Zeitgeist Afterparty*' },
 ]
 
@@ -51,6 +52,7 @@ const tickets: Ticket[] = [
       { text: 'Workshops' },
       { text: 'Getränke inklusive und ARO Bowl als Mittagessen', highlight: true },
       { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+      { text: 'Goodies' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
       { text: 'Zugang zur Zeitgeist Afterparty*' },
     ],
@@ -64,6 +66,7 @@ const tickets: Ticket[] = [
       { text: 'Workshops' },
       { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
       { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+      { text: 'Goodies' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
       { text: 'Zugang zur Zeitgeist Afterparty*' },
       { text: 'Zugang zur separaten Working Area für Meetings', highlight: true },

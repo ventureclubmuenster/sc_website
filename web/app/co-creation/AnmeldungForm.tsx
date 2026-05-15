@@ -113,7 +113,7 @@ export default function AnmeldungForm() {
           type="text"
           required
           maxLength={200}
-          placeholder="z. B. Anna Müller"
+          placeholder=""
           value={vollerName}
           onChange={(e) => setVollerName(e.target.value)}
           className={inputClass}
@@ -130,7 +130,7 @@ export default function AnmeldungForm() {
           type="email"
           required
           maxLength={254}
-          placeholder="deine@email.de"
+          placeholder=""
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className={inputClass}
@@ -180,7 +180,7 @@ export default function AnmeldungForm() {
           type="text"
           required
           maxLength={200}
-          placeholder="z. B. WWU Münster"
+          placeholder=""
           value={institution}
           onChange={(e) => setInstitution(e.target.value)}
           className={inputClass}
@@ -197,7 +197,7 @@ export default function AnmeldungForm() {
           type="text"
           required
           maxLength={200}
-          placeholder="z. B. BWL (M.Sc.) oder Product Manager"
+          placeholder=""
           value={rolle}
           onChange={(e) => setRolle(e.target.value)}
           className={inputClass}
@@ -213,7 +213,7 @@ export default function AnmeldungForm() {
           id="semester"
           type="text"
           maxLength={50}
-          placeholder="z. B. 4. Mastersemester"
+          placeholder=""
           value={semester}
           onChange={(e) => setSemester(e.target.value)}
           className={inputClass}
@@ -271,7 +271,7 @@ export default function AnmeldungForm() {
           required
           rows={4}
           maxLength={2000}
-          placeholder="Ein paar Sätze reichen — was reizt dich am Format, was möchtest du beitragen?"
+          placeholder="Was reizt dich am Format, was möchtest du beitragen? Schreib gerne so ausführlich, wie du magst, auch mehr als ein paar Sätze sind willkommen."
           value={motivation}
           onChange={(e) => setMotivation(e.target.value)}
           className={`${inputClass} resize-y min-h-[120px]`}

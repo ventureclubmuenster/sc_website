@@ -19,7 +19,7 @@ const defaults: FAQ[] = [
   {
     question: 'Was muss ich mit meiner Bewerbung einreichen?',
     answer:
-      'Lebenslauf und ein kurzes Motivationsschreiben (maximal eine Seite). Erzähl uns, warum du dabei sein willst, welches Problemfeld dich besonders reizt und was du an Skills oder Erfahrung mitbringst. Wir suchen motivierte Persönlichkeiten, keine perfekt formulierten Anschreiben.',
+      'Die Bewerbung ist komplett formlos. Erzähl uns kurz, warum du dabei sein willst und welches Problemfeld dich besonders reizt. Wir suchen motivierte Persönlichkeiten, keine perfekt formulierten Anschreiben.',
   },
   {
     question: 'Wie sind die Teams zusammengesetzt?',

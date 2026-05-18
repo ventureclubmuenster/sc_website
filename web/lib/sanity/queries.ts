@@ -106,6 +106,7 @@ export const partnersQuery = groq`
     name,
     category,
     logo,
+    whiteBackground,
     url
   }
 `

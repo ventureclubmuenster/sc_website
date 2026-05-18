@@ -33,8 +33,11 @@ interface Ticket {
 
 const STANDARD_PERKS: Perk[] = [
   { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
-  { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert' },
-  { text: 'Zugang zur Afterparty*' },
+  { text: 'Workshops' },
+  { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
+  { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+  { text: 'Goodies' },
+  { text: 'Zugang zur Zeitgeist Afterparty*' },
 ]
 
 const tickets: Ticket[] = [
@@ -46,9 +49,12 @@ const tickets: Ticket[] = [
     },
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
-      { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert', highlight: true },
+      { text: 'Workshops' },
+      { text: 'Getränke inklusive und ARO Bowl als Mittagessen', highlight: true },
+      { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+      { text: 'Goodies' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
-      { text: 'Zugang zur Afterparty*' },
+      { text: 'Zugang zur Zeitgeist Afterparty*' },
     ],
   },
   {
@@ -57,9 +63,12 @@ const tickets: Ticket[] = [
     price: { amount: '70 €' },
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
-      { text: 'Getränke und Verpflegung über den ganzen Tag inkludiert' },
+      { text: 'Workshops' },
+      { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
+      { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
+      { text: 'Goodies' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
-      { text: 'Zugang zur Afterparty*' },
+      { text: 'Zugang zur Zeitgeist Afterparty*' },
       { text: 'Zugang zur separaten Working Area für Meetings', highlight: true },
     ],
   },

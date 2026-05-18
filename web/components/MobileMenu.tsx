@@ -4,37 +4,39 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import WartelisteButton from './WartelisteButton'
+import CoCreationButton from './CoCreationButton'
 import scLogo from '@/app/images/SC_logo_nav_bar.avif'
 
-const navGroups = [
-  {
-    label: 'Besucher',
-    items: [
-      { label: 'Startups', href: '/startups' },
-      { label: 'Talente', href: '/talente' },
-      { label: 'Unternehmen', href: '/unternehmen' },
-      { label: 'Investoren', href: '/investoren' },
-    ],
-  },
-  {
-    label: 'Programm',
-    items: [
-      { label: 'Co-Creation', href: '/co-creation' },
-      { label: 'Workshops', href: '/workshops' },
-      { label: 'Main Stage', href: '/main-stage' },
-      { label: 'Podcast', href: '/podcast' },
-      { label: 'Innovation Village', href: '/innovation-village' },
-    ],
-  },
-  {
-    label: 'Über uns',
-    items: [
-      { label: 'VCM', href: '/ueber-uns' },
-      { label: 'Advisory Board', href: '/advisory-board' },
-      { label: 'Jobwall', href: 'https://ventureclub-muenster.de/jobwall/' },
-    ],
-  },
-]
+const besucherGroup = {
+  label: 'Besucher',
+  items: [
+    { label: 'Startups', href: '/startups' },
+    { label: 'Talente', href: '/talente' },
+    { label: 'Unternehmen', href: '/unternehmen' },
+    { label: 'Investoren', href: '/investoren' },
+  ],
+}
+
+const programmGroup = {
+  label: 'Programm',
+  items: [
+    { label: 'Workshops', href: '/workshops' },
+    { label: 'Main Stage', href: '/main-stage' },
+    { label: 'Podcast', href: '/podcast' },
+    { label: 'Innovation Village', href: '/innovation-village' },
+  ],
+}
+
+const ueberUnsGroup = {
+  label: 'Über uns',
+  items: [
+    { label: 'VCM', href: '/ueber-uns' },
+    { label: 'Advisory Board', href: '/advisory-board' },
+    { label: 'Jobwall', href: 'https://ventureclub-muenster.de/jobwall/' },
+  ],
+}
+
+const orderedGroups = [besucherGroup, programmGroup, ueberUnsGroup]
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false)
@@ -85,7 +87,7 @@ export default function MobileMenu() {
       >
         <nav className="overflow-hidden px-6 flex flex-col gap-2">
           <div className={`border-t border-white/10 pt-2 pb-6 flex flex-col gap-2`}>
-          {navGroups.map((group) => (
+          {orderedGroups.map((group) => (
             <div key={group.label}>
               <button
                 onClick={() => toggleGroup(group.label)}
@@ -116,6 +118,11 @@ export default function MobileMenu() {
                       {item.label}
                     </Link>
                   ))}
+                </div>
+              )}
+              {group.label === 'Programm' && (
+                <div className="py-2" onClick={() => setOpen(false)}>
+                  <CoCreationButton small />
                 </div>
               )}
             </div>

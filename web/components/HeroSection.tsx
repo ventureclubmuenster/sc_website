@@ -8,14 +8,19 @@ interface HeroSectionProps {
   headline: string
   subtext?: string
   highlight?: string
+  subtextWide?: boolean
+  subtextMuted?: boolean
+  eyebrow?: string
+  headlineAllWhite?: boolean
+  headlineGlow?: boolean
   children?: React.ReactNode
 }
 
-export default function HeroSection({ imageUrl, headline, subtext, highlight, children }: HeroSectionProps) {
-  // Split headline: last word in orange, rest in white
+export default function HeroSection({ imageUrl, headline, subtext, highlight, subtextWide, subtextMuted, eyebrow, headlineAllWhite, headlineGlow, children }: HeroSectionProps) {
+  // Split headline: last word in orange (default behavior), unless headlineAllWhite is set
   const words = headline.split(' ')
-  const mainText = words.slice(0, -1).join(' ')
-  const orangeWord = words[words.length - 1]
+  const mainText = headlineAllWhite ? headline : words.slice(0, -1).join(' ')
+  const orangeWord = headlineAllWhite ? '' : words[words.length - 1]
 
   return (
     <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center -mt-24 pt-24">
@@ -39,16 +44,27 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, ch
       />
 
       <div className="relative z-10 text-center px-6">
+        {eyebrow && (
+          <FadeIn direction="up" duration={0.7} distance={20}>
+            <p className="gradient-text font-extrabold uppercase tracking-[0.2em] text-3xl md:text-5xl lg:text-6xl mb-4">
+              {eyebrow}
+            </p>
+          </FadeIn>
+        )}
         <FadeIn direction="up" duration={0.8} distance={30}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase">
-            <span className="text-white" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>{mainText} </span>
-            <span className="gradient-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">{orangeWord}</span>
+            <span className="text-white" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
+              {mainText}{!headlineAllWhite && ' '}
+            </span>
+            {!headlineAllWhite && (
+              <span className="gradient-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">{orangeWord}</span>
+            )}
           </h1>
         </FadeIn>
 
         {subtext && (
           <FadeIn direction="up" delay={0.2} duration={0.7} distance={20}>
-            <p className="text-white/80 text-base md:text-xl mt-6 max-w-2xl mx-auto">
+            <p className={`${subtextMuted ? 'text-white/70' : 'text-white/80'} text-base md:text-xl mt-6 mx-auto ${subtextWide ? 'max-w-4xl' : 'max-w-2xl'}`}>
               {subtext}
             </p>
           </FadeIn>

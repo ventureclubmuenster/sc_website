@@ -225,6 +225,75 @@
   }
 }
 
+/* Timeline flow: a soft highlight glides across the line.
+   Cycle = 16s (slower & smoother). Highlight is ~30% wide. */
+@keyframes timeline-flow-x {
+  0% { background-position: -30% 50%; }
+  100% { background-position: 130% 50%; }
+}
+
+.timeline-line-flow {
+  background:
+    linear-gradient(90deg,
+      rgba(255, 138, 42, 0) 0%,
+      rgba(255, 138, 42, 0.25) 25%,
+      rgba(255, 255, 255, 0.95) 48%,
+      rgba(255, 138, 42, 0.95) 52%,
+      rgba(255, 138, 42, 0.25) 75%,
+      rgba(255, 138, 42, 0) 100%
+    ),
+    linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  background-size: 30% 100%, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: -30% 50%, 0 0;
+  animation: timeline-flow-x 16s linear infinite;
+}
+
+@keyframes timeline-flow-y {
+  0% { background-position: 50% -30%; }
+  100% { background-position: 50% 130%; }
+}
+
+.timeline-line-flow-vertical {
+  background:
+    linear-gradient(180deg,
+      rgba(255, 138, 42, 0) 0%,
+      rgba(255, 138, 42, 0.25) 25%,
+      rgba(255, 255, 255, 0.95) 48%,
+      rgba(255, 138, 42, 0.95) 52%,
+      rgba(255, 138, 42, 0.25) 75%,
+      rgba(255, 138, 42, 0) 100%
+    ),
+    linear-gradient(to bottom, var(--gradient-from), var(--gradient-to));
+  background-size: 100% 30%, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50% -30%, 0 0;
+  animation: timeline-flow-y 16s linear infinite;
+}
+
+/* Subtle floating animation for decorative side images around the CTA */
+@keyframes cta-float-a {
+  0%, 100% { transform: translateY(0px) rotate(-4deg); }
+  50%      { transform: translateY(-12px) rotate(-3deg); }
+}
+@keyframes cta-float-b {
+  0%, 100% { transform: translateY(-6px) rotate(5deg); }
+  50%      { transform: translateY(6px) rotate(4deg); }
+}
+@keyframes cta-float-c {
+  0%, 100% { transform: translateY(0px) rotate(3deg); }
+  50%      { transform: translateY(-10px) rotate(2deg); }
+}
+@keyframes cta-float-d {
+  0%, 100% { transform: translateY(-4px) rotate(-6deg); }
+  50%      { transform: translateY(8px) rotate(-5deg); }
+}
+
+.cta-float-a { animation: cta-float-a 7s ease-in-out infinite; }
+.cta-float-b { animation: cta-float-b 9s ease-in-out infinite; }
+.cta-float-c { animation: cta-float-c 8s ease-in-out infinite; }
+.cta-float-d { animation: cta-float-d 10s ease-in-out infinite; }
+
 html {
   scroll-behavior: smooth;
 }

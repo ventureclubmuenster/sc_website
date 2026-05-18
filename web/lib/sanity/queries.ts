@@ -339,3 +339,82 @@ export const advisoryBoardQuery = groq`
     linkedin
   }
 `
+
+export const coCreationPageQuery = groq`
+  *[_type == "coCreationPage"] | order(_updatedAt desc)[0] {
+    heroImage,
+    heroEyebrow,
+    heroHeadline,
+    heroSubline,
+    heroBody,
+    heroNote,
+    heroSubtext,
+    heroHighlight,
+    wasIstChallengeEyebrow,
+    wasIstChallengeHeadline,
+    wasIstChallengeIntro,
+    wasIstChallengeKarten[] {
+      number,
+      title,
+      description,
+      image
+    },
+    warumTeilnehmenEyebrow,
+    warumTeilnehmenHeadline,
+    warumTeilnehmenIntro,
+    warumTeilnehmenBackgroundImage,
+    warumTeilnehmenKarten[] {
+      title,
+      description,
+      image
+    },
+    visionHeadline,
+    visionGradientWord,
+    visionText,
+    visionImage,
+    paradigmaNicht,
+    paradigmaSondern,
+    prinzipienBackgroundImage,
+    prinzipien[] {
+      icon,
+      title,
+      description
+    },
+    ablaufStations[] {
+      time,
+      title,
+      description
+    },
+    hybrideLoesungenEyebrow,
+    hybrideLoesungenHeadline,
+    hybrideLoesungenIntro,
+    hybrideLoesungenImage,
+    hybrideLoesungenImageTitle,
+    hybrideLoesungenImageSubtitle,
+    hybrideLoesungenImageBody,
+    hybrideLoesungenKarten[] {
+      title,
+      description
+    },
+    rFactoryLogo,
+    vcmDescription,
+    rFactoryDescription,
+    unternehmenEyebrow,
+    unternehmenHeadline,
+    unternehmenIntro,
+    companies[] {
+      name,
+      logo,
+      whiteBackground,
+      challenge
+    },
+    ctaHeadline,
+    ctaText,
+    bewerbungsUrl,
+    ctaBackgroundImage,
+    ctaSideImages[] {
+      image,
+      caption
+    }
+  }
+`

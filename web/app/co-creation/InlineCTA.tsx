@@ -18,7 +18,7 @@ export default function InlineCTA({
   if (variant === 'minimal') {
     return (
       <div className="relative z-10 px-6 py-10 flex flex-col items-center gap-3 text-center">
-        <BewerbungButton small href={bewerbungsUrl} label={label} />
+        <BewerbungButton small />
         <p className="text-white/60 text-xs md:text-sm font-mono uppercase tracking-wider">
           {note}
         </p>
@@ -38,7 +38,7 @@ export default function InlineCTA({
           </p>
         </div>
         <div className="flex-shrink-0">
-          <BewerbungButton small href={bewerbungsUrl} label={label} />
+          <BewerbungButton small />
         </div>
       </div>
     </section>

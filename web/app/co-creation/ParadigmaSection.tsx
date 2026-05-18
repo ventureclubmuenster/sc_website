@@ -45,7 +45,7 @@ export default function ParadigmaSection({ nicht, sondern }: ParadigmaSectionPro
               <ul className="space-y-3">
                 {nichtList.map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-white/60 text-base">
-                    <span className="text-red-400/70 mt-0.5">—</span>
+                    <span className="text-red-400/70 mt-0.5">·</span>
                     <span>{item}</span>
                   </li>
                 ))}

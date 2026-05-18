@@ -13,7 +13,7 @@ interface AblaufTimelineProps {
 const defaults: Station[] = [
   { time: '09:00', title: 'Kick-off & Challenge-Pitch', description: 'Begrüßung, Teambuilding und Vorstellung der 4 Corporate Challenges.' },
   { time: '09:55', title: 'Design Thinking Workshop', description: 'Problem Framing, „How Might We", Ideation & Crazy 8s.' },
-  { time: '11:00', title: 'Arbeitsphase I', description: 'Problemraum und Lösungsrichtung — Experten rotieren durch die Teams.' },
+  { time: '11:00', title: 'Arbeitsphase I', description: 'Problemraum und Lösungsrichtung. Experten rotieren durch die Teams.' },
   { time: '12:30', title: 'Lunch & Networking', description: 'Pause, Austausch mit Messebesuchern und Ideen challengen.' },
   { time: '13:15', title: 'Prototyping & Konzept', description: 'Micro-Workshop mit KI-Tools, dann Konzept und Pitch aufbauen.' },
   { time: '15:30', title: 'Pitch & Siegerehrung', description: '4 × Pitch vor Jury und offenem Publikum, Bewertung und Abschluss.' },

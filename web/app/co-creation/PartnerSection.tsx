@@ -11,9 +11,9 @@ interface PartnerSectionProps {
 }
 
 const vcmDefault = `*Wir bringen Talente, Startups und Mittelstand zusammen.*
-Der Venture Club Münster ist die studentische Innovationsplattform der Universität und Hochschulen in Münster. Wir veranstalten die Startup Contacts — das größte Co-Creation Event Deutschlands rund um Gründertum und Innovation.
-Unser Fokus: Studierende und Young Professionals direkt mit Startups und Mittelstand für echte Co-Creation zu verbinden — praxisnah und unkompliziert.
-_Ziel: junge Talente und den regionalen Mittelstand direkt verbinden — damit aus Hochschulen und Wirtschaft gemeinsam die Innovation von morgen entsteht._`
+Der Venture Club Münster ist die studentische Innovationsplattform der Universität und Hochschulen in Münster. Wir veranstalten die Startup Contacts, das größte Co-Creation Event Deutschlands rund um Gründertum und Innovation.
+Unser Fokus: Studierende und Young Professionals direkt mit Startups und Mittelstand für echte Co-Creation zu verbinden, praxisnah und unkompliziert.
+_Ziel: junge Talente und den regionalen Mittelstand direkt verbinden, damit aus Hochschulen und Wirtschaft gemeinsam die Innovation von morgen entsteht._`
 
 const rFactoryDefault = `*More than a system. Shaping the future together.*
 Die R-Factory eG bringt Corporates, Start-ups und junge Talente aus der EUREGIO (Münster–Osnabrück–Enschede) zusammen für eine starke Wirtschaft. Keine Theorie, sondern echte Cases, überzeugende Lösungen, starke Wirkung. Mit sieben Hochschulen, über 130.000 Studierenden und 30 starken Mitgliedern verbinden wir die richtigen Zutaten für Innovation aus den Bereichen FinTech, Industrial Resilience uvm.

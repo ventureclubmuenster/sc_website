@@ -49,7 +49,7 @@ export default function WasIstChallenge({
     headline ?? 'EIN *SPRINT* FÜR *ECHTE AUFGABEN* AUS DEM *MITTELSTAND*'
   const introText =
     intro ??
-    'Die Co-Creation Challenge bringt Talente und Unternehmen an einem Arbeitstag zusammen. Jedes Team arbeitet an einer konkreten Fragestellung und entwickelt einen ersten Lösungsansatz — angestrebt werden bewusst hybride Hardware-/Software-Konzepte, die über reine Software hinausgehen und im Unternehmen weitergedacht werden können.'
+    'Die Co-Creation Challenge bringt Talente und Unternehmen an einem Arbeitstag zusammen. Jedes Team arbeitet an einer konkreten Fragestellung und entwickelt einen ersten Lösungsansatz. Angestrebt werden bewusst hybride Hardware-/Software-Konzepte, die über reine Software hinausgehen und im Unternehmen weitergedacht werden können.'
 
   return (
     <section className="relative z-10 px-6 py-20 overflow-hidden" id="was-ist-die-challenge">

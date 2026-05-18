@@ -34,7 +34,7 @@ const defaults: FAQ[] = [
   {
     question: 'Wo und wann findet die Co-Creation Challenge statt?',
     answer:
-      'Im Rahmen der Startup Contacts Messe in der MCC Halle Münsterland — in der Galerie OG, in einem eigenen Raum mit kreativem Setup für intensive Teamarbeit. Die Co-Creation Challenge läuft von 09:00 bis 16:30 Uhr, das Startup-Contacts-Programm endet um 18:00 Uhr.',
+      'Im Rahmen der Startup Contacts Messe in der MCC Halle Münsterland, in der Galerie OG, in einem eigenen Raum mit kreativem Setup für intensive Teamarbeit. Die Co-Creation Challenge läuft von 09:00 bis 16:30 Uhr, das Startup-Contacts-Programm endet um 18:00 Uhr.',
   },
   {
     question: 'Was wird gestellt und was muss ich selbst mitbringen?',
@@ -44,7 +44,7 @@ const defaults: FAQ[] = [
   {
     question: 'Gibt es eine Vergütung oder ein Preisgeld?',
     answer:
-      'Eine Vergütung gibt es nicht. Es wird Preise für das Gewinner-Team geben — die genauen Preise geben wir noch bekannt.',
+      'Eine Vergütung gibt es nicht. Es wird Preise für das Gewinner-Team geben, die genauen Preise geben wir noch bekannt.',
   },
   {
     question: 'Was passiert mit den entwickelten Lösungen nach dem Tag?',

@@ -31,7 +31,7 @@ const defaultKarten: Karte[] = [
   {
     title: 'Interdisziplinär arbeiten',
     description:
-      'Studierende, Young Professionals und Unternehmen denken gemeinsam — Perspektiven treffen sich.',
+      'Studierende, Young Professionals und Unternehmen denken gemeinsam, Perspektiven treffen sich.',
   },
   {
     title: 'Netzwerk aufbauen',
@@ -79,7 +79,7 @@ export default function WarumTeilnehmen({
             <span className="w-1.5 h-1.5 rounded-full gradient-bg" />
             {eyebrowText}
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-5 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold uppercase mb-5 leading-tight break-words">
             {renderHeadline(headlineText)}
           </h2>
           <p className="text-white/60 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">

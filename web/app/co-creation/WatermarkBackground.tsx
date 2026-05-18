@@ -4,7 +4,7 @@ export default function WatermarkBackground() {
       {[...Array(14)].map((_, i) => (
         <span
           key={i}
-          className="block text-[5rem] md:text-[8rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+          className="block text-[5rem] md:text-[8rem] font-bold uppercase text-white/[0.08] tracking-tighter whitespace-nowrap leading-none"
           style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
         >
           CO-CREATION &nbsp; CO-CREATION &nbsp; CO-CREATION

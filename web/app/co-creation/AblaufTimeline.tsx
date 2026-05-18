@@ -16,22 +16,28 @@ const defaults: Station[] = [
   { time: '11:00', title: 'Arbeitsphase I', description: 'Problemraum und Lösungsrichtung — Experten rotieren durch die Teams.' },
   { time: '12:30', title: 'Lunch & Networking', description: 'Pause, Austausch mit Messebesuchern und Ideen challengen.' },
   { time: '13:15', title: 'Prototyping & Konzept', description: 'Micro-Workshop mit KI-Tools, dann Konzept und Pitch aufbauen.' },
-  { time: '14:40', title: 'Pitch & Siegerehrung', description: '4 × Pitch vor Jury und offenem Publikum, Bewertung und Abschluss.' },
+  { time: '15:30', title: 'Pitch & Siegerehrung', description: '4 × Pitch vor Jury und offenem Publikum, Bewertung und Abschluss.' },
 ]
 
 export default function AblaufTimeline({ stations }: AblaufTimelineProps) {
   const items = stations?.length ? stations : defaults
 
   return (
-    <section className="relative z-10 px-6 py-20">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
-          <span className="text-white">EIN TAG, </span>
-          <span className="gradient-text">SECHS PHASEN</span>
-        </h2>
-        <p className="text-white/50 text-center max-w-2xl mx-auto mb-16 text-base md:text-lg">
-          Von 09:00 bis 15:45 Uhr. Kompakt, strukturiert, mit klarem Output.
-        </p>
+    <section className="relative z-10 px-6 py-20 overflow-hidden" id="ablauf">
+      <div className="max-w-6xl mx-auto relative">
+        <div className="text-center mb-12">
+          <span className="inline-flex items-center gap-2 font-mono text-sm md:text-base tracking-wide text-white/60 mb-5 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">
+            <span className="w-1.5 h-1.5 rounded-full gradient-bg" />
+            Ablauf / Sprint-Struktur
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-4">
+            <span className="text-white">EIN TAG, KLARE </span>
+            <span className="gradient-text">ARBEITSPHASEN</span>
+          </h2>
+          <p className="text-white/50 max-w-2xl mx-auto text-base md:text-lg">
+            Von 09:00 bis 16:30 Uhr. Kompakt, strukturiert, mit klarem Output.
+          </p>
+        </div>
 
         {/* Desktop: horizontale Timeline mit fließender Animation */}
         <div className="hidden md:block relative">

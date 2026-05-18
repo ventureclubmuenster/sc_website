@@ -12,6 +12,11 @@ const defaults: FAQ[] = [
       'Studierende aller Fachrichtungen sowie Young Professionals mit relevantem Bezug zu den Themenfeldern. Wir suchen motivierte Köpfe, die Lust haben, an realen Problemen zu arbeiten. Vom ersten Semester bis kurz vor dem Abschluss sind alle willkommen.',
   },
   {
+    question: 'Warum sollte ich teilnehmen?',
+    answer:
+      'Weil du in einem Tag das mitnimmst, wofür Praktika oft Monate brauchen: praktische Innovationserfahrung an einer echten Unternehmens-Challenge, einen Preis für das Gewinner-Team, die Chance, eventuell auf der Mainstage vor hunderten von Leuten zu pitchen, und enge Kontakte zu Unternehmen, Startup-Coaches und dem VCM-Netzwerk.',
+  },
+  {
     question: 'Was muss ich mit meiner Bewerbung einreichen?',
     answer:
       'Lebenslauf und ein kurzes Motivationsschreiben (maximal eine Seite). Erzähl uns, warum du dabei sein willst, welches Problemfeld dich besonders reizt und was du an Skills oder Erfahrung mitbringst. Wir suchen motivierte Persönlichkeiten, keine perfekt formulierten Anschreiben.',
@@ -19,7 +24,7 @@ const defaults: FAQ[] = [
   {
     question: 'Wie sind die Teams zusammengesetzt?',
     answer:
-      'Jedes Team besteht aus 6–8 Personen: 1 Unternehmensvertreter, der die Challenge mitbringt, 1 Coach, 1–2 Teilnehmer aus dem Mittelstand und 3–4 Talents (Studierende und Young Professionals mit interdisziplinärem Hintergrund). Insgesamt arbeiten 35 Teilnehmer in 4 Teams an 4 Corporate Challenges. So entsteht ein interdisziplinärer Mix mit echtem Branchen-Know-how am Tisch.',
+      'Insgesamt arbeiten 30 Teilnehmerinnen und Teilnehmer in interdisziplinären Teams an den Corporate Challenges. Studierende, Young Professionals, Unternehmensvertreter und Coaches sitzen gemeinsam am Tisch.',
   },
   {
     question: 'Brauche ich technisches Vorwissen oder Programmierkenntnisse?',
@@ -27,24 +32,24 @@ const defaults: FAQ[] = [
       'Nein. Co-Creation ist kein Coding-Hackathon. Der Fokus liegt auf Problemlösung, nicht auf Technik. Wir suchen einen Mix aus Disziplinen: von BWL über Ingenieurwesen bis Design. Wer programmieren kann, ist willkommen, aber es ist kein Muss.',
   },
   {
-    question: 'Wo und wann findet die Co-Creation statt?',
+    question: 'Wo und wann findet die Co-Creation Challenge statt?',
     answer:
-      'Im Rahmen der Startup Contacts Messe in der MCC Halle Münsterland — in der Galerie OG, einem eigenen Raum mit kreativem Setup für intensive Teamarbeit. Der Co-Creation Sprint läuft von 09:00 bis 15:45 Uhr, das Startup-Contacts-Programm endet um 18:00 Uhr.',
+      'Im Rahmen der Startup Contacts Messe in der MCC Halle Münsterland — in der Galerie OG, in einem eigenen Raum mit kreativem Setup für intensive Teamarbeit. Die Co-Creation Challenge läuft von 09:00 bis 16:30 Uhr, das Startup-Contacts-Programm endet um 18:00 Uhr.',
   },
   {
     question: 'Was wird gestellt und was muss ich selbst mitbringen?',
     answer:
-      'Wir stellen: pro Team ein Whiteboard bzw. eine Moderationswand, Post-its und Marker, Druckvorlagen (Problem Statement, Ideation-Grid, Business Model Canvas), Miro-Board-Lizenzen sowie AI-Tools mit Premium-Zugang, dazu Catering, Snacks und einen Hoodie als Erinnerung. Du bringst mit: deinen Kopf, gute Laune und idealerweise einen eigenen Laptop.',
+      'Wir stellen Lizenzen für relevante Software und KI-Tools sowie ausreichend Kollaborations-Tools (Whiteboard, Miro etc.) für jedes Team. Mitbringen solltest du deinen eigenen Laptop inkl. Ladekabel.',
   },
   {
     question: 'Gibt es eine Vergütung oder ein Preisgeld?',
     answer:
-      'Eine Vergütung gibt es nicht. Es gewinnt ein Team über ein Scoring-Verfahren (50 % Jury, 50 % Teilnehmer-Voting via App). Zusätzlich kann jedes Unternehmen einen eigenen Sonderpreis vergeben, z. B. „Most Creative Approach". Die genauen Preise werden noch bekanntgegeben. Der größte Wert liegt in der Erfahrung selbst: exklusive Kontakte zu Entscheidern, ein Hoodie als Erinnerung und an einem Tag das erreichen, wofür Praktika oft Monate brauchen.',
+      'Eine Vergütung gibt es nicht. Es wird Preise für das Gewinner-Team geben — die genauen Preise geben wir noch bekannt.',
   },
   {
     question: 'Was passiert mit den entwickelten Lösungen nach dem Tag?',
     answer:
-      'Die entwickelten Solution Drafts gehören dem Team gemeinsam mit dem Unternehmen. Sie sollen bewusst über reine Software hinausgehen — angestrebt werden hybride Hardware-/Software-Ansätze als Ausgangspunkt für eine Weiterentwicklung. Manche Konzepte werden direkt im Unternehmen weiterverfolgt, andere bilden die Basis für eine spätere Zusammenarbeit, ein Praktikum oder ein eigenes Startup. Wir vermitteln auch nach der Messe Kontakte und unterstützen, wo wir können.',
+      'Die entwickelten Solution Drafts gehören dem Team gemeinsam mit dem Unternehmen. Manche Konzepte werden direkt im Unternehmen weiterverfolgt, andere bilden die Basis für eine spätere Zusammenarbeit, ein Praktikum oder ein eigenes Startup. Wir vermitteln auch nach der Messe Kontakte und unterstützen, wo wir können.',
   },
 ]
 

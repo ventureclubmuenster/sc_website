@@ -342,9 +342,31 @@ export const advisoryBoardQuery = groq`
 export const coCreationPageQuery = groq`
   *[_type == "coCreationPage"] | order(_updatedAt desc)[0] {
     heroImage,
+    heroEyebrow,
     heroHeadline,
+    heroSubline,
+    heroBody,
+    heroNote,
     heroSubtext,
     heroHighlight,
+    wasIstChallengeEyebrow,
+    wasIstChallengeHeadline,
+    wasIstChallengeIntro,
+    wasIstChallengeKarten[] {
+      number,
+      title,
+      description,
+      image
+    },
+    warumTeilnehmenEyebrow,
+    warumTeilnehmenHeadline,
+    warumTeilnehmenIntro,
+    warumTeilnehmenBackgroundImage,
+    warumTeilnehmenKarten[] {
+      title,
+      description,
+      image
+    },
     visionHeadline,
     visionGradientWord,
     visionText,
@@ -362,9 +384,23 @@ export const coCreationPageQuery = groq`
       title,
       description
     },
+    hybrideLoesungenEyebrow,
+    hybrideLoesungenHeadline,
+    hybrideLoesungenIntro,
+    hybrideLoesungenImage,
+    hybrideLoesungenImageTitle,
+    hybrideLoesungenImageSubtitle,
+    hybrideLoesungenImageBody,
+    hybrideLoesungenKarten[] {
+      title,
+      description
+    },
     rFactoryLogo,
     vcmDescription,
     rFactoryDescription,
+    unternehmenEyebrow,
+    unternehmenHeadline,
+    unternehmenIntro,
     companies[] {
       name,
       logo,

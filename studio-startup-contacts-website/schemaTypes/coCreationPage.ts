@@ -5,14 +5,17 @@ export default defineType({
   title: 'Seite: Co-Creation',
   type: 'document',
   fieldsets: [
-    { name: 'hero', title: 'Hero', options: { collapsible: true, collapsed: false } },
-    { name: 'vision', title: 'Vision (Was ist Co-Creation?)', options: { collapsible: true, collapsed: true } },
-    { name: 'paradigma', title: 'Paradigmenwechsel (NICHT vs. SONDERN)', options: { collapsible: true, collapsed: true } },
-    { name: 'prinzipienGroup', title: 'Dreiklang (Zusammenarbeit · Lösung · Pitch)', options: { collapsible: true, collapsed: true } },
-    { name: 'ablauf', title: 'Tagesablauf', options: { collapsible: true, collapsed: true } },
-    { name: 'partner', title: 'Veranstalter (VCM × R-Factory)', options: { collapsible: true, collapsed: true } },
-    { name: 'unternehmen', title: 'Beteiligte Unternehmen', options: { collapsible: true, collapsed: true } },
-    { name: 'cta', title: 'Bewerbungs-CTA', options: { collapsible: true, collapsed: true } },
+    { name: 'hero', title: 'CO-CREATION CHALLENGE (Hero)', options: { collapsible: true, collapsed: false } },
+    { name: 'wasIstChallenge', title: 'EIN SPRINT FÜR ECHTE AUFGABEN AUS DEM MITTELSTAND', options: { collapsible: true, collapsed: true } },
+    { name: 'warumTeilnehmen', title: 'PRAKTISCHE INNOVATIONSERFAHRUNG MIT DIREKTEM UNTERNEHMENSZUGANG', options: { collapsible: true, collapsed: true } },
+    { name: 'ablauf', title: 'EIN TAG, KLARE ARBEITSPHASEN', options: { collapsible: true, collapsed: true } },
+    { name: 'hybrideLoesungen', title: 'HYBRIDE LÖSUNGEN FÜR REALE SYSTEME', options: { collapsible: true, collapsed: true } },
+    { name: 'unternehmen', title: 'BETEILIGTE UNTERNEHMEN & INNOVATIONSFELDER', options: { collapsible: true, collapsed: true } },
+    { name: 'partner', title: 'GEMEINSAM MIT R-FACTORY (Veranstalter)', options: { collapsible: true, collapsed: true } },
+    { name: 'cta', title: 'BEREIT MITZUMACHEN? (Bewerbungs-CTA)', options: { collapsible: true, collapsed: true } },
+    { name: 'vision', title: 'Vision (deprecated)', options: { collapsible: true, collapsed: true } },
+    { name: 'paradigma', title: 'Paradigmenwechsel (deprecated)', options: { collapsible: true, collapsed: true } },
+    { name: 'prinzipienGroup', title: 'Dreiklang (deprecated)', options: { collapsible: true, collapsed: true } },
   ],
   fields: [
     // ── Hero ──
@@ -24,88 +27,218 @@ export default defineType({
       fieldset: 'hero',
     }),
     defineField({
-      name: 'heroHeadline',
-      title: 'Hero Headline',
-      description: 'Letztes Wort wird automatisch in Gradient-Farbe dargestellt. Beispiel: "GEMEINSAM PROBLEME LÖSEN"',
+      name: 'heroEyebrow',
+      title: 'Hero Eyebrow (kleine Zeile oben)',
+      description: 'Wird in Gradient-Farbe oberhalb der Headline angezeigt. Beispiel: "VCM × R-Factory · Startup Contacts · Halle Münsterland"',
       type: 'string',
       fieldset: 'hero',
     }),
     defineField({
+      name: 'heroHeadline',
+      title: 'Hero Headline',
+      description: 'Beispiel: "CO-CREATION CHALLENGE"',
+      type: 'string',
+      fieldset: 'hero',
+    }),
+    defineField({
+      name: 'heroSubline',
+      title: 'Hero Subline (kurze Zeile unter Headline)',
+      description: 'Beispiel: "Reale Mittelstandsprobleme gemeinsam lösen"',
+      type: 'string',
+      fieldset: 'hero',
+    }),
+    defineField({
+      name: 'heroBody',
+      title: 'Hero Body (Fließtext)',
+      description: 'Beschreibungstext direkt unter der Subline.',
+      type: 'text',
+      rows: 4,
+      fieldset: 'hero',
+    }),
+    defineField({
+      name: 'heroNote',
+      title: 'Hero Note (Hinweistext unter dem CTA-Button)',
+      description: 'Kleiner, dezenter Hinweistext unter dem Bewerbungs-Button. Beispiel: "Die Bewerbung ist niedrigschwellig. … Das Startup Contacts Ticket inkl. Verpflegung ist mit inbegriffen."',
+      type: 'text',
+      rows: 3,
+      fieldset: 'hero',
+    }),
+    defineField({
       name: 'heroSubtext',
-      title: 'Hero Subtext',
+      title: 'Hero Subtext (deprecated)',
+      description: '⚠️ Wird aktuell nicht angezeigt. Wurde durch "Hero Body" + "Hero Note" ersetzt. Behalten für späteren Reuse.',
       type: 'text',
       rows: 3,
       fieldset: 'hero',
     }),
     defineField({
       name: 'heroHighlight',
-      title: 'Hero Highlight (optional)',
-      description: 'Kleine Zeile in Gradient-Farbe unter dem Subtext. Beispiel: "VCM × R-Factory"',
+      title: 'Hero Highlight (deprecated)',
+      description: '⚠️ Wird aktuell nicht angezeigt. Wurde durch "Hero Eyebrow" ersetzt. Behalten für späteren Reuse.',
       type: 'string',
       fieldset: 'hero',
     }),
 
-    // ── Vision ──
+    // ── Was ist die Challenge ──
+    defineField({
+      name: 'wasIstChallengeEyebrow',
+      title: 'Eyebrow (kleine Zeile)',
+      description: 'Beispiel: "Was ist die Challenge?"',
+      type: 'string',
+      fieldset: 'wasIstChallenge',
+    }),
+    defineField({
+      name: 'wasIstChallengeHeadline',
+      title: 'Headline',
+      description: 'Beispiel: "EIN SPRINT FÜR ECHTE AUFGABEN AUS DEM MITTELSTAND". Letztes Wort wird in Gradient-Farbe dargestellt.',
+      type: 'string',
+      fieldset: 'wasIstChallenge',
+    }),
+    defineField({
+      name: 'wasIstChallengeIntro',
+      title: 'Intro-Text',
+      type: 'text',
+      rows: 4,
+      fieldset: 'wasIstChallenge',
+    }),
+    defineField({
+      name: 'wasIstChallengeKarten',
+      title: 'Karten (max. 3)',
+      description: 'Drei nummerierte Karten mit Titel und Beschreibung. Optional kann pro Karte ein Bild ergänzt werden.',
+      type: 'array',
+      fieldset: 'wasIstChallenge',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'number', title: 'Nummer', type: 'string', description: 'z.B. "01"' }),
+            defineField({ name: 'title', title: 'Titel', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'description', title: 'Beschreibung', type: 'text', rows: 3 }),
+            defineField({ name: 'image', title: 'Bild (optional)', type: 'image', options: { hotspot: true } }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'description', media: 'image' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.max(3),
+    }),
+
+    // ── Warum teilnehmen ──
+    defineField({
+      name: 'warumTeilnehmenEyebrow',
+      title: 'Eyebrow (kleine Zeile)',
+      description: 'Beispiel: "Warum teilnehmen?"',
+      type: 'string',
+      fieldset: 'warumTeilnehmen',
+    }),
+    defineField({
+      name: 'warumTeilnehmenHeadline',
+      title: 'Headline',
+      description: 'Beispiel: "PRAKTISCHE INNOVATIONSERFAHRUNG MIT DIREKTEM UNTERNEHMENSZUGANG". Letztes Wort wird in Gradient-Farbe dargestellt.',
+      type: 'string',
+      fieldset: 'warumTeilnehmen',
+    }),
+    defineField({
+      name: 'warumTeilnehmenIntro',
+      title: 'Intro-Text',
+      type: 'text',
+      rows: 4,
+      fieldset: 'warumTeilnehmen',
+    }),
+    defineField({
+      name: 'warumTeilnehmenBackgroundImage',
+      title: 'Warum teilnehmen — Hintergrundbild',
+      description: 'Vollflächiges Hintergrundbild hinter der Section (mit dunklem Overlay, ca. 30 % Sichtbarkeit).',
+      type: 'image',
+      options: { hotspot: true },
+      fieldset: 'warumTeilnehmen',
+    }),
+    defineField({
+      name: 'warumTeilnehmenKarten',
+      title: 'Karten (max. 4)',
+      description: 'Vier Karten mit Titel und Beschreibung. Optional kann pro Karte ein Bild ergänzt werden.',
+      type: 'array',
+      fieldset: 'warumTeilnehmen',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Titel', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'description', title: 'Beschreibung', type: 'text', rows: 3 }),
+            defineField({ name: 'image', title: 'Bild (optional)', type: 'image', options: { hotspot: true } }),
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'description', media: 'image' },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.max(4),
+    }),
+
+    // ── Vision (deprecated) ──
     defineField({
       name: 'visionHeadline',
-      title: 'Vision Headline',
-      description: 'Beispiel: "AKTIV LÖSEN STATT PASSIV ZUHÖREN"',
+      title: 'Vision Headline (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'string',
       fieldset: 'vision',
     }),
     defineField({
       name: 'visionGradientWord',
-      title: 'Wort in Gradient-Farbe',
-      description: 'Welches Wort aus der Headline soll in Gradient-Farbe? (case-insensitive)',
+      title: 'Wort in Gradient-Farbe (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'string',
       fieldset: 'vision',
     }),
     defineField({
       name: 'visionText',
-      title: 'Vision Beschreibungstext',
+      title: 'Vision Beschreibungstext (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'text',
       rows: 4,
       fieldset: 'vision',
     }),
     defineField({
       name: 'visionImage',
-      title: 'Vision Bild',
+      title: 'Vision Bild (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'image',
       options: { hotspot: true },
       fieldset: 'vision',
     }),
 
-    // ── Paradigmenwechsel ──
+    // ── Paradigmenwechsel (deprecated) ──
     defineField({
       name: 'paradigmaNicht',
-      title: 'NICHT (Liste)',
-      description: 'Liste von Punkten, die NICHT der Co-Creation entsprechen.',
+      title: 'NICHT (Liste) (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'array',
       of: [{ type: 'string' }],
       fieldset: 'paradigma',
     }),
     defineField({
       name: 'paradigmaSondern',
-      title: 'SONDERN (Liste)',
-      description: 'Liste von Punkten, die Co-Creation ausmachen.',
+      title: 'SONDERN (Liste) (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'array',
       of: [{ type: 'string' }],
       fieldset: 'paradigma',
     }),
 
-    // ── Dreiklang (Prinzipien) ──
+    // ── Dreiklang (Prinzipien) (deprecated) ──
     defineField({
       name: 'prinzipienBackgroundImage',
-      title: 'Dreiklang Hintergrundbild',
-      description: 'Bild, das großflächig hinter der Dreiklang-Sektion liegt (mit dunklem Overlay).',
+      title: 'Dreiklang Hintergrundbild (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'image',
       options: { hotspot: true },
       fieldset: 'prinzipienGroup',
     }),
     defineField({
       name: 'prinzipien',
-      title: 'Prinzipien (Zusammenarbeit · Lösung · Pitch)',
-      description: 'Drei Karten mit Titel und Beschreibung.',
+      title: 'Prinzipien (Zusammenarbeit · Lösung · Pitch) (deprecated)',
+      description: '⚠️ Aktuell nicht angezeigt — behalten für späteren Reuse.',
       type: 'array',
       fieldset: 'prinzipienGroup',
       of: [
@@ -146,6 +279,75 @@ export default defineType({
       ],
     }),
 
+    // ── Hybride Lösungen für reale Systeme ──
+    defineField({
+      name: 'hybrideLoesungenEyebrow',
+      title: 'Eyebrow (kleine Zeile oben)',
+      description: 'Beispiel: "Innovationsfokus"',
+      type: 'string',
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenHeadline',
+      title: 'Headline',
+      description: 'Wörter in *Sternchen* werden im VCM-Gradient dargestellt. Standard: "HYBRIDE LÖSUNGEN FÜR *REALE SYSTEME*"',
+      type: 'string',
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenIntro',
+      title: 'Intro-Text',
+      type: 'text',
+      rows: 4,
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenImage',
+      title: 'Hauptbild (großes Bild links)',
+      type: 'image',
+      options: { hotspot: true },
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenImageTitle',
+      title: 'Bild-Overlay — Titel',
+      description: 'Fettgesetzte Zeile direkt über dem Body-Text im Bild-Overlay.',
+      type: 'string',
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenImageSubtitle',
+      title: 'Bild-Overlay — Subtitle (optional)',
+      description: 'Optionaler kurzer Satz zwischen Titel und Body.',
+      type: 'string',
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenImageBody',
+      title: 'Bild-Overlay — Beschreibung',
+      type: 'text',
+      rows: 3,
+      fieldset: 'hybrideLoesungen',
+    }),
+    defineField({
+      name: 'hybrideLoesungenKarten',
+      title: 'Karten (genau 4 empfohlen)',
+      description: 'Stichwort-Karten rechts neben dem Hauptbild.',
+      type: 'array',
+      fieldset: 'hybrideLoesungen',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Titel', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'description', title: 'Beschreibung', type: 'text', rows: 3 }),
+          ],
+          preview: { select: { title: 'title', subtitle: 'description' } },
+        },
+      ],
+      validation: (Rule) => Rule.max(4),
+    }),
+
     // ── Partner: VCM × R-Factory ──
     defineField({
       name: 'rFactoryLogo',
@@ -164,12 +366,34 @@ export default defineType({
     defineField({
       name: 'rFactoryDescription',
       title: 'R-Factory Kurzbeschreibung',
+      description: 'Zeilenumbrüche aus diesem Feld werden auf der Website übernommen.',
       type: 'text',
-      rows: 3,
+      rows: 6,
       fieldset: 'partner',
     }),
 
     // ── Beteiligte Unternehmen ──
+    defineField({
+      name: 'unternehmenEyebrow',
+      title: 'Eyebrow (kleine Zeile)',
+      description: 'Beispiel: "Unternehmen & Aufgaben"',
+      type: 'string',
+      fieldset: 'unternehmen',
+    }),
+    defineField({
+      name: 'unternehmenHeadline',
+      title: 'Headline',
+      description: 'Beispiel: "UNTERNEHMEN UND AUFGABEN FOLGEN". Letztes Wort wird in Gradient-Farbe dargestellt.',
+      type: 'string',
+      fieldset: 'unternehmen',
+    }),
+    defineField({
+      name: 'unternehmenIntro',
+      title: 'Intro-Text',
+      type: 'text',
+      rows: 3,
+      fieldset: 'unternehmen',
+    }),
     defineField({
       name: 'companies',
       title: 'Beteiligte Unternehmen',

@@ -3,6 +3,12 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
+/** Treat anything that's not a same-origin route as an external URL → open in new tab. */
+function isExternalUrl(href?: string): boolean {
+  if (!href) return false
+  return /^(https?:)?\/\//i.test(href) || href.startsWith('mailto:') || href.startsWith('tel:')
+}
+
 /** Read a CSS custom property and return its hex value */
 function getCSSColor(prop: string, fallback: string): string {
   if (typeof window === 'undefined') return fallback
@@ -153,7 +159,20 @@ export default function GlowButton({ href, onClick, children, small, large, grad
         />
 
         {href ? (
-          <Link href={href} ref={btnRef} className={btnClassName} style={silverBgStyle}>{inner}</Link>
+          isExternalUrl(href) ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              ref={btnRef}
+              className={btnClassName}
+              style={silverBgStyle}
+            >
+              {inner}
+            </a>
+          ) : (
+            <Link href={href} ref={btnRef} className={btnClassName} style={silverBgStyle}>{inner}</Link>
+          )
         ) : (
           <button type="button" onClick={onClick} ref={btnRef} className={btnClassName} style={silverBgStyle}>{inner}</button>
         )}
@@ -230,14 +249,27 @@ export default function GlowButton({ href, onClick, children, small, large, grad
         onMouseLeave={() => setIsHovered(false)}
       >
         {glowHalo}
-        <Link
-          href={href}
-          ref={btnRef}
-          className={sharedClassName}
-          style={sharedStyle}
-        >
-          {glassInner}
-        </Link>
+        {isExternalUrl(href) ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            ref={btnRef}
+            className={sharedClassName}
+            style={sharedStyle}
+          >
+            {glassInner}
+          </a>
+        ) : (
+          <Link
+            href={href}
+            ref={btnRef}
+            className={sharedClassName}
+            style={sharedStyle}
+          >
+            {glassInner}
+          </Link>
+        )}
       </div>
     )
   }

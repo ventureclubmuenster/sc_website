@@ -44,7 +44,7 @@ const STANDARD_PERKS: Perk[] = [
 const tickets: Ticket[] = [
   {
     name: 'Student Access',
-    tagline: 'Für Studierende und Talente',
+    tagline: 'Für Studierende',
     price: {
       amount: '30 €',
     },
@@ -121,7 +121,7 @@ export default function TicketsPage() {
 
           <p className="text-white/40 text-xs leading-relaxed mt-10 max-w-3xl">
             * Der Einlass zur Afterparty erfolgt über Bändchen, die zu Beginn der Messe vor Ort
-            ausgegeben werden. Die Anzahl ist aufgrund der Location begrenzt — die Verteilung läuft
+            ausgegeben werden. Die Anzahl ist aufgrund der Location begrenzt, die Verteilung läuft
             nach dem First-come-first-serve-Prinzip. Ein Ticket garantiert keinen Afterparty-Zugang.
           </p>
         </div>

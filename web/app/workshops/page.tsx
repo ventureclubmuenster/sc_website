@@ -17,6 +17,7 @@ import { workshopsPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import WorkshopHighlights from './WorkshopHighlights'
+import Workshops2026 from './Workshops2026'
 import WorkshopsComingSoon from './WorkshopsComingSoon'
 
 const fallbackWorkshops = [
@@ -57,6 +58,10 @@ export default async function WorkshopsPage() {
     ? data.workshopHistory
     : fallbackWorkshops
 
+  const workshops2026 = data?.workshops2026 ?? []
+  const heading2026 = data?.workshops2026Heading || 'Workshops 2026'
+  const has2026 = workshops2026.length > 0
+
   return (
     <>
       <HeroSection
@@ -65,8 +70,12 @@ export default async function WorkshopsPage() {
         subtext="Lerne direkt von Experten aus ganz Deutschland, in Themen wie KI, Karriere, Management und vieles mehr."
       />
 
+      {has2026 ? (
+        <Workshops2026 workshops={workshops2026} heading={heading2026} />
+      ) : (
+        <WorkshopsComingSoon />
+      )}
       <WorkshopHighlights workshops={workshops} />
-      <WorkshopsComingSoon />
     </>
   )
 }

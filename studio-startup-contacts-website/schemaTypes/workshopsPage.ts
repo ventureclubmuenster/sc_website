@@ -6,6 +6,7 @@ export default defineType({
   type: 'document',
   fieldsets: [
     { name: 'hero', title: 'Hero Sektion', options: { collapsible: true, collapsed: false } },
+    { name: 'workshops2026', title: 'Workshops 2026', options: { collapsible: true, collapsed: false } },
     { name: 'history', title: 'Highlights aus 2025', options: { collapsible: true, collapsed: true } },
     { name: 'preview2026', title: 'Was dich dieses Jahr erwartet', options: { collapsible: true, collapsed: true } },
   ],
@@ -16,6 +17,59 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
       fieldset: 'hero',
+    }),
+    defineField({
+      name: 'workshops2026Heading',
+      title: 'Überschrift 2026-Sektion',
+      description: 'Überschrift der 2026-Workshops-Sektion. Das letzte Wort wird in der Akzentfarbe (Gradient) hervorgehoben – analog zu "Highlights aus 2025". Beispiel: "Workshops 2026" oder "Was dich 2026 erwartet". Leer lassen für Standard "Workshops 2026".',
+      type: 'string',
+      fieldset: 'workshops2026',
+    }),
+    defineField({
+      name: 'workshops2026',
+      title: 'Workshops 2026',
+      description: 'Workshop-Karten für 2026 (gleiche Struktur wie die 2025-Highlights). Solange dieses Feld leer ist, wird auf der Website die "Coming Soon"-Karte angezeigt.',
+      type: 'array',
+      fieldset: 'workshops2026',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Workshop-Titel', type: 'string', validation: (Rule) => Rule.required() },
+            { name: 'speaker', title: 'Speaker (Name & Unternehmen)', type: 'string', validation: (Rule) => Rule.required() },
+            { name: 'description', title: 'Kurzbeschreibung', type: 'text', rows: 2 },
+            {
+              name: 'logo',
+              title: 'Logo 1 (Speaker/Unternehmen)',
+              type: 'image',
+              options: { hotspot: false },
+            },
+            {
+              name: 'logoWhiteBg',
+              title: 'Logo 1: Weißer Hintergrund',
+              description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht (z.B. bei dunklen Logos).',
+              type: 'boolean',
+              initialValue: false,
+            },
+            {
+              name: 'logo2',
+              title: 'Logo 2 (optional)',
+              type: 'image',
+              options: { hotspot: false },
+            },
+            {
+              name: 'logo2WhiteBg',
+              title: 'Logo 2: Weißer Hintergrund',
+              description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht.',
+              type: 'boolean',
+              initialValue: false,
+            },
+          ],
+          preview: {
+            select: { title: 'title', subtitle: 'speaker' },
+          },
+        },
+      ],
     }),
     defineField({
       name: 'workshopHistory',

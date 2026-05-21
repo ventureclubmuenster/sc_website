@@ -269,6 +269,16 @@ export const investorenPageQuery = groq`
 export const workshopsPageQuery = groq`
   *[_type == "workshopsPage" && _id == "workshopsPage"][0] {
     heroImage,
+    workshops2026Heading,
+    workshops2026[] {
+      title,
+      speaker,
+      description,
+      logo,
+      logoWhiteBg,
+      logo2,
+      logo2WhiteBg
+    },
     workshopHistory[] {
       title,
       speaker,

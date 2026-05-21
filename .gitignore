@@ -2,3 +2,10 @@
 .vercel
 
 partner-logos/
+
+# Lokale Tool-Konfig (nicht ins Repo)
+.mcp.json
+
+# Verwaiste, lokal-only Fehlplatzierungs-Kopie aus fruehem Workshops-2026-Edit
+# (eigenes nested .git, kein Bezug zur Live-Website)
+sc_website/

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import TicketCardCTA from './TicketCardCTA'
 import PartnerBanner from '@/components/PartnerBanner'
+import DiscountBadge from './DiscountBadge'
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -50,7 +51,7 @@ const tickets: Ticket[] = [
     perks: [
       { text: 'Zugang zur Messe und zu allen Formaten wie Keynotes, Workshops und Co-Creation Corner' },
       { text: 'Workshops' },
-      { text: 'Getränke inklusive und ARO Bowl als Mittagessen', highlight: true },
+      { text: 'Getränke inklusive und ARO Bowl als Mittagessen' },
       { text: 'Crêpes, Hotdogs und Frühstück von Essmanns Backstube' },
       { text: 'Goodies' },
       { text: 'Exklusiver Afterwork-Empfang mit free Drinks' },
@@ -110,7 +111,11 @@ export default function TicketsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-4">
             {tickets.map((ticket) => (
-              <TicketCard key={ticket.name} ticket={ticket} />
+              <TicketCard
+                key={ticket.name}
+                ticket={ticket}
+                showDiscountBadge={ticket.name === 'Student Access'}
+              />
             ))}
           </div>
 
@@ -125,7 +130,7 @@ export default function TicketsPage() {
   )
 }
 
-function TicketCard({ ticket }: { ticket: Ticket }) {
+function TicketCard({ ticket, showDiscountBadge }: { ticket: Ticket; showDiscountBadge?: boolean }) {
   return (
     <div className="relative group rounded-2xl p-[1.5px] h-full">
       <div
@@ -147,12 +152,13 @@ function TicketCard({ ticket }: { ticket: Ticket }) {
           <p className="text-white/50 text-sm">{ticket.tagline}</p>
         </div>
 
-        <div className="mt-8 pb-6 border-b border-white/5">
+        <div className="mt-8 border-b border-white/5 pb-6">
           <div className="flex items-baseline gap-4">
             <span className="text-5xl lg:text-6xl font-black tabular-nums leading-none text-white">
               {ticket.price.amount}
             </span>
           </div>
+          {showDiscountBadge && <DiscountBadge />}
         </div>
 
         <div className="mt-8 flex-1">

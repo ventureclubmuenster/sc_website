@@ -60,7 +60,9 @@ export default async function MainStagePage() {
         flashbackTags={page?.flashbackTags}
       />
 
-      {page?.hallOfFame && <HallOfFame speakers={page.hallOfFame} />}
+      {page?.hallOfFame && (
+        <HallOfFame speakers={page.hallOfFame} accent="Main Stage Speaker" />
+      )}
     </>
   )
 }

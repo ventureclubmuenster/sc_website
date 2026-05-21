@@ -16,9 +16,11 @@ interface Speaker {
 
 interface HallOfFameProps {
   speakers: Speaker[]
+  prefix?: string
+  accent?: string
 }
 
-export default function HallOfFame({ speakers }: HallOfFameProps) {
+export default function HallOfFame({ speakers, prefix = 'Unsere', accent = 'Speaker' }: HallOfFameProps) {
   if (!speakers || speakers.length === 0) return null
 
   return (
@@ -39,7 +41,7 @@ export default function HallOfFame({ speakers }: HallOfFameProps) {
       <div className="relative z-10">
         <FadeIn direction="up" duration={0.7}>
           <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
-            Unsere <span className="gradient-text">Hall of Fame</span>
+            {prefix} <span className="gradient-text">{accent}</span>
           </h2>
         </FadeIn>
 

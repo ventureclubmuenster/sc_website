@@ -583,7 +583,7 @@ export default async function Home() {
         <section className="relative py-32 px-6 bg-black overflow-hidden">
           <div className="relative z-10 max-w-7xl mx-auto">
             <h2 className="h-section text-center mb-14">
-              Unsere vergangenen <span className="gradient-text">Partner</span>
+              Unsere <span className="gradient-text">Partner</span>
             </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

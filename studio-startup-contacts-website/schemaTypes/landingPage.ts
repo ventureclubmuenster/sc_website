@@ -121,7 +121,7 @@ export default defineType({
       of: [
         {
           type: 'reference',
-          to: [{ type: 'speaker2025' }],
+          to: [{ type: 'speaker2025' }, { type: 'speaker2026' }],
         },
       ],
       validation: (Rule) => Rule.max(6).unique(),

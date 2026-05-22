@@ -70,7 +70,11 @@ export const speakersQuery = groq`
 `
 
 export const speakers2025Query = groq`
-  *[_type == "speaker2025"] | order(orderRank asc) {
+  *[_type == "speaker2025" && !(_id in [
+    "031f19c1-a816-4231-ae49-3542ffce7122",
+    "51b5a2c0-adbe-4778-9df9-9fe0a20cc656",
+    "60c4ecd3-b51f-4b33-88d0-01da1a90ea7f"
+  ])] | order(orderRank asc) {
     _id,
     name,
     title,

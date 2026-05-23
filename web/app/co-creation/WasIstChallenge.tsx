@@ -46,7 +46,7 @@ export default function WasIstChallenge({
   const items = karten?.length ? karten : defaultKarten
   const eyebrowText = eyebrow ?? 'Was ist die Challenge?'
   const headlineText =
-    headline ?? 'EIN *SPRINT* FÜR *ECHTE AUFGABEN* AUS DEM *MITTELSTAND*'
+    headline ?? 'EIN *SPRINT* FÜR *ECHTE AUFGABEN*|AUS DEM *MITTELSTAND*'
   const introText =
     intro ??
     'Die Co-Creation Challenge bringt Talente und Unternehmen an einem Arbeitstag zusammen. Jedes Team arbeitet an einer konkreten Fragestellung und entwickelt einen ersten Lösungsansatz. Angestrebt werden bewusst hybride Hardware-/Software-Konzepte, die über reine Software hinausgehen und im Unternehmen weitergedacht werden können.'

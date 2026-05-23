@@ -373,6 +373,15 @@ export const coCreationPageQuery = groq`
       description,
       image
     },
+    messeUnternehmenHeadline,
+    messeUnternehmenIntro,
+    messeUnternehmen[] {
+      name,
+      bereich,
+      logo,
+      logoWhiteBg,
+      link
+    },
     warumTeilnehmenEyebrow,
     warumTeilnehmenHeadline,
     warumTeilnehmenIntro,

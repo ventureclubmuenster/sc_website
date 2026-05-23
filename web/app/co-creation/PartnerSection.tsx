@@ -72,17 +72,17 @@ export default function PartnerSection({
 
   return (
     <section className="relative z-10 px-6 py-20 overflow-hidden" id="r-factory">
-      <WatermarkBackground />
+      <WatermarkBackground opacityClass="text-white/[0.035]" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
           <span className="text-white">GEMEINSAM MIT </span>
           <span className="gradient-text">R-FACTORY</span>
         </h2>
-        <p className="text-white/50 text-center max-w-2xl mx-auto mb-12 text-base md:text-lg">
-          Wir machen Co-Creation gemeinsam mit einem Partner, der Innovationsprozesse lebt.
+        <p className="text-white/50 text-center max-w-2xl mx-auto mb-6 md:mb-8 text-base md:text-lg">
+          Wir machen Co-Creation gemeinsam mit einem Partner, der Innovationsprozesse&nbsp;lebt.
         </p>
 
-        <div className="relative py-8 md:py-12">
+        <div className="relative pt-2 md:pt-4 pb-8 md:pb-12">
           <StaggerContainer
             stagger={0.15}
             className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch"
@@ -111,8 +111,8 @@ export default function PartnerSection({
           </StaggerItem>
 
           {/* × */}
-          <StaggerItem direction="none">
-            <div className="flex items-center justify-center py-4">
+          <StaggerItem direction="none" className="h-full">
+            <div className="h-full flex items-center justify-center py-4">
               <span className="text-5xl md:text-7xl font-black gradient-text">×</span>
             </div>
           </StaggerItem>

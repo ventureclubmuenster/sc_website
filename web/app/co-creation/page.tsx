@@ -1,7 +1,6 @@
 import { client } from '@/lib/sanity/client'
-import { coCreationPageQuery, fokusfelderQuery } from '@/lib/sanity/queries'
+import { coCreationPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
-import FokusfeldGrid from '@/app/unternehmen/FokusfeldGrid'
 import CoCreationHero from './CoCreationHero'
 import WasIstChallenge from './WasIstChallenge'
 import WarumTeilnehmen from './WarumTeilnehmen'
@@ -11,6 +10,7 @@ import PartnerSection from './PartnerSection'
 import BewerbungsCTA from './BewerbungsCTA'
 import FAQSection from './FAQSection'
 import InlineCTA from './InlineCTA'
+import MesseUnternehmen from './MesseUnternehmen'
 
 interface ImageField {
   asset: { _ref: string }
@@ -46,6 +46,14 @@ interface HybrideKarteField {
   description?: string
 }
 
+interface MesseUnternehmenField {
+  name: string
+  bereich?: string
+  logo?: ImageField
+  logoWhiteBg?: boolean
+  link?: string
+}
+
 interface CoCreationPageData {
   heroImage?: ImageField
   heroEyebrow?: string
@@ -57,6 +65,9 @@ interface CoCreationPageData {
   wasIstChallengeHeadline?: string
   wasIstChallengeIntro?: string
   wasIstChallengeKarten?: KarteField[]
+  messeUnternehmenHeadline?: string
+  messeUnternehmenIntro?: string
+  messeUnternehmen?: MesseUnternehmenField[]
   warumTeilnehmenEyebrow?: string
   warumTeilnehmenHeadline?: string
   warumTeilnehmenIntro?: string
@@ -85,34 +96,12 @@ interface CoCreationPageData {
   ctaSideImages?: CtaSideImageField[]
 }
 
-interface FokusfelderData {
-  fokusProduktion?: ImageField
-  fokusLogistik?: ImageField
-  fokusEnergie?: ImageField
-  fokusBau?: ImageField
-  fokusInfrastruktur?: ImageField
-  fokusLifestyle?: ImageField
-}
-
-const fokusfelderTexte = [
-  { title: 'PRODUKTION', description: 'Fertigung, Automatisierung und Industrie 4.0. Eure Lösungen treffen auf echte Werke.', key: 'fokusProduktion' as const },
-  { title: 'LOGISTIK & EINKAUF', description: 'Supply Chain, Beschaffung und smarte Prozesse, direkt mit den Lead-Unternehmen optimiert.', key: 'fokusLogistik' as const },
-  { title: 'ENERGIE & NACHHALTIGKEIT', description: 'Energiewende, Effizienz und Kreislaufwirtschaft. Probleme aus erster Hand.', key: 'fokusEnergie' as const },
-  { title: 'BAU- & HANDWERK', description: 'ConTech und digitales Handwerk. Der Mittelstand bringt seine Baustellen mit.', key: 'fokusBau' as const },
-  { title: 'BETRIEBS-INFRASTRUKTUR', description: 'IT, Facility und interne Prozesse. Hier entsteht Effizienz im Alltag.', key: 'fokusInfrastruktur' as const },
-  { title: 'LIFESTYLE', description: 'Food, Fashion, Sport und Wellness. Co-Creation für Brands und Talente.', key: 'fokusLifestyle' as const },
-]
-
 async function getPageData(): Promise<CoCreationPageData | null> {
   return client.fetch(coCreationPageQuery, {}, { cache: 'no-store' })
 }
 
-async function getFokusfelder(): Promise<FokusfelderData | null> {
-  return client.fetch(fokusfelderQuery, {}, { cache: 'no-store' })
-}
-
 export default async function CoCreationPage() {
-  const [data, fokusfelder] = await Promise.all([getPageData(), getFokusfelder()])
+  const data = await getPageData()
 
   const heroImageUrl = data?.heroImage
     ? urlFor(data.heroImage).width(1920).height(1080).url()
@@ -139,14 +128,13 @@ export default async function CoCreationPage() {
     caption: s.caption,
   }))
 
-  const fokusfelderWithUrls = fokusfelderTexte.map((f) => {
-    const img = fokusfelder?.[f.key]
-    return {
-      title: f.title,
-      description: f.description,
-      imageUrl: img ? urlFor(img).width(800).height(600).url() : undefined,
-    }
-  })
+  const messeUnternehmenItems = data?.messeUnternehmen?.map((c) => ({
+    name: c.name,
+    bereich: c.bereich,
+    logoUrl: c.logo ? urlFor(c.logo).width(400).auto('format').url() : undefined,
+    logoWhiteBg: c.logoWhiteBg,
+    link: c.link,
+  }))
 
   const wasIstChallengeKarten = data?.wasIstChallengeKarten?.map((k) => ({
     number: k.number,
@@ -172,10 +160,6 @@ export default async function CoCreationPage() {
           data?.heroBody ??
           'Ein geführter Innovationssprint für ausgewählte Studierende und Young Professionals. Gemeinsam mit Unternehmensvertretern, Mentorinnen und Coaches entwickelt ihr erste Lösungen für echte Herausforderungen aus dem Mittelstand.'
         }
-        note={
-          data?.heroNote ??
-          'Die Bewerbung ist niedrigschwellig. Finale Details zu Unternehmen, Challenges und Pitch-Format folgen. Das Startup Contacts Ticket inkl. Verpflegung etc. ist in der Bewerbung mit inbegriffen.'
-        }
         bewerbungsUrl={data?.bewerbungsUrl}
       />
 
@@ -186,6 +170,18 @@ export default async function CoCreationPage() {
           headline={data?.wasIstChallengeHeadline}
           intro={data?.wasIstChallengeIntro}
           karten={wasIstChallengeKarten}
+        />
+
+        {/* === 1a. CTA-Strip nach "Was ist die Challenge" — eng an die Karten gezogen === */}
+        <div className="-mt-16 md:-mt-20">
+          <InlineCTA bewerbungsUrl={data?.bewerbungsUrl} />
+        </div>
+
+        {/* === 1b. Unternehmen auf der Messe === */}
+        <MesseUnternehmen
+          headline={data?.messeUnternehmenHeadline}
+          intro={data?.messeUnternehmenIntro}
+          items={messeUnternehmenItems}
         />
 
         {/* === 2. Warum teilnehmen === */}
@@ -214,20 +210,6 @@ export default async function CoCreationPage() {
           imageBody={data?.hybrideLoesungenImageBody}
           karten={data?.hybrideLoesungenKarten}
         />
-
-        {/* === 4. Innovationsfokus === */}
-        <section className="relative z-10 px-6 py-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
-              <span className="text-white">DIE </span>
-              <span className="gradient-text">INNOVATIONSFELDER</span>
-            </h2>
-            <p className="text-white/50 text-center max-w-2xl mx-auto mb-12 text-base md:text-lg">
-              Aus sechs Themenfeldern, die unsere Lead-Unternehmen mitbringen.
-            </p>
-            <FokusfeldGrid fokusfelder={fokusfelderWithUrls} />
-          </div>
-        </section>
 
         {/* === 5. Gemeinsam mit R-Factory === */}
         <PartnerSection

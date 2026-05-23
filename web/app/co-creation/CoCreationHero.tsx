@@ -89,8 +89,8 @@ export default function CoCreationHero({
           </FadeIn>
 
           <FadeIn direction="up" delay={0.4} duration={0.7} distance={15}>
-            <p className="text-white/70 text-sm sm:text-base md:text-lg mt-8 md:mt-10 max-w-3xl mx-auto leading-relaxed">
-              Begrenzte Plätze · Bewerbung bis 07.06. um 18 Uhr möglich
+            <p className="text-white/70 text-xs sm:text-sm md:text-base mt-8 md:mt-10 max-w-3xl mx-auto leading-relaxed">
+              Begrenzte Plätze · Bewerbung bis 07.06. um 18 Uhr möglich · Das Startup Contacts Ticket inkl. Verpflegung etc. ist in der Bewerbung mit inbegriffen (Erstattung bestehender Tickets möglich)
             </p>
           </FadeIn>
 

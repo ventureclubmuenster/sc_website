@@ -16,7 +16,7 @@ const defaults: Station[] = [
   { time: '11:00', title: 'Arbeitsphase I', description: 'Problemraum und Lösungsrichtung. Experten rotieren durch die Teams.' },
   { time: '12:30', title: 'Lunch & Networking', description: 'Pause, Austausch mit Messebesuchern und Ideen challengen.' },
   { time: '13:15', title: 'Prototyping & Konzept', description: 'Micro-Workshop mit KI-Tools, dann Konzept und Pitch aufbauen.' },
-  { time: '15:30', title: 'Pitch & Siegerehrung', description: '4 × Pitch vor Jury und offenem Publikum, Bewertung und Abschluss.' },
+  { time: 'Ende', title: 'Ende & Vorstellung der Ergebnisse', description: 'Bewertung und Abschluss vor offenem Publikum.' },
 ]
 
 export default function AblaufTimeline({ stations }: AblaufTimelineProps) {
@@ -46,8 +46,8 @@ export default function AblaufTimeline({ stations }: AblaufTimelineProps) {
             {items.map((s, i) => (
               <StaggerItem key={i} direction="up">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white text-xs font-extrabold shadow-lg shadow-orange-500/30 ring-1 ring-white/20">
-                    {s.time?.split(':')[0] ?? `0${i + 1}`}
+                  <div className="w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white text-base font-extrabold shadow-lg shadow-orange-500/30 ring-1 ring-white/20">
+                    {i + 1}
                   </div>
                   <div className="mt-4 text-sm font-mono text-white/40">{s.time}</div>
                   <div className="mt-1 text-base font-bold text-white leading-tight">{s.title}</div>
@@ -67,8 +67,8 @@ export default function AblaufTimeline({ stations }: AblaufTimelineProps) {
             {items.map((s, i) => (
               <StaggerItem key={i} direction="left">
                 <div className="flex items-start gap-4 relative">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white text-xs font-extrabold shadow-lg shadow-orange-500/30 ring-1 ring-white/20">
-                    {s.time?.split(':')[0] ?? `0${i + 1}`}
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-white text-base font-extrabold shadow-lg shadow-orange-500/30 ring-1 ring-white/20">
+                    {i + 1}
                   </div>
                   <div className="flex-1 pt-1">
                     <div className="text-sm font-mono text-white/40">{s.time}</div>

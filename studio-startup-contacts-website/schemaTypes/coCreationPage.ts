@@ -7,10 +7,11 @@ export default defineType({
   fieldsets: [
     { name: 'hero', title: 'CO-CREATION CHALLENGE (Hero)', options: { collapsible: true, collapsed: false } },
     { name: 'wasIstChallenge', title: 'EIN SPRINT FÜR ECHTE AUFGABEN AUS DEM MITTELSTAND', options: { collapsible: true, collapsed: true } },
+    { name: 'messeUnternehmen', title: 'AUSSTELLENDE UNTERNEHMEN', options: { collapsible: true, collapsed: true } },
     { name: 'warumTeilnehmen', title: 'PRAKTISCHE INNOVATIONSERFAHRUNG MIT DIREKTEM UNTERNEHMENSZUGANG', options: { collapsible: true, collapsed: true } },
     { name: 'ablauf', title: 'EIN TAG, KLARE ARBEITSPHASEN', options: { collapsible: true, collapsed: true } },
     { name: 'hybrideLoesungen', title: 'HYBRIDE LÖSUNGEN FÜR REALE SYSTEME', options: { collapsible: true, collapsed: true } },
-    { name: 'unternehmen', title: 'BETEILIGTE UNTERNEHMEN & INNOVATIONSFELDER', options: { collapsible: true, collapsed: true } },
+    { name: 'unternehmen', title: 'Beteiligte Unternehmen & Innovationsfelder (deprecated)', options: { collapsible: true, collapsed: true } },
     { name: 'partner', title: 'GEMEINSAM MIT R-FACTORY (Veranstalter)', options: { collapsible: true, collapsed: true } },
     { name: 'cta', title: 'BEREIT MITZUMACHEN? (Bewerbungs-CTA)', options: { collapsible: true, collapsed: true } },
     { name: 'vision', title: 'Vision (deprecated)', options: { collapsible: true, collapsed: true } },
@@ -122,6 +123,56 @@ export default defineType({
         },
       ],
       validation: (Rule) => Rule.max(3),
+    }),
+
+    // ── Unternehmen auf der Messe ──
+    defineField({
+      name: 'messeUnternehmenHeadline',
+      title: 'Headline',
+      description:
+        'Wörter in *Sternchen* werden im VCM-Gradient dargestellt. Standard: "AUSSTELLENDE *UNTERNEHMEN*".',
+      type: 'string',
+      fieldset: 'messeUnternehmen',
+    }),
+    defineField({
+      name: 'messeUnternehmenIntro',
+      title: 'Intro-Text (1–2 Sätze)',
+      description: 'Kurzer Einleitungstext direkt unter der Headline.',
+      type: 'text',
+      rows: 3,
+      fieldset: 'messeUnternehmen',
+    }),
+    defineField({
+      name: 'messeUnternehmen',
+      title: 'Unternehmen auf der Messe',
+      description:
+        'Unternehmen, die auf der Messe vertreten sein werden. Logo, Name und Bereich (z. B. „Handwerk"). Die ersten drei werden nebeneinander angezeigt — weitere Einträge werden auf der Website automatisch in zusätzliche Reihen umgebrochen.',
+      type: 'array',
+      fieldset: 'messeUnternehmen',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'name', title: 'Unternehmensname', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'bereich', title: 'Bereich (z. B. „Handwerk")', type: 'string' }),
+            defineField({ name: 'logo', title: 'Logo', type: 'image', options: { hotspot: false }, validation: (r) => r.required() }),
+            defineField({
+              name: 'logoWhiteBg',
+              title: 'Logo: Weißer Hintergrund',
+              description: 'Aktivieren, wenn das Logo einen weißen Hintergrund braucht (z. B. bei dunklen Logos).',
+              type: 'boolean',
+              initialValue: false,
+            }),
+            defineField({
+              name: 'link',
+              title: 'Link (optional)',
+              description: 'URL der Unternehmens-Website. Beim Klick auf das Logo öffnet sich diese Adresse in einem neuen Tab. Leer lassen, wenn das Logo nicht klickbar sein soll.',
+              type: 'url',
+            }),
+          ],
+          preview: { select: { title: 'name', subtitle: 'bereich', media: 'logo' } },
+        },
+      ],
     }),
 
     // ── Warum teilnehmen ──

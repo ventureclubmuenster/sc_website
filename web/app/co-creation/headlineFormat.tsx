@@ -11,6 +11,21 @@ import React from 'react'
 export function renderHeadline(headline: string): React.ReactNode {
   if (!headline) return null
 
+  // `|` markiert einen harten Zeilenumbruch in der Headline.
+  if (headline.includes('|')) {
+    const lines = headline.split('|')
+    return (
+      <>
+        {lines.map((line, i) => (
+          <React.Fragment key={i}>
+            {i > 0 && <br />}
+            {renderHeadline(line.trim())}
+          </React.Fragment>
+        ))}
+      </>
+    )
+  }
+
   if (headline.includes('*')) {
     const regex = /\*([^*]+)\*/g
     const parts: React.ReactNode[] = []

@@ -155,7 +155,6 @@ export default async function CoCreationPage() {
         imageUrl={heroImageUrl}
         eyebrow={data?.heroEyebrow ?? 'VCM × R-Factory · Startup Contacts · Halle Münsterland'}
         headline={data?.heroHeadline ?? 'CO-CREATION CHALLENGE'}
-        subline={data?.heroSubline ?? 'Reale Mittelstandsprobleme gemeinsam lösen'}
         body={
           data?.heroBody ??
           'Ein geführter Innovationssprint für ausgewählte Studierende und Young Professionals. Gemeinsam mit Unternehmensvertretern, Mentorinnen und Coaches entwickelt ihr erste Lösungen für echte Herausforderungen aus dem Mittelstand.'

@@ -59,7 +59,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
         >
           {list.map((c, i) => (
             <StaggerItem key={i} direction="up">
-              <div className="group relative bg-[#18181b] border border-sc-orange/50 rounded-2xl p-6 md:p-7 hover:border-sc-orange transition-colors duration-500 h-full flex flex-col items-center text-center overflow-hidden">
+              <div className="group relative bg-[#18181b] border border-white/5 rounded-2xl p-6 md:p-7 hover:border-sc-orange/40 transition-colors duration-500 h-full flex flex-col items-center text-center overflow-hidden">
                 {(() => {
                   const logoBox = (
                     <div

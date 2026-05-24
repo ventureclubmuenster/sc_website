@@ -40,7 +40,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
   const headlineText = headline ?? 'AUSSTELLENDE *UNTERNEHMEN*'
   const introText =
     intro ??
-    'Eine vielfältige Mischung aus dem regionalen Mittelstand, vom Handwerk über Produktion bis hin zu Tech und Services. Jedes Unternehmen bringt seine eigenen, realen Herausforderungen mit.'
+    'Eine vielfältige Auswahl innovativer Unternehmen aus unterschiedlichen Branchen, von Handwerk und Produktion bis hin zu Tech und Services. Jedes Unternehmen bringt seine eigenen, realen Herausforderungen mit.'
 
   return (
     <section className="relative z-10 px-6 pt-20 pb-32 md:pb-40 overflow-hidden" id="messe-unternehmen">

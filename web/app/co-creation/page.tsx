@@ -176,12 +176,8 @@ export default async function CoCreationPage() {
           <InlineCTA bewerbungsUrl={data?.bewerbungsUrl} />
         </div>
 
-        {/* === 1b. Unternehmen auf der Messe === */}
-        <MesseUnternehmen
-          headline={data?.messeUnternehmenHeadline}
-          intro={data?.messeUnternehmenIntro}
-          items={messeUnternehmenItems}
-        />
+        {/* === 1b. Challenge Geber === */}
+        <MesseUnternehmen items={messeUnternehmenItems} />
 
         {/* === 2. Warum teilnehmen === */}
         <WarumTeilnehmen

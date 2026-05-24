@@ -50,7 +50,7 @@ export default function WarumTeilnehmen({
   const items = karten?.length ? karten : defaultKarten
   const eyebrowText = eyebrow ?? 'Warum teilnehmen?'
   const headlineText =
-    headline ?? 'PRAKTISCHE INNOVATIONSERFAHRUNG MIT DIREKTEM *UNTERNEHMENSZUGANG*'
+    headline ?? 'PRAKTISCHE INNOVATIONSERFAHRUNG MIT *DIREKTEM UNTERNEHMENSZUGANG*'
   const introText =
     intro ??
     'Du arbeitest an einer Aufgabe, die für ein Unternehmen gerade relevant ist. Gleichzeitig lernst du neue Methoden, Menschen und Perspektiven kennen.'
@@ -94,12 +94,6 @@ export default function WarumTeilnehmen({
           {items.map((k, i) => (
             <StaggerItem key={i} direction="up">
               <div className="group liquid-glass rounded-2xl p-6 h-full transition-all duration-300 hover:border-sc-orange/40 hover:bg-black/50 hover:-translate-y-1">
-                <div className="w-11 h-11 rounded-xl gradient-bg flex items-center justify-center mb-5 shadow-lg shadow-orange-500/30 ring-1 ring-white/20">
-                  <span className="text-white text-base font-extrabold">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
                 {k.imageUrl && (
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5">
                     <ImagePlaceholder

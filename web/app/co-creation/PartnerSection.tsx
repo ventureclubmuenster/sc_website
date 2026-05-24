@@ -72,7 +72,7 @@ export default function PartnerSection({
 
   return (
     <section className="relative z-10 px-6 py-20 overflow-hidden" id="r-factory">
-      <WatermarkBackground opacityClass="text-white/[0.035]" />
+      <WatermarkBackground opacityClass="text-white/[0.06]" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
           <span className="text-white">GEMEINSAM MIT </span>

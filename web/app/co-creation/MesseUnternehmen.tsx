@@ -44,7 +44,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
 
   return (
     <section className="relative z-10 px-6 pt-20 pb-32 md:pb-40 overflow-hidden" id="messe-unternehmen">
-      <WatermarkBackground opacityClass="text-white/[0.035]" />
+      <WatermarkBackground opacityClass="text-white/[0.06]" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4 leading-tight">
           {renderHeadline(headlineText)}
@@ -59,7 +59,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
         >
           {list.map((c, i) => (
             <StaggerItem key={i} direction="up">
-              <div className="group relative bg-[#18181b] border border-white/5 rounded-2xl p-6 md:p-7 hover:border-sc-orange/40 transition-colors duration-500 h-full flex flex-col items-center text-center overflow-hidden">
+              <div className="group relative bg-[#18181b] border border-white/5 rounded-2xl p-6 md:p-7 hover:border-sc-orange/70 transition-colors duration-500 h-full flex flex-col items-center text-center overflow-hidden">
                 {(() => {
                   const logoBox = (
                     <div
@@ -100,11 +100,11 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                   )
                 })()}
 
-                <h3 className="relative z-10 text-lg md:text-xl font-extrabold uppercase tracking-wide text-white">
+                <h3 className="relative z-10 text-lg md:text-xl font-semibold uppercase tracking-wide gradient-text">
                   {c.name}
                 </h3>
                 {c.bereich && (
-                  <p className="relative z-10 mt-2 text-sm font-semibold text-white/60">
+                  <p className="relative z-10 mt-2 text-sm font-light text-white/60 leading-relaxed">
                     {c.bereich}
                   </p>
                 )}

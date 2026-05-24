@@ -59,26 +59,31 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
           {list.map((c, i) => (
             <StaggerItem key={i} direction="up">
               <div className="group relative bg-[#4a2410] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-sc-orange/70 transition-colors duration-500 overflow-hidden">
-                {/* Logo links + Name/Branche rechts daneben */}
-                <div className="relative z-10 flex items-center gap-4 mb-3">
+                {/* Logo links + Name/Branche-Pill ganz rechts */}
+                <div className="relative z-10 flex items-center gap-4 mb-4">
                   {(() => {
                     const isWestfalen = c.name?.toLowerCase().includes('westfalen')
-                    const logoHeightClass = isWestfalen
-                      ? 'h-40 md:h-48 -my-4 md:-my-5'
-                      : 'h-20 md:h-24'
-                    const logoEl = c.logoUrl ? (
-                      <Image
-                        src={c.logoUrl}
-                        alt={`${c.name} Logo`}
-                        width={520}
-                        height={240}
-                        className={`${logoHeightClass} w-auto max-w-[55%] object-contain ${c.link ? 'transition-transform duration-300 group-hover/logo:scale-[1.03]' : ''}`}
-                      />
-                    ) : (
-                      <span className="text-3xl md:text-4xl font-extrabold tracking-wide text-white/80">
-                        {getInitials(c.name)}
-                      </span>
-                    )
+                    const logoEl =
+                      isWestfalen && c.logoUrl ? (
+                        <div
+                          role="img"
+                          aria-label={`${c.name} Logo`}
+                          className={`h-20 md:h-24 w-44 md:w-56 bg-no-repeat bg-cover bg-center ${c.link ? 'transition-transform duration-300 group-hover/logo:scale-[1.03]' : ''}`}
+                          style={{ backgroundImage: `url(${c.logoUrl})` }}
+                        />
+                      ) : c.logoUrl ? (
+                        <Image
+                          src={c.logoUrl}
+                          alt={`${c.name} Logo`}
+                          width={520}
+                          height={240}
+                          className={`h-20 md:h-24 w-auto max-w-[55%] object-contain ${c.link ? 'transition-transform duration-300 group-hover/logo:scale-[1.03]' : ''}`}
+                        />
+                      ) : (
+                        <span className="text-3xl md:text-4xl font-extrabold tracking-wide text-white/80">
+                          {getInitials(c.name)}
+                        </span>
+                      )
 
                     return c.link ? (
                       <a
@@ -96,7 +101,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                   })()}
 
                   {c.name && (
-                    <span className="font-mono text-xs md:text-sm font-bold tracking-wider gradient-text">
+                    <span className="ml-auto px-3 py-1.5 rounded-full bg-white/10 font-mono text-sm md:text-base font-bold tracking-wider gradient-text whitespace-nowrap">
                       {c.name}
                     </span>
                   )}

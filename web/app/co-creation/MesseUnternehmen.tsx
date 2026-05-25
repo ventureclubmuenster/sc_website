@@ -68,7 +68,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                         <div
                           role="img"
                           aria-label={`${c.name} Logo`}
-                          className={`h-20 md:h-24 w-44 md:w-56 bg-no-repeat bg-cover bg-center ${c.link ? 'transition-transform duration-300 group-hover/logo:scale-[1.03]' : ''}`}
+                          className={`h-14 md:h-24 w-28 md:w-56 bg-no-repeat bg-cover bg-center ${c.link ? 'transition-transform duration-300 group-hover/logo:scale-[1.03]' : ''}`}
                           style={{ backgroundImage: `url(${c.logoUrl})` }}
                         />
                       ) : c.logoUrl ? (

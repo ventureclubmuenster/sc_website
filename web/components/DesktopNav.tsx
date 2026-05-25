@@ -52,6 +52,14 @@ export default function DesktopNav() {
       >
         Partner
       </Link>
+      <Link
+        href="https://app.startup-contacts.de"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm font-semibold text-white bg-sc-orange hover:bg-sc-orange/80 transition-colors duration-200 whitespace-nowrap px-4 py-2 rounded-full"
+      >
+        App
+      </Link>
     </nav>
   )
 }

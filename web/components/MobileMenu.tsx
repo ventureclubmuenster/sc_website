@@ -143,6 +143,16 @@ export default function MobileMenu() {
             Partner
           </Link>
 
+          <Link
+            href="https://app.startup-contacts.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="inline-block text-sm font-semibold text-white bg-sc-orange hover:bg-sc-orange/80 transition-colors text-center py-3 px-5 rounded-full"
+          >
+            App
+          </Link>
+
           <div className="mt-2">
             <WartelisteButton small />
           </div>

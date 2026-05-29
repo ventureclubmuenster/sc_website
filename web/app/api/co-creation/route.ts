@@ -13,6 +13,7 @@ const ALLOWED_SKILLS = [
   'Sonstiges',
 ] as const
 const ALLOWED_VERFUEGBARKEIT = ['Ja', 'Nein', 'Unsicher'] as const
+const ALLOWED_ESSENS_PRAEFERENZ = ['Mit Fleisch', 'Vegetarisch', 'Vegan'] as const
 
 const LIMITS = {
   vollerName: 200,
@@ -48,6 +49,7 @@ export async function POST(request: Request) {
       skillsSonstiges,
       motivation,
       verfuegbarkeit,
+      essensPraeferenz,
     } = body ?? {}
 
     // Required fields
@@ -59,7 +61,8 @@ export async function POST(request: Request) {
       !rolle ||
       !skills ||
       !motivation ||
-      !verfuegbarkeit
+      !verfuegbarkeit ||
+      !essensPraeferenz
     ) {
       return NextResponse.json(
         { error: 'Bitte fülle alle Pflichtfelder aus.' },
@@ -76,6 +79,7 @@ export async function POST(request: Request) {
       typeof rolle !== 'string' ||
       typeof motivation !== 'string' ||
       typeof verfuegbarkeit !== 'string' ||
+      typeof essensPraeferenz !== 'string' ||
       !Array.isArray(skills)
     ) {
       return NextResponse.json({ error: 'Ungültige Eingabe.' }, { status: 400 })
@@ -100,6 +104,10 @@ export async function POST(request: Request) {
 
     if (!ALLOWED_VERFUEGBARKEIT.includes(verfuegbarkeit as (typeof ALLOWED_VERFUEGBARKEIT)[number])) {
       return NextResponse.json({ error: 'Ungültige Verfügbarkeit.' }, { status: 400 })
+    }
+
+    if (!ALLOWED_ESSENS_PRAEFERENZ.includes(essensPraeferenz as (typeof ALLOWED_ESSENS_PRAEFERENZ)[number])) {
+      return NextResponse.json({ error: 'Ungültige Essenspräferenz.' }, { status: 400 })
     }
 
     if (skills.length === 0) {
@@ -144,6 +152,7 @@ export async function POST(request: Request) {
       skillsSonstiges: skillsSonstigesClean || undefined,
       motivation: motivation.trim(),
       verfuegbarkeit,
+      essensPraeferenz,
       eingegangenAm,
     })
 
@@ -163,6 +172,7 @@ export async function POST(request: Request) {
         ['Skills', skills.join(', ') + (skillsSonstigesClean ? ` (Sonstiges: ${skillsSonstigesClean})` : '')],
         ['Motivation', motivation],
         ['Verfügbarkeit 15.06.2026', verfuegbarkeit],
+        ['Essenspräferenz', essensPraeferenz],
       ]
       const html = `
 <h2>Neue Co-Creation Anmeldung</h2>
@@ -183,25 +193,70 @@ ${rows
 </p>
 `
 
+      const firstName = vollerName.trim().split(' ')[0]
+      const confirmationHtml = `
+<div style="font-family:sans-serif;font-size:15px;line-height:1.6;color:#111;max-width:560px;">
+  <p>Hey ${escapeHtml(firstName)},</p>
+  <p>
+    vielen Dank für deine Bewerbung zur <strong>Co-Creation Challenge</strong> beim startup-contacts 2026!
+    Wir haben deine Anmeldung erhalten und melden uns in Kürze bei dir.
+  </p>
+  <p>
+    Falls du noch Fragen hast, kannst du einfach auf diese Mail antworten.
+  </p>
+  <p>
+    Bis bald!<br/>
+    <strong>Das startup-contacts Team</strong>
+  </p>
+  <hr style="border:none;border-top:1px solid #eee;margin:24px 0;"/>
+  <p style="font-size:12px;color:#999;">
+    startup-contacts · Venture Club Münster e.V.<br/>
+    <a href="https://startup-contacts.de" style="color:#FF5E00;text-decoration:none;">startup-contacts.de</a>
+  </p>
+</div>
+`
+
       try {
-        const emailRes = await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${RESEND_API_KEY}`,
-          },
-          body: JSON.stringify({
-            from: NOTIFY_FROM,
-            to: NOTIFY_TO,
-            reply_to: email,
-            subject: `Neue Co-Creation Anmeldung: ${vollerName}`,
-            html,
+        const [notifyRes, confirmRes] = await Promise.allSettled([
+          fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+            },
+            body: JSON.stringify({
+              from: NOTIFY_FROM,
+              to: NOTIFY_TO,
+              reply_to: email,
+              subject: `Neue Co-Creation Anmeldung: ${vollerName}`,
+              html,
+            }),
           }),
-        })
-        if (!emailRes.ok) {
-          const errBody = await emailRes.text().catch(() => '')
-          console.error('Resend email error', { status: emailRes.status, body: errBody })
+          fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${RESEND_API_KEY}`,
+            },
+            body: JSON.stringify({
+              from: NOTIFY_FROM,
+              to: email,
+              subject: 'Deine Bewerbung zur Co-Creation Challenge',
+              html: confirmationHtml,
+            }),
+          }),
+        ])
+
+        if (notifyRes.status === 'fulfilled' && !notifyRes.value.ok) {
+          const errBody = await notifyRes.value.text().catch(() => '')
+          console.error('Resend notify error', { status: notifyRes.value.status, body: errBody })
         }
+        if (confirmRes.status === 'fulfilled' && !confirmRes.value.ok) {
+          const errBody = await confirmRes.value.text().catch(() => '')
+          console.error('Resend confirm error', { status: confirmRes.value.status, body: errBody })
+        }
+        if (notifyRes.status === 'rejected') console.error('Resend notify exception', notifyRes.reason)
+        if (confirmRes.status === 'rejected') console.error('Resend confirm exception', confirmRes.reason)
       } catch (err) {
         console.error('Resend email exception', err)
       }

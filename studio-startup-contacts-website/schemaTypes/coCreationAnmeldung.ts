@@ -103,6 +103,20 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'essensPraeferenz',
+      title: 'Essenspräferenz',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Mit Fleisch', value: 'Mit Fleisch' },
+          { title: 'Vegetarisch', value: 'Vegetarisch' },
+          { title: 'Vegan', value: 'Vegan' },
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'eingegangenAm',
       title: 'Eingegangen am',
       type: 'datetime',

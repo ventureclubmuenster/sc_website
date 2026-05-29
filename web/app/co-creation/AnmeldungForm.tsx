@@ -12,10 +12,12 @@ const SKILL_OPTIONS = [
   'Sonstiges',
 ] as const
 const VERFUEGBARKEIT_OPTIONS = ['Ja', 'Nein', 'Unsicher'] as const
+const ESSENS_PRAEFERENZ_OPTIONS = ['Mit Fleisch', 'Vegetarisch', 'Vegan'] as const
 
 type StatusOption = (typeof STATUS_OPTIONS)[number]
 type SkillOption = (typeof SKILL_OPTIONS)[number]
 type VerfuegbarkeitOption = (typeof VERFUEGBARKEIT_OPTIONS)[number]
+type EssensPraeferenzOption = (typeof ESSENS_PRAEFERENZ_OPTIONS)[number]
 
 const inputClass =
   'w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-sc-orange focus:ring-1 focus:ring-sc-orange transition-colors'
@@ -34,6 +36,7 @@ export default function AnmeldungForm() {
   const [skillsSonstiges, setSkillsSonstiges] = useState('')
   const [motivation, setMotivation] = useState('')
   const [verfuegbarkeit, setVerfuegbarkeit] = useState<VerfuegbarkeitOption | ''>('')
+  const [essensPraeferenz, setEssensPraeferenz] = useState<EssensPraeferenzOption | ''>('')
   const [consent, setConsent] = useState(false)
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
@@ -47,7 +50,7 @@ export default function AnmeldungForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     if (!consent) return
-    if (!status || !verfuegbarkeit || skills.length === 0) return
+    if (!status || !verfuegbarkeit || !essensPraeferenz || skills.length === 0) return
 
     setFormStatus('loading')
     setErrorMsg('')
@@ -68,6 +71,7 @@ export default function AnmeldungForm() {
           skillsSonstiges: skills.includes('Sonstiges') ? skillsSonstiges : undefined,
           motivation,
           verfuegbarkeit,
+          essensPraeferenz,
         }),
       })
 
@@ -301,6 +305,39 @@ export default function AnmeldungForm() {
                   value={opt}
                   checked={selected}
                   onChange={() => setVerfuegbarkeit(opt)}
+                  required
+                  className="sr-only"
+                />
+                <span className="text-sm font-medium">{opt}</span>
+              </label>
+            )
+          })}
+        </div>
+      </fieldset>
+
+      {/* Essenspräferenz */}
+      <fieldset>
+        <legend className={labelClass}>
+          Essenspräferenz <span className="text-sc-orange">*</span>
+        </legend>
+        <div className="flex flex-wrap gap-2">
+          {ESSENS_PRAEFERENZ_OPTIONS.map((opt) => {
+            const selected = essensPraeferenz === opt
+            return (
+              <label
+                key={opt}
+                className={`px-5 py-2 rounded-full border cursor-pointer transition-colors ${
+                  selected
+                    ? 'border-sc-orange bg-sc-orange/10 text-white'
+                    : 'border-white/15 bg-white/[0.03] text-white/80 hover:border-white/30'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="essensPraeferenz"
+                  value={opt}
+                  checked={selected}
+                  onChange={() => setEssensPraeferenz(opt)}
                   required
                   className="sr-only"
                 />

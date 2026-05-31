@@ -33,9 +33,10 @@ interface GlowButtonProps {
   large?: boolean
   gradient?: boolean
   silver?: boolean
+  noArrow?: boolean
 }
 
-export default function GlowButton({ href, onClick, children, small, large, gradient, silver }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small, large, gradient, silver, noArrow }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
@@ -118,7 +119,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
     const inner = (
       <>
         <span className="relative z-10">{children}</span>
-        {!silver && (
+        {!silver && !noArrow && (
           <span
             className="relative z-10 transition-transform duration-300"
             style={{ transform: isHovered ? 'translateX(4px)' : 'translateX(0)' }}

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import WartelisteButton from './WartelisteButton'
 import CoCreationButton from './CoCreationButton'
+import AppButton from './AppButton'
 import scLogo from '@/app/images/SC_logo_nav_bar.avif'
 
 const besucherGroup = {
@@ -143,15 +144,9 @@ export default function MobileMenu() {
             Partner
           </Link>
 
-          <Link
-            href="https://app.startup-contacts.de"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="inline-block text-sm font-semibold text-white bg-sc-orange hover:bg-sc-orange/80 transition-colors text-center py-3 px-5 rounded-full"
-          >
-            App
-          </Link>
+          <div className="mt-2" onClick={() => setOpen(false)}>
+            <AppButton small />
+          </div>
 
           <div className="mt-2">
             <WartelisteButton small />

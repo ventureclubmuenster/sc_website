@@ -55,6 +55,10 @@ export default defineConfig({
               .id('startupsPage')
               .child(S.document().schemaType('startupsPage').documentId('startupsPage')),
             S.listItem()
+              .title('Logo-Slider (Startseite & Tickets)')
+              .id('logoSlider')
+              .child(S.document().schemaType('logoSlider').documentId('logoSlider')),
+            S.listItem()
               .title('Fokusfelder (Bilder)')
               .id('fokusfelder')
               .child(S.document().schemaType('fokusfelder').documentId('fokusfelder')),
@@ -76,7 +80,7 @@ export default defineConfig({
               .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
             ),
           ]),
     }),

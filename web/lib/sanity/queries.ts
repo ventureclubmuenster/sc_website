@@ -1,5 +1,17 @@
 import { groq } from 'next-sanity'
 
+export const logoSliderQuery = groq`
+  *[_type == "logoSlider" && _id == "logoSlider"][0] {
+    logos[] {
+      name,
+      whiteBackground,
+      scalePercent,
+      image,
+      "isOpaque": image.asset->metadata.isOpaque
+    }
+  }
+`
+
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0] {
     title,

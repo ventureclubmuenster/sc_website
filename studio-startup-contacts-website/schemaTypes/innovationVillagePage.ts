@@ -70,6 +70,77 @@ export default defineType({
       type: 'string',
       initialValue: 'Klingt spannend? Melde dich jetzt für unseren Newsletter an, um nichts mehr zu verpassen!',
     }),
+    defineField({
+      name: 'aussteller2026Heading',
+      title: 'Aussteller 2026 – Überschrift',
+      type: 'string',
+      description: 'Der Teil „STARTUP CONTACTS" wird automatisch farbig (Verlauf) dargestellt.',
+      initialValue: 'AUSSTELLER DER STARTUP CONTACTS 2026',
+    }),
+    defineField({
+      name: 'aussteller2026Text',
+      title: 'Aussteller 2026 – Text',
+      type: 'string',
+      initialValue: 'Klicke auf eines der Logos, um mehr über unsere Aussteller zu erfahren!',
+    }),
+    defineField({
+      name: 'aussteller2026Logos',
+      title: 'Aussteller-Logos 2026',
+      type: 'array',
+      description: 'Logos manuell hinzufügen. Pro Logo kann der Hintergrund weiß oder schwarz gewählt werden.',
+      of: [
+        {
+          type: 'object',
+          name: 'aussteller',
+          fields: [
+            defineField({
+              name: 'image',
+              title: 'Logo',
+              type: 'image',
+              options: { hotspot: true },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+            }),
+            defineField({
+              name: 'url',
+              title: 'Website-Link',
+              type: 'url',
+              description: 'Beim Klick auf das Logo wird diese Website in einem neuen Tab geöffnet.',
+            }),
+            defineField({
+              name: 'whiteBackground',
+              title: 'Weißer Hintergrund',
+              type: 'boolean',
+              description: 'An = weißer Hintergrund, Aus = schwarzer Hintergrund.',
+              initialValue: false,
+            }),
+            defineField({
+              name: 'scalePercent',
+              title: 'Logo-Größe (%)',
+              type: 'number',
+              description: 'Größe des Logos in der Kachel. Standard = 100. Kleiner z. B. 80, größer z. B. 120.',
+              initialValue: 100,
+              validation: (Rule) => Rule.min(20).max(200),
+            }),
+          ],
+          preview: {
+            select: { title: 'name', media: 'image', whiteBackground: 'whiteBackground' },
+            prepare({ title, media, whiteBackground }) {
+              return {
+                title: title || 'Logo',
+                subtitle: whiteBackground ? 'Weißer Hintergrund' : 'Schwarzer Hintergrund',
+                media,
+              }
+            },
+          },
+        },
+      ],
+      options: { layout: 'grid' },
+    }),
   ],
   preview: {
     prepare() {

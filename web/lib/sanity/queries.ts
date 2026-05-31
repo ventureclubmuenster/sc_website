@@ -223,7 +223,17 @@ export const innovationVillagePageQuery = groq`
     besucherImage,
     besucherText1,
     besucherText2,
-    besucherCta
+    besucherCta,
+    aussteller2026Heading,
+    aussteller2026Text,
+    aussteller2026Logos[] {
+      _key,
+      name,
+      url,
+      whiteBackground,
+      scalePercent,
+      image
+    }
   }
 `
 

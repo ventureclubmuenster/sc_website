@@ -30,6 +30,29 @@ interface PageData {
   besucherText1?: string
   besucherText2?: string
   besucherCta?: string
+  aussteller2026Heading?: string
+  aussteller2026Text?: string
+  aussteller2026Logos?: {
+    _key?: string
+    name?: string
+    url?: string
+    whiteBackground?: boolean
+    scalePercent?: number
+    image?: { asset: { _ref: string } }
+  }[]
+}
+
+/** Rendert die Überschrift und hebt „STARTUP CONTACTS" inkl. Jahr farbig hervor. */
+function renderAusstellerHeading(text: string) {
+  const KEY = 'STARTUP CONTACTS'
+  const i = text.toUpperCase().indexOf(KEY)
+  if (i < 0) return <span className="text-white">{text}</span>
+  return (
+    <>
+      <span className="text-white">{text.slice(0, i)}</span>
+      <span className="gradient-text">{text.slice(i)}</span>
+    </>
+  )
 }
 
 interface Exhibitor {
@@ -75,6 +98,20 @@ export default async function InnovationVillagePage() {
     buttonLink: '/newsletter',
   }
 
+  const heading2026 = data?.aussteller2026Heading || 'AUSSTELLER DER STARTUP CONTACTS 2026'
+  const text2026 =
+    data?.aussteller2026Text || 'Klicke auf eines der Logos, um mehr über unsere Aussteller zu erfahren!'
+  const logos2026 = (data?.aussteller2026Logos ?? [])
+    .filter((l) => l?.image)
+    .map((l, i) => ({
+      _id: l._key ?? `logo-2026-${i}`,
+      name: l.name ?? '',
+      logoUrl: l.image ? urlFor(l.image).width(600).fit('max').url() : undefined,
+      whiteBackground: l.whiteBackground ?? false,
+      url: l.url,
+      scalePercent: l.scalePercent,
+    }))
+
   return (
     <>
       {/* Hero Section */}
@@ -109,17 +146,30 @@ export default async function InnovationVillagePage() {
       {/* Tabbed Info Section */}
       <InfoTabs aussteller={ausstellerTab} besucher={besucherTab} />
 
-      {/* Aussteller Grid */}
-      <section id="aussteller" className="bg-black px-6 py-20">
+      {/* Aussteller 2026 (in Sanity pflegbar) */}
+      <section id="aussteller-2026" className="bg-black px-6 pt-20 pb-10">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
-            <span className="text-white">AUSSTELLER DER </span>
-            <span className="gradient-text">STARTUP CONTACTS</span>
+            {renderAusstellerHeading(heading2026)}
           </h2>
 
-          <p className="text-white/60 text-sm md:text-base text-center mb-12">
-            Klicke auf eines der Logos, um mehr über unsere Aussteller zu erfahren!
-          </p>
+          {text2026 && (
+            <p className="text-white/60 text-sm md:text-base text-center mb-12">
+              {text2026}
+            </p>
+          )}
+
+          <ExhibitorGrid exhibitors={logos2026} />
+        </div>
+      </section>
+
+      {/* Aussteller 2025 */}
+      <section id="aussteller" className="bg-black px-6 pt-10 pb-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
+            <span className="text-white">AUSSTELLER DER </span>
+            <span className="gradient-text">STARTUP CONTACTS 2025</span>
+          </h2>
 
           <ExhibitorGrid
             exhibitors={exhibitors.map((ex) => ({

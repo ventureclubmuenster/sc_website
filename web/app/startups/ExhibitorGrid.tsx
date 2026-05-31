@@ -9,6 +9,9 @@ interface Exhibitor {
   logoUrl?: string
   whiteLogoUrl?: string
   whiteBackground?: boolean
+  url?: string
+  /** Logo-Größe in % (100 = Standard). */
+  scalePercent?: number
 }
 
 export default function ExhibitorGrid({ exhibitors }: { exhibitors: Exhibitor[] }) {
@@ -26,6 +29,23 @@ export default function ExhibitorGrid({ exhibitors }: { exhibitors: Exhibitor[] 
         const useDarkBg = !ex.whiteBackground
         const logoSrc = useDarkBg && ex.whiteLogoUrl ? ex.whiteLogoUrl : ex.logoUrl
 
+        // Standard-Logogröße ist 75 % der Kachel; per scalePercent skalierbar.
+        const sizePct = 75 * ((ex.scalePercent ?? 100) / 100)
+        const content = logoSrc ? (
+          <img
+            src={logoSrc}
+            alt={ex.name}
+            className="object-contain"
+            style={{ width: `${sizePct}%`, height: `${sizePct}%` }}
+          />
+        ) : (
+          <span className={`text-sm font-semibold text-center ${
+            ex.whiteBackground ? 'text-black/60' : 'text-white/60'
+          }`}>
+            {ex.name}
+          </span>
+        )
+
         return (
           <StaggerItem
             key={ex._id}
@@ -35,18 +55,18 @@ export default function ExhibitorGrid({ exhibitors }: { exhibitors: Exhibitor[] 
               ex.whiteBackground ? 'bg-white' : 'bg-black border border-white/10'
             }`}
           >
-            {logoSrc ? (
-              <img
-                src={logoSrc}
-                alt={ex.name}
-                className="w-3/4 h-3/4 object-contain"
-              />
+            {ex.url ? (
+              <a
+                href={ex.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={ex.name}
+                className="w-full h-full flex items-center justify-center transition-transform duration-300 hover:scale-105"
+              >
+                {content}
+              </a>
             ) : (
-              <span className={`text-sm font-semibold text-center ${
-                ex.whiteBackground ? 'text-black/60' : 'text-white/60'
-              }`}>
-                {ex.name}
-              </span>
+              content
             )}
           </StaggerItem>
         )

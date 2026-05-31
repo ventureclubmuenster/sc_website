@@ -90,16 +90,16 @@ export default async function SpeakerPage() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                <p className="text-white font-bold text-lg md:text-xl leading-tight">
+                <p className="text-white font-bold text-[9px] md:text-xl leading-tight">
                   {speaker.name}
                 </p>
                 {speaker.title && (
-                  <p className="text-white/70 text-sm mt-0.5 leading-snug">
+                  <p className="text-white/70 text-[7px] md:text-sm mt-0.5 leading-snug">
                     {speaker.title}
                   </p>
                 )}
                 {speaker.stage && (
-                  <p className="text-sc-orange text-sm font-medium mt-2">
+                  <p className="text-sc-orange text-[7px] md:text-sm font-medium mt-2">
                     {stageLabels[speaker.stage] ?? speaker.stage}
                   </p>
                 )}
@@ -192,16 +192,16 @@ export default async function SpeakerPage() {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                <p className="text-white font-bold text-lg md:text-xl leading-tight">
+                <p className="text-white font-bold text-[9px] md:text-xl leading-tight">
                   {speaker.name}
                 </p>
                 {speaker.title && (
-                  <p className="text-white/70 text-sm mt-0.5 leading-snug">
+                  <p className="text-white/70 text-[7px] md:text-sm mt-0.5 leading-snug">
                     {speaker.title}
                   </p>
                 )}
                 {speaker.stage && (
-                  <p className="text-sc-orange text-sm font-medium mt-2">
+                  <p className="text-sc-orange text-[7px] md:text-sm font-medium mt-2">
                     {stageLabels[speaker.stage] ?? speaker.stage}
                   </p>
                 )}

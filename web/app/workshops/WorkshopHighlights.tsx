@@ -10,8 +10,16 @@ interface Workshop {
   description: string
   logo?: object
   logoWhiteBg?: boolean
+  logoBlackBg?: boolean
   logo2?: object
   logo2WhiteBg?: boolean
+  logo2BlackBg?: boolean
+}
+
+function logoBgClass(blackBg?: boolean, whiteBg?: boolean) {
+  if (blackBg) return 'bg-black border border-white/15'
+  if (whiteBg) return 'bg-white'
+  return 'bg-white/10'
 }
 
 interface WorkshopHighlightsProps {
@@ -52,7 +60,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
                 {(ws.logo || ws.logo2) && (
                   <div className="mb-6 flex items-center gap-3">
                     {ws.logo && (
-                      <div className={`${ws.logoWhiteBg ? 'bg-white' : 'bg-white/10'} rounded-xl px-4 py-2 inline-flex items-center`}>
+                      <div className={`${logoBgClass(ws.logoBlackBg, ws.logoWhiteBg)} rounded-xl px-4 py-2 inline-flex items-center`}>
                         <Image
                           src={urlFor(ws.logo).width(400).auto('format').url()}
                           alt={`${ws.title} Logo`}
@@ -63,7 +71,7 @@ export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProp
                       </div>
                     )}
                     {ws.logo2 && (
-                      <div className={`${ws.logo2WhiteBg ? 'bg-white' : 'bg-white/10'} rounded-xl px-4 py-2 inline-flex items-center`}>
+                      <div className={`${logoBgClass(ws.logo2BlackBg, ws.logo2WhiteBg)} rounded-xl px-4 py-2 inline-flex items-center`}>
                         <Image
                           src={urlFor(ws.logo2).width(400).auto('format').url()}
                           alt={`${ws.title} Logo 2`}

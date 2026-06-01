@@ -302,8 +302,10 @@ export const workshopsPageQuery = groq`
       description,
       logo,
       logoWhiteBg,
+      logoBlackBg,
       logo2,
-      logo2WhiteBg
+      logo2WhiteBg,
+      logo2BlackBg
     },
     workshopHistory[] {
       title,
@@ -311,8 +313,10 @@ export const workshopsPageQuery = groq`
       description,
       logo,
       logoWhiteBg,
+      logoBlackBg,
       logo2,
-      logo2WhiteBg
+      logo2WhiteBg,
+      logo2BlackBg
     },
     previewTopics[] {
       category,

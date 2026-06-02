@@ -112,6 +112,36 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                     {c.bereich}
                   </p>
                 )}
+
+                {/* Partner der EW Group: ADI Solutions */}
+                {(() => {
+                  const isEwGroup = c.name
+                    ?.toLowerCase()
+                    .replace(/[-_]/g, ' ')
+                    .includes('ew group')
+                  if (!isEwGroup) return null
+                  return (
+                    <div className="relative z-10 mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 md:gap-4">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <span className="text-white/60 text-sm md:text-base font-medium uppercase tracking-wider whitespace-nowrap">
+                          Partner der EW Group:
+                        </span>
+                        <span className="inline-flex items-center rounded-md bg-gray-400 px-3 py-2">
+                          <Image
+                            src="/logos/adi-solutions.png"
+                            alt="ADI Solutions Logo"
+                            width={520}
+                            height={120}
+                            className="h-6 md:h-8 w-auto object-contain"
+                          />
+                        </span>
+                      </div>
+                      <span className="px-3 py-1.5 rounded-full bg-white/10 font-mono text-sm md:text-base font-bold tracking-wider gradient-text whitespace-nowrap">
+                        ADI Solutions: Software
+                      </span>
+                    </div>
+                  )
+                })()}
               </div>
             </StaggerItem>
           ))}

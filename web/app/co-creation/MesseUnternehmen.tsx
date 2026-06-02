@@ -136,7 +136,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                           />
                         </span>
                       </div>
-                      <span className="px-3 py-1.5 rounded-full bg-white/10 font-mono text-sm md:text-base font-bold tracking-wider gradient-text whitespace-nowrap">
+                      <span className="-ml-3 px-3 py-1.5 rounded-full bg-white/10 font-mono text-sm md:text-base font-bold tracking-wider gradient-text whitespace-nowrap">
                         ADI Solutions: Software
                       </span>
                     </div>

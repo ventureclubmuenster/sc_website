@@ -123,7 +123,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
                   return (
                     <div className="relative z-10 mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 md:gap-4">
                       <div className="flex items-center gap-3 md:gap-4">
-                        <span className="text-white/60 text-sm md:text-base font-medium uppercase tracking-wider whitespace-nowrap">
+                        <span className="text-white/75 text-sm md:text-base font-medium tracking-wide whitespace-nowrap">
                           Partner der EW Group:
                         </span>
                         <span className="inline-flex items-center rounded-md bg-gray-400 px-3 py-2">

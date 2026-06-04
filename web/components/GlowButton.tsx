@@ -34,9 +34,10 @@ interface GlowButtonProps {
   gradient?: boolean
   silver?: boolean
   noArrow?: boolean
+  wide?: boolean
 }
 
-export default function GlowButton({ href, onClick, children, small, large, gradient, silver, noArrow }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small, large, gradient, silver, noArrow, wide }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
@@ -93,7 +94,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
   if (gradient) {
     const bgClass = silver ? '' : 'gradient-bg'
     const textColor = silver ? 'text-slate-900' : 'text-white'
-    const smallPad = silver ? 'px-[18px] py-[6px]' : 'px-5 py-2'
+    const smallPad = silver ? 'px-[18px] py-[6px]' : wide ? 'px-16 py-2' : 'px-5 py-2'
     const btnClassName = small
       ? `relative inline-flex items-center gap-2 ${smallPad} rounded-full font-semibold text-sm ${textColor} cursor-pointer ${bgClass}`
       : large

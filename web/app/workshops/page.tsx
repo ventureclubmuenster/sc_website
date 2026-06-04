@@ -16,6 +16,7 @@ import { client } from '@/lib/sanity/client'
 import { workshopsPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
+import WorkshopAppCTA from './WorkshopAppCTA'
 import WorkshopHighlights from './WorkshopHighlights'
 import Workshops2026 from './Workshops2026'
 import WorkshopsComingSoon from './WorkshopsComingSoon'
@@ -75,6 +76,9 @@ export default async function WorkshopsPage() {
       ) : (
         <WorkshopsComingSoon />
       )}
+
+      <WorkshopAppCTA />
+
       <WorkshopHighlights workshops={workshops} />
     </>
   )

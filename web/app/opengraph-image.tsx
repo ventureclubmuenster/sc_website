@@ -7,13 +7,17 @@ export const alt = 'Startup Contacts 2026 – Startup Messe & Co-Creation Event 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+async function img(p: string) {
+  return `data:image/png;base64,${(await readFile(join(process.cwd(), p))).toString('base64')}`
+}
+
 // Dynamically generated Open Graph / social-share preview image (1200×630).
 // Served at /opengraph-image and injected into og:image / twitter:image automatically.
+// Design: editorial layout on a white→light-orange gradient, brand logo top-left,
+// the orange waveform mark bleeding off the right edge, date as an orange pill.
 export default async function Image() {
-  const logoData = await readFile(
-    join(process.cwd(), 'app/images/SC_logo_größer_und_weiss.png'),
-  )
-  const logoSrc = `data:image/png;base64,${logoData.toString('base64')}`
+  const logo = await img('app/images/og-logo.png')
+  const mark = await img('app/images/og-mark.png')
 
   return new ImageResponse(
     (
@@ -22,61 +26,46 @@ export default async function Image() {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#000000',
-          color: '#ffffff',
-          padding: '80px',
+          backgroundImage: 'linear-gradient(135deg, #FFFFFF 0%, #FFE2CE 100%)',
           position: 'relative',
+          fontFamily: 'sans-serif',
+          overflow: 'hidden',
         }}
       >
-        {/* Brand accent bar */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '12px',
-            backgroundColor: '#FF5C00',
-          }}
+        {/* Oversized waveform mark bleeding off the right edge */}
+        <img
+          src={mark}
+          width={780}
+          height={715}
+          style={{ position: 'absolute', right: -180, top: -50, opacity: 0.16, transform: 'rotate(8deg)' }}
         />
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={360} height={360} alt="Startup Contacts" style={{ marginBottom: '24px' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 88px' }}>
+          <img src={logo} width={380} height={132} style={{ marginBottom: 40 }} />
 
-        <div
-          style={{
-            fontSize: '40px',
-            fontWeight: 700,
-            letterSpacing: '-0.02em',
-            textAlign: 'center',
-          }}
-        >
-          Startup Messe &amp; Co-Creation Event
-        </div>
+          <div style={{ fontSize: 62, fontWeight: 800, color: '#0A0A0A', letterSpacing: -1, lineHeight: 1.05, maxWidth: 840 }}>
+            Startup Messe &amp; Co-Creation Event
+          </div>
 
-        <div
-          style={{
-            display: 'flex',
-            marginTop: '28px',
-            fontSize: '30px',
-            color: '#FF5C00',
-            fontWeight: 600,
-          }}
-        >
-          15. Juni 2026 · Halle Münsterland Münster
-        </div>
+          <div style={{ display: 'flex', marginTop: 28 }}>
+            <div
+              style={{
+                display: 'flex',
+                backgroundImage: 'linear-gradient(90deg, #FF7A00, #FF3D00)',
+                color: '#ffffff',
+                fontSize: 28,
+                fontWeight: 700,
+                padding: '12px 28px',
+                borderRadius: 999,
+              }}
+            >
+              15. Juni 2026 · Halle Münsterland Münster
+            </div>
+          </div>
 
-        <div
-          style={{
-            marginTop: '16px',
-            fontSize: '24px',
-            color: '#bdbdbd',
-          }}
-        >
-          Die größte studentisch organisierte Startup Messe in NRW
+          <div style={{ marginTop: 22, fontSize: 25, color: '#5A5A5A', maxWidth: 780 }}>
+            Die größte studentisch organisierte Startup Messe in NRW
+          </div>
         </div>
       </div>
     ),

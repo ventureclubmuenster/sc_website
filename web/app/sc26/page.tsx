@@ -156,24 +156,26 @@ export default async function Sc26LandingPage() {
       {/* Handy/Tablet: Video als eingebetteter aspect-video-Block — exakt die
           gleiche Funktionsweise wie die Startseite (in-flow, nicht als Hintergrund),
           damit iOS das Video zuverlässig automatisch abspielt. */}
-      <section className="lg:hidden relative bg-black overflow-hidden">
+      <section className="lg:hidden relative bg-[#141414] overflow-hidden">
+        {/* Navbar — über dem Video, auf grauem Seiten-Hintergrund, mit kleinem
+            Abstand zur oberen Kante und zum Video. */}
+        <nav className="px-3 pt-3 pb-3">
+          <div className="max-w-4xl mx-auto liquid-glass rounded-full px-5 h-14 flex items-center justify-center gap-2.5">
+            <Image
+              src={scMark}
+              alt="Startup Contacts Münster"
+              priority
+              className="h-7 w-auto object-contain shrink-0"
+            />
+            <span className="text-white font-semibold tracking-wide text-[11px] text-center whitespace-nowrap">
+              STARTUP CONTACTS MÜNSTER · 15. Juni 2026
+            </span>
+          </div>
+        </nav>
+
+        {/* Video */}
         <div className="relative w-full aspect-video overflow-hidden">
           <HeroVideo videoUrl={data.heroVideoUrl} youtubeId="1NUZVnJK3XE" />
-
-          {/* Navbar — über dem Video */}
-          <nav className="absolute top-4 left-3 right-3 z-20">
-            <div className="max-w-4xl mx-auto liquid-glass rounded-full px-5 h-14 flex items-center justify-center gap-2.5">
-              <Image
-                src={scMark}
-                alt="Startup Contacts Münster"
-                priority
-                className="h-7 w-auto object-contain shrink-0"
-              />
-              <span className="text-white font-semibold tracking-wide text-[11px] text-center whitespace-nowrap">
-                STARTUP CONTACTS MÜNSTER · 15. Juni 2026
-              </span>
-            </div>
-          </nav>
         </div>
 
         {/* Inhalt unter dem Video */}
@@ -201,7 +203,7 @@ export default async function Sc26LandingPage() {
               </span>
             </div>
             <div>
-              <CtaButton href={ticketUrl} label={ctaLabel} size="md" />
+              <CtaButton href={ticketUrl} label={ctaLabel} size="sm" />
             </div>
           </div>
         </div>

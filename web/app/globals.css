@@ -227,7 +227,7 @@
 
 /* Langsamere Variante – nur fuer den Partner-Banner der Startseite. */
 .marquee-slow {
-  animation-duration: 70s;
+  animation-duration: 100s;
 }
 
 @media (min-width: 768px) {

@@ -26,7 +26,7 @@ export default function WorkshopAppCTA() {
   }, [])
 
   return (
-    <section className="relative pt-2 md:pt-3 pb-10 md:pb-12 px-6 bg-black overflow-hidden">
+    <section className="relative py-4 md:py-6 px-6 bg-black overflow-hidden">
       {/* Ambient gradient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[60%] bg-sc-orange/10 rounded-full blur-[120px]" />

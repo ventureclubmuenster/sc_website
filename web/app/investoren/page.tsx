@@ -33,8 +33,27 @@ interface SanityFormatItem {
   wide?: boolean
 }
 
+interface WhyCard {
+  title?: string
+  subtitle?: string
+  description?: string
+}
+
 interface InvestorenPageData {
   heroImage?: ImageField
+  heroHeadline?: string
+  heroSubtext?: string
+  heroHighlight?: string
+  whyHeadingWhite?: string
+  whyHeadingOrange?: string
+  whyIntro?: string
+  whyCards?: WhyCard[]
+  whyTaglineParts?: string[]
+  whyTaglineResult?: string
+  formatHeadingBefore?: string
+  formatHeadingOrange?: string
+  formatHeadingAfter?: string
+  ticketCtaText?: string
 }
 
 async function getPageData(): Promise<InvestorenPageData | null> {
@@ -47,17 +66,18 @@ export default async function InvestorenPage() {
     client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }) as Promise<SanityFormatItem[] | null>,
   ])
 
+  // Hero-Hintergrund: Sanity-Bild hat Vorrang, sonst lokales Standardbild.
   const heroImageUrl = data?.heroImage
     ? urlFor(data.heroImage).width(1920).height(1080).url()
-    : undefined
+    : '/investoren-hero.jpg'
 
   return (
     <>
       <HeroSection
         imageUrl={heroImageUrl}
-        headline="SMART MONEY TRIFFT INNOVATION"
-        subtext="Entdecken Sie die vielversprechendsten Startups der Region, bevor es alle anderen tun"
-        highlight="Exklusiver Zugang. Direkter Kontakt. Echte Deals."
+        headline={data?.heroHeadline || 'SMART MONEY TRIFFT INNOVATION'}
+        subtext={data?.heroSubtext || 'Entdecken Sie die vielversprechendsten Startups der Region, bevor es alle anderen tun'}
+        highlight={data?.heroHighlight || 'Exklusiver Zugang. Direkter Kontakt. Echte Deals.'}
       />
 
       <div className="relative bg-black overflow-hidden">
@@ -78,10 +98,17 @@ export default async function InvestorenPage() {
         <div className="h-20 md:h-32" />
 
         {/* Why Invest Section */}
-        <WhyInvestSection />
+        <WhyInvestSection
+          headingWhite={data?.whyHeadingWhite}
+          headingOrange={data?.whyHeadingOrange}
+          intro={data?.whyIntro}
+          cards={data?.whyCards}
+          taglineParts={data?.whyTaglineParts}
+          taglineResult={data?.whyTaglineResult}
+        />
 
         <FormatSection
-          heading={<><span className="text-white">LERNE DIE SZENE BEI UNSEREN </span><span className="gradient-text">FORMATEN</span><span className="text-white"> KENNEN</span></>}
+          heading={<><span className="text-white">{data?.formatHeadingBefore || 'LERNE DIE SZENE BEI UNSEREN'} </span><span className="gradient-text">{data?.formatHeadingOrange || 'FORMATEN'}</span><span className="text-white"> {data?.formatHeadingAfter || 'KENNEN'}</span></>}
           items={formatItems?.map((f) => ({
             title: f.title,
             description: f.description,
@@ -92,7 +119,7 @@ export default async function InvestorenPage() {
           }))}
         />
 
-        <SubtleTicketCTA text="Als Investor Ticket sichern" />
+        <SubtleTicketCTA text={data?.ticketCtaText || 'Als Investor Ticket sichern'} />
       </div>
     </>
   )

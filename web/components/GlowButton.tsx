@@ -35,9 +35,11 @@ interface GlowButtonProps {
   silver?: boolean
   noArrow?: boolean
   wide?: boolean
+  /** Stärke des Hover-Leuchteffekts (1 = Standard, z.B. 0.5 = halb so stark). */
+  glowStrength?: number
 }
 
-export default function GlowButton({ href, onClick, children, small, large, gradient, silver, noArrow, wide }: GlowButtonProps) {
+export default function GlowButton({ href, onClick, children, small, large, gradient, silver, noArrow, wide, glowStrength = 1 }: GlowButtonProps) {
   const btnRef = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
@@ -146,7 +148,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
             background: glowConic,
             animation: 'glow-spin 3s linear infinite',
             filter: 'blur(4px)',
-            opacity: silver ? t * 0.85 : t,
+            opacity: (silver ? t * 0.85 : t) * glowStrength,
           }}
         />
         {/* Wide soft halo */}
@@ -156,7 +158,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
             background: glowConic,
             animation: 'glow-spin 3s linear infinite',
             filter: 'blur(14px)',
-            opacity: silver ? t * 0.5 : t * 0.6,
+            opacity: (silver ? t * 0.5 : t * 0.6) * glowStrength,
           }}
         />
 
@@ -183,16 +185,18 @@ export default function GlowButton({ href, onClick, children, small, large, grad
   }
 
   // ── Glass variant (default) ──
+  // tg = Glow-Intensität, über glowStrength dämpfbar (1 = Standard, 0 = aus).
+  const tg = t * glowStrength
   const sharedClassName = small
     ? 'group relative inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white cursor-pointer'
     : 'group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-white cursor-pointer'
 
   const sharedStyle = {
     background: t > 0.01
-      ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * t}) 70%)`
+      ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * tg}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * tg}) 40%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.02 * tg}) 70%)`
       : 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
     border: `1px solid rgba(${Math.round(gTo.r * t + 255 * (1 - t))},${Math.round(gTo.g * t + 255 * (1 - t))},${Math.round(gTo.b * t + 255 * (1 - t))},${0.12 + 0.38 * t})`,
-    boxShadow: `0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.25 * t}), 0 0 ${80 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.15 * t}), 0 0 ${120 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.07 * t}), inset 0 0 ${40 * t}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * t})`,
+    boxShadow: `0 0 ${40 * tg}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.25 * tg}), 0 0 ${80 * tg}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.15 * tg}), 0 0 ${120 * tg}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.07 * tg}), inset 0 0 ${40 * tg}px rgba(${gTo.r},${gTo.g},${gTo.b},${0.06 * tg})`,
     transition: 'background 0.6s ease-out',
   }
 
@@ -203,14 +207,14 @@ export default function GlowButton({ href, onClick, children, small, large, grad
         className="pointer-events-none absolute rounded-full"
         style={{
           inset: '-40px',
-          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * t}) 40%, transparent 70%)`,
+          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.18 * tg}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.08 * tg}) 40%, transparent 70%)`,
         }}
       />
       <span
         className="pointer-events-none absolute rounded-full"
         style={{
           inset: '-80px',
-          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.10 * t}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.04 * t}) 50%, transparent 70%)`,
+          background: `radial-gradient(circle at 50% 50%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.10 * tg}) 0%, rgba(${gTo.r},${gTo.g},${gTo.b},${0.04 * tg}) 50%, transparent 70%)`,
         }}
       />
     </>

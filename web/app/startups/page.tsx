@@ -13,11 +13,12 @@ export const metadata: Metadata = {
 }
 
 import { client } from '@/lib/sanity/client'
-import { startupsPageQuery, startups2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
+import { startupsPageQuery, exhibitors2025Query, fokusfelderQuery, sharedFormatItemsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import ExhibitorGrid from './ExhibitorGrid'
 import FokusfeldGrid from '../unternehmen/FokusfeldGrid'
+import { buildCuratedExhibitors, mapManualExhibitors } from '@/lib/curatedExhibitors'
 import KombinationSection from './KombinationSection'
 import FormatSection from '@/components/FormatSection'
 import SubtleTicketCTA from '@/components/SubtleTicketCTA'
@@ -43,9 +44,48 @@ interface SanityFormatItem {
   wide?: boolean
 }
 
+interface KombiCard {
+  title?: string
+  subtitle?: string
+  description?: string
+}
+
+interface FokusItem {
+  title?: string
+  description?: string
+}
+
+interface ExhibitorLogo {
+  name?: string
+  logo?: ImageField
+  whiteBackground?: boolean
+  url?: string
+}
+
 interface StartupsPageData {
   heroImage?: ImageField
   featuredExhibitors?: Exhibitor[]
+  heroHeadline?: string
+  heroSubtext?: string
+  kombiHeadingWhite?: string
+  kombiHeadingOrange?: string
+  kombiIntro?: string
+  kombiCards?: KombiCard[]
+  kombiTaglineParts?: string[]
+  kombiTaglineResult?: string
+  fokusHeadingWhite?: string
+  fokusHeadingOrange?: string
+  fokusItems?: FokusItem[]
+  formatHeadingBefore?: string
+  formatHeadingOrange?: string
+  formatHeadingAfter?: string
+  exhibitorHeadingWhite1?: string
+  exhibitorHeadingOrange?: string
+  exhibitorHeadingWhite2?: string
+  alleAusstellerText?: string
+  alleAusstellerLink?: string
+  ticketCtaText?: string
+  exhibitorLogos?: ExhibitorLogo[]
 }
 
 interface FokusfelderData {
@@ -74,30 +114,28 @@ async function getFokusfelder(): Promise<FokusfelderData | null> {
   return client.fetch(fokusfelderQuery, {}, { cache: 'no-store' })
 }
 
-async function getStartups(): Promise<Exhibitor[]> {
-  return client.fetch(startups2025Query, {}, { cache: 'no-store' })
+async function getExhibitors(): Promise<Exhibitor[]> {
+  return client.fetch(exhibitors2025Query, {}, { cache: 'no-store' })
 }
 
 export default async function StartupsPage() {
-  const [data, fokusfelder, allStartups, formatItems] = await Promise.all([
+  const [data, fokusfelder, exhibitors, formatItems] = await Promise.all([
     getPageData(),
     getFokusfelder(),
-    getStartups(),
+    getExhibitors(),
     client.fetch(sharedFormatItemsQuery, {}, { cache: 'no-store' }) as Promise<SanityFormatItem[] | null>,
   ])
-
-  // Use hand-picked exhibitors from Sanity, fall back to all startups
-  const startups = data?.featuredExhibitors?.length ? data.featuredExhibitors : allStartups
 
   const heroImageUrl = data?.heroImage
     ? urlFor(data.heroImage).width(1920).height(1080).url()
     : undefined
 
-  const fokusfelderWithUrls = fokusfelderTexte.map((f) => {
+  const fokusfelderWithUrls = fokusfelderTexte.map((f, i) => {
     const img = fokusfelder?.[f.key]
+    const override = data?.fokusItems?.[i]
     return {
-      title: f.title,
-      description: f.description,
+      title: override?.title || f.title,
+      description: override?.description || f.description,
       imageUrl: img ? urlFor(img).width(600).height(400).url() : undefined,
     }
   })
@@ -106,8 +144,8 @@ export default async function StartupsPage() {
     <>
       <HeroSection
         imageUrl={heroImageUrl}
-        headline="STARTUPS BAUEN DIE ZUKUNFT"
-        subtext="Wir wollen die Basis dafür schaffen"
+        headline={data?.heroHeadline || 'STARTUPS BAUEN DIE ZUKUNFT'}
+        subtext={data?.heroSubtext || 'Wir wollen die Basis dafür schaffen'}
       />
 
       <div className="relative bg-black overflow-hidden">
@@ -128,14 +166,21 @@ export default async function StartupsPage() {
         <div className="h-20 md:h-32" />
 
         {/* Einmalige Kombination */}
-        <KombinationSection />
+        <KombinationSection
+          headingWhite={data?.kombiHeadingWhite}
+          headingOrange={data?.kombiHeadingOrange}
+          intro={data?.kombiIntro}
+          cards={data?.kombiCards}
+          taglineParts={data?.kombiTaglineParts}
+          taglineResult={data?.kombiTaglineResult}
+        />
 
         {/* Fokusfelder */}
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="h-section text-center mb-12">
-              <span className="text-white">UNSERE </span>
-              <span className="gradient-text">FOKUSFELDER</span>
+              <span className="text-white">{data?.fokusHeadingWhite || 'UNSERE'} </span>
+              <span className="gradient-text">{data?.fokusHeadingOrange || 'FOKUSFELDER'}</span>
             </h2>
 
             <FokusfeldGrid fokusfelder={fokusfelderWithUrls} />
@@ -143,7 +188,7 @@ export default async function StartupsPage() {
         </section>
 
         <FormatSection
-          heading={<><span className="text-white">BRINGE DEIN WISSEN IN UNSERE </span><span className="gradient-text">FORMATE</span><span className="text-white"> EIN</span></>}
+          heading={<><span className="text-white">{data?.formatHeadingBefore || 'BRINGE DEIN WISSEN IN UNSERE'} </span><span className="gradient-text">{data?.formatHeadingOrange || 'FORMATE'}</span><span className="text-white"> {data?.formatHeadingAfter || 'EIN'}</span></>}
           items={formatItems?.map((f) => ({
             title: f.title,
             description: f.description,
@@ -158,33 +203,31 @@ export default async function StartupsPage() {
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="h-section text-center mb-12">
-              <span className="text-white">WER </span>
-              <span className="gradient-text">ZULETZT </span>
-              <span className="text-white">DABEI WAR</span>
+              <span className="text-white">{data?.exhibitorHeadingWhite1 || 'WER'} </span>
+              <span className="gradient-text">{data?.exhibitorHeadingOrange || 'DABEI'} </span>
+              <span className="text-white">{data?.exhibitorHeadingWhite2 || 'IST'}</span>
             </h2>
 
             <ExhibitorGrid
-              exhibitors={startups.map((s) => ({
-                _id: s._id,
-                name: s.name,
-                logoUrl: s.logo ? urlFor(s.logo).width(600).fit('max').url() : undefined,
-                whiteLogoUrl: s.whiteLogo ? urlFor(s.whiteLogo).width(600).fit('max').url() : undefined,
-                whiteBackground: s.whiteBackground ?? false,
-              }))}
+              exhibitors={
+                data?.exhibitorLogos?.length
+                  ? mapManualExhibitors(data.exhibitorLogos)
+                  : buildCuratedExhibitors(exhibitors)
+              }
             />
 
             <div className="flex justify-center mt-10">
               <a
-                href="/innovation-village#aussteller"
+                href={data?.alleAusstellerLink || '/innovation-village#aussteller-2026'}
                 className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
-                Alle Aussteller &rarr;
+                {data?.alleAusstellerText || 'Alle Aussteller'} &rarr;
               </a>
             </div>
           </div>
         </section>
 
-        <SubtleTicketCTA text="Als Startup Ticket sichern" />
+        <SubtleTicketCTA text={data?.ticketCtaText || 'Als Startup Ticket sichern'} />
       </div>
     </>
   )

@@ -44,7 +44,7 @@ function renderHeading(heading: string) {
 
 export default function Workshops2026({ workshops, heading }: Workshops2026Props) {
   return (
-    <section className="relative py-32 px-6 bg-black overflow-hidden">
+    <section className="relative pt-32 pb-24 px-6 bg-black overflow-hidden">
       {/* Watermark */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         {[...Array(6)].map((_, i) => (

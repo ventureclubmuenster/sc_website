@@ -103,7 +103,7 @@ export default function HallOfFame({ speakers, prefix = 'Unsere', accent = 'Spea
         {/* CTA Button */}
         <FadeIn direction="up" delay={0.3}>
           <div className="mt-14 flex justify-center">
-            <GlowButton href="/speaker">Alle Speaker</GlowButton>
+            <GlowButton href="/speaker" glowStrength={0.4}>Alle Speaker</GlowButton>
           </div>
         </FadeIn>
       </div>

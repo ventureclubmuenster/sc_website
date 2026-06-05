@@ -49,6 +49,14 @@ function isOnLight(logo: LogoItem): boolean {
   return logo.isOpaque === true
 }
 
+// Sonderfall "Splash": Das (neue) Logo bringt die schwarze Umrandung der
+// Buchstaben bereits mit. Damit diese sichtbar bleibt, wird der Standard-
+// Weißfilter (brightness(0) invert(1)) hier NICHT angewendet – das Logo wird
+// in Originalfarben gezeigt.
+function isSplash(logo: LogoItem): boolean {
+  return logo.name?.trim().toLowerCase() === 'splash'
+}
+
 export default async function PartnerBanner() {
   const logos = await getLogos()
   if (logos.length === 0) return null
@@ -74,11 +82,15 @@ export default async function PartnerBanner() {
         <div className="marquee-scroll flex items-center gap-6 md:gap-24 w-max">
           {loop.map((logo, i) => {
             const onLight = isOnLight(logo)
+            // Splash und helle Logos behalten ihre Originalfarben, alle anderen
+            // werden für den dunklen Banner weiß gefärbt.
+            const keepOriginal = onLight || isSplash(logo)
+            const filter = keepOriginal ? undefined : 'brightness(0) invert(1)'
             const key = `${logo.name ?? 'logo'}-${i}`
             const scale = (logo.scalePercent ?? 100) / 100
             const imgStyle = {
               '--logo-scale': scale,
-              ...(onLight ? {} : { filter: 'brightness(0) invert(1)' }),
+              ...(filter ? { filter } : {}),
             } as React.CSSProperties
             // eslint-disable-next-line @next/next/no-img-element
             const img = (

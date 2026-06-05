@@ -39,7 +39,7 @@ export default defineConfig({
               .id('advisoryBoard')
               .child(S.document().schemaType('advisoryBoard').documentId('advisoryBoard')),
             S.listItem()
-              .title('Seite: Für Studierende')
+              .title('Seite: Talente (Für Studierende)')
               .id('studierendePage')
               .child(S.document().schemaType('studierendePage').documentId('studierendePage')),
             S.listItem()
@@ -54,6 +54,10 @@ export default defineConfig({
               .title('Seite: Für Startups')
               .id('startupsPage')
               .child(S.document().schemaType('startupsPage').documentId('startupsPage')),
+            S.listItem()
+              .title('Seite: Investoren')
+              .id('investorenPage')
+              .child(S.document().schemaType('investorenPage').documentId('investorenPage')),
             S.listItem()
               .title('Logo-Slider (Startseite & Tickets)')
               .id('logoSlider')
@@ -80,7 +84,7 @@ export default defineConfig({
               .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'investorenPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
             ),
           ]),
     }),

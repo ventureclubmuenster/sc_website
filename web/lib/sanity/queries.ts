@@ -183,7 +183,35 @@ export const studierendePageQuery = groq`
       buttonText,
       buttonLink,
       image
-    }
+    },
+    kombiHeadingWhite,
+    kombiHeadingOrange,
+    kombiIntro,
+    kombiCards[] { title, subtitle, description },
+    kombiTaglineParts,
+    kombiTaglineResult,
+    bentoHeadingWhite,
+    bentoHeadingOrange,
+    exhibitorHeadingWhite1,
+    exhibitorHeadingOrange,
+    exhibitorHeadingWhite2,
+    alleAusstellerText,
+    alleAusstellerLink,
+    ticketCtaText,
+    perksLabel,
+    perkDrinks,
+    perkLunch,
+    perkStartupSzeneTitle,
+    perkStartupSzeneSub,
+    perkSpeakerTitle,
+    perkSpeakerSub,
+    perkAfterparty,
+    perkWorkshopsTitle,
+    perkWorkshopsSub,
+    perksCtaText,
+    perkStartupSzeneImage,
+    perkWorkshopsImage,
+    exhibitorLogos[] { name, logo, whiteBackground, url }
   }
 `
 
@@ -237,9 +265,35 @@ export const innovationVillagePageQuery = groq`
   }
 `
 
+const pageSectionFields = `
+  heroHeadline,
+  heroSubtext,
+  heroHighlight,
+  kombiHeadingWhite,
+  kombiHeadingOrange,
+  kombiIntro,
+  kombiCards[] { title, subtitle, description },
+  kombiTaglineParts,
+  kombiTaglineResult,
+  fokusHeadingWhite,
+  fokusHeadingOrange,
+  fokusItems[] { title, description },
+  formatHeadingBefore,
+  formatHeadingOrange,
+  formatHeadingAfter,
+  exhibitorHeadingWhite1,
+  exhibitorHeadingOrange,
+  exhibitorHeadingWhite2,
+  alleAusstellerText,
+  alleAusstellerLink,
+  ticketCtaText,
+  exhibitorLogos[] { name, logo, whiteBackground, url }
+`
+
 export const unternehmenPageQuery = groq`
   *[_type == "unternehmenPage"][0] {
     heroImage,
+    ${pageSectionFields},
     bentoStartupSzene,
     bentoVipAccess,
     bentoFoodDrinks,
@@ -252,6 +306,7 @@ export const unternehmenPageQuery = groq`
 export const startupsPageQuery = groq`
   *[_type == "startupsPage"][0] {
     heroImage,
+    ${pageSectionFields},
     featuredExhibitors[]-> {
       _id,
       name,
@@ -284,6 +339,23 @@ export const startups2025Query = groq`
 export const investorenPageQuery = groq`
   *[_type == "investorenPage"][0] {
     heroImage,
+    heroHeadline,
+    heroSubtext,
+    heroHighlight,
+    whyHeadingWhite,
+    whyHeadingOrange,
+    whyIntro,
+    whyCards[] {
+      title,
+      subtitle,
+      description
+    },
+    whyTaglineParts,
+    whyTaglineResult,
+    formatHeadingBefore,
+    formatHeadingOrange,
+    formatHeadingAfter,
+    ticketCtaText,
     bentoInvestorBreakfast,
     bentoLetztesJahr,
     bentoMuensterTop5,

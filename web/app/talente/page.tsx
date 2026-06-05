@@ -19,6 +19,7 @@ import HeroSection from '@/components/HeroSection'
 import KombinationSection from './KombinationSection'
 import FeatureCards from './FeatureCards'
 import ExhibitorGrid from '../startups/ExhibitorGrid'
+import { buildCuratedExhibitors, mapManualExhibitors } from '@/lib/curatedExhibitors'
 import ProgramCards from './ProgramCards'
 import BentoGridTalente from '@/components/BentoGridTalente'
 import SubtleTicketCTA from '@/components/SubtleTicketCTA'
@@ -59,6 +60,19 @@ interface BentoItem {
   tall?: boolean
 }
 
+interface KombiCard {
+  title?: string
+  subtitle?: string
+  description?: string
+}
+
+interface ExhibitorLogo {
+  name?: string
+  logo?: ImageField
+  whiteBackground?: boolean
+  url?: string
+}
+
 interface TalentePageData {
   heroImage?: ImageField
   heroHeadline?: string
@@ -67,6 +81,34 @@ interface TalentePageData {
   featureCards?: FeatureCard[]
   bentoItems?: BentoItem[]
   programCards?: ProgramCard[]
+  kombiHeadingWhite?: string
+  kombiHeadingOrange?: string
+  kombiIntro?: string
+  kombiCards?: KombiCard[]
+  kombiTaglineParts?: string[]
+  kombiTaglineResult?: string
+  bentoHeadingWhite?: string
+  bentoHeadingOrange?: string
+  exhibitorHeadingWhite1?: string
+  exhibitorHeadingOrange?: string
+  exhibitorHeadingWhite2?: string
+  alleAusstellerText?: string
+  alleAusstellerLink?: string
+  ticketCtaText?: string
+  perksLabel?: string
+  perkDrinks?: string
+  perkLunch?: string
+  perkStartupSzeneTitle?: string
+  perkStartupSzeneSub?: string
+  perkSpeakerTitle?: string
+  perkSpeakerSub?: string
+  perkAfterparty?: string
+  perkWorkshopsTitle?: string
+  perkWorkshopsSub?: string
+  perksCtaText?: string
+  perkStartupSzeneImage?: ImageField
+  perkWorkshopsImage?: ImageField
+  exhibitorLogos?: ExhibitorLogo[]
 }
 
 async function getPageData(): Promise<TalentePageData | null> {
@@ -121,11 +163,13 @@ export default async function TalentePage() {
     'image-b3f61a9fb40ee4e79105bb343836fad13480e21e-2359x2359-png',
   ].map((ref) => urlFor({ asset: { _ref: ref } }).width(120).height(120).fit('crop').url())
 
-  const workshopsImageUrl = urlFor({ asset: { _ref: 'image-b99e9ab13690682109dc693a129c2a2d53e5c54f-2000x1334-jpg' } })
-    .width(600).height(400).fit('crop').url()
+  const workshopsImageUrl = urlFor(
+    data?.perkWorkshopsImage ?? { asset: { _ref: 'image-b99e9ab13690682109dc693a129c2a2d53e5c54f-2000x1334-jpg' } }
+  ).width(600).height(400).fit('crop').url()
 
-  const startupSceneImageUrl = urlFor({ asset: { _ref: 'image-7098046c7d10705f7ae3f8d5e27c796439799f89-2000x1334-jpg' } })
-    .width(600).height(400).fit('crop').url()
+  const startupSceneImageUrl = urlFor(
+    data?.perkStartupSzeneImage ?? { asset: { _ref: 'image-7098046c7d10705f7ae3f8d5e27c796439799f89-2000x1334-jpg' } }
+  ).width(600).height(400).fit('crop').url()
 
   const headline = data?.heroHeadline || 'ERLEBE DIE STARTUP SZENE'
   const highlight = data?.heroHighlight || '30+ Startups und Unternehmen'
@@ -193,13 +237,31 @@ export default async function TalentePage() {
           workshopsImageUrl={workshopsImageUrl}
           startupSceneImageUrl={startupSceneImageUrl}
           speakerImageUrls={speakerImageUrls}
+          perksLabel={data?.perksLabel}
+          perkDrinks={data?.perkDrinks}
+          perkLunch={data?.perkLunch}
+          perkStartupSzeneTitle={data?.perkStartupSzeneTitle}
+          perkStartupSzeneSub={data?.perkStartupSzeneSub}
+          perkSpeakerTitle={data?.perkSpeakerTitle}
+          perkSpeakerSub={data?.perkSpeakerSub}
+          perkAfterparty={data?.perkAfterparty}
+          perkWorkshopsTitle={data?.perkWorkshopsTitle}
+          perkWorkshopsSub={data?.perkWorkshopsSub}
+          perksCtaText={data?.perksCtaText}
         />
 
         {/* Spacer before Kombination */}
         <div className="h-12 md:h-20" />
 
         {/* Einmalige Kombination */}
-        <KombinationSection />
+        <KombinationSection
+          headingWhite={data?.kombiHeadingWhite}
+          headingOrange={data?.kombiHeadingOrange}
+          intro={data?.kombiIntro}
+          cards={data?.kombiCards}
+          taglineParts={data?.kombiTaglineParts}
+          taglineResult={data?.kombiTaglineResult}
+        />
 
         {/* Was dich erwartet – temporarily hidden
         <section id="was-erwartet" className="relative z-10 px-6 py-20">
@@ -218,8 +280,8 @@ export default async function TalentePage() {
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="h-section text-center mb-12">
-              <span className="text-white">MEHR ALS EINE </span>
-              <span className="gradient-text">MESSE</span>
+              <span className="text-white">{data?.bentoHeadingWhite || 'MEHR ALS EINE'} </span>
+              <span className="gradient-text">{data?.bentoHeadingOrange || 'MESSE'}</span>
             </h2>
 
             <BentoGridTalente items={bentoWithUrls} />
@@ -244,33 +306,31 @@ export default async function TalentePage() {
         <section className="relative z-10 px-6 py-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="h-section text-center mb-12">
-              <span className="text-white">WER </span>
-              <span className="gradient-text">ZULETZT </span>
-              <span className="text-white">DABEI WAR</span>
+              <span className="text-white">{data?.exhibitorHeadingWhite1 || 'WER'} </span>
+              <span className="gradient-text">{data?.exhibitorHeadingOrange || 'DABEI'} </span>
+              <span className="text-white">{data?.exhibitorHeadingWhite2 || 'IST'}</span>
             </h2>
 
             <ExhibitorGrid
-              exhibitors={exhibitors.slice(0, 8).map((ex) => ({
-                _id: ex._id,
-                name: ex.name,
-                logoUrl: ex.logo ? urlFor(ex.logo).width(600).fit('max').url() : undefined,
-                whiteLogoUrl: ex.whiteLogo ? urlFor(ex.whiteLogo).width(600).fit('max').url() : undefined,
-                whiteBackground: ex.whiteBackground ?? false,
-              }))}
+              exhibitors={
+                data?.exhibitorLogos?.length
+                  ? mapManualExhibitors(data.exhibitorLogos)
+                  : buildCuratedExhibitors(exhibitors)
+              }
             />
 
             <div className="flex justify-center mt-10">
               <a
-                href="/innovation-village#aussteller"
+                href={data?.alleAusstellerLink || '/innovation-village#aussteller-2026'}
                 className="inline-flex items-center gap-2 border border-white/30 text-white text-sm px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
-                Alle Aussteller &rarr;
+                {data?.alleAusstellerText || 'Alle Aussteller'} &rarr;
               </a>
             </div>
           </div>
         </section>
 
-        <SubtleTicketCTA text="Als Talent Ticket sichern" />
+        <SubtleTicketCTA text={data?.ticketCtaText || 'Als Talent Ticket sichern'} />
       </div>
     </>
   )

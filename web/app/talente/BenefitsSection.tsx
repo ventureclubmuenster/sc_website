@@ -6,19 +6,44 @@ interface Props {
   workshopsImageUrl?: string
   startupSceneImageUrl?: string
   speakerImageUrls?: string[]
+  perksLabel?: string
+  perkDrinks?: string
+  perkLunch?: string
+  perkStartupSzeneTitle?: string
+  perkStartupSzeneSub?: string
+  perkSpeakerTitle?: string
+  perkSpeakerSub?: string
+  perkAfterparty?: string
+  perkWorkshopsTitle?: string
+  perkWorkshopsSub?: string
+  perksCtaText?: string
 }
 
-export default function BenefitsSection({
-  salitosLogoUrl,
-  workshopsImageUrl,
-  startupSceneImageUrl,
-  speakerImageUrls = [],
-}: Props) {
+export default function BenefitsSection(props: Props) {
+  const {
+    salitosLogoUrl,
+    workshopsImageUrl,
+    startupSceneImageUrl,
+    speakerImageUrls = [],
+  } = props
+  // Fallbacks via "||" fangen sowohl undefined als auch null (Sanity liefert null
+  // für nicht gesetzte Felder) und leere Strings ab.
+  const perksLabel = props.perksLabel || 'Deine Perks'
+  const perkDrinks = props.perkDrinks || 'Free Drinks'
+  const perkLunch = props.perkLunch || 'Mittagessen dabei'
+  const perkStartupSzeneTitle = props.perkStartupSzeneTitle || 'Startup Szene Münster'
+  const perkStartupSzeneSub = props.perkStartupSzeneSub || '30+ Aussteller vor Ort'
+  const perkSpeakerTitle = props.perkSpeakerTitle || 'Top Speaker'
+  const perkSpeakerSub = props.perkSpeakerSub || 'und viele mehr'
+  const perkAfterparty = props.perkAfterparty || 'Afterparty'
+  const perkWorkshopsTitle = props.perkWorkshopsTitle || 'Workshops'
+  const perkWorkshopsSub = props.perkWorkshopsSub || 'Hands-on Sessions'
+  const perksCtaText = props.perksCtaText || 'Jetzt Ticket sichern'
   return (
     <section className="relative z-10 px-6 pt-8 pb-4">
       <div className="max-w-5xl mx-auto">
         <p className="text-center text-white/30 text-xs tracking-[0.2em] uppercase mb-8">
-          Deine Perks
+          {perksLabel}
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -44,7 +69,7 @@ export default function BenefitsSection({
                 unoptimized
               />
             </div>
-            <span className="text-white/40 text-xs tracking-widest uppercase">Free Drinks</span>
+            <span className="text-white/40 text-xs tracking-widest uppercase">{perkDrinks}</span>
           </div>
 
           {/* Aro Bowl */}
@@ -57,7 +82,7 @@ export default function BenefitsSection({
               className="object-contain"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <span className="text-white/40 text-xs tracking-widest uppercase">Mittagessen dabei</span>
+            <span className="text-white/40 text-xs tracking-widest uppercase">{perkLunch}</span>
           </div>
 
           {/* Startup Szene */}
@@ -74,9 +99,9 @@ export default function BenefitsSection({
               </div>
             )}
             <span className="relative z-10 text-white font-bold text-base text-center leading-snug px-4">
-              Startup Szene<br />Münster
+              {perkStartupSzeneTitle}
             </span>
-            <span className="relative z-10 text-white/50 text-xs text-center">30+ Aussteller vor Ort</span>
+            <span className="relative z-10 text-white/50 text-xs text-center">{perkStartupSzeneSub}</span>
           </div>
 
           {/* Top Speaker */}
@@ -103,8 +128,8 @@ export default function BenefitsSection({
               </div>
             )}
             <div className="flex flex-col items-center gap-1">
-              <span className="text-white/40 text-xs uppercase tracking-widest">Top Speaker</span>
-              <span className="text-white/30 text-xs text-center">und viele mehr</span>
+              <span className="text-white/40 text-xs uppercase tracking-widest">{perkSpeakerTitle}</span>
+              <span className="text-white/30 text-xs text-center">{perkSpeakerSub}</span>
             </div>
           </div>
 
@@ -117,7 +142,7 @@ export default function BenefitsSection({
               height={64}
               className="rounded-full object-cover"
             />
-            <span className="text-white/40 text-xs uppercase tracking-widest">Afterparty</span>
+            <span className="text-white/40 text-xs uppercase tracking-widest">{perkAfterparty}</span>
           </div>
 
           {/* Workshops */}
@@ -134,9 +159,9 @@ export default function BenefitsSection({
               </div>
             )}
             <span className="relative z-10 text-white font-bold text-base text-center leading-snug">
-              Workshops
+              {perkWorkshopsTitle}
             </span>
-            <span className="relative z-10 text-white/50 text-xs text-center">Hands-on Sessions</span>
+            <span className="relative z-10 text-white/50 text-xs text-center">{perkWorkshopsSub}</span>
           </div>
         </div>
 
@@ -145,7 +170,7 @@ export default function BenefitsSection({
             href="/tickets"
             className="group inline-flex items-center gap-2 text-white/50 hover:text-white text-sm tracking-wide transition-colors"
           >
-            <span>Jetzt Ticket sichern</span>
+            <span>{perksCtaText}</span>
             <span
               aria-hidden
               className="gradient-text font-bold transition-transform group-hover:translate-x-0.5"

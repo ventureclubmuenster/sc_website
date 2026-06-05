@@ -28,7 +28,7 @@ interface WorkshopHighlightsProps {
 
 export default function WorkshopHighlights({ workshops }: WorkshopHighlightsProps) {
   return (
-    <section className="relative py-32 px-6 bg-black overflow-hidden">
+    <section className="relative pt-24 pb-32 px-6 bg-black overflow-hidden">
       {/* Watermark */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         {[...Array(6)].map((_, i) => (

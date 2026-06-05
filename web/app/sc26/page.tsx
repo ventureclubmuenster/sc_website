@@ -179,7 +179,7 @@ export default async function Sc26LandingPage() {
         </div>
 
         {/* Inhalt unter dem Video */}
-        <div className="px-5 pt-6 pb-8">
+        <div className="px-5 pt-6 pb-8 bg-black">
           <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,7.5vw,4rem)] -ml-0.5">
             {headlineFirst}
             <br />
@@ -193,7 +193,7 @@ export default async function Sc26LandingPage() {
             {subline}
           </p>
 
-          <div className="mt-5 flex flex-col gap-4">
+          <div className="mt-5 flex flex-row items-center justify-center gap-4">
             <div className="flex flex-col font-bold uppercase tracking-tight">
               <span className="text-xl gradient-text">
                 {data.heroDateLabel || FALLBACK.heroDateLabel}

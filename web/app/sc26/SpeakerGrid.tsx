@@ -13,11 +13,11 @@ export default function SpeakerGrid({ speakers }: { speakers: AdSpeaker[] }) {
   if (!speakers || speakers.length === 0) return null
 
   return (
-    <div className="mt-12 max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+    <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {speakers.map((speaker, i) => (
         <div
           key={speaker._key || i}
-          className="group relative w-full max-w-[440px] mx-auto aspect-square sm:aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 hover:border-sc-orange/40 transition-colors duration-500"
+          className="group relative w-2/3 sm:w-full max-w-[440px] mx-auto aspect-square sm:aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 hover:border-sc-orange/40 transition-colors duration-500"
         >
           {speaker.image ? (
             <Image

@@ -20,14 +20,25 @@ export default function HeroVideo({ videoUrl, youtubeId, cover }: HeroVideoProps
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Defensive: guarantee muted (required for autoplay) and kick off playback.
+  // iOS Safari only autoplays when the `muted` ATTRIBUTE is present in the DOM —
+  // React sets the muted *property* but omits the attribute, which makes iOS show
+  // a play button instead of autoplaying. We set it imperatively and retry play
+  // across several readiness events to be bulletproof on mobile.
   useEffect(() => {
     const el = videoRef.current
     if (!el) return
     el.muted = true
+    el.defaultMuted = true
+    el.setAttribute('muted', '')
+    el.playsInline = true
+    el.setAttribute('playsinline', '')
+    el.setAttribute('webkit-playsinline', '')
+
     const tryPlay = () => el.play().catch(() => {})
     tryPlay()
-    el.addEventListener('canplay', tryPlay, { once: true })
-    return () => el.removeEventListener('canplay', tryPlay)
+    const events = ['loadeddata', 'canplay', 'canplaythrough'] as const
+    events.forEach((ev) => el.addEventListener(ev, tryPlay))
+    return () => events.forEach((ev) => el.removeEventListener(ev, tryPlay))
   }, [videoUrl])
 
   if (!videoUrl) {

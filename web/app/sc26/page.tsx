@@ -153,7 +153,7 @@ export default async function Sc26LandingPage() {
 
       {/* ── ① Hero (mit schwebender Navbar über dem Video) ───────── */}
       <section className="relative flex min-h-[88vh] flex-col justify-end overflow-hidden">
-        <HeroVideo videoUrl={data.heroVideoUrl || '/hero.mp4'} youtubeId="1NUZVnJK3XE" cover />
+        <HeroVideo videoUrl={data.heroVideoUrl} youtubeId="1NUZVnJK3XE" cover />
 
         {/* Navbar — über dem Video, leicht durchsichtig (liquid-glass), mit Abstand zum oberen Rand.
             Liegt in der Hero-Section → scrollt mit der Hero weg (folgt nicht dauerhaft). */}
@@ -172,7 +172,7 @@ export default async function Sc26LandingPage() {
         </nav>
 
         <div className="relative z-10 w-full px-5 sm:px-8 pb-12 pt-28">
-          <h1 className="h-display text-white -ml-1">
+          <h1 className="h-display text-white -ml-1" style={{ fontSize: 'clamp(1.75rem, 5.4vw, 7.25rem)' }}>
             {headlineFirst}
             <br />
             <span className="text-white/55">{headlineMuted}</span>
@@ -181,20 +181,27 @@ export default async function Sc26LandingPage() {
             <span className="gradient-text">.</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl whitespace-pre-line text-white/65 text-lg sm:text-xl lg:text-2xl leading-snug">
+          <p className="mt-5 sm:mt-6 max-w-2xl whitespace-pre-line text-white/65 text-base sm:text-xl lg:text-2xl leading-snug">
             {subline}
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-10">
             <div className="flex flex-col font-bold uppercase tracking-tight">
-              <span className="text-2xl md:text-3xl gradient-text">
+              <span className="text-xl md:text-3xl gradient-text">
                 {data.heroDateLabel || FALLBACK.heroDateLabel}
               </span>
-              <span className="text-base md:text-lg text-white/60">
+              <span className="text-sm md:text-lg text-white/60">
                 {data.heroLocationLabel || FALLBACK.heroLocationLabel}
               </span>
             </div>
-            <div>{cta(ctaLabel)}</div>
+            <div>
+              <CtaButton
+                href={ticketUrl}
+                label={ctaLabel}
+                size="md"
+                className="sm:px-9 sm:py-4 sm:text-lg"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -305,7 +312,15 @@ export default async function Sc26LandingPage() {
         </h2>
         <SpeakerGrid speakers={speakers} />
         <p className="mt-10 text-center text-white/45 text-base sm:text-lg">
-          … und viele weitere spannende Speaker
+          … und viele weitere spannende{' '}
+          <a
+            href="/speaker"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline underline-offset-4 hover:text-sc-orange transition-colors"
+          >
+            Speaker
+          </a>
         </p>
         <div className="mt-10 flex justify-center">{cta('Live dabei sein', 'md')}</div>
       </section>
@@ -356,7 +371,15 @@ export default async function Sc26LandingPage() {
               })}
               </div>
               <p className="mt-8 text-center text-white/45 text-base sm:text-lg">
-                … und viele weitere innovative Unternehmen
+                … und viele weitere innovative{' '}
+                <a
+                  href="/innovation-village#aussteller-2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white underline underline-offset-4 hover:text-sc-orange transition-colors"
+                >
+                  Unternehmen
+                </a>
               </p>
             </>
           ) : (

@@ -8,7 +8,7 @@
 export default function WatermarkBg() {
   return (
     <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-      {[...Array(8)].map((_, i) => (
+      {[...Array(24)].map((_, i) => (
         <span
           key={i}
           className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.025] tracking-tighter whitespace-nowrap leading-none"

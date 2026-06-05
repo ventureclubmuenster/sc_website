@@ -35,6 +35,10 @@ export default defineConfig({
               .id('landingPage')
               .child(S.document().schemaType('landingPage').documentId('landingPage')),
             S.listItem()
+              .title('Ad Landing Page (SC26)')
+              .id('adLandingPage')
+              .child(S.document().schemaType('adLandingPage').documentId('adLandingPage')),
+            S.listItem()
               .title('Advisory Board')
               .id('advisoryBoard')
               .child(S.document().schemaType('advisoryBoard').documentId('advisoryBoard')),
@@ -84,7 +88,7 @@ export default defineConfig({
               .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'investorenPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'adLandingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'investorenPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
             ),
           ]),
     }),

@@ -24,6 +24,7 @@ import ueberUnsPage from './ueberUnsPage'
 import formateGrid from './formateGrid'
 import coCreationAnmeldung from './coCreationAnmeldung'
 import logoSlider from './logoSlider'
+import adLandingPage from './adLandingPage'
 
 export const schemaTypes = [
   speaker2025, speaker2026,
@@ -49,4 +50,5 @@ export const schemaTypes = [
   formateGrid,
   coCreationAnmeldung,
   logoSlider,
+  adLandingPage,
 ]

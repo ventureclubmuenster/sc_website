@@ -34,11 +34,24 @@ export default function HeroVideo({ videoUrl, youtubeId, cover }: HeroVideoProps
     el.setAttribute('playsinline', '')
     el.setAttribute('webkit-playsinline', '')
 
+    // Endlosschleife erzwingen — `loop` allein ist auf iOS nicht immer zuverlaessig,
+    // deshalb starten wir das Video bei `ended` zusaetzlich manuell neu.
+    el.loop = true
+    el.setAttribute('loop', '')
+    const restart = () => {
+      el.currentTime = 0
+      el.play().catch(() => {})
+    }
+    el.addEventListener('ended', restart)
+
     const tryPlay = () => el.play().catch(() => {})
     tryPlay()
     const events = ['loadeddata', 'canplay', 'canplaythrough'] as const
     events.forEach((ev) => el.addEventListener(ev, tryPlay))
-    return () => events.forEach((ev) => el.removeEventListener(ev, tryPlay))
+    return () => {
+      el.removeEventListener('ended', restart)
+      events.forEach((ev) => el.removeEventListener(ev, tryPlay))
+    }
   }, [videoUrl])
 
   if (!videoUrl) {

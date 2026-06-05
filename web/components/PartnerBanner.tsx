@@ -79,7 +79,7 @@ export default async function PartnerBanner() {
             'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
         }}
       >
-        <div className="marquee-scroll flex items-center gap-6 md:gap-24 w-max">
+        <div className="marquee-scroll marquee-slow flex items-center gap-6 md:gap-24 w-max">
           {loop.map((logo, i) => {
             const onLight = isOnLight(logo)
             // Splash und helle Logos behalten ihre Originalfarben, alle anderen

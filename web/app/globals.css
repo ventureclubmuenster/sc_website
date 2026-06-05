@@ -225,6 +225,17 @@
   }
 }
 
+/* Langsamere Variante – nur fuer den Partner-Banner der Startseite. */
+.marquee-slow {
+  animation-duration: 70s;
+}
+
+@media (min-width: 768px) {
+  .marquee-slow {
+    animation-duration: 100s;
+  }
+}
+
 /* Logo-Slider: Grundhöhe 2rem (mobil) / 3rem (Desktop), pro Logo per --logo-scale skalierbar. */
 .logo-img {
   height: calc(2rem * var(--logo-scale, 1));

@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.startup-contacts.de/formate',
   },
+  openGraph: {
+    title: 'Formate | Startup Contacts',
+    description: 'Entdecke die Formate der Startup Contacts: Workshops, Main Stage, Podcast, Innovation Village und mehr. 15. Juni 2026 in Münster.',
+    url: 'https://www.startup-contacts.de/formate',
+  },
 }
 
 export default function Page() {

@@ -5,6 +5,7 @@ import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -51,21 +52,14 @@ export const metadata: Metadata = {
     title: 'Startup Contacts | Startup Messe & Co-Creation Event in Münster 2026',
     description:
       'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 15. Juni 2026 in der Halle Münsterland in Münster.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Startup Contacts Münster',
-      },
-    ],
+    // og:image wird automatisch aus app/opengraph-image.tsx erzeugt
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Startup Contacts | Startup Messe & Co-Creation Event in Münster 2026',
     description:
       'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 15. Juni 2026 in der Halle Münsterland in Münster.',
-    images: ['/og-image.jpg'],
+    // twitter:image wird automatisch aus app/twitter-image.tsx erzeugt
   },
   robots: {
     index: true,
@@ -82,6 +76,23 @@ export const metadata: Metadata = {
   },
 }
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Startup Contacts',
+  legalName: 'Venture Club Münster e.V.',
+  url: 'https://www.startup-contacts.de',
+  logo: 'https://www.startup-contacts.de/sc-logo.png',
+  description:
+    'Die größte studentisch organisierte Startup Messe in NRW, veranstaltet vom Venture Club Münster e.V.',
+  sameAs: [
+    'https://www.instagram.com/ventureclubmuenster/',
+    'https://www.linkedin.com/company/ventureclubmuenster',
+    'https://www.tiktok.com/@ventureclubmuenster',
+    'https://www.youtube.com/@ventureclubmunstere.v.232',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -90,6 +101,11 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <BreadcrumbJsonLd />
         <Header />
         <main className="pt-24">{children}</main>
         <Footer />

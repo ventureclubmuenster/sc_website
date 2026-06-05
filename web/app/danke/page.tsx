@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: 'Danke für deine Newsletter-Anmeldung zur Startup Contacts Münster 2026.',
   alternates: { canonical: 'https://www.startup-contacts.de/danke' },
   robots: { index: false, follow: false },
+  openGraph: {
+    title: 'Anmeldung erfolgreich | Startup Contacts',
+    description: 'Danke für deine Newsletter-Anmeldung zur Startup Contacts Münster 2026.',
+    url: 'https://www.startup-contacts.de/danke',
+  },
 }
 
 export default function DankePage() {

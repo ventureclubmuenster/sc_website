@@ -48,7 +48,7 @@ const jsonLd = {
     url: 'https://www.startup-contacts.de/tickets',
     availability: 'https://schema.org/InStock',
   },
-  image: 'https://www.startup-contacts.de/og-image.jpg',
+  image: 'https://www.startup-contacts.de/opengraph-image',
   url: 'https://www.startup-contacts.de',
 }
 

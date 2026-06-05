@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.startup-contacts.de/besucher',
   },
+  openGraph: {
+    title: 'Besucher | Startup Contacts',
+    description: 'Alle Infos für Besucher der Startup Contacts: Anreise, Programm und Ablauf am 15. Juni 2026 in der Halle Münsterland in Münster.',
+    url: 'https://www.startup-contacts.de/besucher',
+  },
 }
 
 export default function Page() {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 
 interface YouTubeBackgroundProps {
   videoId: string
@@ -11,8 +11,6 @@ interface YouTubeBackgroundProps {
 export default function YouTubeBackground({ videoId, cover }: YouTubeBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<any>(null)
-  const [showPlay, setShowPlay] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
 
   const createPlayer = useCallback(() => {
     if (!containerRef.current || playerRef.current) return
@@ -45,20 +43,11 @@ export default function YouTubeBackground({ videoId, cover }: YouTubeBackgroundP
 
           e.target.mute()
           e.target.playVideo()
-
-          // Check after 2s whether autoplay actually worked
-          setTimeout(() => {
-            try {
-              if (e.target.getPlayerState() !== 1) setShowPlay(true)
-            } catch {
-              setShowPlay(true)
-            }
-          }, 2000)
         },
         onStateChange(e: any) {
-          if (e.data === 1) {
-            setIsPlaying(true)
-            setShowPlay(false)
+          // Loop reliably and keep it muted/playing if the browser pauses it.
+          if (e.data === 0) {
+            e.target.playVideo()
           }
         },
       },
@@ -87,17 +76,13 @@ export default function YouTubeBackground({ videoId, cover }: YouTubeBackgroundP
     }
   }, [createPlayer])
 
-  const handlePlay = () => {
-    playerRef.current?.mute()
-    playerRef.current?.playVideo()
-  }
-
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Video iframe — pointer-events disabled once playing */}
+      {/* Video iframe — pointer-events always disabled so no YouTube controls
+          can ever be triggered; the video is purely decorative background. */}
       {cover ? (
         <div
-          className="absolute"
+          className="absolute pointer-events-none"
           style={{
             top: '50%',
             left: '50%',
@@ -106,16 +91,10 @@ export default function YouTubeBackground({ videoId, cover }: YouTubeBackgroundP
             height: 'max(100%, 56.25vw)',
           }}
         >
-          <div
-            ref={containerRef}
-            className={`relative w-full h-full ${isPlaying ? 'pointer-events-none' : ''}`}
-          />
+          <div ref={containerRef} className="relative w-full h-full pointer-events-none" />
         </div>
       ) : (
-        <div
-          ref={containerRef}
-          className={`relative w-full h-full ${isPlaying ? 'pointer-events-none' : ''}`}
-        />
+        <div ref={containerRef} className="relative w-full h-full pointer-events-none" />
       )}
 
       {/* Gradient overlays (desktop cover mode only) */}
@@ -124,23 +103,6 @@ export default function YouTubeBackground({ videoId, cover }: YouTubeBackgroundP
           <div className="absolute inset-0 bg-black/35 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
         </>
-      )}
-
-      {/* Play button — centered on video, visible only when autoplay failed */}
-      {showPlay && (
-        <button
-          onClick={handlePlay}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/30 active:bg-sc-orange/50 transition-colors duration-200"
-          aria-label="Video abspielen"
-        >
-          <svg
-            className="w-8 h-8 md:w-10 md:h-10 text-white ml-1"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </button>
       )}
     </div>
   )

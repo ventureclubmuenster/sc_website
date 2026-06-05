@@ -123,7 +123,7 @@ import AnimatedStatsGrid from '@/components/AnimatedStatsGrid'
 import HallOfFame from '@/components/HallOfFame'
 import FormatSection from '@/components/FormatSection'
 import RotatingWords from '@/components/RotatingWords'
-import YouTubeBackground from '@/components/YouTubeBackground'
+import HeroVideo from '@/components/HeroVideo'
 import PartnerBanner from '@/components/PartnerBanner'
 
 async function getLandingPage() {
@@ -169,7 +169,7 @@ export default async function Home() {
 
           {/* Hero video */}
           <div className="relative w-full aspect-video overflow-hidden">
-            <YouTubeBackground videoId="1NUZVnJK3XE" />
+            <HeroVideo videoUrl={data?.heroVideoUrl} youtubeId="1NUZVnJK3XE" />
           </div>
 
           {/* Content below video */}
@@ -205,7 +205,7 @@ export default async function Home() {
 
         {/* ── Desktop layout: full-screen video background ── */}
         <div className="relative hidden lg:flex min-h-screen flex-col justify-end">
-          <YouTubeBackground videoId="1NUZVnJK3XE" cover />
+          <HeroVideo videoUrl={data?.heroVideoUrl} youtubeId="1NUZVnJK3XE" cover />
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
           <div className="relative z-10 w-full px-8 pt-32">

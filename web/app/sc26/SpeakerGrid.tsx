@@ -17,7 +17,7 @@ export default function SpeakerGrid({ speakers }: { speakers: AdSpeaker[] }) {
       {speakers.map((speaker, i) => (
         <div
           key={speaker._key || i}
-          className="group relative w-2/3 sm:w-full max-w-[440px] mx-auto aspect-square sm:aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 hover:border-sc-orange/40 transition-colors duration-500"
+          className="group relative w-3/4 sm:w-full max-w-[440px] mx-auto aspect-square sm:aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 hover:border-sc-orange/40 transition-colors duration-500"
         >
           {speaker.image ? (
             <Image

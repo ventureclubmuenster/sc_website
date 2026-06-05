@@ -151,8 +151,64 @@ export default async function Sc26LandingPage() {
         }}
       />
 
-      {/* ── ① Hero (mit schwebender Navbar über dem Video) ───────── */}
-      <section className="relative flex min-h-[88vh] flex-col justify-end overflow-hidden">
+      {/* ── ① Hero ───────────────────────────────────────────────── */}
+
+      {/* Handy/Tablet: Video als eingebetteter aspect-video-Block — exakt die
+          gleiche Funktionsweise wie die Startseite (in-flow, nicht als Hintergrund),
+          damit iOS das Video zuverlässig automatisch abspielt. */}
+      <section className="lg:hidden relative bg-black overflow-hidden">
+        <div className="relative w-full aspect-video overflow-hidden">
+          <HeroVideo videoUrl={data.heroVideoUrl} youtubeId="1NUZVnJK3XE" />
+
+          {/* Navbar — über dem Video */}
+          <nav className="absolute top-4 left-3 right-3 z-20">
+            <div className="max-w-4xl mx-auto liquid-glass rounded-full px-5 h-14 flex items-center justify-center gap-2.5">
+              <Image
+                src={scMark}
+                alt="Startup Contacts Münster"
+                priority
+                className="h-7 w-auto object-contain shrink-0"
+              />
+              <span className="text-white font-semibold tracking-wide text-[11px] text-center whitespace-nowrap">
+                STARTUP CONTACTS MÜNSTER · 15. Juni 2026
+              </span>
+            </div>
+          </nav>
+        </div>
+
+        {/* Inhalt unter dem Video */}
+        <div className="px-5 pt-6 pb-8">
+          <h1 className="font-bold uppercase leading-[0.85] tracking-tighter text-white text-[clamp(1.75rem,7.5vw,4rem)] -ml-0.5">
+            {headlineFirst}
+            <br />
+            <span className="text-white/55">{headlineMuted}</span>
+            <br />
+            {headlineRest}
+            <span className="gradient-text">.</span>
+          </h1>
+
+          <p className="mt-4 max-w-2xl whitespace-pre-line text-white/60 text-sm leading-snug">
+            {subline}
+          </p>
+
+          <div className="mt-5 flex flex-col gap-4">
+            <div className="flex flex-col font-bold uppercase tracking-tight">
+              <span className="text-xl gradient-text">
+                {data.heroDateLabel || FALLBACK.heroDateLabel}
+              </span>
+              <span className="text-sm text-white/60">
+                {data.heroLocationLabel || FALLBACK.heroLocationLabel}
+              </span>
+            </div>
+            <div>
+              <CtaButton href={ticketUrl} label={ctaLabel} size="md" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Desktop: Vollbild-Video als Hintergrund mit überlagertem Text */}
+      <section className="relative hidden lg:flex min-h-[88vh] flex-col justify-end overflow-hidden">
         <HeroVideo videoUrl={data.heroVideoUrl} youtubeId="1NUZVnJK3XE" cover />
 
         {/* Navbar — über dem Video, leicht durchsichtig (liquid-glass), mit Abstand zum oberen Rand.

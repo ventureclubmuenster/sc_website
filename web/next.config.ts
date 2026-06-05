@@ -24,6 +24,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://www.googletagmanager.com https://js.stripe.com https://vivenu.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https://cdn.sanity.io https://img.youtube.com https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com",
+      "media-src 'self' https://cdn.sanity.io blob:",
       "font-src 'self' data:",
       "connect-src 'self' https://connect.mailerlite.com https://*.sanity.io https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://www.google.com https://api.stripe.com https://vivenu.com https://tickets.infield.live",
       "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.openstreetmap.org https://js.stripe.com https://tickets.infield.live https://vivenu.com",

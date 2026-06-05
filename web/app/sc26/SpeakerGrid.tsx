@@ -13,7 +13,7 @@ export default function SpeakerGrid({ speakers }: { speakers: AdSpeaker[] }) {
   if (!speakers || speakers.length === 0) return null
 
   return (
-    <div className="mt-12 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="mt-12 max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       {speakers.map((speaker, i) => (
         <div
           key={speaker._key || i}

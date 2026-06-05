@@ -166,7 +166,7 @@ export default async function Sc26LandingPage() {
               className="h-7 sm:h-9 w-auto object-contain shrink-0"
             />
             <span className="text-white font-semibold tracking-wide text-[11px] sm:text-sm md:text-base text-center whitespace-nowrap">
-              STARTUP CONTACTS MÜNSTER · 15. Juni 2026 · Halle Münsterland
+              STARTUP CONTACTS MÜNSTER · 15. Juni 2026<span className="hidden sm:inline"> · Halle Münsterland</span>
             </span>
           </div>
         </nav>

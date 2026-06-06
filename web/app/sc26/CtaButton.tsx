@@ -4,8 +4,8 @@
  * CTA-Button der Ad Landing Page (/sc26).
  * - Linkt auf den Secret-Ticketshop (per Prop, sonst Code-Fallback).
  * - Feuert dieselbe Google-Ads-Conversion wie die übrige Website.
- * - Design nach Vorlage: warme Creme-/Pfirsich-Fläche, oranger fetter Text + Pfeil,
- *   großzügig gerundet, weicher Schatten. Hebt sich beim Hover leicht an.
+ * - Design im VCM-Colorway: oranger Verlauf (gradient-bg) mit weißem fettem Text + Pfeil,
+ *   wie der "Jetzt Anmelden!"-Button im Footer. Hebt sich beim Hover leicht an (ohne Glow-/Schein-Ring).
  */
 
 const SECRET_TICKET_URL =
@@ -49,7 +49,7 @@ export default function CtaButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className={`group inline-flex items-center justify-center gap-2 rounded-2xl font-bold text-sc-orange no-underline bg-[#FBD9BC] shadow-[0_8px_24px_rgba(255,94,0,0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#F8CBA2] hover:shadow-[0_12px_30px_rgba(255,94,0,0.24)] ${sizeClasses[size]} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-2xl font-bold text-white no-underline gradient-bg transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90 ${sizeClasses[size]} ${className}`}
     >
       <span>{label}</span>
       <span

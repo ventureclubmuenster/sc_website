@@ -215,15 +215,15 @@ export default async function Sc26LandingPage() {
 
         {/* Navbar — über dem Video, leicht durchsichtig (liquid-glass), mit Abstand zum oberen Rand.
             Liegt in der Hero-Section → scrollt mit der Hero weg (folgt nicht dauerhaft). */}
-        <nav className="absolute top-4 left-3 right-3 sm:left-4 sm:right-4 z-20">
-          <div className="max-w-4xl mx-auto liquid-glass rounded-full px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-center gap-2.5 sm:gap-3">
+        <nav className="absolute top-4 lg:top-6 left-3 right-3 sm:left-4 sm:right-4 z-20">
+          <div className="max-w-4xl lg:max-w-5xl mx-auto liquid-glass rounded-full px-5 sm:px-8 lg:px-10 h-14 sm:h-16 lg:h-20 flex items-center justify-center gap-2.5 sm:gap-3 lg:gap-4">
             <Image
               src={scMark}
               alt="Startup Contacts Münster"
               priority
-              className="h-7 sm:h-9 w-auto object-contain shrink-0"
+              className="h-7 sm:h-9 lg:h-11 w-auto object-contain shrink-0"
             />
-            <span className="text-white font-semibold tracking-wide text-[11px] sm:text-sm md:text-base text-center whitespace-nowrap">
+            <span className="text-white font-semibold tracking-wide text-[11px] sm:text-sm md:text-base lg:text-lg text-center whitespace-nowrap">
               STARTUP CONTACTS MÜNSTER · 15. Juni 2026<span className="hidden sm:inline"> · Halle Münsterland</span>
             </span>
           </div>
@@ -329,9 +329,31 @@ export default async function Sc26LandingPage() {
         </div>
       </section>
 
-      {/* ── ④ Wen du erwarten kannst ─────────────────────────────── */}
+      {/* ── ④ Unsere Speaker (STARTUP-CONTACTS-Wasserzeichen bis unter den CTA) ─ */}
       <section className="relative py-24 sm:py-28 px-6 overflow-hidden">
         <WatermarkBg />
+        <div className="relative z-10">
+          <h2 className="h-section text-center">
+            {renderHeadingWithAccent(data.speakerHeading || FALLBACK.speakerHeading)}
+          </h2>
+          <SpeakerGrid speakers={speakers} />
+          <p className="mt-10 text-center text-white/45 text-base sm:text-lg">
+            … und viele weitere spannende{' '}
+            <a
+              href="/speaker"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white underline underline-offset-4 hover:text-sc-orange transition-colors"
+            >
+              Speaker
+            </a>
+          </p>
+          <div className="mt-10 flex justify-center">{cta('Live dabei sein', 'md')}</div>
+        </div>
+      </section>
+
+      {/* ── ⑤ Wen du erwarten kannst ─────────────────────────────── */}
+      <section className="relative py-24 sm:py-28 px-6">
         <div className="relative z-10 max-w-7xl mx-auto">
           <h2 className="h-section text-center">
             {renderHeadingWithAccent(data.zielgruppenHeading || FALLBACK.zielgruppenHeading)}
@@ -361,26 +383,6 @@ export default async function Sc26LandingPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ── ⑤ Unsere Speaker ─────────────────────────────────────── */}
-      <section className="relative py-24 sm:py-28 px-6">
-        <h2 className="h-section text-center">
-          {renderHeadingWithAccent(data.speakerHeading || FALLBACK.speakerHeading)}
-        </h2>
-        <SpeakerGrid speakers={speakers} />
-        <p className="mt-10 text-center text-white/45 text-base sm:text-lg">
-          … und viele weitere spannende{' '}
-          <a
-            href="/speaker"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white underline underline-offset-4 hover:text-sc-orange transition-colors"
-          >
-            Speaker
-          </a>
-        </p>
-        <div className="mt-10 flex justify-center">{cta('Live dabei sein', 'md')}</div>
       </section>
 
       {/* ── ⑥ Aussteller-/Firmen-Logos ───────────────────────────── */}

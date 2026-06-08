@@ -402,7 +402,7 @@ export default async function Home() {
                 {/* Subtle gradient for text readability + hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-sc-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="relative z-10 text-base sm:text-lg font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
+                <span className="relative z-10 text-sm lg:text-lg font-bold uppercase tracking-wide group-hover:text-sc-orange transition-colors duration-300">
                   {item.label}
                 </span>
               </Link>

@@ -20,6 +20,7 @@ import coCreationPage from './coCreationPage'
 import workshopsPage from './workshopsPage'
 import mainStagePage from './mainStagePage'
 import podcastPage from './podcastPage'
+import programmPage from './programmPage'
 import ueberUnsPage from './ueberUnsPage'
 import formateGrid from './formateGrid'
 import coCreationAnmeldung from './coCreationAnmeldung'
@@ -46,6 +47,7 @@ export const schemaTypes = [
   workshopsPage,
   mainStagePage,
   podcastPage,
+  programmPage,
   ueberUnsPage,
   formateGrid,
   coCreationAnmeldung,

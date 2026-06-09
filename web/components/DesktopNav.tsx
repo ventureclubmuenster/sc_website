@@ -18,6 +18,7 @@ const besucherGroup = {
 const programmGroup = {
   label: 'Programm',
   items: [
+    { label: 'Übersicht', href: '/programm' },
     { label: 'Workshops', href: '/workshops' },
     { label: 'Main Stage', href: '/main-stage' },
     { label: 'Podcast', href: '/podcast' },

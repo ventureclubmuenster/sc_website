@@ -373,8 +373,30 @@ export default async function Home() {
         />
       </div>
 
+      {/* ── CTA: zur Programm-Übersicht (zentriert zwischen den Sektionen) ── */}
+      <section className="bg-black px-6 py-14 md:py-16">
+        <div className="max-w-xl mx-auto rounded-3xl border border-white/10 bg-zinc-900 px-6 py-8 md:px-8 md:py-9 text-center">
+          <h2 className="h-subsection">
+            <span className="text-white">Das </span>
+            <span className="gradient-text">Programm</span>
+          </h2>
+          <p className="body mt-3 max-w-xl mx-auto">
+            Main Stage, Live Podcasts und Workshops auf einen Blick.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/programm"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/[0.10] hover:border-white/35"
+            >
+              Zur Programm-Übersicht
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Wen du erwarten kannst ── */}
-      <section className="relative py-32 px-6 bg-black overflow-hidden">
+      <section className="relative pt-20 pb-32 px-6 bg-black overflow-hidden">
         <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[8rem] md:text-[14rem] font-bold uppercase text-white/[0.03] pointer-events-none select-none tracking-tighter leading-none text-right">
           BESU<br />CHER
         </span>

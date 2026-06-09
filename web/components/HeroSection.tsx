@@ -10,13 +10,14 @@ interface HeroSectionProps {
   highlight?: string
   subtextWide?: boolean
   subtextMuted?: boolean
+  subtextLarge?: boolean
   eyebrow?: string
   headlineAllWhite?: boolean
   headlineGlow?: boolean
   children?: React.ReactNode
 }
 
-export default function HeroSection({ imageUrl, headline, subtext, highlight, subtextWide, subtextMuted, eyebrow, headlineAllWhite, headlineGlow, children }: HeroSectionProps) {
+export default function HeroSection({ imageUrl, headline, subtext, highlight, subtextWide, subtextMuted, subtextLarge, eyebrow, headlineAllWhite, headlineGlow, children }: HeroSectionProps) {
   // Split headline: last word in orange (default behavior), unless headlineAllWhite is set
   const words = headline.split(' ')
   const mainText = headlineAllWhite ? headline : words.slice(0, -1).join(' ')
@@ -64,7 +65,7 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, su
 
         {subtext && (
           <FadeIn direction="up" delay={0.2} duration={0.7} distance={20}>
-            <p className={`${subtextMuted ? 'text-white/70' : 'text-white/80'} text-base md:text-xl mt-6 mx-auto ${subtextWide ? 'max-w-4xl' : 'max-w-2xl'}`}>
+            <p className={`${subtextMuted ? 'text-white/70' : 'text-white/80'} ${subtextLarge ? 'text-xl md:text-3xl font-medium' : 'text-base md:text-xl'} mt-6 mx-auto ${subtextWide ? 'max-w-4xl' : 'max-w-2xl'}`}>
               {subtext}
             </p>
           </FadeIn>

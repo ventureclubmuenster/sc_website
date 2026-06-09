@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { urlFor } from '@/lib/sanity/image'
-import GlowButton from './GlowButton'
 import FadeIn, { StaggerContainer, StaggerItem } from './FadeIn'
 
 interface Speaker {
@@ -103,7 +103,13 @@ export default function HallOfFame({ speakers, prefix = 'Unsere', accent = 'Spea
         {/* CTA Button */}
         <FadeIn direction="up" delay={0.3}>
           <div className="mt-14 flex justify-center">
-            <GlowButton href="/speaker" glowStrength={0.4}>Alle Speaker</GlowButton>
+            <Link
+              href="/speaker"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/[0.10] hover:border-white/35"
+            >
+              Alle Speaker
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </FadeIn>
       </div>

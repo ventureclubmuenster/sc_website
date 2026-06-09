@@ -13,36 +13,22 @@ export const metadata: Metadata = {
 }
 
 import { client } from '@/lib/sanity/client'
-import { mainStagePageQuery, programQuery } from '@/lib/sanity/queries'
+import { mainStagePageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import HallOfFame from '@/components/HallOfFame'
 import MainStageContent from './MainStageContent'
 
 async function getMainStageData() {
-  const [page, programs] = await Promise.all([
-    client.fetch(mainStagePageQuery, {}, { cache: 'no-store' }),
-    client.fetch(programQuery, {}, { cache: 'no-store' }),
-  ])
-  return { page, programs }
+  return client.fetch(mainStagePageQuery, {}, { cache: 'no-store' })
 }
 
 export default async function MainStagePage() {
-  const { page, programs } = await getMainStageData()
+  const page = await getMainStageData()
 
   const heroImageUrl = page?.heroImage
     ? urlFor(page.heroImage).width(1920).height(1080).url()
     : undefined
-
-  const keynotes = programs?.filter(
-    (p: { type: string }) => p.type === 'Keynote'
-  ) ?? []
-  const panels = programs?.filter(
-    (p: { type: string }) => p.type === 'Panel Discussion'
-  ) ?? []
-  const firesideChats = programs?.filter(
-    (p: { type: string }) => p.type === 'Fireside Chat'
-  ) ?? []
 
   return (
     <>
@@ -53,9 +39,6 @@ export default async function MainStagePage() {
       />
 
       <MainStageContent
-        keynotes={keynotes}
-        panels={panels}
-        firesideChats={firesideChats}
         flashbackTitle={page?.flashbackTitle}
         flashbackTags={page?.flashbackTags}
       />

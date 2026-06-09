@@ -18,6 +18,8 @@ import { podcastPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
 import WartelisteButton from '@/components/WartelisteButton'
+import Schedule from '@/components/Schedule'
+import { podcastSchedule } from '@/lib/schedule'
 import PodcastGrid from './PodcastGrid'
 
 interface PodcastEpisode {
@@ -114,6 +116,16 @@ export default async function PodcastPage() {
           )}
         </div>
       </section>
+
+      {/* Live Podcast Zeitplan */}
+      <Schedule
+        slots={podcastSchedule}
+        eyebrow="Live Podcasts / Zeitplan"
+        title="LIVE AM"
+        titleAccent="MESSETAG"
+        subtitle="Viele spannende Podcasts live aus dem Studio."
+        id="podcast-zeitplan"
+      />
 
       {/* Podcast Episodes */}
       <section id="episoden" className="bg-black px-6 py-20">

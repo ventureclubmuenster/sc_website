@@ -398,6 +398,12 @@ export const workshopsPageQuery = groq`
   }
 `
 
+export const programmPageQuery = groq`
+  *[_type == "programmPage" && _id == "programmPage"][0] {
+    heroImage
+  }
+`
+
 export const mainStagePageQuery = groq`
   *[_type == "mainStagePage" && _id == "mainStagePage"][0] {
     heroImage,

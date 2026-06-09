@@ -83,12 +83,16 @@ export default defineConfig({
               .id('mainStagePage')
               .child(S.document().schemaType('mainStagePage').documentId('mainStagePage')),
             S.listItem()
+              .title('Seite: Programm (Übersicht)')
+              .id('programmPage')
+              .child(S.document().schemaType('programmPage').documentId('programmPage')),
+            S.listItem()
               .title('Seite: Über uns')
               .id('ueberUnsPage')
               .child(S.document().schemaType('ueberUnsPage').documentId('ueberUnsPage')),
             // Remaining types (SEO etc.)
             ...S.documentTypeListItems().filter(
-              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'adLandingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'investorenPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
+              (item) => !['speaker2025', 'speaker2026', 'partner2025', 'partner2026', 'exhibitor2025', 'exhibitor2026', 'team', 'program', 'siteSettings', 'landingPage', 'adLandingPage', 'advisoryBoard', 'studierendePage', 'innovationVillagePage', 'unternehmenPage', 'startupsPage', 'investorenPage', 'fokusfelder', 'workshopsPage', 'mainStagePage', 'programmPage', 'ueberUnsPage', 'formateGrid', 'logoSlider'].includes(item.getId() ?? '')
             ),
           ]),
     }),

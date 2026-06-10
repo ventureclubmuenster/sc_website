@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import TicketCardCTA from './TicketCardCTA'
 import PartnerBanner from '@/components/PartnerBanner'
-import DiscountBadge from './DiscountBadge'
 
 export const metadata: Metadata = {
   title: 'Tickets',
@@ -134,7 +133,6 @@ export default function TicketsPage() {
               <TicketCard
                 key={ticket.name}
                 ticket={ticket}
-                showDiscountBadge={ticket.name === 'Student Access'}
               />
             ))}
           </div>
@@ -150,7 +148,7 @@ export default function TicketsPage() {
   )
 }
 
-function TicketCard({ ticket, showDiscountBadge }: { ticket: Ticket; showDiscountBadge?: boolean }) {
+function TicketCard({ ticket }: { ticket: Ticket }) {
   return (
     <div className="relative group rounded-2xl p-[1.5px] h-full">
       <div
@@ -178,7 +176,6 @@ function TicketCard({ ticket, showDiscountBadge }: { ticket: Ticket; showDiscoun
               {ticket.price.amount}
             </span>
           </div>
-          {showDiscountBadge && <DiscountBadge />}
         </div>
 
         <div className="mt-8 flex-1">

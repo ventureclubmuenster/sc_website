@@ -53,7 +53,7 @@ export const mainStageSchedule: ScheduleSlot[] = [
     company: 'Clockin',
     format: 'Keynote',
   },
-  { startTime: '15:20', endTime: '15:50', title: 'Vom Partyspiel zum Startup', speaker: 'Jeremy & Hannes', company: 'Splash (Partyspiele)', format: 'Panel' },
+  { startTime: '15:20', endTime: '15:50', title: 'Vom Partyspiel zum Startup', speaker: 'Jeremy & Hannes', company: 'Splash', format: 'Panel' },
   { startTime: '15:50', endTime: '16:20', title: 'Co-Creation Challenge', format: 'CoCreation' },
   { startTime: '16:20', endTime: '17:00', title: 'Alexander Glörfeld, Jan Kraume', company: 'Oace', format: 'Panel' },
   { startTime: '17:00', title: 'Abschluss', format: 'Closing' },

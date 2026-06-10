@@ -64,7 +64,7 @@ export const podcastSchedule: ScheduleSlot[] = [
   {
     startTime: '10:30',
     endTime: '11:05',
-    title: 'David Kittel-Hellriegel & Younes Sakali',
+    title: 'Trainee oder Gründer? Warum nicht beides?',
     company: 'Ikea',
     format: 'Podcast',
   },
@@ -95,8 +95,16 @@ export const podcastSchedule: ScheduleSlot[] = [
   {
     startTime: '14:30',
     endTime: '15:15',
-    title: 'Andreas Deptolla',
+    title: 'USA vs. Deutschland - Einblicke in die Startup-Welt',
     company: 'Founder Born & Kepler · CTO Atari',
+    format: 'Podcast',
+  },
+  {
+    startTime: '15:30',
+    endTime: '16:15',
+    title: 'Von 3,0 auf Einser-Schnitt: Productivity-Creator Luis Newton',
+    speaker: 'Luis Newton',
+    company: 'Youtuber',
     format: 'Podcast',
   },
   {

@@ -22,6 +22,14 @@ export default defineType({
     }),
     defineField({ name: 'logo', type: 'image', options: { hotspot: true } }),
     defineField({
+      name: 'logoSize',
+      title: 'Logo-Größe (%)',
+      type: 'number',
+      initialValue: 100,
+      description: 'Größe des Logos in Prozent (z. B. 100 = normal, 50 = halb so groß, 150 = größer)',
+      validation: Rule => Rule.min(1).max(300),
+    }),
+    defineField({
       name: 'whiteBackground',
       title: 'Weiße Kachel?',
       type: 'boolean',

@@ -140,7 +140,7 @@ export default async function Sc26LandingPage() {
   )
 
   return (
-    <div className="bg-[#141414] text-white overflow-x-hidden">
+    <div className="bg-[#525252] text-white overflow-x-hidden">
       {/* ── Meta Pixel (identisch zu /tickets) ───────────────────────────────── */}
       <Script id="meta-pixel" strategy="afterInteractive">{`
         !function(f,b,e,v,n,t,s)
@@ -178,7 +178,7 @@ export default async function Sc26LandingPage() {
       {/* Handy/Tablet: Video als eingebetteter aspect-video-Block — exakt die
           gleiche Funktionsweise wie die Startseite (in-flow, nicht als Hintergrund),
           damit iOS das Video zuverlässig automatisch abspielt. */}
-      <section className="lg:hidden relative bg-[#141414] overflow-hidden">
+      <section className="lg:hidden relative bg-[#525252] overflow-hidden">
         {/* Navbar — über dem Video, auf grauem Seiten-Hintergrund, mit kleinem
             Abstand zur oberen Kante und zum Video. */}
         <nav className="px-3 pt-3 pb-3">

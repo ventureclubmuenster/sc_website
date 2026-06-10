@@ -100,14 +100,6 @@ export const podcastSchedule: ScheduleSlot[] = [
     format: 'Podcast',
   },
   {
-    startTime: '15:30',
-    endTime: '16:15',
-    title: 'Produktivität, KI-Tools & Lernen',
-    speaker: 'Luis Newton',
-    company: 'YouTuber',
-    format: 'Podcast',
-  },
-  {
     startTime: '16:20',
     endTime: '17:00',
     title: 'Von der Idee zur Gründung: Hochschule, Team & KI',
@@ -135,23 +127,20 @@ export interface FormatStyle {
   accent: string
 }
 
-/** Farbcodiertes, dezentes Stil-System pro Format (heller, mehrfarbig, wenig Orange). */
+/**
+ * Reduziertes Stil-System (an die App-UI angelehnt): der vertikale Akzent-Balken
+ * bleibt immer grau, nur die Format-Badges erhalten Farbe — Keynote rot,
+ * Paneltalk orange, alle übrigen Formate neutral.
+ */
 export function formatStyle(format: ScheduleFormat): FormatStyle {
   switch (format) {
     case 'Keynote':
-      return { badge: 'bg-sky-400/10 text-sky-200 border-sky-400/25', accent: 'bg-sky-400/70' }
+      return { badge: 'bg-red-400/10 text-red-200 border-red-400/25', accent: 'bg-white/30' }
     case 'Panel':
-      return { badge: 'bg-violet-400/10 text-violet-200 border-violet-400/25', accent: 'bg-violet-400/70' }
-    case 'Fireside':
-      return { badge: 'bg-amber-400/10 text-amber-200 border-amber-400/25', accent: 'bg-amber-400/70' }
-    case 'Podcast':
-      return { badge: 'bg-rose-400/10 text-rose-200 border-rose-400/25', accent: 'bg-rose-400/70' }
-    case 'CoCreation':
-      return { badge: 'bg-emerald-400/10 text-emerald-200 border-emerald-400/25', accent: 'bg-emerald-400/70' }
-    case 'Opening':
-    case 'Closing':
-      return { badge: 'bg-white/10 text-white/80 border-white/20', accent: 'bg-white/40' }
+      return { badge: 'bg-orange-400/10 text-orange-200 border-orange-400/25', accent: 'bg-white/30' }
     case 'Break':
       return { badge: 'bg-white/5 text-white/40 border-white/10', accent: 'bg-white/15' }
+    default:
+      return { badge: 'bg-white/10 text-white/70 border-white/15', accent: 'bg-white/30' }
   }
 }

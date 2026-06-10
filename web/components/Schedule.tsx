@@ -205,7 +205,7 @@ export function WorkshopsList({
           {workshops.map((ws) => (
             <StaggerItem key={ws.title} direction="up" distance={24}>
               <div className="group relative flex gap-3 md:gap-4 rounded-2xl border border-white/10 bg-zinc-800 p-5 transition-colors duration-300 hover:bg-zinc-700 hover:border-white/20 h-full">
-                <div className="w-1.5 rounded-full shrink-0 bg-teal-400/70" />
+                <div className="w-1.5 rounded-full shrink-0 bg-white/30" />
                 <div className="min-w-0 flex-1">
                   <h4 className="text-base md:text-lg font-bold text-white leading-snug">{ws.title}</h4>
                   {ws.speaker && (

@@ -32,9 +32,9 @@ export interface Workshop {
 /* ── Main Stage (15. Juni 2026) ── */
 export const mainStageSchedule: ScheduleSlot[] = [
   { startTime: '10:00', endTime: '10:10', title: 'Eröffnung', format: 'Opening' },
-  { startTime: '10:10', endTime: '10:40', title: 'Was Gründer über Kapital wissen müssen', speaker: 'Christian Arndt', company: 'HTGF', format: 'Keynote' },
-  { startTime: '10:40', endTime: '11:20', title: 'Google Founders Story', company: 'Google Cloud', format: 'Panel' },
-  { startTime: '11:20', endTime: '12:00', title: 'Vom Abitur zur EdTech-Erfolgsstory', speaker: 'Benedict Kurz', company: 'Knowunity', format: 'Fireside' },
+  { startTime: '10:10', endTime: '10:40', title: 'In welchen Bereichen liegt das meiste Gründungspotenzial?', speaker: 'Christian Arndt', company: 'HTGF', format: 'Keynote' },
+  { startTime: '10:40', endTime: '11:20', title: 'Google Founders Story: Drei Startups über ihren Weg der Gründung & Skalierung', company: 'Google Cloud · VisioLab · Entryzero · remberg', format: 'Panel' },
+  { startTime: '11:20', endTime: '12:00', title: '20 Millionen Nutzer später: Die Learnings hinter dem Wachstum von Knowunity', speaker: 'Benedict Kurz', company: 'Knowunity', format: 'Fireside' },
   {
     startTime: '12:00',
     endTime: '12:30',
@@ -44,7 +44,7 @@ export const mainStageSchedule: ScheduleSlot[] = [
     format: 'Keynote',
   },
   { startTime: '12:30', endTime: '14:00', title: 'Mittagspause', format: 'Break' },
-  { startTime: '14:00', endTime: '14:40', title: 'State of VC', company: 'eCapital · Heimatboost · Gründerfonds Ruhr', format: 'Panel' },
+  { startTime: '14:00', endTime: '14:40', title: 'State of VC: KI, Wirtschaft und vieles mehr. So ist die aktuelle Lage beim Venture Capital', company: 'eCapital · Heimatboost · Gründerfonds Ruhr', format: 'Panel' },
   {
     startTime: '14:40',
     endTime: '15:00',
@@ -53,9 +53,9 @@ export const mainStageSchedule: ScheduleSlot[] = [
     company: 'Clockin',
     format: 'Keynote',
   },
-  { startTime: '15:20', endTime: '15:50', title: 'Vom Partyspiel zum Startup', speaker: 'Jeremy & Hannes', company: 'Splash', format: 'Panel' },
+  { startTime: '15:20', endTime: '15:50', title: 'Warum Splash viral ging: Die Story hinter dem Erfolg', speaker: 'Jeremy & Hannes', company: 'Splash', format: 'Panel' },
   { startTime: '15:50', endTime: '16:20', title: 'Co-Creation Challenge', format: 'CoCreation' },
-  { startTime: '16:20', endTime: '17:00', title: 'Alexander Glörfeld & Jan Kraume', company: 'Oace', format: 'Panel' },
+  { startTime: '16:20', endTime: '17:00', title: 'Die OACE Story: Brand Building & Hype', speaker: 'Alexander Glörfeld & Jan Kraume', company: 'Oace', format: 'Panel' },
   { startTime: '17:00', title: 'Abschluss', format: 'Closing' },
 ]
 

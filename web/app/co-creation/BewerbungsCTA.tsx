@@ -33,7 +33,7 @@ export default function BewerbungsCTA({
   const finalHeadline = headline ?? 'BEREIT MITZUMACHEN?'
   const finalText =
     text ??
-    '30 Plätze für Studierende und Young Professionals. Die Bewerbung ist unkompliziert und formlos. Begrenzte Plätze · Bewerbung bis 09.06. um 23:59 Uhr möglich.'
+    '30 Plätze für Studierende und Young Professionals. Die Bewerbung ist unkompliziert und formlos. Begrenzte Plätze · Bewerbung bis 10.06. um 23:59 Uhr möglich.'
 
   // Split headline: last word in gradient
   const words = finalHeadline.split(' ')

@@ -7,9 +7,7 @@ import WarumTeilnehmen from './WarumTeilnehmen'
 import AblaufTimeline from './AblaufTimeline'
 import HybrideLoesungen from './HybrideLoesungen'
 import PartnerSection from './PartnerSection'
-import BewerbungsCTA from './BewerbungsCTA'
 import FAQSection from './FAQSection'
-import InlineCTA from './InlineCTA'
 import MesseUnternehmen from './MesseUnternehmen'
 
 interface ImageField {
@@ -111,10 +109,6 @@ export default async function CoCreationPage() {
     ? urlFor(data.rFactoryLogo).width(400).fit('max').url()
     : undefined
 
-  const ctaBgUrl = data?.ctaBackgroundImage
-    ? urlFor(data.ctaBackgroundImage).width(1920).height(1080).url()
-    : undefined
-
   const warumTeilnehmenBgUrl = data?.warumTeilnehmenBackgroundImage
     ? urlFor(data.warumTeilnehmenBackgroundImage).width(1920).height(1080).url()
     : undefined
@@ -122,11 +116,6 @@ export default async function CoCreationPage() {
   const hybrideLoesungenImageUrl = data?.hybrideLoesungenImage
     ? urlFor(data.hybrideLoesungenImage).width(1200).height(1400).fit('crop').url()
     : undefined
-
-  const ctaSideImages = data?.ctaSideImages?.map((s) => ({
-    imageUrl: s.image ? urlFor(s.image).width(400).height(500).fit('crop').url() : undefined,
-    caption: s.caption,
-  }))
 
   const messeUnternehmenItems = data?.messeUnternehmen?.map((c) => ({
     name: c.name,
@@ -171,11 +160,6 @@ export default async function CoCreationPage() {
           karten={wasIstChallengeKarten}
         />
 
-        {/* === 1a. CTA-Strip nach "Was ist die Challenge" — eng an die Karten gezogen === */}
-        <div className="-mt-16 md:-mt-20">
-          <InlineCTA bewerbungsUrl={data?.bewerbungsUrl} />
-        </div>
-
         {/* === 1b. Challenge Geber === */}
         <MesseUnternehmen items={messeUnternehmenItems} />
 
@@ -187,9 +171,6 @@ export default async function CoCreationPage() {
           karten={warumTeilnehmenKarten}
           backgroundImageUrl={warumTeilnehmenBgUrl}
         />
-
-        {/* === CTA-Strip nach Warum-teilnehmen === */}
-        <InlineCTA bewerbungsUrl={data?.bewerbungsUrl} />
 
         {/* === 3. Ablauf / Sprint-Struktur === */}
         <AblaufTimeline stations={data?.ablaufStations} />
@@ -211,15 +192,6 @@ export default async function CoCreationPage() {
           rFactoryLogoUrl={rFactoryLogoUrl}
           vcmDescription={data?.vcmDescription}
           rFactoryDescription={data?.rFactoryDescription}
-        />
-
-        {/* === 6. Bewerbungs-CTA === */}
-        <BewerbungsCTA
-          headline={data?.ctaHeadline}
-          text={data?.ctaText}
-          bewerbungsUrl={data?.bewerbungsUrl}
-          backgroundImageUrl={ctaBgUrl}
-          sideImages={ctaSideImages}
         />
 
         {/* === 7. FAQ === */}

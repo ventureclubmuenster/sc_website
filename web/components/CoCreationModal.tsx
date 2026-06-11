@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import AnmeldungForm from '@/app/co-creation/AnmeldungForm'
 
 interface CoCreationModalProps {
   open: boolean
@@ -46,7 +45,7 @@ export default function CoCreationModal({ open, onClose }: CoCreationModalProps)
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-card-grey/95 border border-white/10 shadow-2xl">
+      <div className="relative w-full max-w-lg rounded-2xl bg-card-grey/95 border border-white/10 shadow-2xl">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -58,19 +57,14 @@ export default function CoCreationModal({ open, onClose }: CoCreationModalProps)
           </svg>
         </button>
 
-        <div className="p-8 sm:p-10">
-          {/* Heading */}
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
-              CO-CREATION{' '}
-              <span className="gradient-text">CHALLENGE</span>
-            </h2>
-            <p className="text-white/60 text-base max-w-md mx-auto">
-              Ein Arbeitstag, an dem du mit Studierenden und Unternehmen an realen Herausforderungen arbeitest. Plätze sind limitiert. Bewirb dich jetzt.
-            </p>
-          </div>
-
-          <AnmeldungForm />
+        <div className="p-8 sm:p-12 text-center">
+          <p className="gradient-text font-bold uppercase tracking-[0.2em] text-xs sm:text-sm mb-4">
+            Bewerbungsphase abgeschlossen
+          </p>
+          <p className="text-white/60 text-base max-w-md mx-auto leading-relaxed">
+            Die Bewerbungsfrist für die Co-Creation Challenge ist abgelaufen.
+            Vielen Dank an alle, die sich beworben haben.
+          </p>
         </div>
       </div>
     </div>,

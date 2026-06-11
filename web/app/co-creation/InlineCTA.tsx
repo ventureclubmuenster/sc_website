@@ -7,7 +7,7 @@ interface InlineCTAProps {
   variant?: 'card' | 'minimal'
 }
 
-const DEFAULT_NOTE = 'Begrenzte Plätze · Bewerbung bis 09.06. um 23:59 Uhr möglich.'
+const DEFAULT_NOTE = 'Begrenzte Plätze · Bewerbung bis 10.06. um 23:59 Uhr möglich.'
 
 export default function InlineCTA({
   bewerbungsUrl,

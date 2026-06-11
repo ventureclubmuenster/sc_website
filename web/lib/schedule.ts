@@ -71,7 +71,7 @@ export const podcastSchedule: ScheduleSlot[] = [
   {
     startTime: '11:15',
     endTime: '12:00',
-    title: 'Was hält einen Gründer in Münster?',
+    title: 'Wie innovativ kann eine Bürgermeister wirklich sein?',
     speaker: 'Tilmann Fuchs',
     company: 'Bürgermeister Münster',
     format: 'Podcast',

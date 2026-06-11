@@ -111,6 +111,7 @@ export default function TicketsPage() {
           alt=""
         />
       </noscript>
+      <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
       {/* Tickets */}
       <section className="relative bg-black pt-32 pb-32 px-6 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto">

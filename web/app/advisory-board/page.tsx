@@ -37,6 +37,7 @@ export default async function AdvisoryBoardPage() {
 
   return (
     <section className="min-h-screen bg-black px-6 py-20">
+      <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl font-extrabold text-center mb-6">

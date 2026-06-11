@@ -59,7 +59,8 @@ export default async function SpeakerPage() {
   ])
 
   return (
-    <main className="bg-background min-h-screen max-w-7xl mx-auto px-6 pb-16">
+    <main className="bg-black min-h-screen max-w-7xl mx-auto px-6 pb-16">
+      <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
       <GoogleAdsConversion sendTo="AW-857927386/SPcmCOW--JMcENrdi5kD" />
 
       {/* ── Speaker 2026 ── */}

@@ -97,11 +97,6 @@ function renderPartnerGroups(partners: Partner[]) {
 
             return <div key={partner._id}>{card}</div>
           })}
-
-          {/* "und viele mehr" tile */}
-          <div className="flex items-center justify-center rounded-xl aspect-[2/1] border border-white/10 border-dashed">
-            <span className="text-white/30 text-sm font-medium tracking-wide">und viele mehr</span>
-          </div>
         </div>
       </div>
     )
@@ -124,6 +119,7 @@ export default async function PartnerPage() {
 
   return (
     <>
+      <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
       <section className="bg-black px-6 pt-32 pb-20">
         <div className="max-w-7xl mx-auto">
           {/* ── Partner 2026 ── */}

@@ -65,6 +65,7 @@ export const podcastSchedule: ScheduleSlot[] = [
     startTime: '10:30',
     endTime: '11:05',
     title: 'Trainee oder Gründer? Warum nicht beides?',
+    speaker: 'David Kittel-Hellriegel & Younes Sakali',
     company: 'Ikea',
     format: 'Podcast',
   },
@@ -88,7 +89,8 @@ export const podcastSchedule: ScheduleSlot[] = [
     startTime: '14:30',
     endTime: '15:15',
     title: 'USA vs. Deutschland - Einblicke in die Startup-Welt',
-    company: 'Founder Born & Kepler · CTO Atari',
+    speaker: 'Andreas Deptolla & Dominik Lohle',
+    company: 'Atari & May Ventures',
     format: 'Podcast',
   },
   {

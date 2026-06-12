@@ -149,7 +149,7 @@ export default async function InnovationVillagePage() {
       {/* Aussteller 2026 (in Sanity pflegbar) */}
       {/* scroll-mt klein halten: das pt-20 (80px) liefert bereits den Großteil des
           Abstands; die Navbar ist ~96px hoch, daher reichen ~48px Extra-Versatz. */}
-      <section id="aussteller-2026" className="bg-black px-6 pt-20 pb-10 scroll-mt-12">
+      <section id="aussteller-2026" className="bg-black px-6 pt-20 pb-24 scroll-mt-12">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4">
             {renderAusstellerHeading(heading2026)}
@@ -166,7 +166,7 @@ export default async function InnovationVillagePage() {
       </section>
 
       {/* Aussteller 2025 */}
-      <section id="aussteller" className="bg-black px-6 pt-10 pb-20">
+      <section id="aussteller" className="bg-black px-6 pt-24 pb-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-12">
             <span className="text-white">AUSSTELLER DER </span>

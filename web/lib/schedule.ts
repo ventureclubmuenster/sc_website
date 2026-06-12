@@ -77,14 +77,6 @@ export const podcastSchedule: ScheduleSlot[] = [
     format: 'Podcast',
   },
   {
-    startTime: '12:15',
-    endTime: '13:15',
-    title: 'Vom Partyspiel zum Startup',
-    speaker: 'Jeremy & Hannes',
-    company: 'Splash',
-    format: 'Podcast',
-  },
-  {
     startTime: '13:30',
     endTime: '14:15',
     title: 'David gegen Goliath: Mit Community statt Kapital',

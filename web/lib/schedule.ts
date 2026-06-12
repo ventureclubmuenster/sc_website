@@ -72,7 +72,7 @@ export const podcastSchedule: ScheduleSlot[] = [
     startTime: '11:15',
     endTime: '12:00',
     title: 'Wie innovativ kann ein Oberbürgermeister sein?',
-    speaker: 'Tilmann Fuchs',
+    speaker: 'Tilman Fuchs',
     company: 'Oberbürgermeister von Münster',
     format: 'Podcast',
   },

@@ -105,7 +105,8 @@ export const podcastSchedule: ScheduleSlot[] = [
     startTime: '16:20',
     endTime: '17:00',
     title: 'Von der Idee zur Gründung: Hochschule, Team & KI',
-    speaker: 'Geminos',
+    speaker: 'Amelie Kaijo & Leena Kaijo',
+    company: 'Geminos',
     format: 'Podcast',
   },
 ]

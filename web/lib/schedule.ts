@@ -64,7 +64,7 @@ export const podcastSchedule: ScheduleSlot[] = [
   {
     startTime: '10:30',
     endTime: '11:05',
-    title: 'Trainee oder Gründer? Warum nicht beides?',
+    title: 'Trainee oder Gründer? Warum nicht Beides?',
     speaker: 'David Kittel-Hellriegel & Younes Sakali',
     company: 'Ikea',
     format: 'Podcast',

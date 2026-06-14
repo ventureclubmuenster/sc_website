@@ -324,3 +324,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ──────────────────────────────────────────────────────────
+   Desktop-Skalierung: Auf Laptops/PCs die gesamte Website auf
+   80% verkleinern, sodass 100% Browserzoom wie 80% aussieht.
+   Greift NUR bei Maus/Trackpad-Geräten (hover/pointer) ab
+   1024px Breite — Handys und iPads (Touch) sind ausgeschlossen.
+   ────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  :root {
+    zoom: 0.8;
+  }
+}

@@ -56,7 +56,7 @@ export default function CoCreationHero({
           )}
 
           <FadeIn direction="up" duration={0.8} distance={30}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black md:font-extrabold uppercase leading-[0.95]">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black md:font-extrabold uppercase leading-[0.95]">
               <span
                 className="gradient-text"
                 style={{ filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.6))' }}

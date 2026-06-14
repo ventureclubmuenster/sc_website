@@ -100,7 +100,7 @@ export default function GlowButton({ href, onClick, children, small, large, grad
     const btnClassName = small
       ? `relative inline-flex items-center gap-2 ${smallPad} rounded-full font-semibold text-sm ${textColor} cursor-pointer ${bgClass}`
       : large
-        ? `relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-10 sm:py-4 sm:text-base lg:px-12 lg:py-5 lg:text-lg 2xl:px-14 2xl:py-6 2xl:text-xl ${textColor} cursor-pointer ${bgClass}`
+        ? `relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-10 sm:py-4 sm:text-base lg:px-10 lg:py-4 lg:text-base 2xl:px-12 2xl:py-5 2xl:text-lg ${textColor} cursor-pointer ${bgClass}`
         : `relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm sm:gap-3 sm:px-12 sm:py-5 sm:text-lg ${textColor} cursor-pointer ${bgClass}`
 
     const silverBgStyle = silver

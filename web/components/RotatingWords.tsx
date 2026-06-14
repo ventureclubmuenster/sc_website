@@ -59,7 +59,7 @@ export default function RotatingWords() {
   }
 
   return (
-    <section className="py-40 md:py-56 px-6 bg-black">
+    <section className="py-24 md:py-32 px-6 bg-black">
       <div className="max-w-6xl mx-auto flex items-center justify-center">
         <h2 className="h-section text-center">
           <span className="text-white block">Freu dich auf</span>

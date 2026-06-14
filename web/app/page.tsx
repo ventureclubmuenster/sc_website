@@ -139,7 +139,7 @@ export default async function Home() {
   const statsCards = [
     { number: '20+', label: 'Speaker & Themen', image: data?.stellDirVorSpeaker },
     { number: '1000+', label: 'Besucher', image: data?.stellDirVorBesucher },
-    { number: '20+', label: 'Stände', image: data?.stellDirVorStaende },
+    { number: '35+', label: 'Stände', image: data?.stellDirVorStaende },
   ]
 
   const wenCards = [
@@ -209,7 +209,7 @@ export default async function Home() {
 
           {/* Content — editorial layout, bottom-aligned, full bleed */}
           <div className="relative z-10 w-full px-8 pt-32">
-            <h1 className="h-display text-white -ml-2">
+            <h1 className="h-display text-white -ml-2" style={{ fontSize: 'clamp(2.5rem, 5vw, 6.5rem)' }}>
               Zukunft
               <br />
               <span className="text-white/55">durch</span>
@@ -217,7 +217,7 @@ export default async function Home() {
               Zusammenarbeit<span className="gradient-text">.</span>
             </h1>
 
-            <p className="mt-8 text-white/60 text-xl md:text-2xl lg:text-3xl leading-snug">
+            <p className="mt-8 text-white/60 text-base md:text-lg lg:text-xl leading-snug">
               Die größte studentisch organisierte Startup Messe in NRW.
               <br />
               Erlebe co-creation zwischen Startups, Talenten und Mittelstand.
@@ -225,8 +225,8 @@ export default async function Home() {
 
             <div className="mt-8 flex flex-row items-end gap-10">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-2xl md:text-3xl gradient-text">15. Juni 2026</span>
-                <span className="text-lg md:text-xl text-white/60">Halle Münsterland</span>
+                <span className="text-xl md:text-2xl gradient-text">15. Juni 2026</span>
+                <span className="text-base md:text-lg text-white/60">Halle Münsterland</span>
               </div>
               <div className="flex flex-1 items-center gap-4">
                 <HeroCTA large />

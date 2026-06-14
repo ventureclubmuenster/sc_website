@@ -120,7 +120,7 @@ export default async function PartnerPage() {
   return (
     <>
       <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
-      <section className="bg-black px-6 pt-32 pb-20">
+      <section className="bg-black px-6 pt-16 pb-20">
         <div className="max-w-7xl mx-auto">
           {/* ── Partner 2026 ── */}
           <div className="text-center mb-12">

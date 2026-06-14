@@ -53,7 +53,7 @@ export default function HeroSection({ imageUrl, headline, subtext, highlight, su
           </FadeIn>
         )}
         <FadeIn direction="up" duration={0.8} distance={30}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase">
             <span className="text-white" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6)' }}>
               {mainText}{!headlineAllWhite && ' '}
             </span>

@@ -185,7 +185,7 @@ export default function StartupsMuensterPage() {
       <section className="relative py-24 px-6 bg-black">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-white/80 text-xl md:text-2xl leading-relaxed">
-            Statt nur darüber zu lesen: komm vorbei. Am 15. Juni 2026 ist das
+            Statt nur darüber zu lesen: komm vorbei. Am 8. Juni 2027 ist das
             Ökosystem der Stadt in der Halle Münsterland an einem Ort. Über 30
             Startups, Speaker mit Substanz und ein Tag, an dem Kontakte entstehen,
             auf die man sich noch ein Jahr später beruft.

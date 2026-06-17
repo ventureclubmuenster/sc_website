@@ -1,5 +1,9 @@
-import WartelisteButton from './WartelisteButton'
+import GlowButton from './GlowButton'
 
 export default function HeroCTA({ small, large }: { small?: boolean; large?: boolean }) {
-  return <WartelisteButton small={small} large={large} />
+  return (
+    <GlowButton href="/newsletter" small={small} large={large} gradient>
+      Save the Date 2027
+    </GlowButton>
+  )
 }

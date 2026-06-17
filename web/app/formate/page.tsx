@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Formate | Startup Contacts',
-  description: 'Entdecke die Formate der Startup Contacts: Workshops, Main Stage, Podcast, Innovation Village und mehr. 15. Juni 2026 in Münster.',
+  description: 'Entdecke die Formate der Startup Contacts: Workshops, Main Stage, Podcast, Innovation Village und mehr. 8. Juni 2027 in Münster.',
   alternates: {
     canonical: 'https://www.startup-contacts.de/formate',
   },
   openGraph: {
     title: 'Formate | Startup Contacts',
-    description: 'Entdecke die Formate der Startup Contacts: Workshops, Main Stage, Podcast, Innovation Village und mehr. 15. Juni 2026 in Münster.',
+    description: 'Entdecke die Formate der Startup Contacts: Workshops, Main Stage, Podcast, Innovation Village und mehr. 8. Juni 2027 in Münster.',
     url: 'https://www.startup-contacts.de/formate',
   },
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import WartelisteButton from './WartelisteButton'
@@ -43,6 +44,8 @@ const orderedGroups = [besucherGroup, programmGroup, ueberUnsGroup]
 export default function MobileMenu() {
   const [open, setOpen] = useState(false)
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
+  const pathname = usePathname()
+  const glass = pathname === '/newsletter' ? 'liquid-glass-opaque' : 'liquid-glass'
 
   function toggleGroup(label: string) {
     setExpandedGroup(expandedGroup === label ? null : label)
@@ -50,7 +53,7 @@ export default function MobileMenu() {
 
   return (
     <div
-      className="lg:hidden liquid-glass"
+      className={`lg:hidden ${glass}`}
       style={{ borderRadius: open ? '1.5rem' : '2.5rem', transition: 'border-radius 100ms ease' }}
     >
       {/* Top bar with logo + burger */}

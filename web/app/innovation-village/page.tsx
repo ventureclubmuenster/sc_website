@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Innovation Village',
   description:
-    'Das Innovation Village der Startup Contacts Münster: Alle Aussteller, Startups und Unternehmen auf einen Blick. 15. Juni 2026.',
+    'Das Innovation Village der Startup Contacts Münster: Alle Aussteller, Startups und Unternehmen auf einen Blick. 8. Juni 2027.',
   alternates: { canonical: 'https://www.startup-contacts.de/innovation-village' },
   openGraph: {
     title: 'Innovation Village | Startup Contacts',

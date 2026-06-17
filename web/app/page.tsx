@@ -7,12 +7,12 @@ export const metadata: Metadata = {
     absolute: 'Startup Contacts 2026 | Startup Messe Münster in der Halle Münsterland',
   },
   description:
-    'Startup Contacts 2026: größte studentisch organisierte Startup Messe in NRW. 15. Juni 2026, Halle Münsterland Münster. Jetzt Tickets sichern.',
+    'Startup Contacts 2026: größte studentisch organisierte Startup Messe in NRW. 8. Juni 2027, Halle Münsterland Münster. Jetzt Tickets sichern.',
   alternates: { canonical: 'https://www.startup-contacts.de' },
   openGraph: {
     title: 'Startup Contacts 2026 | Startup Messe Münster',
     description:
-      'Größte studentisch organisierte Startup Messe in NRW. 15. Juni 2026, Halle Münsterland Münster. Co-Creation zwischen Startups, Mittelstand und Talenten.',
+      'Größte studentisch organisierte Startup Messe in NRW. 8. Juni 2027, Halle Münsterland Münster. Co-Creation zwischen Startups, Mittelstand und Talenten.',
     url: 'https://www.startup-contacts.de',
   },
 }
@@ -23,8 +23,8 @@ const jsonLd = {
   name: 'Startup Contacts 2026',
   description:
     'Deutschlands größte studentisch organisierte Startup Messe und Co-Creation Event in der Halle Münsterland in Münster, NRW. Networking, Workshops, Main Stage und Innovation Village für Startups, Talente und Mittelstand.',
-  startDate: '2026-06-15T09:00:00+02:00',
-  endDate: '2026-06-15T22:00:00+02:00',
+  startDate: '2027-06-08T09:00:00+02:00',
+  endDate: '2027-06-08T22:00:00+02:00',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
@@ -61,7 +61,7 @@ const faqJsonLd = {
       name: 'Wann findet die Startup Contacts 2026 statt?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Die Startup Contacts findet am 15. Juni 2026 in der Halle Münsterland in Münster statt.',
+        text: 'Die Startup Contacts findet am 8. Juni 2027 in der Halle Münsterland in Münster statt.',
       },
     },
     {
@@ -125,6 +125,7 @@ import FormatSection from '@/components/FormatSection'
 import RotatingWords from '@/components/RotatingWords'
 import HeroVideo from '@/components/HeroVideo'
 import PartnerBanner from '@/components/PartnerBanner'
+import SaveTheDate from '@/components/SaveTheDate'
 
 async function getLandingPage() {
   return client.fetch(landingPageQuery, {}, { cache: 'no-store' })
@@ -190,7 +191,7 @@ export default async function Home() {
 
             <div className="mt-4 flex flex-col gap-3">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-xl gradient-text">15. Juni 2026</span>
+                <span className="text-xl gradient-text">8. Juni 2027</span>
                 <span className="text-sm text-white/60">Halle Münsterland</span>
               </div>
               <div className="flex flex-wrap items-center gap-3">
@@ -225,7 +226,7 @@ export default async function Home() {
 
             <div className="mt-8 flex flex-row items-end gap-10">
               <div className="flex flex-col font-bold uppercase tracking-tight">
-                <span className="text-xl md:text-2xl gradient-text">15. Juni 2026</span>
+                <span className="text-xl md:text-2xl gradient-text">8. Juni 2027</span>
                 <span className="text-base md:text-lg text-white/60">Halle Münsterland</span>
               </div>
               <div className="flex flex-1 items-center gap-4">
@@ -240,6 +241,9 @@ export default async function Home() {
 
       </section>
 
+      {/* ── Save the Date 2027 + Newsletter ── */}
+      <SaveTheDate />
+
       {/* ── Stell dir vor was ── */}
       <section className="relative py-32 px-6 bg-black overflow-hidden">
         {/* Repeating "Startup Contacts" watermark */}
@@ -247,7 +251,7 @@ export default async function Home() {
           {[...Array(6)].map((_, i) => (
             <span
               key={i}
-              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.07] tracking-tighter whitespace-nowrap leading-none"
               style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
             >
               STARTUP CONTACTS &nbsp; STARTUP CONTACTS &nbsp; STARTUP CONTACTS
@@ -353,7 +357,7 @@ export default async function Home() {
           {[...Array(6)].map((_, i) => (
             <span
               key={`fmt-${i}`}
-              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.07] tracking-tighter whitespace-nowrap leading-none"
               style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
             >
               STARTUP CONTACTS &nbsp; STARTUP CONTACTS &nbsp; STARTUP CONTACTS
@@ -372,28 +376,6 @@ export default async function Home() {
           }))}
         />
       </div>
-
-      {/* ── CTA: zur Programm-Übersicht (zentriert zwischen den Sektionen) ── */}
-      <section className="bg-black px-6 py-14 md:py-16">
-        <div className="max-w-xl mx-auto rounded-3xl border border-white/10 bg-zinc-900 px-6 py-8 md:px-8 md:py-9 text-center">
-          <h2 className="h-subsection">
-            <span className="text-white">Das </span>
-            <span className="gradient-text">Programm</span>
-          </h2>
-          <p className="body mt-3 max-w-xl mx-auto">
-            Main Stage, Live Podcasts und Workshops auf einen Blick.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <Link
-              href="/programm"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/[0.10] hover:border-white/35"
-            >
-              Zur Programm-Übersicht
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ── Wen du erwarten kannst ── */}
       <section className="relative pt-20 pb-32 px-6 bg-black overflow-hidden">
@@ -443,7 +425,7 @@ export default async function Home() {
           <div className="mt-12 space-y-6">
             <p className="body">
               Die Startup Contacts ist Deutschlands größte studentisch organisierte Startup Messe.
-              Am 15. Juni 2026 bringen wir in der Halle Münsterland in Münster Startups,
+              Am 8. Juni 2027 bringen wir in der Halle Münsterland in Münster Startups,
               mittelständische Unternehmen, Studierende und Investoren zusammen.
             </p>
             <p className="body">
@@ -539,7 +521,7 @@ export default async function Home() {
             {[
               {
                 q: 'Wann findet die Startup Contacts 2026 statt?',
-                a: 'Die Startup Contacts findet am 15. Juni 2026 in der Halle Münsterland in Münster statt.',
+                a: 'Die Startup Contacts findet am 8. Juni 2027 in der Halle Münsterland in Münster statt.',
               },
               {
                 q: 'Was kostet ein Ticket?',

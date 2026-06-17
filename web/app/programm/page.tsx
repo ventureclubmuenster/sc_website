@@ -3,12 +3,12 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Programm',
   description:
-    'Das komplette Programm der Startup Contacts 2026 in Münster: Main Stage, Live Podcasts und Workshops im Überblick. 15. Juni 2026.',
+    'Das komplette Programm der Startup Contacts 2026 in Münster: Main Stage, Live Podcasts und Workshops im Überblick. 8. Juni 2027.',
   alternates: { canonical: 'https://www.startup-contacts.de/programm' },
   openGraph: {
     title: 'Programm | Startup Contacts 2026 Münster',
     description:
-      'Main Stage, Live Podcasts und Workshops im Überblick — der ganze Tag der Startup Contacts am 15. Juni 2026.',
+      'Main Stage, Live Podcasts und Workshops im Überblick — der ganze Tag der Startup Contacts am 8. Juni 2027.',
     url: 'https://www.startup-contacts.de/programm',
   },
 }
@@ -60,7 +60,7 @@ export default async function ProgrammPage() {
         headline="DAS PROGRAMM"
         subtext="Main Stage, Live Podcasts und Workshops"
         subtextLarge
-        highlight="15. Juni 2026 · Münster"
+        highlight="8. Juni 2027 · Münster"
       />
 
       <Schedule

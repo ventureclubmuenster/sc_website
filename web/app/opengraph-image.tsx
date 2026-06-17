@@ -59,7 +59,7 @@ export default async function Image() {
                 borderRadius: 999,
               }}
             >
-              15. Juni 2026 · Halle Münsterland Münster
+              8. Juni 2027 · Halle Münsterland Münster
             </div>
           </div>
 

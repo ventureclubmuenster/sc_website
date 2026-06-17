@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Partner',
   description:
-    'Unsere Partner der Startup Contacts Münster: Gemeinsam gestalten wir Deutschlands größtes Co-Creation Event. 15. Juni 2026.',
+    'Unsere Partner der Startup Contacts Münster: Gemeinsam gestalten wir Deutschlands größtes Co-Creation Event. 8. Juni 2027.',
   alternates: { canonical: 'https://www.startup-contacts.de/partner' },
   openGraph: {
     title: 'Partner | Startup Contacts',

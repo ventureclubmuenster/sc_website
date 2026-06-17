@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Investoren',
   description:
-    'Als Investor auf der Startup Contacts Münster: Entdecke die innovativsten Startups aus dem DACH-Raum. 15. Juni 2026 in Münster.',
+    'Als Investor auf der Startup Contacts Münster: Entdecke die innovativsten Startups aus dem DACH-Raum. 8. Juni 2027 in Münster.',
   alternates: { canonical: 'https://www.startup-contacts.de/investoren' },
   openGraph: {
     title: 'Investoren | Startup Contacts',

@@ -21,7 +21,7 @@ export default function MainStageContent({
         eyebrow="Programm / Main Stage"
         title="DER"
         titleAccent="ABLAUF"
-        subtitle="Keynotes, Paneltalks & Fireside Chats der komplette Main-Stage-Tag am 15. Juni 2026."
+        subtitle="Keynotes, Paneltalks & Fireside Chats der komplette Main-Stage-Tag am 8. Juni 2027."
         id="ablauf"
       />
 

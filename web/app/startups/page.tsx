@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Startups',
   description:
-    'Als Startup auf der Startup Contacts Münster ausstellen: Treffe Mittelstand, Talente und Investoren. 15. Juni 2026 in Münster.',
+    'Als Startup auf der Startup Contacts Münster ausstellen: Treffe Mittelstand, Talente und Investoren. 8. Juni 2027 in Münster.',
   alternates: { canonical: 'https://www.startup-contacts.de/startups' },
   openGraph: {
     title: 'Startups | Startup Contacts',

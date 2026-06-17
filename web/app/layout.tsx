@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | Startup Contacts',
   },
   description:
-    'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation Event mit Startups, Talenten und Mittelstand am 15. Juni 2026 in der Halle Münsterland in Münster. Jetzt informieren.',
+    'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation Event mit Startups, Talenten und Mittelstand am 8. Juni 2027 in der Halle Münsterland in Münster. Jetzt informieren.',
   keywords: [
     'Startup Contacts',
     'Startup Event Münster',
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     siteName: 'Startup Contacts',
     title: 'Startup Contacts | Startup Messe & Co-Creation Event in Münster 2026',
     description:
-      'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 15. Juni 2026 in der Halle Münsterland in Münster.',
+      'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 8. Juni 2027 in der Halle Münsterland in Münster.',
     // og:image wird automatisch aus app/opengraph-image.tsx erzeugt
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Startup Contacts | Startup Messe & Co-Creation Event in Münster 2026',
     description:
-      'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 15. Juni 2026 in der Halle Münsterland in Münster.',
+      'Die größte studentisch organisierte Startup Messe in NRW. Co-Creation mit Startups, Talenten und Mittelstand. 8. Juni 2027 in der Halle Münsterland in Münster.',
     // twitter:image wird automatisch aus app/twitter-image.tsx erzeugt
   },
   robots: {

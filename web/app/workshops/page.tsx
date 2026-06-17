@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Workshops',
   description:
-    'Interaktive Workshops auf der Startup Contacts Münster: Lerne von Experten und arbeite an echten Lösungen. 15. Juni 2026.',
+    'Interaktive Workshops auf der Startup Contacts Münster: Lerne von Experten und arbeite an echten Lösungen. 8. Juni 2027.',
   alternates: { canonical: 'https://www.startup-contacts.de/workshops' },
   openGraph: {
     title: 'Workshops | Startup Contacts',

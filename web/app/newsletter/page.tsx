@@ -24,7 +24,7 @@ export default function NewsletterPage() {
             <span className="gradient-text">PLATZ</span>
           </h1>
           <p className="text-white/60 text-lg max-w-lg mx-auto">
-            Erfahre als Erstes vom Vorverkaufsstart und sichere dir dein Ticket für die Startup Contacts am 8. Juni 2027.
+            Erfahre als Erstes vom Vorverkaufsstart, sichere dir den reduzierten Early-Bird-Rabatt und dein Ticket für die Startup Contacts am 8. Juni 2027.
           </p>
         </div>
 

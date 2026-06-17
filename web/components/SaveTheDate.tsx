@@ -24,10 +24,9 @@ export default function SaveTheDate() {
           <span className="gradient-text">8. Juni 2027 · Halle Münsterland</span>
         </p>
         <p className="body mt-5 max-w-xl mx-auto">
-          Trag dich in unseren Newsletter ein und verpasse keine Neuigkeiten:
-          Sei beim Vorverkaufsstart als Erste:r dabei und erfahre vorab alles
-          zu Tickets, Programm und Speakern der Startup Contacts 2027, damit
-          du dir rechtzeitig deinen Platz sichern kannst.
+          Trag dich in unseren Newsletter ein: Sei beim Vorverkaufsstart als
+          Erste:r dabei und erfahre als Erstes vom reduzierten Early-Bird-Rabatt
+          der Startup Contacts 2027.
         </p>
         <div className="mt-8 flex justify-center">
           <GlowButton href="/newsletter" gradient>

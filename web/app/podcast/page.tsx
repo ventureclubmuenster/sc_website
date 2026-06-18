@@ -17,9 +17,6 @@ import { client } from '@/lib/sanity/client'
 import { podcastPageQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import HeroSection from '@/components/HeroSection'
-import WartelisteButton from '@/components/WartelisteButton'
-import Schedule from '@/components/Schedule'
-import { podcastSchedule } from '@/lib/schedule'
 import PodcastGrid from './PodcastGrid'
 
 interface PodcastEpisode {
@@ -117,16 +114,6 @@ export default async function PodcastPage() {
         </div>
       </section>
 
-      {/* Live Podcast Zeitplan */}
-      <Schedule
-        slots={podcastSchedule}
-        eyebrow="Live Podcasts / Zeitplan"
-        title="LIVE AM"
-        titleAccent="MESSETAG"
-        subtitle="Viele spannende Podcasts live aus dem Studio."
-        id="podcast-zeitplan"
-      />
-
       {/* Podcast Episodes */}
       <section id="episoden" className="bg-black px-6 py-20">
         <div className="max-w-7xl mx-auto">
@@ -166,9 +153,6 @@ export default async function PodcastPage() {
             <p className="text-white/60 text-base md:text-lg mt-6 leading-relaxed">
               Verfolge unsere Podcasts live auf der Messe und zieh dir die besten Insights direkt von der Podcast Lounge. Tauch ein in die Stories und Visionen unserer Gäste.
             </p>
-            <div className="mt-8">
-              <WartelisteButton />
-            </div>
           </div>
         </div>
       </section>

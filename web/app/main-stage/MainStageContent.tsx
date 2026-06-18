@@ -1,8 +1,6 @@
 'use client'
 
 import FadeIn, { StaggerContainer, StaggerItem } from '@/components/FadeIn'
-import Schedule from '@/components/Schedule'
-import { mainStageSchedule } from '@/lib/schedule'
 
 interface MainStageContentProps {
   flashbackTitle?: string
@@ -15,16 +13,6 @@ export default function MainStageContent({
 }: MainStageContentProps) {
   return (
     <>
-      {/* ── Programm / Ablauf Main Stage ── */}
-      <Schedule
-        slots={mainStageSchedule}
-        eyebrow="Programm / Main Stage"
-        title="DER"
-        titleAccent="ABLAUF"
-        subtitle="Keynotes, Paneltalks & Fireside Chats der komplette Main-Stage-Tag am 8. Juni 2027."
-        id="ablauf"
-      />
-
       {/* ── Themen-Flashback (vorerst ausgeblendet) ── */}
       <section className="relative py-32 px-6 overflow-hidden hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-card-grey to-sc-orange/10" />

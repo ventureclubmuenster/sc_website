@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import WartelisteButton from './WartelisteButton'
 import CoCreationButton from './CoCreationButton'
 import AppButton from './AppButton'
 import scLogo from '@/app/images/SC_logo_nav_bar.avif'
@@ -22,7 +21,6 @@ const besucherGroup = {
 const programmGroup = {
   label: 'Programm',
   items: [
-    { label: 'Übersicht', href: '/programm' },
     { label: 'Workshops', href: '/workshops' },
     { label: 'Main Stage', href: '/main-stage' },
     { label: 'Podcast', href: '/podcast' },
@@ -150,10 +148,6 @@ export default function MobileMenu() {
 
           <div className="mt-2" onClick={() => setOpen(false)}>
             <AppButton small />
-          </div>
-
-          <div className="mt-2">
-            <WartelisteButton small />
           </div>
           </div>
         </nav>

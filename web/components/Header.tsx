@@ -5,7 +5,6 @@ import { siteSettingsQuery } from '@/lib/sanity/queries'
 import { urlFor } from '@/lib/sanity/image'
 import DesktopNav from './DesktopNav'
 import MobileMenu from './MobileMenu'
-import WartelisteButton from './WartelisteButton'
 import GlassBar from './GlassBar'
 import scLogo from '@/app/images/SC_logo_nav_bar.png'
 
@@ -29,9 +28,6 @@ export default async function Header() {
           />
         </Link>
         <DesktopNav />
-        <div className="shrink-0">
-          <WartelisteButton small />
-        </div>
       </GlassBar>
 
       {/* Mobile */}

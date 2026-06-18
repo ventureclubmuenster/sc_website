@@ -58,7 +58,7 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Wann findet die Startup Contacts 2026 statt?',
+      name: 'Wann findet die Startup Contacts 2027 statt?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Die Startup Contacts findet am 8. Juni 2027 in der Halle Münsterland in Münster statt.',
@@ -520,7 +520,7 @@ export default async function Home() {
           <div className="mt-14 divide-y divide-white/10 border-t border-b border-white/10">
             {[
               {
-                q: 'Wann findet die Startup Contacts 2026 statt?',
+                q: 'Wann findet die Startup Contacts 2027 statt?',
                 a: 'Die Startup Contacts findet am 8. Juni 2027 in der Halle Münsterland in Münster statt.',
               },
               {

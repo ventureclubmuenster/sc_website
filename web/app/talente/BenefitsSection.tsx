@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 interface Props {
   salitosLogoUrl?: string
@@ -38,7 +37,6 @@ export default function BenefitsSection(props: Props) {
   const perkAfterparty = props.perkAfterparty || 'Afterparty'
   const perkWorkshopsTitle = props.perkWorkshopsTitle || 'Workshops'
   const perkWorkshopsSub = props.perkWorkshopsSub || 'Hands-on Sessions'
-  const perksCtaText = props.perksCtaText || 'Jetzt Ticket sichern'
   return (
     <section className="relative z-10 px-6 pt-8 pb-4">
       <div className="max-w-5xl mx-auto">
@@ -163,21 +161,6 @@ export default function BenefitsSection(props: Props) {
             </span>
             <span className="relative z-10 text-white/50 text-xs text-center">{perkWorkshopsSub}</span>
           </div>
-        </div>
-
-        <div className="flex justify-center mt-10 mb-4">
-          <Link
-            href="/tickets"
-            className="group inline-flex items-center gap-2 text-white/50 hover:text-white text-sm tracking-wide transition-colors"
-          >
-            <span>{perksCtaText}</span>
-            <span
-              aria-hidden
-              className="gradient-text font-bold transition-transform group-hover:translate-x-0.5"
-            >
-              →
-            </span>
-          </Link>
         </div>
       </div>
     </section>

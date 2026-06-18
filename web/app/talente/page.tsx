@@ -22,7 +22,6 @@ import ExhibitorGrid from '../startups/ExhibitorGrid'
 import { buildCuratedExhibitors, mapManualExhibitors } from '@/lib/curatedExhibitors'
 import ProgramCards from './ProgramCards'
 import BentoGridTalente from '@/components/BentoGridTalente'
-import SubtleTicketCTA from '@/components/SubtleTicketCTA'
 import BenefitsSection from './BenefitsSection'
 
 interface FeatureCard {
@@ -329,8 +328,6 @@ export default async function TalentePage() {
             </div>
           </div>
         </section>
-
-        <SubtleTicketCTA text={data?.ticketCtaText || 'Als Talent Ticket sichern'} />
       </div>
     </>
   )

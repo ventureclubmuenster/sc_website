@@ -3,7 +3,7 @@ interface WatermarkBackgroundProps {
 }
 
 export default function WatermarkBackground({
-  opacityClass = 'text-white/[0.08]',
+  opacityClass = 'text-white/[0.03]',
 }: WatermarkBackgroundProps = {}) {
   return (
     <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">

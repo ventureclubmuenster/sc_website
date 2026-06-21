@@ -43,7 +43,7 @@ export default function MesseUnternehmen({ headline, intro, items }: MesseUntern
 
   return (
     <section className="relative z-10 px-6 pt-20 pb-32 md:pb-40 overflow-hidden" id="messe-unternehmen">
-      <WatermarkBackground opacityClass="text-white/[0.06]" />
+      <WatermarkBackground opacityClass="text-white/[0.03]" />
       <div className="relative z-10 max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold uppercase text-center mb-4 leading-tight">
           {renderHeadline(headlineText)}

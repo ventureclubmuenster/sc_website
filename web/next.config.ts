@@ -36,6 +36,12 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Bilder werden bereits von Sanity (cdn.sanity.io) auf die passende Größe und
+    // Format optimiert (siehe urlFor(...).width()/.height()/.auto('format')).
+    // Vercels eigener Image-Optimizer ist damit überflüssig und hat zudem das
+    // Kontingent aufgebraucht (HTTP 402 OPTIMIZED_IMAGE_REQUEST_PAYMENT_REQUIRED),
+    // wodurch neue Bilder live nur grau erschienen. Wir liefern daher direkt aus.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

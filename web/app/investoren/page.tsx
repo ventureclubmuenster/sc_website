@@ -85,7 +85,7 @@ export default async function InvestorenPage() {
           {[...Array(20)].map((_, i) => (
             <span
               key={i}
-              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.04] tracking-tighter whitespace-nowrap leading-none"
+              className="block text-[6rem] md:text-[10rem] font-bold uppercase text-white/[0.03] tracking-tighter whitespace-nowrap leading-none"
               style={{ transform: `translateX(${i % 2 === 0 ? '-5%' : '-15%'})` }}
             >
               STARTUP CONTACTS &nbsp; STARTUP CONTACTS &nbsp; STARTUP CONTACTS

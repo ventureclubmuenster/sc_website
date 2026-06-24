@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import YouTubeBackground from './YouTubeBackground'
 
 interface HeroVideoProps {
@@ -18,6 +18,26 @@ interface HeroVideoProps {
 // no MP4 is uploaded to the Sanity "Hero Video" field.
 export default function HeroVideo({ videoUrl, youtubeId, cover }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  // Ton ist standardmaessig aus (Pflicht fuer Autoplay). Der Besucher kann ihn
+  // ueber den Lautsprecher-Button einschalten — der erste Ton braucht laut
+  // Browser-Regeln immer eine Nutzer-Interaktion.
+  const [muted, setMuted] = useState(true)
+
+  const toggleMute = () => {
+    const el = videoRef.current
+    if (!el) return
+    const next = !muted
+    el.muted = next
+    if (next) {
+      el.setAttribute('muted', '')
+    } else {
+      el.removeAttribute('muted')
+      el.volume = 1
+    }
+    // Nach dem Entstummen ggf. erneut starten (manche Browser pausieren sonst).
+    el.play().catch(() => {})
+    setMuted(next)
+  }
 
   // Defensive: guarantee muted (required for autoplay) and kick off playback.
   // iOS Safari only autoplays when the `muted` ATTRIBUTE is present in the DOM —
@@ -82,6 +102,29 @@ export default function HeroVideo({ videoUrl, youtubeId, cover }: HeroVideoProps
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
         </>
       )}
+
+      {/* Ton-Umschalter — dezent in der Ecke, ueber den Overlays */}
+      <button
+        type="button"
+        onClick={toggleMute}
+        aria-label={muted ? 'Ton einschalten' : 'Ton ausschalten'}
+        aria-pressed={!muted}
+        className="absolute bottom-4 right-4 z-20 pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm ring-1 ring-white/20 transition hover:bg-black/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+      >
+        {muted ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M11 5 6 9H2v6h4l5 4V5z" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M11 5 6 9H2v6h4l5 4V5z" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          </svg>
+        )}
+      </button>
     </div>
   )
 }

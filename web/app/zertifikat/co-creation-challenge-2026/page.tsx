@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 export default function ZertifikatCoCreationChallenge2026() {
   return (
     <main className="bg-black min-h-screen px-6 pt-8 pb-24">
+      {/* Vollflaechiger schwarzer Hintergrund, auch hinter der Navigationsleiste */}
+      <div className="fixed inset-0 -z-10 bg-black" aria-hidden="true" />
       <div className="mx-auto w-full max-w-4xl">
         {/* Header */}
         <div className="text-center mb-10">

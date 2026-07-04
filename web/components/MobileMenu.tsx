@@ -43,7 +43,10 @@ export default function MobileMenu() {
   const [open, setOpen] = useState(false)
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
   const pathname = usePathname()
-  const glass = pathname === '/newsletter' ? 'liquid-glass-opaque' : 'liquid-glass'
+  const glass =
+    pathname === '/newsletter' || pathname.startsWith('/zertifikat')
+      ? 'liquid-glass-opaque'
+      : 'liquid-glass'
 
   function toggleGroup(label: string) {
     setExpandedGroup(expandedGroup === label ? null : label)

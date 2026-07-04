@@ -19,13 +19,13 @@ export default function ZertifikatCoCreationChallenge2026() {
       <div className="mx-auto w-full max-w-4xl">
         {/* Header */}
         <div className="text-center mb-10">
-          <p className="text-sm uppercase tracking-widest text-white/50 mb-3">
+          <p className="text-white/60 mb-3">
             Venture Club Münster e.V. &amp; R-Factory eG
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
             TEILNAHME<span className="gradient-text">ZERTIFIKAT</span>
           </h1>
-          <p className="text-white/70 text-lg">Co-Creation Challenge 2026</p>
+          <p className="text-white/60">Co-Creation Challenge 2026</p>
         </div>
 
         {/* PDF-Vorschau */}

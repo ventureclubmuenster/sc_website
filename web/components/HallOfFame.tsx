@@ -40,7 +40,7 @@ export default function HallOfFame({ speakers, prefix = 'Unsere', accent = 'Spea
 
       <div className="relative z-10">
         <FadeIn direction="up" duration={0.7}>
-          <h2 className="text-4xl md:text-6xl font-bold text-center uppercase tracking-tight">
+          <h2 className="h-section text-center">
             {prefix} <span className="gradient-text">{accent}</span>
           </h2>
         </FadeIn>

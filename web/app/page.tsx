@@ -492,14 +492,14 @@ export default async function Home() {
       <section className="relative py-32 px-6 bg-black overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <h2 className="h-section text-center">
-            Der Startup Contacts <span className="gradient-text">2025</span> Aftermovie
+            Der Startup Contacts <span className="gradient-text">2026</span> Aftermovie
           </h2>
 
           <div className="mt-12 relative w-full overflow-hidden rounded-2xl" style={{ paddingBottom: '56.25%' }}>
             <iframe
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/uNZWsofAFEI?rel=0&modestbranding=1"
-              title="Startup Contacts 2025 – Aftermovie"
+              src="https://www.youtube-nocookie.com/embed/SAzmYtaAFhE?rel=0&modestbranding=1"
+              title="Startup Contacts 2026 – Aftermovie"
               allow="encrypted-media"
               allowFullScreen
             />

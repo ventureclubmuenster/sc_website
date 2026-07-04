@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function ZertifikatCoCreationChallenge2026() {
   return (
-    <main className="min-h-screen px-6 py-24 sm:py-28">
+    <main className="bg-black min-h-screen px-6 pt-8 pb-24">
       <div className="mx-auto w-full max-w-4xl">
         {/* Header */}
         <div className="text-center mb-10">
@@ -26,9 +26,6 @@ export default function ZertifikatCoCreationChallenge2026() {
             TEILNAHME<span className="gradient-text">ZERTIFIKAT</span>
           </h1>
           <p className="text-white/70 text-lg">Co-Creation Challenge 2026</p>
-          <p className="text-white/40 text-sm mt-2">
-            Credential-ID VC-RF-CCC26 · Münster, 15. Juni 2026
-          </p>
         </div>
 
         {/* PDF-Vorschau */}
